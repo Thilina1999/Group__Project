@@ -19,6 +19,8 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+import { Container, Nav } from 'react-bootstrap';
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -159,7 +161,7 @@ export default function PrimarySearchAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ color: 'black', backgroundColor: 'white' }}>
+            <AppBar position="static" sx={{ color: 'black', backgroundColor: 'white', height: '100px' }}>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -168,7 +170,7 @@ export default function PrimarySearchAppBar() {
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
                     >
-                        <MenuIcon />
+
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -201,6 +203,7 @@ export default function PrimarySearchAppBar() {
                             </Button>
                         </Stack>
                     </Box>
+
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -214,6 +217,8 @@ export default function PrimarySearchAppBar() {
                         </IconButton>
                     </Box>
                 </Toolbar>
+                <MenuIcon sx={{ marginLeft: '60px' }} />
+
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
