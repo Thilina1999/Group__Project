@@ -7,7 +7,7 @@ export default function NavBar1() {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Navbar.Brand href="#">Logo</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Form className="d-flex" style={{ padding: '20px' }}>
@@ -16,7 +16,7 @@ export default function NavBar1() {
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
-                            style={{ width: '900px', }}
+                            style={{ width: '1000px', }}
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
