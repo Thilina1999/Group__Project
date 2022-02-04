@@ -10,7 +10,7 @@ export default function Signin() {
         <div className="frame">
           <div className="nav">
             <ul className="links">
-              <li className="signin-active"><a className="btn" href>Sign in</a></li>
+              <li className="signin-active"><a className="btn" href>Signn in</a></li>
             </ul>
           </div>
           <div ng-app ng-init="checked = false">
