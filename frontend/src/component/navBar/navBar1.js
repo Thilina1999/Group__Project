@@ -1,9 +1,9 @@
 import React from 'react';
-import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Container, Form, FormControl, Button } from 'react-bootstrap';
 import { BsFillCartFill, BsHeartFill } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 
-export default function NavBar() {
+export default function NavBar1() {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
