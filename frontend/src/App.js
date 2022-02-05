@@ -8,7 +8,6 @@ import Signin from './component/form/signin/form.signin';
 import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
-import ProdAddForm from './component/form/prodAddForm/prodAddForm';
 
 
 
@@ -19,7 +18,6 @@ function App() {
       <BrowserRouter>
         <NavBar1 />
         <NavBar2 />
-        <ProdAddForm />
         <Routes>
           <Route path="/home" element={<Home />} exact></Route>
           <Route path="/form" element={<Signin />} exact></Route>
