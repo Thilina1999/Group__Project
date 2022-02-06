@@ -14,7 +14,7 @@ export default function NavBar2() {
                         <Nav.Link href="#home">All</Nav.Link>
                         <Nav.Link href="#features" style={{ marginLeft: '50px' }}>Buyer Protection</Nav.Link>
                         <Nav.Link href="#pricing" style={{ marginLeft: '50px' }}>Customer Service</Nav.Link>
-                        <Nav.Link href="#pricing" style={{ marginLeft: '50px' }}>Sell</Nav.Link>
+                        <Nav.Link href="/sell" style={{ marginLeft: '50px' }}>Sell</Nav.Link>
                     </Nav>
                     <div className="col-md-4 col-sm-6 col-xs-12">
                         <ul className="social-icons">

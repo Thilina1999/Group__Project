@@ -23,7 +23,7 @@ export default function Signin() {
                 <a className="btn-signin" href>Sign in</a>
               </div>
               <div className="btn-animate">
-                <a className="btn-signin" href="/form/signup">Create A New Account</a>
+                <a className="btn-signin" href="/signin/signup">Create A New Account</a>
               </div>
             </form>
           </div>
