@@ -13,15 +13,10 @@ export default function Signup() {
           </div>
           <div ng-app ng-init="checked = false">
             <form className="form-signin" action method="post" name="form">
-              <label htmlFor="fullname">First Name</label>
               <input className="form-styling" type="text" name="fullname" placeholder="First Name" />
-              <label htmlFor="fullname">Last Name</label>
               <input className="form-styling" type="text" name="fullname" placeholder="Last Name" />
-              <label htmlFor="email">Email</label>
               <input className="form-styling" type="text" name="email" placeholder="Email" />
-              <label htmlFor="password">Password</label>
               <input className="form-styling" type="Password" name="password" placeholder="Password" />
-              <label htmlFor="confirmpassword">Confirm password</label>
               <input className="form-styling" type="password" name="confirmpassword" placeholder="Confirm Password" />
               <a className="btn-signup" href>Sign Up</a>
             </form>

@@ -15,9 +15,7 @@ export default function Signin() {
           </div>
           <div ng-app ng-init="checked = false">
             <form className="form-signin" action method="post" name="form">
-              <label htmlFor="username">Username</label>
               <input className="form-styling" type="text" name="username" placeholder="Username" />
-              <label htmlFor="password">Password</label>
               <input className="form-styling" type="password" name="password" placeholder="Password" />
               <div className="btn-animate">
                 <a className="btn-signin" href>Sign in</a>

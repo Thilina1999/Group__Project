@@ -34,7 +34,7 @@ body {
 }
 
 .frameup{
-  height: 725px;
+  height: 550px;
   width: 430px;
   background:
     linear-gradient(
@@ -223,7 +223,7 @@ label {
   text-align: center;
   color: #ffffff;
   padding-top: 8px;
-  width: 100%;
+  width: 100px;
   height: 35px;
 	border: none;
 	border-radius: 20px;
@@ -236,7 +236,7 @@ label {
   float: left;
   padding-top: 8px;
   color: #ffffff;
-  width: 100%;
+  width: 200px;
   height: 35px;
 	border: none;
 	border-radius: 20px;
@@ -252,7 +252,7 @@ label {
   text-align: center;
   color: rgba(255,255,255, 1);
   padding-top: 8px;
-  width: 100%;
+  width: 200px;
   height: 35px;
 	border: none;
 	border-radius: 20px;
