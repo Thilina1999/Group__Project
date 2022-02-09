@@ -41,7 +41,7 @@
 .footer-links
 {
   padding-left:0;
-  list-style:none
+  list-style:none;
 }
 
 .footer-links li
@@ -151,4 +151,8 @@
 .social-icons a.dribbble:hover
 {
   background-color:#ea4c89
+}
+
+li{
+  color: black !important;
 }

@@ -20,9 +20,9 @@ export default function Signup() {
               <label htmlFor="email">Email</label>
               <input className="form-styling" type="text" name="email" placeholder="Email" />
               <label htmlFor="password">Password</label>
-              <input className="form-styling" type="text" name="password" placeholder="Password" />
+              <input className="form-styling" type="Password" name="password" placeholder="Password" />
               <label htmlFor="confirmpassword">Confirm password</label>
-              <input className="form-styling" type="text" name="confirmpassword" placeholder="Confirm Password" />
+              <input className="form-styling" type="password" name="confirmpassword" placeholder="Confirm Password" />
               <a className="btn-signup" href>Sign Up</a>
             </form>
           </div>
