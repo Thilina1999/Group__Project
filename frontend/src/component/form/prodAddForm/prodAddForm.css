@@ -10,6 +10,9 @@ h2{
     text-align: left;
     color: black;
     width: 700px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 1300px;
+    margin: 100px;
 }
 
 .form-control {
@@ -29,9 +32,16 @@ h2{
     font-size: 14px;
 }
 
-
 label{
     color: black !important;
     text-transform: none;
+    font-size: 17px;
 }
 
+.input-radio {
+    display: inline-block;
+}
+
+#additional{
+    height: 100px;
+}
