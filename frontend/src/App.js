@@ -9,7 +9,6 @@ import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Sell from './component/sell/sell';
-import ProdAddForm from './component/form/prodAddForm/prodAddForm';
 
 
 
@@ -19,12 +18,11 @@ function App() {
       <BrowserRouter>
         <NavBar1 />
         <NavBar2 />
-        <ProdAddForm/>
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />} exact></Route>
-          <Route path="/signin/signup" element={<Signup />} exact></Route>
-          <Route path="/sell" element={<Sell />} exact></Route>
+          <Route path="/signin" element={<Signin />} ></Route>
+          <Route path="/signup" element={<Signup />} ></Route>
+          <Route path="/sell" element={<Sell />} ></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
