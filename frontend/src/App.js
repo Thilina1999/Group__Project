@@ -10,6 +10,7 @@ import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Sell from './component/sell/sell';
 import ProdAddForm from './component/form/prodAddForm/prodAddForm';
+import AddCategory from './component/admin/category/addcategory';
 
 
 
@@ -19,13 +20,15 @@ function App() {
       <BrowserRouter>
         <NavBar1 />
         <NavBar2 />
-        <ProdAddForm/>
+
         <Routes>
-          <Route path="/" element={<Home />} exact></Route>
+          {/* <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
-          <Route path="/sell" element={<Sell />} exact></Route>
+          <Route path="/sell" element={<Sell />} exact></Route> */}
         </Routes>
+      
+        <AddCategory />
         <Footer />
       </BrowserRouter>
     </div>
