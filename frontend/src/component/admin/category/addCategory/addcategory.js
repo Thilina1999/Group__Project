@@ -1,7 +1,8 @@
 import React,{useState} from "react";
 import './addcategory.css'
 import { Button } from "react-bootstrap";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
+
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import axios from "axios";
 
 
@@ -10,7 +11,7 @@ const AddCategory=()=>{
     const[categoryid,setID]=useState("");
     const[categoryname,setCategoryName]=useState("");
 
-    const sendData=(e)=>{
+    const SendData=(e)=>{
         e.preventDefault();
 
         var addcategoryData = {
@@ -21,13 +22,19 @@ const AddCategory=()=>{
             if(res.status === 200){
                 alert("Category Add")
             }else{
-                Promise.reject()
+                Promise.reject();
             }
             e.target.reset();
+        }).catch((err)=>{
+          alert(err);
         })
         
     }
+function DelayRedirect(e, path){
+  e.preventDefault();
 
+  setTimeout(()=>Navigate(path),300);
+}
 
 
 
@@ -45,6 +52,9 @@ const AddCategory=()=>{
              id="name"
              name="categoryname"
              placeholder="Enter Product ID"
+             onChange={(e)=>{
+               setID(e.target.valueAsNumber);
+             }}
              required
            />
            <br /> <br />
@@ -55,6 +65,9 @@ const AddCategory=()=>{
              id="name"
              name="name"
              placeholder="Enter Category"
+             onChange={(e)=>{
+               setCategoryName(e.target.value);
+             }}
              required
            />
          </div>
@@ -64,7 +77,7 @@ const AddCategory=()=>{
            <Button variant="outline-primary" className="button btn btn-light">
              Cancel
            </Button>
-           <Button variant="outline-primary" className="button1 btn btn-light">
+           <Button variant="outline-primary" className="button1 btn btn-light" onClick={SendData}>
              Create
            </Button>
          </div>
