@@ -15,11 +15,8 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^0.26.0",
-=======
     "axios": "^0.26.1",
->>>>>>> 56f3410c7b90ca1700abdb26183db82961811c9d
     "bootstrap": "^5.1.3",
     "jquery": "^3.6.0",
     "mdbreact": "^5.2.0",

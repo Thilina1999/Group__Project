@@ -15,14 +15,13 @@ export default function Signup() {
 
   const submit = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/api/register`, {
+    await axios.post(`http://localhost:8080/signup`, {
       firstname,
       lastname,
       email,
       password
     })
       .then((res) => {
-        console.log("YEs");
         alert("User added..");
       })
       .catch((err) => {
