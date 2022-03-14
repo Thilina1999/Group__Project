@@ -2,34 +2,26 @@ package database
 
 import (
 	"log"
-
-	"github.com/jinzhu/gorm"
+	"fmt"
+	"gorm.io/gorm"
+	"gorm.io/driver/mysql"
+	
 )
 
-var Connector *gorm.DB
 
-func Connect(connectionString string) error {
-	var err error
-	Connector, err = gorm.Open("mysql", connectionString)
+func GetDatabase() *gorm.DB {
+	dsn := "root:iha075@tcp(127.0.0.1:3306)/test3?charset=utf8mb4&parseTime=True&loc=Local"
+
+	connection, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return err
+		log.Fatalln("Invalid database url")
 	}
-	log.Println("Connection was successfull")
-	return nil
-}
-func Indb() {
-	config :=
-		Config{
-			ServerName: "localhost:3306",
-			User:       "root",
-			Password:   "Thilina1999@",
-			DB:         "test14",
-		}
-	connectionString := GetConnectionString(config)
+	sqldb, _ := connection.DB()
 
-	err := Connect(connectionString)
+	err = sqldb.Ping()
 	if err != nil {
-		panic(err.Error())
+		log.Fatal("Database connected")
 	}
-
+	fmt.Println("Database connection successful.")
+	return connection
 }
