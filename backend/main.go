@@ -10,13 +10,11 @@ import (
 	"net/http"
 )
 
-<<<<<<< HEAD
-func main(){
-	database.GetDatabase()
-	
-}
-=======
+
+
 func main() {
+
+	database.GetDatabase()
 	database.AuthMigration()
 	router := mux.NewRouter()
 	router.HandleFunc("/signup", controllers.SignUp).Methods("POST")
@@ -42,4 +40,4 @@ func main() {
 		log.Fatal(err)
 	}
 }
->>>>>>> 99c51943d313eeaa0c5823ad7219b35ffd0e10c0
+

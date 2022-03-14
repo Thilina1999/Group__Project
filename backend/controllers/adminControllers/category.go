@@ -10,12 +10,12 @@ import (
 
 	"github.com/gorilla/mux"
 	"main.go/database"
-	"main.go/models/admindata"
+	"main.go/models/adminData"
 )
 
 func CreateCategory(w http.ResponseWriter, r *http.Request) {
 	requestBody, _ := ioutil.ReadAll((r.Body))
-	var category admindata.Category
+	var category adminData.Category
 	json.Unmarshal(requestBody, &category)
 	database.GetDatabase().Create(&category)
 	w.Header().Set("Content-Type", "application/json")
@@ -24,7 +24,7 @@ func CreateCategory(w http.ResponseWriter, r *http.Request) {
 
 }
 func GetCategory(w http.ResponseWriter, r *http.Request) {
-	category := []admindata.Category{}
+	category := []adminData.Category{}
 	database.GetDatabase().Find(&category)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(category)
@@ -34,7 +34,7 @@ func GetCategoryById(w http.ResponseWriter, r *http.Request) {
 	jer := mux.Vars(r)
 	key := jer["id"]
 
-	var category admindata.Category //this should be add category
+	var category adminData.Category //this should be add category
 	database.GetDatabase().First(&category, key)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(category)
@@ -42,7 +42,7 @@ func GetCategoryById(w http.ResponseWriter, r *http.Request) {
 
 func UpdateCategoryById(w http.ResponseWriter, r *http.Request) {
 	requestBody, _ := ioutil.ReadAll(r.Body)
-	var category admindata.Category
+	var category adminData.Category
 	json.Unmarshal(requestBody, &category)
 	database.GetDatabase().Save(&category)
 
@@ -55,7 +55,7 @@ func DeletePersonById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key := vars["id"]
 
-	var category admindata.Category
+	var category adminData.Category
 	id, _ := strconv.ParseInt(key, 10, 64)
 	database.GetDatabase().Where("id = ?", id).Delete(&category)
 	w.WriteHeader(http.StatusNoContent)

@@ -1,4 +1,5 @@
-package admindata
+package adminData
+
 
 type Category struct{
 	Id int `json:"id"`
