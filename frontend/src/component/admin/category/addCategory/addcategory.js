@@ -1,91 +1,91 @@
-import React,{useState} from "react";
-import './addcategory.css'
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
-
-import { useNavigate, Navigate, Link } from "react-router-dom";
 import axios from "axios";
+import "./addcategory.css";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
+const AddCategory = () => {
+  let [id, setId] = useState("");
+  let [category, setCatname] = useState("");
 
+  const SendData = (e) => {
+    e.preventDefault();
 
-const AddCategory=()=>{
-    const[categoryid,setID]=useState("");
-    const[categoryname,setCategoryName]=useState("");
+    var addCategerytData = {
+      id,
+      category,
+    };
 
-    const SendData=(e)=>{
-        e.preventDefault();
+    console.log(id, category);
+    console.log(typeof addCategerytData.id);
 
-        var addcategoryData = {
-            categoryid,
-            categoryname
+    axios
+      .post(`http://localhost:8090/createCategory`, addCategerytData)
+      .then((res) => {
+        console.log(res);
+
+        if (res.status === 201) {
+          alert("Category Add");
+        } else {
+          Promise.reject();
         }
-        axios.post(``,addcategoryData).then((res)=>{
-            if(res.status === 200){
-                alert("Category Add")
-            }else{
-                Promise.reject();
-            }
-            e.target.reset();
-        }).catch((err)=>{
-          alert(err);
-        })
-        
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+    const navigate = useNavigate();
+    function delayRedirect(e, path) {
+      e.preventDefault();
+
+      // Do something..
+
+      setTimeout(() => navigate(path), 300);
     }
-function DelayRedirect(e, path){
-  e.preventDefault();
 
-  setTimeout(()=>Navigate(path),300);
-}
+  return (
+    <Form className="form">
+      <Form.Group className="mb-3" controlId="ControlInput1" name="id">
+        <h2 className="h2">Add Category</h2>
+        <hr></hr>
+        <br />
+        <Form.Label className="label">ID</Form.Label>
+        <Form.Control
+          className="form-control"
+          type="number"
+          placeholder="Enter the Category Id"
+          onChange={(e) => {
+            setId(e.target.valueAsNumber);
+          }}
+        />
+        <br />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="ControlInput2" name="catname">
+        <Form.Label className="label">Name</Form.Label>
+        <Form.Control
+          className="form-control"
+          type="text"
+          placeholder="Enter the Category Name"
+          onChange={(e) => {
+            setCatname(e.target.value);
+          }}
+        />
+      </Form.Group>
+      <br />
 
-
-
-   return (
-     <form id="survey-form" className="form">
-       <div className="container">
-         <div id="form-group">
-           <h2 className="h2">Add Category</h2>
-           <hr></hr>
-           <br />
-           <label className="label">Category ID</label>
-           <input
-             className="form-control"
-             type="number"
-             id="name"
-             name="categoryname"
-             placeholder="Enter Product ID"
-             onChange={(e)=>{
-               setID(e.target.valueAsNumber);
-             }}
-             required
-           />
-           <br /> <br />
-           <label className="label">Category Name</label>
-           <input
-             className="form-control"
-             type="text"
-             id="name"
-             name="name"
-             placeholder="Enter Category"
-             onChange={(e)=>{
-               setCategoryName(e.target.value);
-             }}
-             required
-           />
-         </div>
-         <div id="form-group">
-           <br />
-           <br />
-           <Button variant="outline-primary" className="button btn btn-light">
-             Cancel
-           </Button>
-           <Button variant="outline-primary" className="button1 btn btn-light" onClick={SendData}>
-             Create
-           </Button>
-         </div>
-       </div>
-     </form>
-   );
-
-}
-
-
+      <Button variant="outline-primary" className="button btn btn-light">
+        Cancel
+      </Button>
+      <Button
+        variant="outline-primary"
+        type="submit"
+        className="button1 btn btn-light"
+        onClick={SendData}
+      >
+        create
+      </Button>
+    </Form>
+  );
+};
 export default AddCategory;

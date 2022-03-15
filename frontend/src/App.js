@@ -12,8 +12,10 @@ import Sell from './component/sell/sell';
 
 import ProdAddForm from './component/form/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
+import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 
-import AddCategory from './component/admin/category/addcategory';
+
+
 
 
 
@@ -30,12 +32,14 @@ function App() {
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
           <Route path="/sell" element={<Sell />} ></Route>
-          {/* <Route path="/" element={<Home />} exact></Route>
+          <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
-          <Route path="/sell" element={<Sell />} exact></Route> */}
+          <Route path="/sell" element={<Sell />} exact></Route>
         </Routes>
-        <AddCategory />
+        
+        <AddCategory/>
+        <ViewCategory/>
         <Footer />
       </BrowserRouter>
     </div>

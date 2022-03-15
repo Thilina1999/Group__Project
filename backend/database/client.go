@@ -9,11 +9,12 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"main.go/models/authModels"
+	
 
 )
 
 func GetDatabase() *gorm.DB {
-	dsn := "root:Thilina1999@@tcp(127.0.0.1:3306)/test13?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:Thilina1999@@tcp(127.0.0.1:3306)/test16?charset=utf8mb4&parseTime=True&loc=Local"
 
 	connection, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
@@ -30,11 +31,7 @@ func GetDatabase() *gorm.DB {
 }
 
 
-func Migrate( ){
-	connection:= GetDatabase()
-	defer CloseDatabase(connection)
-	connection.AutoMigrate(adminData.Category{})
-}
+
 
 func CloseDatabase(connection *gorm.DB) {
 	sqldb, _ := connection.DB()
@@ -46,5 +43,6 @@ func AuthMigration() {
 	connection := GetDatabase()
 	defer CloseDatabase(connection)
 	connection.AutoMigrate(authModels.User{})
+	connection.AutoMigrate(adminData.Category{})
 }
 
