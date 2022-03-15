@@ -21,7 +21,7 @@ const AddCategory = () => {
     console.log(typeof addCategerytData.id);
 
     axios
-      .post(`http://localhost:8090/createCategory`, addCategerytData)
+      .post(`http://localhost:8080/createCategory`, addCategerytData)
       .then((res) => {
         console.log(res);
 
@@ -30,13 +30,14 @@ const AddCategory = () => {
         } else {
           Promise.reject();
         }
+        e.target.reset();
       })
       .catch((err) => {
         alert(err);
       });
   };
     const navigate = useNavigate();
-    function delayRedirect(e, path) {
+    function DelayRedirect(e, path) {
       e.preventDefault();
 
       // Do something..
@@ -83,7 +84,12 @@ const AddCategory = () => {
         className="button1 btn btn-light"
         onClick={SendData}
       >
-        create
+        <Link
+          to="/viewCategory"
+          onClick={(e) => DelayRedirect(e, "/viewCategory")}
+        >
+          create
+        </Link>
       </Button>
     </Form>
   );

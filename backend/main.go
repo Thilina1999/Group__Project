@@ -3,11 +3,14 @@ package main
 import (
 	"log"
 
+	"fmt"
+
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/rs/cors"
-	"main.go/controllers"
+	
 	"main.go/database"
-	"main.go/controllers/admincontrollers"
+
+	"main.go/routes"
 
 	"net/http"
 )
@@ -17,24 +20,24 @@ func main() {
 	database.GetDatabase()
 	database.AuthMigration()
 	router := mux.NewRouter()
-	router.HandleFunc("/signup", controllers.SignUp).Methods("POST")
-	router.HandleFunc("/signin", controllers.SignIn).Methods("POST")
-	/*router.HandleFunc("/admin", controllers.IsAuthorized(controllers.AdminIndex)).Methods("GET")
-	router.HandleFunc("/user", controllers.IsAuthorized(controllers.UserIndex)).Methods("GET")
-	router.HandleFunc("/", controllers.Index).Methods("GET")*/
 
-	router.HandleFunc("/createCategory", admincontrollers.CreateCategory).Methods("POST")
+	
 
-	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"*"},
-		AllowCredentials: true,
-		AllowOriginFunc:  func(origin string) bool { return true },
-		AllowedMethods:   []string{"GET", "POST", "PUT", "HEAD", "OPTIONS", "DELETE"},
-		AllowedHeaders:   []string{"*"},
-	})
+	routes.CategoryRoute(router)
+	routes.InitializeAuthRoutes(router)
 
-	handler := c.Handler(router)
-	err := http.ListenAndServe(":8090", handler)
+	fmt.Println("Server started at http://localhost:8080")
+	err := http.ListenAndServe(
+		":8080",
+		handlers.CORS(
+			handlers.AllowedHeaders([]string{"X-Requested-With", "Access-Control-Allow-Origin", "Content-Type", "Authorization"}),
+			handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"}),
+			handlers.AllowedOrigins([]string{"*"}),
+			
+			)(router),
+			
+			
+	)
 
 	if err != nil {
 		log.Fatal(err)

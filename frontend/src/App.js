@@ -27,19 +27,22 @@ function App() {
       <BrowserRouter>
         <NavBar1 />
         <NavBar2 />
+        
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
           <Route path="/sell" element={<Sell />} ></Route>
-          <Route path="/" element={<Home />} exact></Route>
+          
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route>
+          <Route path="/addcategory" element={<AddCategory/>} exact></Route>
+          <Route path="/viewCategory" element={<ViewCategory/>} exact></Route>
         </Routes>
         
-        <AddCategory/>
-        <ViewCategory/>
+       
+        
         <Footer />
       </BrowserRouter>
     </div>
