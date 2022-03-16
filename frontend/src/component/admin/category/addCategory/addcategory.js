@@ -18,10 +18,10 @@ const AddCategory = () => {
     };
 
     console.log(id, category);
-    console.log(typeof addCategerytData.id);
+    console.log(typeof(addCategerytData.id));
 
     axios
-      .post(`http://localhost:8080/createCategory`, addCategerytData)
+      .post(`http://localhost:8090/create`, addCategerytData)
       .then((res) => {
         console.log(res);
 
@@ -76,7 +76,8 @@ const AddCategory = () => {
       <br />
 
       <Button variant="outline-primary" className="button btn btn-light">
-        Cancel
+        <Link to="/viewCategory">Cancel</Link>
+        
       </Button>
       <Button
         variant="outline-primary"

@@ -13,6 +13,8 @@ import Sell from './component/sell/sell';
 import ProdAddForm from './component/form/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
+import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
+
 
 
 
@@ -39,8 +41,10 @@ function App() {
           <Route path="/sell" element={<Sell />} exact></Route>
           <Route path="/addcategory" element={<AddCategory/>} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory/>} exact></Route>
-        </Routes>
+          <Route path="/editCategory" element={<UpdateCategory/>} exact></Route>
         
+        </Routes>
+        <ProdAddForm/>
        
         
         <Footer />

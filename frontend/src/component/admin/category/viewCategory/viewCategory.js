@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 import "./viewCategory.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 
 
@@ -12,7 +13,7 @@ const ViewCategory = () => {
   const GetCat = () => {
     useEffect(() => {
       axios
-        .get(`http://localhost:8080/getCategory`)
+        .get(`http://localhost:8090/get`)
         .then((res) => {
           setCategories(res.data);
         })
@@ -22,10 +23,24 @@ const ViewCategory = () => {
     }, []);
   };
   GetCat();
+      const SetData = (data1, data2) => {
+        console.log(data1, data2);
+
+        localStorage.setItem("CategoryId", data1);
+        localStorage.setItem("CategoriesName", data2);
+      };
   const OnDelete = (id) => {
-    axios.delete(`http://localhost:8080/deleteCategory/${id}`);
+    axios.delete(`http://localhost:8090/delete/${id}`);
     window.location.reload(true);
-  };
+  }
+   const navigate = useNavigate();
+   function delayRedirect(e, path) {
+     e.preventDefault();
+
+     // Do something..
+
+     setTimeout(() => navigate(path), 300);
+   }
   return (
     <div className="container">
       {/* <div className="div1"> 
@@ -52,9 +67,16 @@ const ViewCategory = () => {
 
                   <td className="td1">{categories.category}</td>
                   <td className="td2">
-                    <Button variant="outline-dark">
-                      <AiFillEdit />
-                    </Button>
+                    <Link to="/editCategory">
+                      <Button
+                        variant="outline-dark"
+                        onClick={() =>
+                          SetData(categories.id, categories.category)
+                        }
+                      >
+                        <AiFillEdit />
+                      </Button>
+                    </Link>
                   </td>
                   <td className="td2">
                     <Button
