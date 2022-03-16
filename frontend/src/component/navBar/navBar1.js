@@ -22,7 +22,7 @@ export default function NavBar1() {
                     </Form>
                     <Button className="me-2" variant="outline-primary"><BsFillCartFill />Cart</Button>
                     <Button className="me-2" variant="outline-primary"><BsHeartFill />Wish List</Button>
-                    <Button className="me-2" variant="primary" href="/form"><FaUserAlt />Sign In</Button>
+                    <Button className="me-2" variant="primary" href="/signin"><FaUserAlt />Sign In</Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
