@@ -6,7 +6,7 @@ import '../footer/footer.css';
 
 export default function NavBar2() {
     return (
-        <Navbar bg="light" expand="lg" variant="light" style={{ marginLeft: '50px' }}>
+        <Navbar bg="light" expand="lg" variant="light">
             <Container fluid>
                 <Navbar.Collapse id="navbarScroll">
                     <Navbar.Brand href="#home"><AiOutlineMenu /></Navbar.Brand>

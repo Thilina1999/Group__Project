@@ -31,7 +31,6 @@ function App() {
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route> */}
         </Routes>
-        <AddCategory />
         <Footer />
       </BrowserRouter>
     </div>
