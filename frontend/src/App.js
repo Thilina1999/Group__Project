@@ -8,7 +8,7 @@ import Signin from './component/form/signin/form.signin';
 import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
-
+//import Buyer from './component/BuyerProtection/Buyer';
 
 
 
