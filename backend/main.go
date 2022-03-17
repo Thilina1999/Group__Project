@@ -33,13 +33,16 @@ func main() {
 			handlers.AllowedHeaders([]string{"X-Requested-With", "Access-Control-Allow-Origin", "Content-Type", "Authorization"}),
 			handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"}),
 			handlers.AllowedOrigins([]string{"*"}),
+			handlers.AllowCredentials(),
 			
 			)(router),
 			
-			
-	)
+	)		
+
+
 
 	if err != nil {
 		log.Fatal(err)
-	}
+	
+}
 }

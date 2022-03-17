@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import { Button, Form, FormControl } from "react-bootstrap";
+import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
 import "./updateCategory.css";
 
 const UpdateCategory = () => {
@@ -22,7 +23,7 @@ const UpdateCategory = () => {
     };
 
     axios
-      .put(`http://localhost:8090/update/{id}`, updateData)
+      .put(`http://localhost:8080/editCategory/{id}`, updateData)
       .then((res) => {})
       .catch((err) => {
         console.log(err);
@@ -34,7 +35,7 @@ const UpdateCategory = () => {
   // }
   const navigate = useNavigate();
 
-  function delayRedirect(e, path) {
+  function DelayRedirect(e, path) {
     e.preventDefault();
 
     // Do something..
@@ -43,31 +44,49 @@ const UpdateCategory = () => {
   }
 
   return (
-    <Form className="form">
-      <h1>Category Update</h1>
-      <Form.Group className="mb-3" controlId="ControlInput3" name="category">
-        <Form.Label>Category Name</Form.Label>
+    <div className="container5">
+      <img src={Image2} className="imag2" />
+      <div className="container">
+        <Form className="form1">
+          <h1>Category Update</h1>
+          <Form.Group
+            className="mb-3"
+            controlId="ControlInput3"
+            name="category"
+          >
+            <Form.Label className="label">Category Name</Form.Label>
 
-        <Form.Control
-          type="text"
-          placeholder={category}
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}
-        />
-      </Form.Group>
-      <Button variant="outline-dark" type="submit" className="button">
-        cancel
-      </Button>
-      <Button
-        variant="outline-dark"
-        type="submit"
-        className="button1"
-        onClick={UpdateApi}
-      >
-        Submit
-      </Button>
-    </Form>
+            <Form.Control
+              type="text"
+              placeholder={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Link to="/viewCategory">
+            <Button variant="outline-dark" type="submit" className="button">
+              cancel
+            </Button>
+          </Link>
+          <Link
+            to="/viewCategory"
+            onClick={(e) => {
+              DelayRedirect(e, "/viewCategory");
+            }}
+          >
+            <Button
+              variant="outline-dark"
+              type="submit"
+              className="button1"
+              onClick={UpdateApi}
+            >
+              Submit
+            </Button>
+          </Link>
+        </Form>
+      </div>
+    </div>
   );
 };
 

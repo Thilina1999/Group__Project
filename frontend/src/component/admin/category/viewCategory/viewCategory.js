@@ -5,6 +5,7 @@ import axios from "axios";
 import "./viewCategory.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useNavigate, Navigate, Link } from "react-router-dom";
+import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png"
 
 
 
@@ -13,7 +14,7 @@ const ViewCategory = () => {
   const GetCat = () => {
     useEffect(() => {
       axios
-        .get(`http://localhost:8090/get`)
+        .get(`http://localhost:8080/getCategory`)
         .then((res) => {
           setCategories(res.data);
         })
@@ -30,7 +31,7 @@ const ViewCategory = () => {
         localStorage.setItem("CategoriesName", data2);
       };
   const OnDelete = (id) => {
-    axios.delete(`http://localhost:8090/delete/${id}`);
+    axios.delete(`http://localhost:8080/deleteCategory/${id}`);
     window.location.reload(true);
   }
    const navigate = useNavigate();
@@ -42,56 +43,55 @@ const ViewCategory = () => {
      setTimeout(() => navigate(path), 300);
    }
   return (
-    <div className="container">
-      {/* <div className="div1"> 
-        <h1>Category</h1>
-        <AiOutlinePlusCircle className="plusicon" />
-      </div> */}
-      <span className="font">Category</span>
-      <span>
-        <Button variant="outline-dark" className="plusicon">
+    <div className="container2">
+      <img src={Photo1} className="image1" />
+      <div className="container">
+        <span className="font">Category</span>
+        <span>
           <Link to="/addcategory">
-            <AiOutlinePlusCircle />
+            <Button variant="outline-dark" className="plusicon">
+              <AiOutlinePlusCircle />
+            </Button>
           </Link>
-        </Button>
-      </span>
-      <br />
-      <br />
-      <table>
-        {categories.map((categories) => {
-          return (
-            <React.Fragment key={categories.id}>
-              <tbody className="tablebody">
-                <tr className="tablebody">
-                  <td className="td0">{categories.id}</td>
+        </span>
+        <br />
+        <br />
+        <table>
+          {categories.map((categories) => {
+            return (
+              <React.Fragment key={categories.id}>
+                <tbody className="tablebody">
+                  <tr className="tablebody">
+                    <td className="td0">{categories.id}</td>
 
-                  <td className="td1">{categories.category}</td>
-                  <td className="td2">
-                    <Link to="/editCategory">
+                    <td className="td1">{categories.category}</td>
+                    <td className="td2">
+                      <Link to="/editCategory">
+                        <Button
+                          variant="outline-dark"
+                          onClick={() =>
+                            SetData(categories.id, categories.category)
+                          }
+                        >
+                          <AiFillEdit />
+                        </Button>
+                      </Link>
+                    </td>
+                    <td className="td2">
                       <Button
                         variant="outline-dark"
-                        onClick={() =>
-                          SetData(categories.id, categories.category)
-                        }
+                        onClick={() => OnDelete(categories.id)}
                       >
-                        <AiFillEdit />
+                        <AiFillDelete />
                       </Button>
-                    </Link>
-                  </td>
-                  <td className="td2">
-                    <Button
-                      variant="outline-dark"
-                      onClick={() => OnDelete(categories.id)}
-                    >
-                      <AiFillDelete />
-                    </Button>
-                  </td>
-                </tr>
-              </tbody>
-            </React.Fragment>
-          );
-        })}
-      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </React.Fragment>
+            );
+          })}
+        </table>
+      </div>
     </div>
   );
 };

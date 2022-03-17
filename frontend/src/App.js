@@ -42,11 +42,14 @@ function App() {
           <Route path="/addcategory" element={<AddCategory/>} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory/>} exact></Route>
           <Route path="/editCategory" element={<UpdateCategory/>} exact></Route>
+          <Route path="/addProduct" element={<ProdAddForm/>} exact></Route>
         
         </Routes>
-        <ProdAddForm/>
+
+        
        
         
+
         <Footer />
       </BrowserRouter>
     </div>

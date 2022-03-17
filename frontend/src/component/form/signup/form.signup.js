@@ -3,6 +3,7 @@ import '../signin/form.css';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Imge from '../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png';
 
 export default function Signup() {
 
@@ -64,44 +65,51 @@ export default function Signup() {
     }
   }
   return (
-    <div>
+    <div className="body">
+      <img src={Imge} className="imge" alt=""/>
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css" />
-      <div className="container">
-        <div className="frameup">
+      <div className="container1">
+        <div className="frame1">
           <div className="nav">
             <ul className="links">
-              <li className="signin-active"><a className="btn" href>Sign Up</a></li>
+              <br /><br />
+              <li className="signin-active">Sign-Up</li>
             </ul>
+            <br />
           </div>
           <div ng-app ng-init="checked = false">
-            <form className="form-signin" action method="post" name="form">
+            <form className="form-signup" action method="post" name="form">
 
-              <input className="form-styling" type="text" name="fullname" placeholder="First Name" required onChange={(e) => {
+<div className="div1">
+              <input className="form-styling1" type="text" name="fullname" placeholder="First Name" required onChange={(e) => {
                 setFirstName(e.target.value);
               }} />
 
-              <input className="form-styling" type="text" name="fullname" placeholder="Last Name" required onChange={(e) => {
+              <input className="form-styling1" type="text" name="fullname" placeholder="Last Name" required onChange={(e) => {
                 setLastName(e.target.value);
               }} />
+              </div>
 
-              <input className="form-styling" type="email" name="email" placeholder="Email" required onChange={(e) => {
+              <input className="form-styling2" type="email" name="email" placeholder="Email" required onChange={(e) => {
                 setEmail(e.target.value);
               }} />
 
-              <input className="form-styling" type="Password" name="password" placeholder="Password" required onChange={(e) => {
+              <input className="form-styling2" type="Password" name="password" placeholder="Password" required onChange={(e) => {
                 setPassword(e.target.value);
               }} />
 
-              <input className="form-styling" type="password" name="confirmpassword" placeholder="Confirm Password" required onChange={(e) => {
+              <input className="form-styling2" type="password" name="confirmpassword" placeholder="Confirm Password" required onChange={(e) => {
                 const a = e.target.value;
                 validation(a);
               }} />
 
               <span style={{ color: "red", fontSize: "13px" }}>{isError}</span>
-
-              <Button className="btn-signup" type="button" onClick={submit}
+              <br />
+              <div className="btn-animate1">
+              <button className="btn-signup" type="button" onClick={submit}
                 disabled={!firstname || !lastname || !email || !password || isError}
-              >Sign Up</Button>
+              >Sign Up</button>
+              </div>
 
             </form>
           </div>

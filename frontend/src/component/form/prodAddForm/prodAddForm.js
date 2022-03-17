@@ -3,6 +3,9 @@ import React from 'react';
 import './prodAddForm.css';
 import { app } from "../../../firebase"
 import { Button, Form, FormControl } from "react-bootstrap";
+import { useNavigate, Navigate, Link } from "react-router-dom";
+import Image4 from "../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
+
 
 export default function ProdAddForm() {
 
@@ -26,62 +29,81 @@ export default function ProdAddForm() {
 
 
     return (
-        <Form.Group controlId="formFile" className="mb-3">
-    <Form.Label>Default file input example</Form.Label>
-    <Form.Control type="file" onChange={onAddProduct} />
-    </Form.Group>
-        // <form id="survey-form" className="form">
-        //     <div className="container">
-        //         <div id="form-group">
-        //             <h2 className="h2">Submit a Product</h2>
-        //             <hr></hr>
-        //             <br />
-        //             <br />
-        //             <label className="label">Product Name</label>
-        //             <input className="form-control" type="text" id="name" name="name" placeholder="Enter Product Name" required /><br /> <br />
+      <div className="container7">
+        <img src={Image4} className="image4" />
 
-        //             <div id="form-group">
-        //                 <label className="label">Product Category</label>
-        //                 <select id="status" name="status" className="form-contro">
-        //                     <option disabled selected value>Product Category</option>
-        //                     <option value="Cosmetic And Beauty">Cosmetic And Beauty</option>
-        //                     <option value="Music">Music</option>
-        //                     <option value="Games">Games</option>
-        //                     <option value="Electroni">Electronics</option>
-        //                     <option value="Games">Health</option>
-        //                     <option value="Electroni">Travel</option>
-        //                     <option value="other">Other</option>
-        //                 </select></div> <br />
-
-        //             <div id="form-group">
-        //                 <label className="label">Product Freshness</label> <br />
-        //                 <input type="radio" id="options" name="options" className="input-radio" />
-        //                 <label htmlFor options>Brand New</label><br />
-        //                 <input type="radio" id="maybe" name="options" className="input-radio" />
-        //                 <label htmlFor maybe>Second Hand</label><br />
-        //                 <input type="radio" id="notsure" name="options" className="input-radio" />
-        //                 <label htmlFor notsure>Refurbished</label> </div><br />
-        //             <label className="label">Image Of Product</label><br />
-        //             <input className="form-control" type="file" id="file" name="file" /> <br /> <br />
-        //         </div>
-
-
-        //         <div id="form-group">
-        //             <label className="label">Additional Description</label><br />
-        //             <textarea className="form-control" type="text" id="additional" name="description" required /><br /> <br />
-
-        //             <label className="label">Product Price</label><br />
-        //             <input className="form-control" type="number" id="price" name="price" placeholder="Ex: 5$" required /><br /> <br />
-
-        //             <label className="label">Comments</label><br />
-        //             <textarea className="form-control" type="text" id="additional" name="comments" required /><br /> <br />
-
-        //         </div>
-
-        //         <div id="form-group">
-        //             <Button variant="outline-primary">Submit</Button>
-        //         </div>
-        //     </div>
-        // </form>
+        <div className="container">
+          <Form className="form4">
+            <Form.Group controlId="ControlInput1" name="id1">
+              <h2 className="h2">Add Product</h2>
+              <hr></hr>
+              <br />
+              <Form.Label className="label">ID</Form.Label>
+              <Form.Control
+                className="form-control1"
+                type="number"
+                placeholder="Enter the Product Id"
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput1" name="id2">
+              <Form.Label className="label">Product Name</Form.Label>
+              <Form.Control
+                className="form-control1"
+                type="text"
+                placeholder="Enter the Product Name"
+              />
+              <br />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="label">Category Select</Form.Label>
+              <Form.Select className="form-control1">
+                <option>Default select</option>
+              </Form.Select>
+              <br />
+            </Form.Group>
+            <Form.Group controlId="formFile">
+              <Form.Label className="label">file input</Form.Label>
+              <Form.Control type="file" />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput1" name="id3">
+              <Form.Label className="label">Description</Form.Label>
+              <Form.Control
+                className="text1"
+                as="textarea"
+                placeholder="   description"
+                style={{ height: "200px" }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput1" name="id4">
+              <Form.Label className="label">Product Price</Form.Label>
+              <Form.Control
+                className="form-control1"
+                type="text"
+                placeholder="Enter the Product price"
+              />
+              <br />
+            </Form.Group>
+            <br />
+            <br />
+            <Link to="/">
+              <Button variant="outline-dark" className="button3 btn btn-light">
+                Cancel
+              </Button>
+            </Link>
+            <Link to="/">
+              <Button
+                variant="outline-dark"
+                type="submit"
+                className="button4 btn btn-light"
+              >
+                create
+              </Button>
+            </Link>
+          </Form>
+        </div>
+      </div>
     );
 }

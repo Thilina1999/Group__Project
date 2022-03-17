@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import "./addcategory.css";
 import { useNavigate, Navigate, Link } from "react-router-dom";
+import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
 
 const AddCategory = () => {
   let [id, setId] = useState("");
@@ -21,7 +22,7 @@ const AddCategory = () => {
     console.log(typeof(addCategerytData.id));
 
     axios
-      .post(`http://localhost:8090/create`, addCategerytData)
+      .post(`http://localhost:8080/createCategory`, addCategerytData)
       .then((res) => {
         console.log(res);
 
@@ -40,59 +41,64 @@ const AddCategory = () => {
     function DelayRedirect(e, path) {
       e.preventDefault();
 
-      // Do something..
+      
 
       setTimeout(() => navigate(path), 300);
     }
 
   return (
-    <Form className="form">
-      <Form.Group className="mb-3" controlId="ControlInput1" name="id">
-        <h2 className="h2">Add Category</h2>
-        <hr></hr>
-        <br />
-        <Form.Label className="label">ID</Form.Label>
-        <Form.Control
-          className="form-control"
-          type="number"
-          placeholder="Enter the Category Id"
-          onChange={(e) => {
-            setId(e.target.valueAsNumber);
-          }}
-        />
-        <br />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="ControlInput2" name="catname">
-        <Form.Label className="label">Name</Form.Label>
-        <Form.Control
-          className="form-control"
-          type="text"
-          placeholder="Enter the Category Name"
-          onChange={(e) => {
-            setCatname(e.target.value);
-          }}
-        />
-      </Form.Group>
-      <br />
-
-      <Button variant="outline-primary" className="button btn btn-light">
-        <Link to="/viewCategory">Cancel</Link>
-        
-      </Button>
-      <Button
-        variant="outline-primary"
-        type="submit"
-        className="button1 btn btn-light"
-        onClick={SendData}
-      >
-        <Link
-          to="/viewCategory"
-          onClick={(e) => DelayRedirect(e, "/viewCategory")}
-        >
-          create
-        </Link>
-      </Button>
-    </Form>
+    <div className="container6">
+      <img src={Image3} className="image3"/>
+      <div className="container">
+        <Form className="form">
+          <Form.Group className="mb-3" controlId="ControlInput1" name="id">
+            <h2 className="h2">Add Category</h2>
+            <hr></hr>
+            <br />
+            <Form.Label className="label">ID</Form.Label>
+            <Form.Control
+              className="form-control"
+              type="number"
+              placeholder="Enter the Category Id"
+              onChange={(e) => {
+                setId(e.target.valueAsNumber);
+              }}
+            />
+            <br />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="ControlInput2" name="catname">
+            <Form.Label className="label">Name</Form.Label>
+            <Form.Control
+              className="form-control"
+              type="text"
+              placeholder="Enter the Category Name"
+              onChange={(e) => {
+                setCatname(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <br />
+          <Link to="/viewCategory">
+            <Button variant="outline-dark" className="button btn btn-light">
+              Cancel
+            </Button>
+          </Link>
+          <Link
+            to="/viewCategory"
+            onClick={(e) => DelayRedirect(e, "/viewCategory")}
+          >
+            <Button
+              variant="outline-dark"
+              type="submit"
+              className="button1 btn btn-light"
+              onClick={SendData}
+            >
+              create
+            </Button>
+          </Link>
+        </Form>
+      </div>
+    </div>
   );
 };
 export default AddCategory;
