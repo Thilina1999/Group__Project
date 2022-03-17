@@ -1,18 +1,29 @@
 package main
 
 import (
+	"log"
+
 	"fmt"
+
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"log"
+	
 	"main.go/database"
+
 	"main.go/routes"
+
 	"net/http"
 )
 
 func main() {
+
+	database.GetDatabase()
 	database.AuthMigration()
 	router := mux.NewRouter()
+
+	
+
+	routes.CategoryRoute(router)
 	routes.InitializeAuthRoutes(router)
 
 	fmt.Println("Server started at http://localhost:8080")
@@ -23,9 +34,15 @@ func main() {
 			handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"}),
 			handlers.AllowedOrigins([]string{"*"}),
 			handlers.AllowCredentials(),
-		)(router),
-	)
+			
+			)(router),
+			
+	)		
+
+
+
 	if err != nil {
 		log.Fatal(err)
-	}
+	
+}
 }
