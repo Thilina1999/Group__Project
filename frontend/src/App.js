@@ -2,15 +2,15 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
 
-import NavBar1 from './component/navBar/navBar1';
-import NavBar2 from './component/navBar/navBar2';
+import Navbar from './component/navBar/Navbar';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
-import Footer from './component/footer/footer';
+import Footer from './component/footer/Footer';
 import Sell from './component/sell/sell';
 
 import AddCategory from './component/admin/category/addcategory';
+import Announcement from './component/navBar/announcement/Announcement';
 
 
 
@@ -19,8 +19,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar1 />
-        <NavBar2 />
+        <Announcement/>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
