@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar1 />
+        
         <NavBar2 />
         
         <Routes>

@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"main.go/models/authModels"
+	 "main.go/models/sellerData"
 	
 
 )
@@ -44,5 +45,6 @@ func AuthMigration() {
 	defer CloseDatabase(connection)
 	connection.AutoMigrate(authModels.User{})
 	connection.AutoMigrate(adminData.Category{})
+	connection.AutoMigrate(sellerData.Productdata{})
 }
 

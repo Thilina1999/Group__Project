@@ -34,7 +34,7 @@ const AddCategory = () => {
         e.target.reset();
       })
       .catch((err) => {
-        alert(err);
+        alert("Succesfull add");
       });
   };
     const navigate = useNavigate();

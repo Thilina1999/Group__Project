@@ -25,6 +25,7 @@ func main() {
 
 	routes.CategoryRoute(router)
 	routes.InitializeAuthRoutes(router)
+	routes.ProductRoute(router)
 
 	fmt.Println("Server started at http://localhost:8080")
 	err := http.ListenAndServe(
