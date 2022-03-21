@@ -2,7 +2,10 @@ import React,{ useState} from 'react';
 import './form.css';
 import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
+=======
+>>>>>>> 8690f6470663bdb1dea90c257cf7f4495dcebf17
 
 
 export default function Signin() {
@@ -52,7 +55,11 @@ export default function Signin() {
           </div>
           <br /><br />
           <div className="forgot">
+<<<<<<< HEAD
             <Link to="/signin/checkmail" style={{ textDecoration: 'none', color: '#6C757D', fontWeight: '500' }}><a href type="button">Forgot your password?</a></Link>
+=======
+            <a href type="button">Forgot your password?</a>
+>>>>>>> 8690f6470663bdb1dea90c257cf7f4495dcebf17
           </div>
         </div>
       </div>
