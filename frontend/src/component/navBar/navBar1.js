@@ -51,9 +51,15 @@ export default function NavBar1() {
         <Container fluid style={{ backgroundColor: 'white', margin: '0 auto' }}>
           <Navbar.Toggle aria-controls="offcanvasNavbar" style={{ backgroundColor: '#D4F2FF' }} />
           <Nav className="d-flex flex-row" style={{ marginRight: '1000px' }} >
-            <Nav.Link href="#features" style={{ marginLeft: '50px' }}>Buyer Protection</Nav.Link>
-            <Nav.Link href="#pricing" style={{ marginLeft: '50px' }}>Customer Service</Nav.Link>
-            <Nav.Link href="/sell" style={{ marginLeft: '50px' }}>Sell</Nav.Link>
+            <Nav.Link href="#features" style={{ marginLeft: '50px' }}>
+              <Link to="/bprotection" style={{ color: '#6C757D', textDecoration: 'none' }}>Buyer Protection</Link>
+            </Nav.Link>
+            <Nav.Link href="#pricing" style={{ marginLeft: '50px' }}>
+              <Link to="/cusservice" style={{ color: '#6C757D', textDecoration: 'none' }}>Customer Service</Link>
+              </Nav.Link>
+            <Nav.Link style={{ marginLeft: '50px' }}>
+              <Link to="/sell" style={{ color: '#6C757D', textDecoration: 'none' }}>Sell</Link>
+              </Nav.Link>
           </Nav>
           <Navbar.Offcanvas
             id="offcanvasNavbar"
