@@ -1,13 +1,13 @@
 import React from 'react';
 
 import './prodAddForm.css';
-import { app } from "../../../firebase"
+import { app } from "../../../../firebase"
 import { Button, Form, FormControl } from "react-bootstrap";
-import { useNavigate, Navigate, Link } from "react-router-dom";
-import Image4 from "../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
+import { Link } from "react-router-dom";
+import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
 
 
-export default function ProdAddForm() {
+const ProdAddForm=()=> {
 
     const onAddProduct = (e) => {
       let photos="";
@@ -24,10 +24,6 @@ export default function ProdAddForm() {
       });
       
     };
-
-
-
-
     return (
       <div className="container7">
         <img src={Image4} className="image4" />
@@ -107,3 +103,5 @@ export default function ProdAddForm() {
       </div>
     );
 }
+
+export default ProdAddForm;

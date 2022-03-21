@@ -10,7 +10,7 @@ import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Sell from './component/sell/sell';
 
-import ProdAddForm from './component/form/prodAddForm/prodAddForm';
+import ProdAddForm from './component/seller/product/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
