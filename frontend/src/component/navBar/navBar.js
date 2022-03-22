@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Container, Form, FormControl, Button, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import Logo from '../assets/miniBell logo_ccexpress 1.png';
 
 export default function NavBar1() {
   return (
@@ -11,7 +12,6 @@ export default function NavBar1() {
           <span varient="info" style={{ marginLeft: '550px', color: 'white' }}>Up to 30% off for selected Item</span>
         </Container>
       </Navbar>
-
       <Navbar style={{ backgroundColor: '#D4F2FF' }} expand="lg">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -22,35 +22,39 @@ export default function NavBar1() {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
-                style={{ width: '700px', borderRadius: '20px' }}
+                style={{ width: '600px', borderRadius: '20px' }}
               />
               <Button variant="outline-success">Search</Button>
             </Form>
-            <Container className="d-flex" style={{ marginLeft: '300px' }}>
+            <img src={Logo} alt="" style={{ marginBottom: '-70px', width: '250px', height: '150px', zIndex: '1'}}/>
+            <Container className="d-flex" style={{ marginRight: '-50px'}}>
               <Link to="/signin"><Button className="me-2" variant="light" style={{
                 borderRadius: '20px',
-                width: '100px'
+                width: '100px',
               }}>Sign In</Button></Link>
-              <Link to="/signup"><Button className="me-2" variant="outline">Create Account</Button></Link>
+              <Link to="/signup" style={{
+                borderRadius: '20px',
+                width: '160px',
+              }}><Button className="me-2" variant="outline" type="button">Create Account</Button></Link>
             </Container>
+            <Container>
             <Container className="d-flex" style={{
               backgroundColor: 'white',
               borderRadius: '20px',
-              width: '100px',
-              justifyContent: 'center',
+              width: '130px',
+              marginRight: '-30px'
             }}>
-              <Button className="me-2" variant="outline" style={{ fontSize: '20px' }}><AiOutlineHeart /></Button>
-              <Button className="me-2" variant="outline" style={{ fontSize: '20px' }}><AiOutlineShoppingCart /></Button>
+              <Nav.Link style={{ fontSize: '20px'}}><AiOutlineHeart /></Nav.Link>
+              <Nav.Link style={{ fontSize: '20px' }}><AiOutlineShoppingCart /></Nav.Link>
+            </Container>
             </Container>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-
-      <Navbar bg="light" expand={false} style={{ backgroundColor: 'red'}}>
+      <Navbar bg="light" expand={false} >
         <Container fluid style={{ backgroundColor: 'white', margin: '0 auto' }}>
           <Navbar.Toggle aria-controls="offcanvasNavbar" style={{ backgroundColor: '#D4F2FF' }} />
-          <Nav className="d-flex flex-row" style={{ marginRight: '1000px' }} >
+          <Nav className="d-flex flex-row" style={{ marginRight: '980px' }} >
             <Nav.Link href="#features" style={{ marginLeft: '50px' }}>
               <Link to="/bprotection" style={{ color: '#6C757D', textDecoration: 'none' }}>Buyer Protection</Link>
             </Nav.Link>

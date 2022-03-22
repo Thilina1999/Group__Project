@@ -1,8 +1,9 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
-import NavBar1 from './component/navBar/navBar1';
+import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
@@ -23,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar1 />
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
