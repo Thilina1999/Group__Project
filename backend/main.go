@@ -34,6 +34,13 @@ func main() {
 			handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"}),
 			handlers.AllowedOrigins([]string{"*"}),
 			handlers.AllowCredentials(),
+<<<<<<< HEAD
+		)(router),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+=======
 			
 			)(router),
 			
@@ -45,4 +52,5 @@ func main() {
 		log.Fatal(err)
 	
 }
+>>>>>>> 8690f6470663bdb1dea90c257cf7f4495dcebf17
 }
