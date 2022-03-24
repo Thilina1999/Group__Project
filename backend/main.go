@@ -35,10 +35,10 @@ func main() {
 			handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"}),
 			handlers.AllowedOrigins([]string{"*"}),
 			handlers.AllowCredentials(),
-			
-			)(router),
-			
-	)		
+
+		)(router),
+	)
+		
 
 
 
@@ -46,4 +46,5 @@ func main() {
 		log.Fatal(err)
 	
 }
+
 }
