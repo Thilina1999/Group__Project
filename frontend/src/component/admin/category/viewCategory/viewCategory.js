@@ -57,20 +57,23 @@ const ViewCategory = () => {
         <br />
         <br />
         <table>
-          {categories.map((categories) => {
+          {categories.map((category) => {
             return (
-              <React.Fragment key={categories.id}>
+              <React.Fragment key={category.categoryid}>
                 <tbody className="tablebody">
                   <tr className="tablebody">
-                    <td className="td0">{categories.id}</td>
+                    <td className="td0">{category.categoryid}</td>
 
-                    <td className="td1">{categories.category}</td>
+                    <td className="td1">{category.categoryname}</td>
                     <td className="td2">
                       <Link to="/editCategory">
                         <Button
                           variant="outline-dark"
                           onClick={() =>
-                            SetData(categories.id, categories.category)
+                            SetData(
+                              category.categoryid,
+                              category.categoryname
+                            )
                           }
                         >
                           <AiFillEdit />
@@ -80,7 +83,7 @@ const ViewCategory = () => {
                     <td className="td2">
                       <Button
                         variant="outline-dark"
-                        onClick={() => OnDelete(categories.id)}
+                        onClick={() => OnDelete(category.categoryid)}
                       >
                         <AiFillDelete />
                       </Button>

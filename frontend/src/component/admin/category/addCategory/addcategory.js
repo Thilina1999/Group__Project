@@ -7,19 +7,19 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
 
 const AddCategory = () => {
-  let [id, setId] = useState("");
-  let [category, setCatname] = useState("");
+  let [categoryid, setId] = useState("");
+  let [categoryname, setCatname] = useState("");
 
   const SendData = (e) => {
     e.preventDefault();
 
     var addCategerytData = {
-      id,
-      category,
+      categoryid,
+      categoryname,
     };
 
-    console.log(id, category);
-    console.log(typeof(addCategerytData.id));
+   
+    console.log(addCategerytData);
 
     axios
       .post(`http://localhost:8080/createCategory`, addCategerytData)
@@ -34,15 +34,12 @@ const AddCategory = () => {
         e.target.reset();
       })
       .catch((err) => {
-        alert("Succesfull add");
+        console.log(err);
       });
   };
     const navigate = useNavigate();
     function DelayRedirect(e, path) {
       e.preventDefault();
-
-      
-
       setTimeout(() => navigate(path), 300);
     }
 
