@@ -20,7 +20,7 @@ const ProdAddForm=()=> {
     axios
       .get("http://localhost:8080/getCategory")
       .then((response) => {
-        console.log(response.data);
+        
         setCategorieslist(response.data);
       })
       .catch((error) => {
@@ -38,12 +38,13 @@ const ProdAddForm=()=> {
         description,
         price
       }
-      console.log(addproduct);
+      console.log(categoryid);
+      console.log(typeof(categoryid));
       axios
         .post(`http://localhost:8080/createProduct`, {
           id: addproduct.id,
           productname: addproduct.productname,
-          categoryid: addproduct.categoryid,
+          categoryid: Number(addproduct.categoryid),
           imageurl: addproduct.imageurl,
           description: addproduct.description,
           productprice: addproduct.price,
@@ -115,9 +116,8 @@ const ProdAddForm=()=> {
               <Form.Label className="label">Category Select</Form.Label>
               <Form.Select
                 className="form-control1"
-                onChange={(e) => {
-                  SetCategoryId(e.target.value)
-                }}
+                value={categorieslist.categoryid}
+                onChange={(e) => SetCategoryId(e.target.value)}
               >
                 <option>Select Category</option>
                 {categorieslist.map((category) => {
@@ -134,7 +134,7 @@ const ProdAddForm=()=> {
             </Form.Group>
             <Form.Group controlId="formFile">
               <Form.Label className="label">file input</Form.Label>
-              <Form.Control type="file" onClick={OnAddProduct} />
+              <Form.Control type="file" onChange={OnAddProduct} />
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput4" name="id3">

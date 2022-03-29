@@ -19,7 +19,7 @@ const AddCategory = () => {
     };
 
    
-    console.log(addCategerytData);
+    
 
     axios
       .post(`http://localhost:8080/createCategory`, addCategerytData)

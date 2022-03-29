@@ -25,7 +25,7 @@ const ViewCategory = () => {
   };
   GetCat();
       const SetData = (data1, data2) => {
-        console.log(data1, data2);
+        
 
         localStorage.setItem("CategoryId", data1);
         localStorage.setItem("CategoriesName", data2);
