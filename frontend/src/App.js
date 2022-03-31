@@ -5,7 +5,7 @@ import React from 'react';
 
 import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
-import Home from './component/Home/home';
+import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Sell from './component/sell/sell';
@@ -18,15 +18,13 @@ import ResetPass from './component/form/forgotPass/resetPass';
 // import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
 
 
-
-
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
+        <Home/>
         <Routes>
-          <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
           <Route path="/sell" element={<Sell />} ></Route>
