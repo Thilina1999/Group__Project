@@ -8,10 +8,13 @@ import (
 type Productdata struct {
 	gorm.Model
 	Id           int                `gorm:"primaryKey" json:"id"`
-	Productname  string             `json:"productname"`
+	ProductTitle   string            `json:"producttitle"`
+	ProductSubtitle   string         `json:"productsubtitle"`
 	CategoryId   int                `json:"categoryid"`
-	Category adminData.Category       `gorm:"foreignKey:CategoryId"`          
+	CategoryName string             `json:"categoryname"`
+	Category adminData.Category      `gorm:"foreignKey:CategoryId"`          
 	Imageurl     string             `json:"imageurl"`
 	Description  string             `json:"description"`
 	Productprice int                `json:"productprice"`
+	Productquantity int             `json:"productquantity"`
 }

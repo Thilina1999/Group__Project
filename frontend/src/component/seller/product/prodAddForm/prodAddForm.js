@@ -9,11 +9,14 @@ import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpres
 
 const ProdAddForm=()=> {
   let[id,Setid]=useState("");
-  let[productname,Setname]=useState("");
+  let [producttitle, SetProductTitle] = useState("");
+  let [productsubtitle,SetSubTitle] = useState("");
   let[categoryid,SetCategoryId]=useState("");
+  let [categoryname,SetCategoryName]=useState("");
   let[imageurl,Seturl]=useState("");
   let[description,Setdescription]=useState("");
   let[price,Setprice]=useState("");
+  let[quantity,SetQuantity]=useState("");
 
   let[categorieslist,setCategorieslist]=useState([]);
   useEffect(() => {
@@ -32,22 +35,27 @@ const ProdAddForm=()=> {
       e.preventDefault();
       var addproduct = {
         id,
-        productname,
+        producttitle,
+        productsubtitle,
         categoryid,
+        categoryname,
         imageurl,
         description,
-        price
-      }
+        price,
+        quantity,
+      };
       console.log(categoryid);
       console.log(typeof(categoryid));
       axios
         .post(`http://localhost:8080/createProduct`, {
           id: addproduct.id,
-          productname: addproduct.productname,
+          producttitle: addproduct.producttitle,
+          productsubtitle: addproduct.productsubtitle,
           categoryid: Number(addproduct.categoryid),
           imageurl: addproduct.imageurl,
           description: addproduct.description,
           productprice: addproduct.price,
+          productquantity: addproduct.quantity,
         })
         .then((response) => {
           console.log(response);
@@ -93,7 +101,7 @@ const ProdAddForm=()=> {
               <Form.Control
                 className="form-control1"
                 type="number"
-                placeholder="Enter the Product Id"
+                placeholder=""
                 onChange={(e) => {
                   Setid(e.target.valueAsNumber);
                 }}
@@ -101,13 +109,25 @@ const ProdAddForm=()=> {
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput2" name="id2">
-              <Form.Label className="label">Product Name</Form.Label>
+              <Form.Label className="label">Product Title</Form.Label>
               <Form.Control
                 className="form-control1"
                 type="text"
-                placeholder="Enter the Product Name"
+                placeholder=""
                 onChange={(e) => {
-                  Setname(e.target.value);
+                  SetProductTitle(e.target.value);
+                }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput3" name="id3">
+              <Form.Label className="label">Product SubTitle</Form.Label>
+              <Form.Control
+                className="form-control1"
+                type="text"
+                placeholder=""
+                onChange={(e) => {
+                  SetSubTitle(e.target.value);
                 }}
               />
               <br />
@@ -155,9 +175,22 @@ const ProdAddForm=()=> {
               <Form.Control
                 className="form-control1"
                 type="number"
-                placeholder="Enter the Product price"
+                placeholder=""
                 onChange={(e) => {
                   Setprice(e.target.valueAsNumber);
+                }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput6" name="id4">
+              <Form.Label className="label">Product Quantity</Form.Label>
+              <Form.Control
+                className="form-control1"
+                type="number"
+                placeholder=""
+               
+                onChange={(e) => {
+                  SetQuantity(e.target.valueAsNumber);
                 }}
               />
               <br />
