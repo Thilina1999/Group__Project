@@ -49,15 +49,18 @@ const Products=()=>{
                 subheader={product.productsubtitle}
               />
               <CardMedia
+                className="card__media"
                 component="img"
-                height="200"
+                height="300"
                 image={product.imageurl}
-                alt="Paella dish"
+                alt="Kid Cloths"
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                  {product.description}
+                  Rs.{product.productprice}.00
                 </Typography>
+              </CardContent>
+              <CardContent>
                 <Box>
                   {[...new Array(totalStars)].map((arr, index) => {
                     return index < activeStars ? (

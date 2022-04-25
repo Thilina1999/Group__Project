@@ -1,15 +1,22 @@
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(17rem,17rem));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit,minmax(21rem,21rem));
+    gap: 6rem;
     justify-content: center;
     background-color: rgba(212, 242, 255, 1);
-    padding: 30px;
+    padding: 50px;
 }
 .card_product{
     overflow: hidden;
     background-color:rgba(252, 248, 248, 0.493) !important;
-    box-shadow: 0 2px 10px  rgba(0, 0, 0, 0.541) !important;
+    box-shadow: 0 2px 10px  rgba(0, 0, 0, 0.39) !important;
     border-radius: 15px !important;
     cursor: pointer;
+}
+.card_product:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  
+}
+.card__media{
+  padding: auto;
 }

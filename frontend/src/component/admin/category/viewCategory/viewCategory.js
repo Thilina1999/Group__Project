@@ -6,7 +6,7 @@ import "./viewCategory.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png"
-
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 
 
 const ViewCategory = () => {
@@ -49,9 +49,9 @@ const ViewCategory = () => {
         <span className="font">Category</span>
         <span>
           <Link to="/addcategory">
-            <Button variant="outline-dark" className="plusicon">
+            <IconButton  className="plusicon">
               <AiOutlinePlusCircle />
-            </Button>
+            </IconButton>
           </Link>
         </span>
         <br />
@@ -67,26 +67,23 @@ const ViewCategory = () => {
                     <td className="td1">{category.categoryname}</td>
                     <td className="td2">
                       <Link to="/editCategory">
-                        <Button
+                        <IconButton
                           variant="outline-dark"
                           onClick={() =>
-                            SetData(
-                              category.categoryid,
-                              category.categoryname
-                            )
+                            SetData(category.categoryid, category.categoryname)
                           }
                         >
                           <AiFillEdit />
-                        </Button>
+                        </IconButton>
                       </Link>
                     </td>
                     <td className="td2">
-                      <Button
+                      <IconButton
                         variant="outline-dark"
                         onClick={() => OnDelete(category.categoryid)}
                       >
                         <AiFillDelete />
-                      </Button>
+                      </IconButton>
                     </td>
                   </tr>
                 </tbody>

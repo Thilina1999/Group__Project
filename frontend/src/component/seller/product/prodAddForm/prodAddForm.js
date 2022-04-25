@@ -71,15 +71,17 @@ const ProdAddForm=()=> {
 
   }
 
-    const OnAddProduct = (e) => {
+    const OnAddProduct = async (e) => {
       let photos="";
+      
       const file = e.target.files[0];
+      
       const storageRef = app.storage().ref("photos");
       const fileRef = storageRef.child(file.name);
       fileRef.put(file).then(() => {
         console.log("Uploaded file", file.name);
         photos = fileRef.getDownloadURL(fileRef.ref).then((url) => {
-        //   setaddGem({ ...addGem, photos: url });
+        
               Seturl(url);
           console.log(url);
           
