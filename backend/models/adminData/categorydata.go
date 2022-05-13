@@ -1,7 +1,13 @@
 package adminData
 
+import (
+	"gorm.io/gorm"
+)
+
 
 type Category struct{
-	Id int `json:"id"`
-	Category string `json:"category"`
+	gorm.Model
+	CategoryId int `gorm:"primaryKey" json:"categoryid"`
+	CategoryName string `json:"categoryname"`
 }
+

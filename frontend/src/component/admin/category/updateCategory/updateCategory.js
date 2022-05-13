@@ -6,8 +6,8 @@ import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpr
 import "./updateCategory.css";
 
 const UpdateCategory = () => {
-  const [id, setID] = useState("");
-  const [category, setCategory] = useState("");
+  const [categoryid, setID] = useState("");
+  const [categoryname, setCategory] = useState("");
 
   const data1 = Number(localStorage.getItem("CategoryId"));
 
@@ -18,28 +18,24 @@ const UpdateCategory = () => {
 
   const UpdateApi = () => {
     const updateData = {
-      id,
-      category,
+      categoryid,
+      categoryname,
     };
 
     axios
       .put(`http://localhost:8080/editCategory/{id}`, updateData)
-      .then((res) => {})
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.log(err);
       });
   };
-  // if(redirect){
-  //     return <Navigate to="/viewCategory" />;
 
-  // }
   const navigate = useNavigate();
 
   function DelayRedirect(e, path) {
     e.preventDefault();
-
-    // Do something..
-
     setTimeout(() => navigate(path), 300);
   }
 
@@ -58,7 +54,7 @@ const UpdateCategory = () => {
 
             <Form.Control
               type="text"
-              placeholder={category}
+              placeholder={categoryname}
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
