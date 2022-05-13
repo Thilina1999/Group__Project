@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button } from "react-bootstrap";
+
 import axios from "axios";
 
 import "./viewCategory.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png"
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import IconButton from "@mui/material/IconButton";
 
 
 const ViewCategory = () => {
@@ -35,13 +35,7 @@ const ViewCategory = () => {
     window.location.reload(true);
   }
    const navigate = useNavigate();
-   function delayRedirect(e, path) {
-     e.preventDefault();
 
-     // Do something..
-
-     setTimeout(() => navigate(path), 300);
-   }
   return (
     <div className="container2">
       <img src={Photo1} className="image1" />
@@ -49,8 +43,8 @@ const ViewCategory = () => {
         <span className="font">Category</span>
         <span>
           <Link to="/addcategory">
-            <IconButton  className="plusicon">
-              <AiOutlinePlusCircle />
+            <IconButton className="plusicon">
+              <AiOutlinePlusCircle className="icon1" />
             </IconButton>
           </Link>
         </span>
@@ -73,7 +67,7 @@ const ViewCategory = () => {
                             SetData(category.categoryid, category.categoryname)
                           }
                         >
-                          <AiFillEdit />
+                          <AiFillEdit className="icon" />
                         </IconButton>
                       </Link>
                     </td>
@@ -82,7 +76,7 @@ const ViewCategory = () => {
                         variant="outline-dark"
                         onClick={() => OnDelete(category.categoryid)}
                       >
-                        <AiFillDelete />
+                        <AiFillDelete className="icon" />
                       </IconButton>
                     </td>
                   </tr>

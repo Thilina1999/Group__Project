@@ -31,17 +31,11 @@ const UpdateCategory = () => {
         console.log(err);
       });
   };
-  // if(redirect){
-  //     return <Navigate to="/viewCategory" />;
 
-  // }
   const navigate = useNavigate();
 
   function DelayRedirect(e, path) {
     e.preventDefault();
-
-    // Do something..
-
     setTimeout(() => navigate(path), 300);
   }
 

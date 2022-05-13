@@ -37,3 +37,13 @@ func DeleteProductById(w http.ResponseWriter, r *http.Request) {
 	database.GetDatabase().Where("id = ?", id).Delete(&product)
 	w.WriteHeader(http.StatusNoContent)
 }
+func GetProductById(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	key := vars["id"]
+
+	var product  sellerData.Productdata //this should be add product
+	
+	database.GetDatabase().First(&product, key)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(product)
+}
