@@ -12,6 +12,7 @@ import Sell from './component/sell/sell';
 import CheckMail from './component/form/forgotPass/checkMail';
 import ResetPass from './component/form/forgotPass/resetPass';
 
+
 // import ProdAddForm from './component/form/prodAddForm/prodAddForm';
 // import AddCategory from './component/admin/category/addCategory/addcategory';
 // import ViewCategory from './component/admin/category/viewCategory/viewCategory';

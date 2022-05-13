@@ -4,8 +4,6 @@ import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 
-
-
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

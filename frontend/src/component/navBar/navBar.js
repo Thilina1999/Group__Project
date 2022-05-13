@@ -4,14 +4,12 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import Logo from '../assets/miniBell logo_ccexpress 1.png';
 
-export default function NavBar1() {
+export default function NavBar() {
   return (
     <>
-      <Navbar style={{ backgroundColor: '#75C6DC', height: '30px' }}>
-        <Container>
-          <span varient="info" style={{ marginLeft: '550px', color: 'white' }}>Up to 30% off for selected Item</span>
-        </Container>
-      </Navbar>
+        <div style={{backgroundColor: '#75C6DC', width: '100%'}}>
+          <span varient="info" style={{ color: 'white'}}>Up to 30% off for selected Item</span>
+        </div>
       <Navbar style={{ backgroundColor: '#D4F2FF' }} expand="lg">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -26,8 +24,8 @@ export default function NavBar1() {
               />
               <Button variant="outline-success">Search</Button>
             </Form>
-            <img src={Logo} alt="" style={{ marginBottom: '-70px', width: '250px', height: '150px', zIndex: '1'}}/>
-            <Container className="d-flex" style={{ marginRight: '-50px'}}>
+            <img src={Logo} alt="" style={{ marginBottom: '-70px', width: '250px', height: '150px', zIndex: '1' }} />
+            <Container className="d-flex" style={{ marginRight: '-50px' }}>
               <Link to="/signin"><Button className="me-2" variant="light" style={{
                 borderRadius: '20px',
                 width: '100px',
@@ -38,19 +36,20 @@ export default function NavBar1() {
               }}><Button className="me-2" variant="outline" type="button">Create Account</Button></Link>
             </Container>
             <Container>
-            <Container className="d-flex" style={{
-              backgroundColor: 'white',
-              borderRadius: '20px',
-              width: '130px',
-              marginRight: '-30px'
-            }}>
-              <Nav.Link style={{ fontSize: '20px'}}><AiOutlineHeart /></Nav.Link>
-              <Nav.Link style={{ fontSize: '20px' }}><AiOutlineShoppingCart /></Nav.Link>
-            </Container>
+              <Container className="d-flex" style={{
+                backgroundColor: 'white',
+                borderRadius: '20px',
+                width: '130px',
+                marginRight: '-30px'
+              }}>
+                <Nav.Link style={{ fontSize: '20px' }}><AiOutlineHeart /></Nav.Link>
+                <Nav.Link style={{ fontSize: '20px' }}><AiOutlineShoppingCart /></Nav.Link>
+              </Container>
             </Container>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      
       <Navbar bg="light" expand={false} >
         <Container fluid style={{ backgroundColor: 'white', margin: '0 auto' }}>
           <Navbar.Toggle aria-controls="offcanvasNavbar" style={{ backgroundColor: '#D4F2FF' }} />
@@ -60,10 +59,10 @@ export default function NavBar1() {
             </Nav.Link>
             <Nav.Link href="#pricing" style={{ marginLeft: '50px' }}>
               <Link to="/cusservice" style={{ color: '#6C757D', textDecoration: 'none' }}>Customer Service</Link>
-              </Nav.Link>
+            </Nav.Link>
             <Nav.Link style={{ marginLeft: '50px' }}>
               <Link to="/sell" style={{ color: '#6C757D', textDecoration: 'none' }}>Sell</Link>
-              </Nav.Link>
+            </Nav.Link>
           </Nav>
           <Navbar.Offcanvas
             id="offcanvasNavbar"
