@@ -18,7 +18,8 @@ import ProdAddForm from './component/seller/product/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
-import SideBar from './component/navBar/sideBar';
+import Sidebar from './component/sidebar/sidebar'
+import ProductView from './component/seller/product/productView'
 
 
 
@@ -35,8 +36,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
-        <SideBar/>
+       <NavBar/>
+        <Sidebar/>
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />}></Route>
@@ -58,6 +59,7 @@ function App() {
             element={<UpdateCategory />}
             exact
           ></Route>
+          <Route path="/productView" element={<ProductView />} exact></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
         </Routes>
         <Footer />
