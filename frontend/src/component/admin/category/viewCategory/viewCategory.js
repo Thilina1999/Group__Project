@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./viewCategory.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png"
 import IconButton from "@mui/material/IconButton";
 
@@ -33,8 +33,8 @@ const ViewCategory = () => {
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteCategory/${id}`);
     window.location.reload(true);
-  }
-   const navigate = useNavigate();
+  };
+   
 
   return (
     <div className="container2">
@@ -53,10 +53,10 @@ const ViewCategory = () => {
         <table>
           {categories.map((category) => {
             return (
-              <React.Fragment key={category.categoryid}>
+              <React.Fragment key={category.id}>
                 <tbody className="tablebody">
                   <tr className="tablebody">
-                    <td className="td0">{category.categoryid}</td>
+                    <td className="td0">{category.id}</td>
 
                     <td className="td1">{category.categoryname}</td>
                     <td className="td2">
@@ -64,7 +64,7 @@ const ViewCategory = () => {
                         <IconButton
                           variant="outline-dark"
                           onClick={() =>
-                            SetData(category.categoryid, category.categoryname)
+                            SetData(category.id, category.categoryname)
                           }
                         >
                           <AiFillEdit className="icon" />
@@ -74,7 +74,7 @@ const ViewCategory = () => {
                     <td className="td2">
                       <IconButton
                         variant="outline-dark"
-                        onClick={() => OnDelete(category.categoryid)}
+                        onClick={() => OnDelete(category.id)}
                       >
                         <AiFillDelete className="icon" />
                       </IconButton>

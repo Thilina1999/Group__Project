@@ -1,7 +1,7 @@
 import React,{ useState,useEffect }from 'react';
 import './prodAddForm.css';
 import { app } from "../../../../firebase"
-import { Button, Form, FormControl } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";

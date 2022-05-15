@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, Navigate, Link } from "react-router-dom";
-import { Button, Form, FormControl } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import { Button, Form} from "react-bootstrap";
 import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
 import "./updateCategory.css";
 
 const UpdateCategory = () => {
-  const [categoryid, setID] = useState("");
+  const [id, setID] = useState("");
   const [categoryname, setCategory] = useState("");
 
   const data1 = Number(localStorage.getItem("CategoryId"));
@@ -18,7 +18,7 @@ const UpdateCategory = () => {
 
   const UpdateApi = () => {
     const updateData = {
-      categoryid,
+      id,
       categoryname,
     };
 
