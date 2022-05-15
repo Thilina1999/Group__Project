@@ -138,14 +138,14 @@ const ProdAddForm=()=> {
               <Form.Label className="label">Category Select</Form.Label>
               <Form.Select
                 className="form-control1"
-                value={categorieslist.categoryid}
+                value={categorieslist.id}
                 onChange={(e) => SetCategoryId(e.target.value)}
               >
                 <option>Select Category</option>
                 {categorieslist.map((category) => {
                   return (
-                    <React.Fragment key={category.categoryid}>
-                      <option value={category.categoryid}>
+                    <React.Fragment key={category.id}>
+                      <option value={category.id}>
                         {category.categoryname}
                       </option>
                     </React.Fragment>
