@@ -1,39 +1,21 @@
 import React from "react";
-import './Buyer.css';
+import img1 from '../assets/titlebox.png';
+import img2 from '../assets/HeroC.png';
+import img3 from '../assets/HeroD.png';
+import img4 from '../assets/HeroE.png';
+import img5 from '../assets/HeroF.png';
 
-export default function Buyer() {
 
-    return (
-      <div>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css" />
-        <div className="container">
-          <div className="frame">
-            <div className="nav">
-              <ul className="links">
-                <li className="signin-active"><a className="btn" href>Buyer Protection</a></li>
-              </ul>
-            </div>
-            <div ng-app ng-init="checked = false">
-              <form className="form-signin" action method="post" name="form">
-                <label htmlFor="username">Username</label>
-                <input className="form-styling" type="text" name="username" placeholder="Username" />
-                <label htmlFor="password">Password</label>
-                <input className="form-styling" type="password" name="password" placeholder="Password" />
-                <div className="btn-animate">
-                  <a className="btn-signin" href>Sign in</a>
-                </div>
-                <div className="btn-animate">
-                  <a className="btn-signin" href="/form/signup">Create A New Account</a>
-                </div>
-              </form>
-            </div>
-            <div className="forgot">
-              <a href>Forgot your password?</a>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-    );
-  }
+function Buyer() {
+  return (
+    <div className="App">
+      <img src={img1} className="Title-Box" alt="Tilte" />
+      <img src={img2} className="Second-Box" alt="Second" />
+      <img src={img3} className="Third-Box" alt="Third" />
+      <img src={img4} className="Fourth-Box" alt="Fourth" />
+      <img src={img5} className="Fifth-Box" alt="Fifith" />
+    </div>
+  );
+}
 
+export default Buyer;

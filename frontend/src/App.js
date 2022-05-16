@@ -8,14 +8,12 @@ import Signin from './component/form/signin/form.signin';
 import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
-<<<<<<< HEAD
+import Buyer from './component/BuyerProtection/Buyer';
 //import Buyer from './component/BuyerProtection/Buyer';
-=======
 import Sell from './component/sell/sell';
 
 import AddCategory from './component/admin/category/addcategory';
 
->>>>>>> 1d3f6da74b2e77244f95e3bc6fb94fae499b7201
 
 
 
@@ -29,7 +27,7 @@ function App() {
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
-          <Route path="/sell" element={<Sell />} ></Route>
+          <Route path="/Buyer" element={<Buyer />} ></Route>
           {/* <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>

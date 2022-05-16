@@ -12,7 +12,7 @@ export default function NavBar2() {
                     <Navbar.Brand href="#home"><AiOutlineMenu /></Navbar.Brand>
                     <Nav className="me-auto" >
                         <Nav.Link href="#home">All</Nav.Link>
-                        <Nav.Link href="#features" style={{ marginLeft: '50px' }}>Buyer Protection</Nav.Link>
+                        <Nav.Link href="/Buyer" style={{ marginLeft: '50px' }}>Buyer Protection</Nav.Link>
                         <Nav.Link href="#pricing" style={{ marginLeft: '50px' }}>Customer Service</Nav.Link>
                         <Nav.Link href="/sell" style={{ marginLeft: '50px' }}>Sell</Nav.Link>
                     </Nav>
