@@ -6,14 +6,14 @@ import Logo from '../assets/miniBell logo_ccexpress 1.png';
 
 export default function Footer() {
   return (
-    <div>
+    <div style={{ fontSize: '14px'}}>
     <CardGroup>
   <Card style={{ border: 'none', backgroundColor: '#D4F2FF', height: '210px'}}>
-    <img src={Logo} alt="" style={{ marginTop: '-20px' }}/>
+    <img src={Logo} alt="" style={{ marginTop: '50px',  marginLeft: '100px',height:'130px', width: '180px' }}/>
   </Card>
   <Card style={{ border: 'none', backgroundColor: '#D4F2FF', height: '210px', paddingTop: '40px' }}>
     <Card.Body>
-      <Card.Title style={{ marginRight: '205px'}}>Shop</Card.Title>
+      <Card.Title style={{ marginRight: '215px', }}>Shop</Card.Title>
       <ul style={{ textAlign: 'left', listStyleType: 'none'}}>
         <Nav.Link><li>All Products</li></Nav.Link>
         <Nav.Link><li>The Baby Cardigans</li></Nav.Link>

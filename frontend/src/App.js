@@ -5,7 +5,7 @@ import React from 'react';
 
 import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
-import Home from './component/Home/home';
+import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Buyer from './component/BuyerProtection/Buyer';
@@ -23,24 +23,14 @@ import Sidebar from './component/sidebar/sidebar'
 import ProductView from './component/seller/product/productView'
 
 
-
-
-
-
-
-
-
-
-
-
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-       <NavBar/>
+        <NavBar />
+        <Home/>
         <Sidebar/>
         <Routes>
-          <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
           <Route path="/Buyer" element={<Buyer />} ></Route>
