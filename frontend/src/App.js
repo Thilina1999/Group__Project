@@ -8,6 +8,7 @@ import Signin from './component/form/signin/form.signin';
 import Home from './component/Home/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
+import Buyer from './component/BuyerProtection/Buyer';
 
 import CheckMail from './component/form/forgotPass/checkMail';
 import ResetPass from './component/form/forgotPass/resetPass';
@@ -40,9 +41,15 @@ function App() {
         <Sidebar/>
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
+          <Route path="/signin" element={<Signin />} ></Route>
+          <Route path="/signup" element={<Signup />} ></Route>
+          <Route path="/Buyer" element={<Buyer />} ></Route>
+          {/* <Route path="/" element={<Home />} exact></Route>
+          <Route path="/signin" element={<Signin />} exact></Route>
+          <Route path="/signin/signup" element={<Signup />} exact></Route>
+          <Route path="/sell" element={<Sell />} exact></Route> */}
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/sell" element={<Products />} exact></Route>
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
             path="/signin/checkmail/resetpass"

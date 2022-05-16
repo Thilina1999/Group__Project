@@ -93,7 +93,7 @@ export default function NavBar1() {
           <Nav className="d-flex flex-row" style={{ marginRight: "980px" }}>
             <Nav.Link href="#features" style={{ marginLeft: "50px" }}>
               <Link
-                to="/bprotection"
+                to="/Buyer"
                 style={{ color: "#6C757D", textDecoration: "none" }}
               >
                 Buyer Protection
