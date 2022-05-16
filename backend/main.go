@@ -25,6 +25,7 @@ func main() {
 
 	routes.CategoryRoute(router)
 	routes.InitializeAuthRoutes(router)
+	routes.ProductRoute(router)
 
 	fmt.Println("Server started at http://localhost:8080")
 	err := http.ListenAndServe(
@@ -34,17 +35,10 @@ func main() {
 			handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"}),
 			handlers.AllowedOrigins([]string{"*"}),
 			handlers.AllowCredentials(),
-<<<<<<< HEAD
+
 		)(router),
 	)
-	if err != nil {
-		log.Fatal(err)
-	}
-=======
-			
-			)(router),
-			
-	)		
+		
 
 
 
@@ -52,5 +46,5 @@ func main() {
 		log.Fatal(err)
 	
 }
->>>>>>> 8690f6470663bdb1dea90c257cf7f4495dcebf17
+
 }

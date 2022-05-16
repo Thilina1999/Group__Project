@@ -40,6 +40,7 @@ func GetCategoryById(w http.ResponseWriter, r *http.Request) {
 	key := jer["id"]
 
 	var category adminData.Category //this should be add category
+	
 	database.GetDatabase().First(&category, key)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(category)

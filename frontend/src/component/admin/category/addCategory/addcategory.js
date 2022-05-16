@@ -3,23 +3,23 @@ import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import "./addcategory.css";
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
 
 const AddCategory = () => {
   let [id, setId] = useState("");
-  let [category, setCatname] = useState("");
+  let [categoryname, setCatname] = useState("");
 
   const SendData = (e) => {
     e.preventDefault();
 
     var addCategerytData = {
       id,
-      category,
+      categoryname,
     };
 
-    console.log(id, category);
-    console.log(typeof(addCategerytData.id));
+   
+    
 
     axios
       .post(`http://localhost:8080/createCategory`, addCategerytData)
@@ -34,21 +34,18 @@ const AddCategory = () => {
         e.target.reset();
       })
       .catch((err) => {
-        alert(err);
+        console.log(err);
       });
   };
     const navigate = useNavigate();
     function DelayRedirect(e, path) {
       e.preventDefault();
-
-      
-
       setTimeout(() => navigate(path), 300);
     }
 
   return (
     <div className="container6">
-      <img src={Image3} className="image3"/>
+      <img src={Image3} className="image3" alt="background"/>
       <div className="container">
         <Form className="form">
           <Form.Group className="mb-3" controlId="ControlInput1" name="id">

@@ -60,3 +60,20 @@ td{
     margin-left: 1000px;
     font-size: 35px !important;
 }
+
+.icon {
+    color: rgb(247, 73, 73);
+
+}
+
+.icon:hover {
+    transform: translateY(-2px) scale(1.005) translateZ(0);
+}
+.icon1 {
+    color: rgb(0, 0, 0);
+
+}
+
+.icon1:hover {
+    transform: translateY(-2px) scale(1.005) translateZ(0);
+}
