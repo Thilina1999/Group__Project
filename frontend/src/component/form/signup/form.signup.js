@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../signin/form.css';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import Imge from '../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png';
 
 export default function Signup() {
