@@ -1,7 +1,7 @@
 import React,{ useState,useEffect }from 'react';
 import './prodAddForm.css';
 import { app } from "../../../../firebase"
-import { Button, Form, FormControl } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
@@ -138,14 +138,14 @@ const ProdAddForm=()=> {
               <Form.Label className="label">Category Select</Form.Label>
               <Form.Select
                 className="form-control1"
-                value={categorieslist.categoryid}
+                value={categorieslist.id}
                 onChange={(e) => SetCategoryId(e.target.value)}
               >
                 <option>Select Category</option>
                 {categorieslist.map((category) => {
                   return (
-                    <React.Fragment key={category.categoryid}>
-                      <option value={category.categoryid}>
+                    <React.Fragment key={category.id}>
+                      <option value={category.id}>
                         {category.categoryname}
                       </option>
                     </React.Fragment>

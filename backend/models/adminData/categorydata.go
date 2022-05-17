@@ -7,7 +7,7 @@ import (
 
 type Category struct{
 	gorm.Model
-	CategoryId int `gorm:"primaryKey" json:"categoryid"`
+	Id int `gorm:"primaryKey" json:"id"`
 	CategoryName string `json:"categoryname"`
 }
 

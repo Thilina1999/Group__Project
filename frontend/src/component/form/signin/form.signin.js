@@ -35,6 +35,7 @@ export default function Signin() {
         <div className="frame">
           <div className="nav">
             <ul className="links">
+              <li className="signin-active"><a className="btn" href>Signn in</a></li>
               <br /><br />
               <li className="signin-active">Sign-In</li>
             </ul>
