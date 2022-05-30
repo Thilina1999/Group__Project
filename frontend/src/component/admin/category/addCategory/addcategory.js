@@ -40,7 +40,7 @@ const AddCategory = () => {
     const navigate = useNavigate();
     function DelayRedirect(e, path) {
       e.preventDefault();
-      setTimeout(() => navigate(path), 300);
+      setTimeout(() => navigate(path), 500);
     }
 
   return (
