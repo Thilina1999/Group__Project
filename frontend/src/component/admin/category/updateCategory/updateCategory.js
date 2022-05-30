@@ -18,12 +18,11 @@ const UpdateCategory = () => {
 
   const UpdateApi = () => {
     const updateData = {
-      id,
       categoryname,
     };
 
     axios
-      .put(`http://localhost:8080/editCategory/{id}`, updateData)
+      .put(`http://localhost:8080/updateCategory/${id}`, updateData)
       .then((res) => {
         console.log(res);
       })

@@ -28,12 +28,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <Home/>
-        <Sidebar/>
+        
+        <Sidebar />
         <Routes>
-          <Route path="/signin" element={<Signin />} ></Route>
-          <Route path="/signup" element={<Signup />} ></Route>
-          <Route path="/Buyer" element={<Buyer />} ></Route>
+          <Route path="/home" element={<Home/>}></Route>
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/Buyer" element={<Buyer />}></Route>
           {/* <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
