@@ -47,7 +47,7 @@ const ProdAddForm=()=> {
       console.log(categoryid);
       console.log(typeof(categoryid));
       axios
-        .post(`http://localhost:8080/createProduct`, {
+        .post(`http://localhost:8080/createProducts`, {
           id: addproduct.id,
           producttitle: addproduct.producttitle,
           productsubtitle: addproduct.productsubtitle,
