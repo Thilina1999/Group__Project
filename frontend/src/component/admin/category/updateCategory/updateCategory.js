@@ -6,7 +6,7 @@ import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpr
 import "./updateCategory.css";
 
 const UpdateCategory = () => {
-  const [id, setID] = useState("");
+  const [id,setID] = useState("");
   const [categoryname, setCategory] = useState("");
 
   const data1 = Number(localStorage.getItem("CategoryId"));
