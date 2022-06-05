@@ -200,7 +200,7 @@ export default function NavBar1() {
                 category
               </Link>
               <Link
-                to="/addProduct"
+                to="/productview"
                 style={{
                   color: "#6C757D",
                   textDecoration: "none",

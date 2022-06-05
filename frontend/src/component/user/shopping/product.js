@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
-  AiFillStar,
-  AiOutlineStar,
 } from "react-icons/ai";
 import StarIcon from "@mui/icons-material/Star";
 

@@ -10,17 +10,13 @@ const AddCategory = () => {
  
   let [categoryname, setCatname] = useState("");
 
-  const SendData = (e) => {
+const SendData = (e) => {
     e.preventDefault();
 
     var addCategerytData = {
       
       categoryname,
     };
-
-   
-    
-
     axios
       .post(`http://localhost:8080/createCategory`, addCategerytData)
       .then((res) => {
