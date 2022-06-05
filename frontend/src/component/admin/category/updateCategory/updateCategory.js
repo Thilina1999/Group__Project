@@ -16,7 +16,7 @@ const UpdateCategory = () => {
     setCategory(localStorage.getItem("CategoriesName"));
   }, []);
 
-  const UpdateApi = () => {
+  const UpdateCategory = () => {
     const updateData = {
       categoryname,
     };
@@ -74,7 +74,7 @@ const UpdateCategory = () => {
               variant="outline-dark"
               type="submit"
               className="button1"
-              onClick={UpdateApi}
+              onClick={UpdateCategory}
             >
               Submit
             </Button>

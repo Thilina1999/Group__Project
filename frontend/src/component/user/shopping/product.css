@@ -1,7 +1,7 @@
 .wrapper{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(21rem,21rem));
-    gap: 6rem;
+    gap: 3rem;
     justify-content: center;
     background-color: rgba(212, 242, 255, 1);
     padding: 50px;
@@ -19,6 +19,7 @@
 }
 .card__media{
   padding: auto;
+  
 }
 .start_icon{
   color: rgb(231, 202, 34);
@@ -135,7 +136,4 @@
 .quantity-desc .plus {
   color: rgb(49, 168, 49);
 
-}
-.reviews {
-  display: flex;
 }

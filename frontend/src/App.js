@@ -20,7 +20,9 @@ import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
 import Sidebar from './component/sidebar/sidebar'
-import ProductView from './component/seller/product/productView'
+import Productview from './component/seller/product/productView/productView';
+import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
+
 
 
 function App() {
@@ -28,10 +30,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        
+
         <Sidebar />
         <Routes>
-          <Route path="/home" element={<Home/>}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/Buyer" element={<Buyer />}></Route>
@@ -57,7 +59,12 @@ function App() {
             element={<UpdateCategory />}
             exact
           ></Route>
-          <Route path="/productView" element={<ProductView />} exact></Route>
+          <Route path="/productview" element={<Productview />} exact></Route>
+          <Route
+            path="/editProduct/:id"
+            element={<ProductUpdateForm />}
+            exact
+          ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
         </Routes>
         <Footer />
