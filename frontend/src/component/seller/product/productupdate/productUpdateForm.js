@@ -62,7 +62,6 @@ const UpdateProduct = () => {
     productprice: addproduct.price,
     productquantity: addproduct.quantity,
   }).then((response) => {
-    
      if (response.status === 200) {
        alert("Product Update");
      } else {
