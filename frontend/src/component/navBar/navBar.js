@@ -11,7 +11,7 @@ import { Favorite } from "@material-ui/icons";
 export default function NavBar1() {
   return (
     <>
-      <Navbar style={{ backgroundColor: "#75C6DC", height: "30px" }}>
+      <Navbar style={{ backgroundColor: "#75C6DC", height: "15px" }}>
         <Container>
           <span
             varient="info"
@@ -199,16 +199,18 @@ export default function NavBar1() {
               >
                 category
               </Link>
-              <Link
-                to="/productview"
-                style={{
-                  color: "#6C757D",
-                  textDecoration: "none",
-                  fontSize: "14px",
-                }}
-              >
-                Product
-              </Link>
+            </Nav.Link>
+             <Nav.Link style={{ marginLeft: "50px" }}>
+            <Link
+              to="/productview"
+              style={{
+                color: "#6C757D",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
+            >
+              Product
+            </Link>
             </Nav.Link>
           </Nav>
           <Navbar.Offcanvas
