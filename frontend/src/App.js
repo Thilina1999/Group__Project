@@ -35,7 +35,9 @@ import UpdateCategory from './component/admin/category/updateCategory/updateCate
 // import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
 
 import Sidebar from './component/sidebar/sidebar'
-import ProductView from './component/seller/product/productView'
+import Productview from './component/seller/product/productView/productView';
+import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
+
 
 import Dashboard from './component/admin/dashboard/dashboard'
 import Profile from './component/admin/profile/profile';
@@ -50,9 +52,10 @@ function App() {
         {/* <Home/> */}
         <Sidebar/>
         <Routes>
-          <Route path="/signin" element={<Signin />} ></Route>
-          <Route path="/signup" element={<Signup />} ></Route>
-          <Route path="/Buyer" element={<Buyer />} ></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/Buyer" element={<Buyer />}></Route>
           {/* <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
@@ -75,7 +78,12 @@ function App() {
             element={<UpdateCategory />}
             exact
           ></Route>
-          <Route path="/productView" element={<ProductView />} exact></Route>
+          <Route path="/productview" element={<Productview />} exact></Route>
+          <Route
+            path="/editProduct/:id"
+            element={<ProductUpdateForm />}
+            exact
+          ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
 
           <Route path="/dashboard" element={<Dashboard />} exact></Route>

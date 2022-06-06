@@ -5,7 +5,7 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
+
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,7 +20,7 @@ const Products=()=>{
     const [products,setProducts]=useState([]);
     useEffect(() => {
         axios
-          .get("http://localhost:8080/getProduct")
+          .get("http://localhost:8080/getProducts")
           .then((response) => {
             setProducts(response.data);
             console.log(response.data);
@@ -36,52 +36,54 @@ const Products=()=>{
     <div className="wrapper">
       {products.map((product) => {
         return (
-          <div>
-            <Link
-              to={`/productDetail/${product.id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Card className="card_product">
-                <CardHeader
-                  title={product.producttitle}
-                  subheader={product.productsubtitle}
-                />
-                <div>
-                  <CardMedia
-                    className="card__media"
-                    component="img"
-                    height="300"
-                    image={product.imageurl}
-                    alt="Kid Cloths"
+          <React.Fragment key={product.id}>
+            <div>
+              <Link
+                to={`/productDetail/${product.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Card className="card_product">
+                  <CardHeader
+                    title={product.producttitle}
+                    subheader={product.productsubtitle}
                   />
-                </div>
+                  <div>
+                    <CardMedia
+                      className="card__media"
+                      component="img"
+                      height="300"
+                      image={product.imageurl}
+                      alt="Kid Cloths"
+                    />
+                  </div>
 
-                <CardContent>
-                  <Typography>Rs.{product.productprice}.00</Typography>
+                  <CardContent>
+                    <Typography>Rs.{product.productprice}.00</Typography>
 
-                  <Box>
-                    {[...new Array(totalStars)].map((arr, index) => {
-                      return index < activeStars ? (
-                        <StarIcon className="start_icon" />
-                      ) : (
-                        <StarBorderIcon className="start_icon" />
-                      );
-                    })}
-                  </Box>
-                </CardContent>
+                    <Box>
+                      {[...new Array(totalStars)].map((arr, index) => {
+                        return index < activeStars ? (
+                          <StarIcon className="start_icon" />
+                        ) : (
+                          <StarBorderIcon className="start_icon" />
+                        );
+                      })}
+                    </Box>
+                  </CardContent>
 
-                <CardActions disableSpacing>
-                  <IconButton>
-                    <FavoriteIcon className="share_icon" />
-                  </IconButton>
-                </CardActions>
-                <Collapse timeout="auto" unmountOnExit></Collapse>
-              </Card>
-            </Link>
-          </div>
+                  <CardActions disableSpacing>
+                    <IconButton>
+                      <FavoriteIcon className="share_icon" />
+                    </IconButton>
+                  </CardActions>
+                </Card>
+              </Link>
+            </div>
+          </React.Fragment>
         );
       })}
     </div>
+    
   );
 }
 
