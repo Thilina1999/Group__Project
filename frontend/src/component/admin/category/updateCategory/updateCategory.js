@@ -53,6 +53,7 @@ const UpdateCategory = () => {
 
             <Form.Control
               type="text"
+              
               placeholder={categoryname}
               onChange={(e) => {
                 setCategory(e.target.value);

@@ -113,6 +113,7 @@ const OnAddProduct = async (e) => {
               className="form-control1_update"
               type="text"
               placeholder={productlist.producttitle}
+              
               onChange={(e) => {
                 SetProductTitle(e.target.value);
               }}
@@ -151,7 +152,11 @@ const OnAddProduct = async (e) => {
           </Form.Group>
           <Form.Group controlId="formFile">
             <Form.Label className="label">file input</Form.Label>
-            <Form.Control type="file" onChange={OnAddProduct} />
+            <Form.Control
+              type="file"
+              onChange={OnAddProduct}
+              className="form-control1_update"
+            />
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput4" name="id3">

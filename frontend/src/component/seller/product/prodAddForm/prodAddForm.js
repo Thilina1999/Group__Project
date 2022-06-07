@@ -97,10 +97,10 @@ const ProdAddForm=()=> {
 
     return (
       <div className="container7_add">
-        <img src={Image4} className="image4_add" />
+        <img src={Image4} className="image_add" />
 
         <div className="container">
-          <Form className="form4_add">
+          <Form className="form_add">
             <Form.Group controlId="ControlInput1" name="id1">
               <h2 className="h2">Add Product</h2>
               <hr></hr>
@@ -110,7 +110,7 @@ const ProdAddForm=()=> {
             <Form.Group controlId="ControlInput2" name="id2">
               <Form.Label className="label">Product Title</Form.Label>
               <Form.Control
-                className="form-control1_add"
+                className="form-control_add"
                 type="text"
                 placeholder=""
                 onChange={(e) => {
@@ -122,7 +122,7 @@ const ProdAddForm=()=> {
             <Form.Group controlId="ControlInput3" name="id3">
               <Form.Label className="label">Product SubTitle</Form.Label>
               <Form.Control
-                className="form-control1_add"
+                className="form-control_add"
                 type="text"
                 placeholder=""
                 onChange={(e) => {
@@ -134,7 +134,7 @@ const ProdAddForm=()=> {
             <Form.Group>
               <Form.Label className="label">Category Select</Form.Label>
               <Form.Select
-                className="form-control1_add"
+                className="form-control_add"
                 value={categorieslist.id}
                 onChange={(e) => SetCategoryId(e.target.value)}
               >
@@ -153,16 +153,20 @@ const ProdAddForm=()=> {
             </Form.Group>
             <Form.Group controlId="formFile">
               <Form.Label className="label">file input</Form.Label>
-              <Form.Control type="file" onChange={OnAddProduct} />
+              <Form.Control
+                type="file"
+                onChange={OnAddProduct}
+                className="form-control_add"
+              />
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput4" name="id3">
               <Form.Label className="label">Description</Form.Label>
               <Form.Control
-                className="text1_add"
+                className="text_add"
                 as="textarea"
-                placeholder="   description"
-                style={{ height: "200px" }}
+                placeholder="description"
+                
                 onChange={(e) => {
                   Setdescription(e.target.value);
                 }}
@@ -172,7 +176,7 @@ const ProdAddForm=()=> {
             <Form.Group controlId="ControlInput5" name="id4">
               <Form.Label className="label">Product Price</Form.Label>
               <Form.Control
-                className="form-control1_add"
+                className="form-control_add"
                 type="number"
                 placeholder=""
                 onChange={(e) => {
@@ -184,7 +188,7 @@ const ProdAddForm=()=> {
             <Form.Group controlId="ControlInput6" name="id4">
               <Form.Label className="label">Product Quantity</Form.Label>
               <Form.Control
-                className="form-control1_add"
+                className="form-control_add"
                 type="number"
                 placeholder=""
                 onChange={(e) => {
@@ -198,7 +202,7 @@ const ProdAddForm=()=> {
             <Link to="/productview">
               <Button
                 variant="outline-dark"
-                className="button3_add btn btn-light"
+                className="button_add btn btn-light"
               >
                 Cancel
               </Button>
@@ -210,7 +214,7 @@ const ProdAddForm=()=> {
               <Button
                 variant="outline-dark"
                 type="submit"
-                className="button4_add btn btn-light"
+                className="button_create_add btn btn-light"
                 onClick={Addproduct}
               >
                 create
