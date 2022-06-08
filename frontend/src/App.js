@@ -5,7 +5,7 @@ import React from 'react';
 
 import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
-import Home from './component/Home/home';
+import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Company from './component/company/company';
@@ -19,17 +19,10 @@ import ProdAddForm from './component/seller/product/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
+
 import Sidebar from './component/sidebar/sidebar'
-import ProductView from './component/seller/product/productView'
-
-
-
-
-
-
-
-
-
+import Productview from './component/seller/product/productView/productView';
+import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
 
 
 
@@ -37,7 +30,8 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-       <NavBar/>
+        <NavBar />
+        {/* <Home/> */}
         <Sidebar/>
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
@@ -48,8 +42,11 @@ function App() {
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route> */}
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          
+
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
             path="/signin/checkmail/resetpass"
@@ -66,8 +63,14 @@ function App() {
             element={<UpdateCategory />}
             exact
           ></Route>
-          <Route path="/productView" element={<ProductView />} exact></Route>
+          <Route path="/productview" element={<Productview />} exact></Route>
+          <Route
+            path="/editProduct/:id"
+            element={<ProductUpdateForm />}
+            exact
+          ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,65 +1,105 @@
 import React from 'react';
 import { Navbar, Container, Form, FormControl, Button, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
-import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
+// import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import Logo from '../assets/miniBell logo_ccexpress 1.png';
+
+import { Badge } from "@material-ui/core";
+import { ShoppingCartOutlined } from "@material-ui/icons";
+import { Favorite } from "@material-ui/icons";
 
 export default function NavBar1() {
   return (
     <>
-      <Navbar style={{ backgroundColor: "#75C6DC", height: "30px" }}>
+      <Navbar style={{ backgroundColor: "#75C6DC", height: "15px" }}>
         <Container>
-          <span varient="info" style={{ marginLeft: "550px", color: "white" }}>
-            Up to 30% off for selected Item
+          <span
+            varient="info"
+            style={{ marginLeft: "550px", color: "white", fontSize: "14px" }}
+          >
+            Upto 30% off for Selected Items
           </span>
         </Container>
       </Navbar>
-      <Navbar style={{ backgroundColor: "#D4F2FF" }} expand="lg">
+      <Navbar
+        style={{ backgroundColor: "#D4F2FF", padding: "1px" }}
+        expand="lg"
+      >
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Form className="d-flex" style={{ padding: "15px" }}>
+            <Button
+              className="me-2"
+              variant="outline"
+              type="button"
+              style={{ fontSize: "14px" }}
+            >
+              EN
+            </Button>
+            <Form className="d-flex" style={{ padding: "5px" }}>
               <FormControl
                 type="search"
-                placeholder="Search"
                 className="me-2"
                 aria-label="Search"
-                style={{ width: "600px", borderRadius: "20px" }}
+                style={{
+                  width: "400px",
+                  height: "30px",
+                  borderRadius: "50px",
+                  border: "none",
+                  padding: "5px",
+                }}
               />
-              <Button variant="outline-success">Search</Button>
+
+              {/* <Button variant="outline-success">Search</Button> */}
             </Form>
             <img
               src={Logo}
               alt=""
               style={{
                 marginBottom: "-70px",
-                width: "250px",
-                height: "150px",
+                marginLeft: "180px",
+                width: "230px",
+                height: "130px",
                 zIndex: "1",
+                placeItems: "center",
               }}
             />
-            <Container className="d-flex" style={{ marginRight: "-50px" }}>
+            <Container className="d-flex" style={{ marginRight: "-400px" }}>
               <Link to="/signin">
                 <Button
                   className="me-2"
                   variant="light"
                   style={{
-                    borderRadius: "20px",
+                    borderRadius: "50px",
                     width: "100px",
+                    marginLeft: "210px",
+                    fontSize: "14px",
+                    padding: "7px 7px 7px 7px",
                   }}
                 >
-                  Sign In
+                  Sign In{" "}
                 </Button>
               </Link>
               <Link
-                to="/signup"
+                to="/"
                 style={{
-                  borderRadius: "20px",
+                  borderRadius: "50px",
                   width: "160px",
+                  cursor: "poiner",
+                  fontSize: "14px",
                 }}
               >
-                <Button className="me-2" variant="outline" type="button">
-                  Create Account
+                <Button
+                  className="me-2"
+                  variant="outline"
+                  type="button"
+                  style={{
+                    fontSize: "14px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {" "}
+                  Create Account{" "}
                 </Button>
               </Link>
             </Container>
@@ -68,17 +108,19 @@ export default function NavBar1() {
                 className="d-flex"
                 style={{
                   backgroundColor: "white",
-                  borderRadius: "20px",
-                  width: "130px",
+                  borderRadius: "50px",
+                  width: "100px",
+                  padding: "7px 7px 7px 7px",
                   marginRight: "-30px",
+                  marginLeft: "400px",
                 }}
               >
-                <Nav.Link style={{ fontSize: "20px" }}>
-                  <AiOutlineHeart />
-                </Nav.Link>
-                <Nav.Link style={{ fontSize: "20px" }}>
-                  <AiOutlineShoppingCart />
-                </Nav.Link>
+                <Badge badgeContent={4} color="primary">
+                  <Favorite style={{ color: "red" }}></Favorite>
+                </Badge>
+                <Badge badgeContent={2} color="primary">
+                  <ShoppingCartOutlined></ShoppingCartOutlined>
+                </Badge>
               </Container>
             </Container>
           </Navbar.Collapse>
@@ -88,13 +130,36 @@ export default function NavBar1() {
         <Container fluid style={{ backgroundColor: "white", margin: "0 auto" }}>
           <Navbar.Toggle
             aria-controls="offcanvasNavbar"
-            style={{ backgroundColor: "#D4F2FF" }}
+            style={{
+              backgroundColor: "#D4F2FF",
+              border: "none",
+              fontSize: "13px",
+              borderRadius: "10px",
+              padding: "7px 7px 7px 7px",
+              marginLeft: "50px",
+            }}
           />
           <Nav className="d-flex flex-row" style={{ marginRight: "980px" }}>
-            <Nav.Link href="#features" style={{ marginLeft: "50px" }}>
+            <Nav.Link href="#features" style={{ marginLeft: "0px" }}>
+              <Link
+                to="/home"
+                style={{
+                  color: "#6C757D",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                }}
+              >
+                Home
+              </Link>
+            </Nav.Link>
+            <Nav.Link href="#features" style={{ marginLeft: "0px" }}>
               <Link
                 to="/Buyer"
-                style={{ color: "#6C757D", textDecoration: "none" }}
+                style={{
+                  color: "#6C757D",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                }}
               >
                 Buyer Protection
               </Link>
@@ -102,7 +167,11 @@ export default function NavBar1() {
             <Nav.Link href="#pricing" style={{ marginLeft: "50px" }}>
               <Link
                 to="/cusservice"
-                style={{ color: "#6C757D", textDecoration: "none" }}
+                style={{
+                  color: "#6C757D",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                }}
               >
                 Customer Service
               </Link>
@@ -110,7 +179,11 @@ export default function NavBar1() {
             <Nav.Link style={{ marginLeft: "50px" }}>
               <Link
                 to="/sell"
-                style={{ color: "#6C757D", textDecoration: "none" }}
+                style={{
+                  color: "#6C757D",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                }}
               >
                 Sell
               </Link>
@@ -118,17 +191,25 @@ export default function NavBar1() {
             <Nav.Link style={{ marginLeft: "50px" }}>
               <Link
                 to="/viewCategory"
-                style={{ color: "#6C757D", textDecoration: "none" }}
+                style={{
+                  color: "#6C757D",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                }}
               >
                 category
               </Link>
             </Nav.Link>
             <Nav.Link style={{ marginLeft: "50px" }}>
               <Link
-                to="/addProduct"
-                style={{ color: "#6C757D", textDecoration: "none" }}
+                to="/productview"
+                style={{
+                  color: "#6C757D",
+                  textDecoration: "none",
+                  fontSize: "14px",
+                }}
               >
-                product
+                Product
               </Link>
             </Nav.Link>
           </Nav>

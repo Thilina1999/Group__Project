@@ -56,8 +56,6 @@ const ViewCategory = () => {
               <React.Fragment key={category.id}>
                 <tbody className="tablebody">
                   <tr className="tablebody">
-                    <td className="td0">{category.id}</td>
-
                     <td className="td1">{category.categoryname}</td>
                     <td className="td2">
                       <Link to="/editCategory">

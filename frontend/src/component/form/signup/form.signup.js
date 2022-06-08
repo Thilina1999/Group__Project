@@ -15,7 +15,7 @@ export default function Signup() {
 
   const submit = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/signup`, {
+    await axios.post(`http://localhost:8080/api/register`, {
       firstname,
       lastname,
       email,
