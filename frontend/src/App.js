@@ -25,10 +25,6 @@ import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
 
 
-import Dashboard from './component/admin/dashboard/dashboard'
-import Profile from './component/admin/profile/profile';
-import ViewRole from './component/admin/role/viewRole/viewRole';
-
 
 function App() {
   return (
@@ -67,9 +63,6 @@ function App() {
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
 
-          <Route path="/dashboard" element={<Dashboard />} exact></Route>
-          <Route path="/profile" element={<Profile />} exact></Route>
-          <Route path="/viewrole" element={<ViewRole />} exact></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
