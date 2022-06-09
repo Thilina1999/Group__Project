@@ -13,6 +13,7 @@ import logo3 from "../assets/logo3.png"
 import logo4 from "../assets/logo4.png"
 import logo5 from "../assets/logo5.png"
 import logo6 from "../assets/logo6.png"
+import miniBelllogo from "../assets/miniBelllogo.png"
 
 export const sliderItems = [
     {
@@ -99,4 +100,12 @@ export const brands = [
     id: 6,
     img: logo6,
     }
+];
+
+export const logoImage = [
+    {
+    id: 1,
+    backgroundImage: miniBelllogo, 
+    }
+
 ];
