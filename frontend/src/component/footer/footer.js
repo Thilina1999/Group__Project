@@ -19,6 +19,7 @@ export default function Footer() {
         <Nav.Link><li>The Baby Cardigans</li></Nav.Link>
         <Nav.Link><li>The Baby Swimwear</li></Nav.Link>
         <Nav.Link><li>Baby Gift Packs</li></Nav.Link>
+        
       </ul>
     </Card.Body>
   </Card>
