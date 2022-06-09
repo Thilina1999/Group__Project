@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import './company.css';
-import Img1 from '../assets/miniBell logo_ccexpress 1.png';
+import Img1 from '../assets/miniBelllogo.png';
 import Img2 from '../assets/71WIPjpp3aL 1.png';
 
 export default function Signup() {

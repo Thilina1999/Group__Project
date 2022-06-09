@@ -2,8 +2,7 @@ import React from 'react';
 import { Navbar, Container, Form, FormControl, Button, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
 // import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import Logo from '../assets/miniBell logo_ccexpress 1.png';
-
+import Logo from '../assets/miniBelllogo.png';
 import { Badge } from "@material-ui/core";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";
@@ -212,6 +211,19 @@ export default function NavBar1() {
                 Product
               </Link>
             </Nav.Link>
+            <Nav.Link style={{ marginLeft: "50px" }}>
+            <Link
+              to="/viewprofile"
+              style={{
+                color: "#6C757D",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
+            >
+              Profile
+            </Link>
+            </Nav.Link>
+
           </Nav>
           <Navbar.Offcanvas
             id="offcanvasNavbar"
