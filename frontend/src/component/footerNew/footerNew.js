@@ -1,7 +1,7 @@
 import { Twitter,Instagram,Facebook } from '@material-ui/icons';
 import React from 'react';
 import styled from "styled-components";
-import { footerItems } from '../data';
+import { logoImage } from "../Home/data";
 
 const Container = styled.div`
     display: flex;
@@ -53,7 +53,7 @@ const Center2 = styled.div`
 const Title = styled.h3`
     margin-bottom: 30px;
     font-size: 20px;
-    margin-left: 10px;
+    
 `;
 
 const List = styled.ul`
@@ -89,12 +89,12 @@ const Image = styled.img`
 `;
 
 
-function Footer(){
+function Footer1(){
   return (
     <Container>
         <Left>
         <Logo>
-            {footerItems.map((item) =>(
+            {logoImage.map((item) =>(
             <ImgContainer bg={item.bg} key={item.id}>
                 <Image src={item.backgroundImage} />
             </ImgContainer>
@@ -135,17 +135,9 @@ function Footer(){
                 </SocialIcon>
             </SocialContainer>
         </Right>
-        <Footer style={{ backgroundColor: '#D4F2FF', height: '100px' }}>
-        <Container>
-        <hr style={{ width: '1500px'}}/><br/>
-        </Container>
-      </Footer>
-      <Footer style={{ backgroundColor: '#D4F2FF' }}>
-        <span style={{ marginLeft: '640px', marginTop: '-70px', color: '#6C757D', fontSize: '12px'}}>&copy; Created by team Zero in 2022</span>
-      </Footer>
     </Container>
   )
 }
 <hr></hr>
 
-export default Footer;
+export default Footer1;

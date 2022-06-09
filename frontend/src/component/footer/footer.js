@@ -2,7 +2,7 @@ import React from 'react';
 import './footer.css';
 import { AiFillFacebook, AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 import { CardGroup, Card, Nav, Navbar, Container } from 'react-bootstrap';
-import Logo from '../assets/miniBell logo_ccexpress 1.png';
+import Logo from '../assets/miniBelllogo.png';
 
 export default function Footer() {
   return (

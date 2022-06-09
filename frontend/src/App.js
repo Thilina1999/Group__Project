@@ -3,6 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
+import Announcement from './component/Announcement/announcement';
+import NavBar1 from './component/navbarNew/navbarNew';
+// import Footer1 from './component/footerNew/Footer';
 import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/home';
@@ -25,15 +28,21 @@ import ProductUpdateForm from "./component/seller/product/productupdate/productU
 import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
 import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
+import Footer1 from './component/footerNew/footerNew';
 
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        <Announcement/>
+         <NavBar1/>
+         <br/>
+         <br/>
+         <br/>
+        {/* <NavBar /> */}
 
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Routes>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
@@ -72,7 +81,9 @@ function App() {
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
+        <br/>
+        <Footer1/>
       </BrowserRouter>
     </div>
   );

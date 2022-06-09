@@ -2,8 +2,7 @@ import React from 'react';
 import { Navbar, Container, Form, FormControl, Button, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
 // import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import Logo from '../assets/miniBell logo_ccexpress 1.png';
-
+import Logo from '../assets/miniBelllogo.png';
 import { Badge } from "@material-ui/core";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";

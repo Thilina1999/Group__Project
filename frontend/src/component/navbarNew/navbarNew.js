@@ -3,10 +3,11 @@ import { Reorder, Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";
 import React from 'react';
 import styled from 'styled-components';
-import { navbarItems } from "../data";
+import { logoImage } from "../Home/data";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-    height: 60px;
+    height: 80px;
     background-color: #d4f2ff;
 `;
 
@@ -23,7 +24,8 @@ const Left =  styled.div`
     display: flex;
     align-items: center;
     margin-left: 0px;
-    margin-top: -70px;
+    margin-top: -50px;
+     
 `;
 
 const Left1 =  styled.div`
@@ -32,6 +34,7 @@ const Left1 =  styled.div`
     align-items: center;
     margin-left: 50px;
     margin-top: -70px;
+     
 `;
 
 const Right = styled.div`
@@ -39,8 +42,8 @@ const Right = styled.div`
     display: flex; 
     align-items: center;
     justify-content: flex-end;
-    margin-top: -70px;
-
+    margin-top: -50px;
+     
 `;
 
 const Language = styled.span`
@@ -58,6 +61,7 @@ const SearchContainer = styled.div`
     width: 300px;
     border: none;
     background-color: white;
+     
 `;
 
 const Input = styled.input`
@@ -102,6 +106,20 @@ const Logo = styled.h1`
     cursor: pointer;
 `;
 
+const MenuItem1 =  styled.div`
+    font-size: 14px;
+    margin-top: 30px;
+    cursor: pointer;
+    margin-left: 40px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    
+    &:hover{
+        color: gray;
+        transform: scale(1.1);
+    }
+`;
+
 const MenuItem =  styled.div`
     font-size: 14px;
     cursor: pointer;
@@ -124,7 +142,7 @@ const Image = styled.img`
      width: 100px;
 `;
 
-function Navbar(){
+function Navbar1(){
   return (
     <Container>
         <Wrapper>
@@ -137,7 +155,7 @@ function Navbar(){
             </Left>
             <Center>
                 <Logo>
-                    {navbarItems.map((item) =>(
+                    {logoImage.map((item) =>(
                     <ImgContainer bg={item.bg} key={item.id}>
                         <Image src={item.backgroundImage} />
                     </ImgContainer>
@@ -165,14 +183,62 @@ function Navbar(){
         </Wrapper>
         <Wrapper>
             <Left1>
-                <MenuItem><Button1 style={{color: "blue", background: "#d4f2ff", width: "20px", height: "20px"}}><Reorder style={{color: "gray", width: "18px"}}></Reorder></Button1></MenuItem>
-                <MenuItem>Buyer Protection</MenuItem>
-                <MenuItem>Customer Service</MenuItem>
-                <MenuItem>Sell</MenuItem>
+                <MenuItem1><Button1 style={{color: "blue", background: "#d4f2ff", width: "30px", height: "30px"}}><Reorder style={{color: "gray", width: "18px"}}></Reorder></Button1></MenuItem1>
+                <Link to="/home"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Home</MenuItem1>
+                </Link> 
+               
+                <Link to="/Buyer"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Buyer Protection</MenuItem1>
+                </Link>
+                
+                <Link to="/viewprofile"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Profile</MenuItem1>
+                </Link>
+               
+                <Link to="/sell"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Sell</MenuItem1>
+                </Link>
+                <Link to="/productview"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Product</MenuItem1>
+                </Link>
+                <Link to="/viewCategory"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Category</MenuItem1>
+                </Link>
             </Left1>  
         </Wrapper>   
     </Container> 
   )
 }
 
-export default Navbar;
+export default Navbar1;

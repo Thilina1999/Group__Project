@@ -29,7 +29,7 @@ const Profileview = () => {
       <div className="head">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          <Link to="/addProduct">
+          <Link to="/addprofile">
             <IconButton className="icon_button" size="large" >
               <AiOutlinePlusCircle className="view_icon" />
             </IconButton>
