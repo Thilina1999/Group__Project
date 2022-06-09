@@ -212,6 +212,19 @@ export default function NavBar1() {
               Product
             </Link>
             </Nav.Link>
+            <Nav.Link style={{ marginLeft: "50px" }}>
+            <Link
+              to="/viewprofile"
+              style={{
+                color: "#6C757D",
+                textDecoration: "none",
+                fontSize: "14px",
+              }}
+            >
+              Profile
+            </Link>
+            </Nav.Link>
+
           </Nav>
           <Navbar.Offcanvas
             id="offcanvasNavbar"

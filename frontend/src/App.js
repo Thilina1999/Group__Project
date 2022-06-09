@@ -22,7 +22,9 @@ import UpdateCategory from './component/admin/category/updateCategory/updateCate
 import Sidebar from './component/sidebar/sidebar'
 import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
-
+import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
+import Profileview from "./component/seller/merchant/profileView/profileView";
+import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 
 
 function App() {
@@ -60,6 +62,9 @@ function App() {
             exact
           ></Route>
           <Route path="/productview" element={<Productview />} exact></Route>
+          <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
+          <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
+          <Route path="/viewprofile" element={<Profileview/>} exact></Route>
           <Route
             path="/editProduct/:id"
             element={<ProductUpdateForm />}
