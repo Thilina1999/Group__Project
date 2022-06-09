@@ -129,7 +129,7 @@ const AddProfileDetails=()=> {
               <Form.Label className="label">Email Address</Form.Label>
               <Form.Control
                 className="form-controlOne_add"
-                type="text"
+                type="email"
                 placeholder="Email Address"
                 onChange={(e) => {
                   SetContactPersonEmailID(e.target.value);
