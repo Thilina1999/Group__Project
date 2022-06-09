@@ -46,7 +46,7 @@ function App() {
           ></Route>
           <Route path="/productDetail/:id" element={<Product />} exact></Route>
 
-          <Route path="/sell" element={<Products />} exact></Route>
+          <Route path="/sell" element={<Products/>} exact></Route>
 
           <Route path="/addcategory" element={<AddCategory />} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory />} exact></Route>

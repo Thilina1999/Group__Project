@@ -1,4 +1,4 @@
-import React, { useState, useEffect}from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -13,24 +13,28 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import "./product.css"
+import "./product.css";
 import { Link } from "react-router-dom";
 
-const Products=()=>{
-    const [products,setProducts]=useState([]);
-    useEffect(() => {
-        axios
-          .get("http://localhost:8080/getProducts")
-          .then((response) => {
-            setProducts(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },[]);
-      const totalStars = 5;
-      const activeStars = 3;
+import { CartContext } from "../../context/cart/cart-context";
+
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/getProducts")
+      .then((response) => {
+        setProducts(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
+  const totalStars = 5;
+  const activeStars = 3;
 
   return (
     <div className="wrapper">
@@ -83,8 +87,7 @@ const Products=()=>{
         );
       })}
     </div>
-    
   );
-}
+};
 
 export default Products;

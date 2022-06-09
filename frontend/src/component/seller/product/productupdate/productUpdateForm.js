@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
@@ -8,30 +8,33 @@ import { app } from "../../../../firebase";
 import "../productupdate/productUpdateForm.css";
 
 
+
 const ProductUpdateForm = () => {
   const params = useParams();
-  let [producttitle, SetProductTitle] = useState("");
-  let [productsubtitle, SetSubTitle] = useState("");
-  let [categoryid, SetCategoryId] = useState("");
-  let [categoryname, SetCategoryName] = useState("");
-  let [imageurl, Seturl] = useState("");
-  let [description, Setdescription] = useState("");
-  let [price, Setprice] = useState("");
-  let [quantity, SetQuantity] = useState("");
-  let [productlist, SetProductlist] = useState([]);
-  let [categorieslist, setCategorieslist] = useState([]);
+  const [producttitle, SetProductTitle] = useState("");
+  const [productsubtitle, SetSubTitle] = useState("");
+  const [categoryname, SetCategoryName] = useState("");
+  const [imageurl, Seturl] = useState("");
+  const [description, Setdescription] = useState("");
+  const [price, Setprice] = useState("");
+  const [quantity, SetQuantity] = useState("");
+  const [productlist, SetProductlist] = useState([]);
+ const [categories, setCategories] = useState([]);
 
 
-    useEffect(() => {
+useEffect(() => {
+  
       axios
-        .get("http://localhost:8080/getCategory")
+        .get(`http://localhost:8080/getCategory`)
         .then((response) => {
-          setCategorieslist(response.data);
+          setCategories(response.data);
+          console.log(response.data);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     }, []);
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/getProductByid/${params.id}`)
@@ -46,7 +49,6 @@ const UpdateProduct = () => {
   var addproduct = {
     producttitle,
     productsubtitle,
-    categoryid,
     categoryname,
     imageurl,
     description,
@@ -56,7 +58,7 @@ const UpdateProduct = () => {
   axios.put(`http://localhost:8080/updateProduct/${params.id}`,{
     producttitle: addproduct.producttitle,
     productsubtitle: addproduct.productsubtitle,
-    categoryid: Number(addproduct.categoryid),
+    categoryname: addproduct.categoryname,
     imageurl: addproduct.imageurl,
     description: addproduct.description,
     productprice: addproduct.price,
@@ -113,7 +115,6 @@ const OnAddProduct = async (e) => {
               className="form-control1_update"
               type="text"
               placeholder={productlist.producttitle}
-              
               onChange={(e) => {
                 SetProductTitle(e.target.value);
               }}
@@ -136,13 +137,12 @@ const OnAddProduct = async (e) => {
             <Form.Label className="label">Category Select</Form.Label>
             <Form.Select
               className="form-control1_update"
-              value={categorieslist.id}
-              onChange={(e) => SetCategoryId(e.target.value)}
+              onChange={(e) => SetCategoryName(e.target.value)}
             >
               <option>Select Category</option>
-              {categorieslist.map((category) => {
+              {categories.map((category) => {
                 return (
-                  <React.Fragment key={category.id}>
+                  <React.Fragment key={category.categoryname}>
                     <option value={category.id}>{category.categoryname}</option>
                   </React.Fragment>
                 );

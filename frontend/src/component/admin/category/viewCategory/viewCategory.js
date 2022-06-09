@@ -1,40 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 import axios from "axios";
 
-import "./viewCategory.css"
+import "./viewCategory.css";
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png"
+import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png";
 import IconButton from "@mui/material/IconButton";
-
+import { CategoryContext } from "../../../context/category/category-context";
 
 const ViewCategory = () => {
-  const [categories, setCategories] = useState([]);
-  const GetCat = () => {
-    useEffect(() => {
-      axios
-        .get(`http://localhost:8080/getCategory`)
-        .then((res) => {
-          setCategories(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, []);
-  };
-  GetCat();
-      const SetData = (data1, data2) => {
-        
+  
+  useEffect(() => {
 
-        localStorage.setItem("CategoryId", data1);
-        localStorage.setItem("CategoriesName", data2);
-      };
+  },[]);
+  const { categories } = useContext(CategoryContext);
+  console.log(categories);
+  const SetData = (data1, data2) => {
+    localStorage.setItem("CategoryId", data1);
+    localStorage.setItem("CategoriesName", data2);
+  };
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteCategory/${id}`);
     window.location.reload(true);
   };
-   
 
   return (
     <div className="container2">

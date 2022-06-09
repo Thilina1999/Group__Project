@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -7,36 +7,37 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./productView.css";
 
 
 const Productview = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/getProducts")
-      .then((response) => {
-        setProducts(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-const OnDelete = (id)=>{
+   const [products, setProducts] = useState([]);
+   useEffect(() => {
+     axios
+       .get("http://localhost:8080/getProducts")
+       .then((response) => {
+         setProducts(response.data);
+         console.log(response.data);
+       })
+       .catch((error) => {
+         console.log(error);
+       });
+   }, []);
+  const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteProduct/${id}`);
     window.location.reload(true);
-}
+  };
 
   return (
     <div className="head">
       <div className="header_view">
         <h2 className="font_view">Product</h2>
         <Link to="/addProduct">
-          <IconButton className="icon_button" size="large" >
-            <AiOutlinePlusCircle className="view_icon" />
+          <IconButton className="icon_button" size="large">
+            <AddCircleIcon className="view_icon" />
           </IconButton>
         </Link>
       </div>
