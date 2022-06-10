@@ -7,21 +7,33 @@ import { Link, Navigate } from 'react-router-dom';
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let [token, setToken] = useState("");
   const [redirect, setRedirect] = useState(false);
 
   const Signin = async (e) => {
     e.preventDefault();
-    const {data}= await axios.post(`http://localhost:8080/api/login`,{
+    await axios.post(`http://localhost:8080/api/login`,{
       email,
       password
     },{withCredentials: true})
     .then((res)=>{
-      axios.defaults.headers.common['Authorization'] =`Bearer ${data['token']}`
-      console.log(res);
-      setRedirect(true);
+      //axios.defaults.headers.common['Authorization'] =`Bearer ${data['token']}`
+      //console.log(res.data.data)
+      setToken=res.data.data
+      setRedirect(false);
     })
     .catch((err) => {
       console.log(err);
+    })
+
+    axios.post(`http://localhost:8080/api/tt`, {
+      token: setToken,
+    }, {withCredentials: true})
+    .then((res)=>{
+      console.log(res.data.token)
+    })
+    .catch((err) => {
+      console.log(err)
     })
   }
 
