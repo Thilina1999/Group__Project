@@ -53,6 +53,7 @@ const UpdateProduct = () => {
     price,
     quantity,
   };
+  
   axios.put(`http://localhost:8080/updateProduct/${params.id}`,{
     producttitle: addproduct.producttitle,
     productsubtitle: addproduct.productsubtitle,
