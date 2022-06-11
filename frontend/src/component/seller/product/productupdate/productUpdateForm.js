@@ -22,6 +22,7 @@ const ProductUpdateForm = () => {
  const [categories, setCategories] = useState([]);
 
 
+
 useEffect(() => {
   
       axios
@@ -55,7 +56,7 @@ const UpdateProduct = () => {
     price,
     quantity,
   };
-  
+  console.log(addproduct.producttitle);
   axios.put(`http://localhost:8080/updateProduct/${params.id}`,{
     producttitle: addproduct.producttitle,
     productsubtitle: addproduct.productsubtitle,

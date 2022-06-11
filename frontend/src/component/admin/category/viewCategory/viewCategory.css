@@ -7,7 +7,7 @@
 }
 .container{
     padding: 150px;
-    padding-top: 150px;
+    padding-top: 70px;
     position: relative;
     
 
@@ -21,7 +21,11 @@
     color:rgb(230, 0, 0);
     text-align: left;
     text-shadow: rgba(0, 0, 0, 0.521);
-    font-size:30px;
+    font-size:40px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    display: inline-block;
+    margin-right: 10px;
+    display: fixed;
 }
 table{
     width: 100%;
@@ -52,14 +56,19 @@ td{
 .td1{
     text-align:left;
     padding-left: 30px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
 }
 .td2{
     width: 100px !important;
 }
 .plusicon{
-    margin-left: 1000px;
+    margin-left: 10px !important;
     font-size: 35px !important;
+    display: inline-block;
+    
+    
 }
+
 
 .icon {
     color: rgb(247, 73, 73);
@@ -70,7 +79,7 @@ td{
     transform: translateY(-2px) scale(1.005) translateZ(0);
 }
 .icon1 {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
 
 }
 

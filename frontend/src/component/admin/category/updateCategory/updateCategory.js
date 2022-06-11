@@ -1,28 +1,36 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useNavigate, Link } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
 import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
 import "./updateCategory.css";
 
 const UpdateCategory = () => {
-  const [id,setID] = useState("");
+   const params = useParams();
+ 
   const [categoryname, setCategory] = useState("");
 
-  const data1 = Number(localStorage.getItem("CategoryId"));
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    setID(data1);
-    setCategory(localStorage.getItem("CategoriesName"));
+    axios
+      .get(`http://localhost:8080/getCategoryByid/${params.id}`)
+      .then((response) => {
+        setCategories(response.data);
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
-  const UpdateCategory = () => {
-    const updateData = {
-      categoryname,
-    };
 
+  const UpdateCategory = () => {
     axios
-      .put(`http://localhost:8080/updateCategory/${id}`, updateData)
+      .put(`http://localhost:8080/updateCategory/${params.id}`, {
+        categoryname,
+      })
       .then((res) => {
         console.log(res);
       })
@@ -41,9 +49,10 @@ const UpdateCategory = () => {
   return (
     <div className="container5">
       <img src={Image2} className="imag2" />
-      <div className="container">
+      <div className="container-update">
         <Form className="form1">
           <h1>Category Update</h1>
+          <hr></hr>
           <Form.Group
             className="mb-3"
             controlId="ControlInput3"
@@ -53,15 +62,18 @@ const UpdateCategory = () => {
 
             <Form.Control
               type="text"
-              
-              placeholder={categoryname}
+              placeholder={categories.categoryname}
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
             />
           </Form.Group>
           <Link to="/viewCategory">
-            <Button variant="outline-dark" type="submit" className="button">
+            <Button
+              variant="outline-dark"
+              type="submit"
+              className="button-update"
+            >
               cancel
             </Button>
           </Link>

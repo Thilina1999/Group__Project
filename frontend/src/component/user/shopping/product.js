@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-} from "react-icons/ai";
+
 import StarIcon from "@mui/icons-material/Star";
 import { Button } from "react-bootstrap";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
@@ -27,70 +24,55 @@ const Products = () => {
         console.log(err);
       });
   },[]);
-  const Addcart=()=>{
-    
-  }
+  
  const totalStars = 5;
  const activeStars = 3;
  const itemInCart = IsInCart(product, cartItem);
   return (
-    <div className="">
-      <div className="product-detail-container">
-        <div>
-          <div className="image-container">
-            <img src={product.imageurl} className="product-detail-image" />
+    <div className="product-detail-container">
+      <div>
+        <div className="image-container">
+          <img src={product.imageurl} className="product-detail-image" />
+        </div>
+      </div>
+
+      <div className="product-detail-desc">
+        <h1>{product.producttitle}</h1>
+        <h4>{product.productsubtitle}</h4>
+        <div className="reviews">
+          <div>
+            {[...new Array(totalStars)].map((arr, index) => {
+              return index < activeStars ? (
+                <StarIcon className="start_icon" />
+              ) : (
+                <StarBorderIcon className="start_icon" />
+              );
+            })}
           </div>
         </div>
+        <h4>Details: </h4>
+        <p>{product.description}</p>
+        <p className="price">Rs.{product.productprice}.00</p>
 
-        <div className="product-detail-desc">
-          <h1>{product.producttitle}</h1>
-          <h4>{product.productsubtitle}</h4>
-          <div className="reviews">
-            <div>
-              {[...new Array(totalStars)].map((arr, index) => {
-                return index < activeStars ? (
-                  <StarIcon className="start_icon" />
-                ) : (
-                  <StarBorderIcon className="start_icon" />
-                );
-              })}
-            </div>
-          </div>
-          <h4>Details: </h4>
-          <p>{product.description}</p>
-          <p className="price">${product.productprice}</p>
-          <div className="quantity">
-            <h3>Quantity:</h3>
-            <p className="quantity-desc">
-              <span className="minus">
-                <AiOutlineMinus />
-              </span>
-              <span className="num">{product.productquantity}</span>
-              <span className="plus">
-                <AiOutlinePlus />
-              </span>
-            </p>
-          </div>
-          <div className="buttons">
-            {!itemInCart && (
-              <Button
-                type="button"
-                className="add-to-cart"
-                onClick={() => addProduct(product)}
-              >
-                Add to Cart
-              </Button>
-            )}
-            {itemInCart && (
-              <button
-                type="button"
-                className="add-to-cart"
-                onClick={() => inCrease(product)}
-              >
-                Add More
-              </button>
-            )}
-          </div>
+        <div className="buttons">
+          {!itemInCart && (
+            <Button
+              type="button"
+              className="add-to-cart"
+              onClick={() => addProduct(product)}
+            >
+              Add to Cart
+            </Button>
+          )}
+          {itemInCart && (
+            <button
+              type="button"
+              className="add-to-cart"
+              onClick={() => inCrease(product)}
+            >
+              Add More
+            </button>
+          )}
         </div>
       </div>
     </div>

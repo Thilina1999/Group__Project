@@ -5,18 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import CategoryContextProvider from './component/context/category/category-context';
+
 import CartContextProvide from './component/context/cart/cart-context';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-      <CategoryContextProvider>
+     
         <CartContextProvide>
           <App />
         </CartContextProvide>
-      </CategoryContextProvider>
+    
   </React.StrictMode>,
   document.getElementById("root")
 );

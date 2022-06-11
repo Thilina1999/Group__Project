@@ -90,8 +90,8 @@ const [categories, setCategories] = useState([]);
     <div className="container7_add">
       <img src={Image4} className="image_add" />
 
-      <div className="container">
-        <Form className="form_add">
+      <div className="container-add-product">
+        <Form className="form_add-product">
           <Form.Group controlId="ControlInput1" name="id1">
             <h2 className="h2">Add Product</h2>
             <hr></hr>
@@ -189,7 +189,10 @@ const [categories, setCategories] = useState([]);
           <br />
           <br />
           <Link to="/productview">
-            <Button variant="outline-dark" className="button_add btn btn-light">
+            <Button
+              variant="outline-dark"
+              className="button_cancel_add btn btn-light"
+            >
               Cancel
             </Button>
           </Link>

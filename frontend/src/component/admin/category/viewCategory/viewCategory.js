@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, {  useEffect, useState } from "react";
 
 import axios from "axios";
 
@@ -7,30 +7,34 @@ import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png";
 import IconButton from "@mui/material/IconButton";
-import { CategoryContext } from "../../../context/category/category-context";
+
 
 const ViewCategory = () => {
-  
-  useEffect(() => {
+  const [categories, setCategories] = useState([]);
+    useEffect(() => {
+      axios
+        .get(`http://localhost:8080/getCategory`)
+        .then((response) => {
+          setCategories(response.data);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
+ 
 
-  },[]);
-  const { categories } = useContext(CategoryContext);
-  console.log(categories);
-  const SetData = (data1, data2) => {
-    localStorage.setItem("CategoryId", data1);
-    localStorage.setItem("CategoriesName", data2);
-  };
+ 
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteCategory/${id}`);
     window.location.reload(true);
-  };
+  }
 
   return (
     <div className="container2">
       <img src={Photo1} className="image1" />
       <div className="container">
-        <span className="font">Category</span>
-        <span>
+        <span className="font">Category
           <Link to="/addcategory">
             <IconButton className="plusicon">
               <AiOutlinePlusCircle className="icon1" />
@@ -47,13 +51,11 @@ const ViewCategory = () => {
                   <tr className="tablebody">
                     <td className="td1">{category.categoryname}</td>
                     <td className="td2">
-                      <Link to="/editCategory">
-                        <IconButton
-                          variant="outline-dark"
-                          onClick={() =>
-                            SetData(category.id, category.categoryname)
-                          }
-                        >
+                      <Link
+                        to={`/editCategory/${category.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <IconButton variant="outline-dark">
                           <AiFillEdit className="icon" />
                         </IconButton>
                       </Link>
@@ -75,6 +77,6 @@ const ViewCategory = () => {
       </div>
     </div>
   );
-};
+ };
 
 export default ViewCategory;

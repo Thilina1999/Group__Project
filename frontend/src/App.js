@@ -30,6 +30,7 @@ import AddProfileDetails from "./component/seller/merchant/addProfileDetails/add
 import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 import Footer1 from './component/footerNew/footerNew';
+import Cart from './component/user/shoppingcart/cart';
 
 
 function App() {
@@ -70,7 +71,7 @@ function App() {
           <Route path="/addcategory" element={<AddCategory />} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory />} exact></Route>
           <Route
-            path="/editCategory"
+            path="/editCategory/:id"
             element={<UpdateCategory />}
             exact
           ></Route>
@@ -84,6 +85,7 @@ function App() {
             exact
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
+          <Route path="/shoppingCart" element={<Cart/>} exact></Route>
 
         </Routes>
         {/* <Footer /> */}
