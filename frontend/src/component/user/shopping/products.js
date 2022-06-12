@@ -38,8 +38,9 @@ const Products = () => {
 
   return (
     <div className="wrapper">
-      {products.map((product) => {
+      {products.map((product) => { 
         return (
+          
           <React.Fragment key={product.id}>
             <div>
               <Link

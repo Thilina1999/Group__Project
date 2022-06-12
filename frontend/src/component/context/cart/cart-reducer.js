@@ -1,12 +1,16 @@
 export const sumItem = (cartItem) => {
   
     return {
-      itemCount: cartItem.reduce((total, product) => total + product.quantity, 0),
-      
+      itemCount: cartItem.reduce(
+        (total, product) => total + product.quantity,
+        0
+      ),
+
       total: cartItem.reduce(
-        (total, product) => total + (product.quantity * product.price),0
-      )
-    }
+        (total, product) => total + product.quantity * product.productprice,
+        0
+      ),
+    };
     
 }
 
@@ -27,7 +31,7 @@ const cartReducer = (state,action) => {
         };
       case "INCREASE":
         const increaseIndex = state.cartItem.findIndex(
-          (item) => item.id === action.payload.id
+          item => item.id === action.payload.id
         );
         
          const q = state.cartItem[increaseIndex];
