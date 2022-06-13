@@ -10,7 +10,7 @@ const { cartItem , itemCount ,total} =useContext(CartContext)
   return (
     <div>
       <>
-        <h1 className="Cart-header">Cart</h1>
+        <h1 className="Cart-header">Shopping cart</h1>
         {cartItem.length === 0 ? (
           <div className="Cart-empty">Your cart empty </div>
         ) : (
