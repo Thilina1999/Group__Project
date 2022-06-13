@@ -4,24 +4,17 @@ import "./viewRole.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
-// import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png"
-
-// import React from 'react'
-
-// export const ViewRole = () => {
-//   return (
-//     <div>viewRole</div>
-//   )
-// }
+// import {Alert,Button} from "react-bootstrap"
 
 const ViewRole = () => {
-    const [role, setRoles] = useState([]);
+    const [role, setRole] = useState([]);
+    // const [show,setShow] = useState(true);
     const GetRole = () => {
         useEffect(() => {
           axios
-            .get(`http://localhost:8080/getCategory`)
+            .get(`http://localhost:8080/getRole`)
             .then((res) => {
-              setRoles(res.data);
+              setRole(res.data);
             })
             .catch((err) => {
               console.log(err);
@@ -30,20 +23,31 @@ const ViewRole = () => {
       };
       GetRole();
       const SetData = (data1, data2) => {
-        
-
         localStorage.setItem("RoleId", data1);
         localStorage.setItem("RoleName", data2);
       };
   const OnDelete = (id) => {
-    axios.delete(`http://localhost:8080/deleteCategory/${id}`);
+    axios.delete(`http://localhost:8080/deleteRole/${id}`);
     window.location.reload(true);
+    // if(show){
+    //     return(
+    //         <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+    //         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+    //         <p>
+    //           Change this and that and try again. Duis mollis, est non commodo
+    //           luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+    //           Cras mattis consectetur purus sit amet fermentum.
+    //         </p>
+    //       </Alert> 
+    //     );
+    // }
+    // return <Button onClick={() => setShow(true)}>Show Alert</Button>;
   };
 
     return ( 
-        <div className="rectangle">
+        <div className="view-rectangle"><br/>
             <div className="container1">
-                <h1 className="roleTopic">Role</h1>
+                <h1 className="roleTopic"><b>Role</b></h1>
                 <span>
                     <Link to="/addRole">
                         <IconButton className="plusicon">
@@ -59,7 +63,7 @@ const ViewRole = () => {
                         <React.Fragment key={role.id}>
                             <tbody className="tablebody">
                             <tr className="tablebody">
-                                <td className="td0">{role.id}</td>
+                                {/* <td className="td0">{role.id}</td> */}
                                 <td className="td1">{role.rolename}</td>
                                 <td className="td2">
                                     <Link to="/editRole">
@@ -77,9 +81,18 @@ const ViewRole = () => {
                                     <IconButton
                                         variant="outline-dark"
                                         onClick={() => OnDelete(role.id)}
+                                        
                                     >
                                     <AiFillDelete className="icon" />
                                     </IconButton>
+                                    <script>
+                                         alert("sucess");
+                                         </script>
+                                        {/* <script>
+                                            function OnDelete() {
+                                                alert("Your file is being uploaded!")
+                                            }
+                                        </script> */}
                                 </td>
                             </tr>
                             </tbody>

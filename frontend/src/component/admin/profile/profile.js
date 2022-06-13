@@ -1,6 +1,5 @@
 import React from "react";
 import { Button,Form,Row,Col } from "react-bootstrap";
-//import {Navbar,Nav,Container} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./profile.css";
 
@@ -45,21 +44,18 @@ function Profile(){
           </Form.Group >
 
           <Form.Group className="BtnGrp">
+          <Link to="/dashboard">
             <Button className="CancelBtn" variant="primary" type="cancel">
               Cancel
             </Button>
-            
+            </Link>
+
+            <Link to="/dashboard">
             <Button className="Savebtn" variant="primary" type="submit">
               Submit
             </Button>
-    </Form.Group>
-         {/* <Link to="/dashboard">
-            <Button variant="outline-dark" type="submit" className="button">
-              cancel
-            </Button>
-  </Link>*/}
-          
-          
+            </Link>
+          </Form.Group>  
         </Form>
       </div>
     )

@@ -1,0 +1,64 @@
+.add-rectangle {
+    width: 663px;
+    height: 100%;
+    margin: auto;
+    margin-top: auto;
+    border: 2px solid #ffffff !important;
+  }
+.addroletopic{
+    font-size: 30px;
+    text-align: center;
+    color: black;
+    margin-top: 5px;
+    margin-right: 15px;
+}
+.btnGrp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CancelBtn {
+    padding: 10px 60px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #75c6dc;
+    border-radius: 20px;
+    background-color: white;
+    color: #75c6dc;
+    display: inline-block;
+    cursor: pointer;
+    margin: 40px;
+}
+.CancelBtn:hover {
+    background-color: #aee7f5;
+  }
+  .Savebtn {
+    padding: 10px 60px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #75c6dc;
+    border-radius: 20px;
+    background-color: #75c6dc;
+    color: White;
+    display: inline-block;
+    cursor: pointer;
+    margin: 40px;
+  }
+  .Savebtn:hover {
+    background-color: #aee7f5;
+  }
+
+
+
+.image3{
+    position: absolute;
+   left: 200px;
+}
+.form-control {
+  width: 100%;
+  height: 450px;
+  box-sizing: border-box;
+  border-radius: 50px !important;
+}
+
+

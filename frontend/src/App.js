@@ -3,9 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
-import NavBar from './component/navBar/navBar';
+// import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
-import Home from './component/home';
+// import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
 import Buyer from './component/BuyerProtection/Buyer';
@@ -22,18 +22,26 @@ import UpdateCategory from './component/admin/category/updateCategory/updateCate
 import Sidebar from './component/sidebar/sidebar'
 import ProductView from './component/seller/product/productView'
 
-import Dashboard from './component/admin/dashboard/dashboard'
+import Dashboard from './component/admin/dashboard/dashboard';
 import Profile from './component/admin/profile/profile';
 import ViewRole from './component/admin/role/viewRole/viewRole';
+import AddRole from './component/admin/role/addRole/addRole';
+import EditRole from './component/admin/role/editRole/editRole';
+import ViewUser from './component/admin/user/viewUser/veiwUser';
+import EditUser from './component/admin/user/editUser/editUser'
+import AdminNavbar from './component/admin/adminNavbar/adminNavbar';
+import AdminSidebar from './component/admin/adminSidebar/adminSidebar'
 
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <NavBar />
-        <Home/> */}
-        <Sidebar/>
+         {/* <NavBar /> */}
+        {/*<Home/> */}
+        {/* <Sidebar/> */}
+          <AdminNavbar/>  
+         <AdminSidebar>
         <Routes>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
@@ -62,12 +70,20 @@ function App() {
           ></Route>
           <Route path="/productView" element={<ProductView />} exact></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
-
+          
+          
           <Route path="/dashboard" element={<Dashboard />} exact></Route>
           <Route path="/profile" element={<Profile />} exact></Route>
           <Route path="/viewrole" element={<ViewRole />} exact></Route>
+          <Route path="/addrole" element={<AddRole />} exact></Route>
+          <Route path="/editrole" element={<EditRole />} exact></Route>
+          <Route path="/viewuser" element={<ViewUser/>} exact></Route>
+          <Route path="/edituser" element={<EditUser/>} exact></Route>
+          <Route path="/adminnavbar" element={<AdminNavbar/>} exact></Route>
+          {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
+        </AdminSidebar>
       </BrowserRouter>
     </div>
   );
