@@ -33,21 +33,46 @@ const cartReducer = (state,action) => {
         const increaseIndex = state.cartItem.findIndex(
           item => item.id === action.payload.id
         );
-        
-         const q = state.cartItem[increaseIndex];
-        console.log(q.quantity);
 
-        q.quantity++ ;
+        const q = state.cartItem[increaseIndex];
+        console.log(q.quantity);
+        if (q.quantity >= 1) {
+          q.quantity++;
+        }
         console.log(q.quantity);
         console.log(state.cartItem[increaseIndex]);
-      
-       
-      
+
         return {
           ...state,
           cartItem: [...state.cartItem],
           ...sumItem(state.cartItem),
         };
+      case "DECREASE":
+        const decreaseIndex = state.cartItem.findIndex(
+          item => item.id === action.payload.id
+        );
+        const product = state.cartItem[decreaseIndex];
+        if (product.quantity > 1) {
+          product.quantity--;
+        }
+        return {
+          ...state,
+          cartItem: [...state.cartItem],
+          ...sumItem(state.cartItem),
+        };
+      case "REMOVE_PRODUCT":
+        const newCartItem = state.cartItem.filter(item => item.id !== action.payload.id)
+        return {
+          ...state,
+          cartItem: [...newCartItem],
+          ...sumItem(newCartItem),
+        }
+        case "CLEAR":
+          return{ 
+          cartItem: [], 
+          itemCount:0,
+           total:0,
+          }
       default:
         return state;
     } 

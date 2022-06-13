@@ -41,7 +41,7 @@ const Products = () => {
         <h4>{product.productsubtitle}</h4>
         <div className="reviews">
           <div>
-            {[...new Array(totalStars)].map(( arr,index) => {
+            {[...new Array(totalStars)].map((arr, index) => {
               return index < activeStars ? (
                 <StarIcon className="start_icon" />
               ) : (
@@ -65,13 +65,13 @@ const Products = () => {
             </Button>
           )}
           {itemInCart && (
-            <button
+            <Button
               type="button"
               className="add-to-cart"
               onClick={() => inCrease(product)}
             >
-              Add More
-            </button>
+              Already in Cart
+            </Button>
           )}
         </div>
       </div>

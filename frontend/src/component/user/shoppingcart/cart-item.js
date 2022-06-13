@@ -13,8 +13,9 @@ const CartItem = (props) => {
     productprice,
     quantity,
     id,
-    increase,
-    decrease,
+    inCrease,
+    deCrease,
+    removeProduct,
   } = props;
   const product = {
     producttitle,
@@ -41,20 +42,27 @@ const CartItem = (props) => {
 
           <p className="p-cart-q">{`Quantity: ${quantity}`}</p>
           <IconButton
-            onClick={() => increase(product)}
+            onClick={() => inCrease(product)}
             edge="end"
             className="icon-button-cart"
           >
             <AddIcon className="btn-increase" />
           </IconButton>
           {quantity > 1 && (
-            <IconButton className="icon-button-cart">
+            <IconButton
+              className="icon-button-cart"
+              onClick={() => deCrease(product)}
+              edge="end"
+            >
               <RemoveCircleIcon className="btn-decrease" />
             </IconButton>
           )}
 
           {quantity === 1 && (
-            <IconButton className="icon-button-cart">
+            <IconButton
+              className="icon-button-cart"
+              onClick={() => removeProduct(product)}
+            >
               <DeleteIcon className="btn-trash" />
             </IconButton>
           )}

@@ -5,8 +5,9 @@ import './cart.css'
 import CartHeader from './cart-header'
 
 const Cart = () => {
-const { cartItem , itemCount ,total} =useContext(CartContext)
-
+const { cartItem, itemCount, total, inCrease, deCrease, removeProduct,clearCart } =
+  useContext(CartContext);
+const funcs = { inCrease, deCrease, removeProduct }; 
   return (
     <div>
       <>
@@ -17,11 +18,11 @@ const { cartItem , itemCount ,total} =useContext(CartContext)
           <>
             <div>
               <div>
-                <CartHeader itemCount={itemCount} total={total} />
+                <CartHeader itemCount={itemCount} total={total} clearCart={clearCart} />
               </div>
               <div>
                 {cartItem.map((item) => (
-                  <CartItem {...item} key={item.id} />
+                  <CartItem {...item} key={item.id} {...funcs} />
                 ))}
               </div>
             </div>

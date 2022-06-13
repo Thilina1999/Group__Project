@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const CartHeader = ({ itemCount, total }) => {
+const CartHeader = ({ itemCount, total, clearCart }) => {
   return (
     <div className="">
       <div className="">
@@ -10,7 +10,7 @@ const CartHeader = ({ itemCount, total }) => {
       </div>
       <div className="checkout">
         <Button className="button is-black">CHECKOUT</Button>
-        <Button className="button is-white" >
+        <Button className="button is-white" onClick={() => clearCart()}>
           CLEAR
         </Button>
       </div>
