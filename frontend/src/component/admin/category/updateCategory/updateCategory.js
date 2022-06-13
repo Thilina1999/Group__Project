@@ -6,7 +6,7 @@ import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpr
 import "./updateCategory.css";
 
 const UpdateCategory = () => {
-  const [id, setID] = useState("");
+  const [id,setID] = useState("");
   const [categoryname, setCategory] = useState("");
 
   const data1 = Number(localStorage.getItem("CategoryId"));
@@ -16,14 +16,13 @@ const UpdateCategory = () => {
     setCategory(localStorage.getItem("CategoriesName"));
   }, []);
 
-  const UpdateApi = () => {
+  const UpdateCategory = () => {
     const updateData = {
-      id,
       categoryname,
     };
 
     axios
-      .put(`http://localhost:8080/editCategory/{id}`, updateData)
+      .put(`http://localhost:8080/updateCategory/${id}`, updateData)
       .then((res) => {
         console.log(res);
       })
@@ -75,7 +74,7 @@ const UpdateCategory = () => {
               variant="outline-dark"
               type="submit"
               className="button1"
-              onClick={UpdateApi}
+              onClick={UpdateCategory}
             >
               Submit
             </Button>

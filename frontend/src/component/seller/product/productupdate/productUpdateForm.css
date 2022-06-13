@@ -1,53 +1,56 @@
-h2{
+h2 {
     text-align: left;
 }
-.container7_add{
-     width: 100%;
+
+.container7_update {
+    width: 100%;
     height: 1800px;
     background-color: rgba(212, 242, 255, 1);
 }
-.image4_add{
-     position: absolute;
+
+.image4_update {
+    position: absolute;
     left: 250px;
 }
 
 
-.form4_add {
-      background-color: rgba(255, 255, 255, 0.322);
+.form4_update {
+    background-color: rgba(255, 255, 255, 0.322);
     padding: 80px;
-    border-radius: 15px!important;
+    border-radius: 25px;
     display: inline-block;
     text-align: left;
-    
+
     width: 1054px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.507), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     height: 150%;
     margin: 100px;
 }
 
-.form-control1_add {
+.form-control1_update {
     width: 100%;
     height: 35px;
     box-sizing: border-box;
     border-radius: 3px;
 }
-.text1_add{
+
+.text1_update {
     width: 100%;
     box-sizing: border-box;
     border-radius: 15px !important;
 }
-    
-.button3_add{
+
+.button3_update {
     width: 200px;
     border-radius: 50px !important;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.151), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.151), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 80px;
-    
+
 }
-.button4_add{
-      width: 200px;
+
+.button4_update {
+    width: 200px;
     border-radius: 50px !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.144), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 300px;
 }
-

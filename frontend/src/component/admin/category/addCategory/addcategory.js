@@ -7,20 +7,16 @@ import { useNavigate, Link } from "react-router-dom";
 import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
 
 const AddCategory = () => {
-  let [id, setId] = useState("");
+ 
   let [categoryname, setCatname] = useState("");
 
-  const SendData = (e) => {
+const SendData = (e) => {
     e.preventDefault();
 
     var addCategerytData = {
-      id,
+      
       categoryname,
     };
-
-   
-    
-
     axios
       .post(`http://localhost:8080/createCategory`, addCategerytData)
       .then((res) => {
@@ -40,7 +36,7 @@ const AddCategory = () => {
     const navigate = useNavigate();
     function DelayRedirect(e, path) {
       e.preventDefault();
-      setTimeout(() => navigate(path), 300);
+      setTimeout(() => navigate(path), 500);
     }
 
   return (
@@ -50,17 +46,7 @@ const AddCategory = () => {
         <Form className="form">
           <Form.Group className="mb-3" controlId="ControlInput1" name="id">
             <h2 className="h2">Add Category</h2>
-            <hr></hr>
-            <br />
-            <Form.Label className="label">ID</Form.Label>
-            <Form.Control
-              className="form-control"
-              type="number"
-              placeholder="Enter the Category Id"
-              onChange={(e) => {
-                setId(e.target.valueAsNumber);
-              }}
-            />
+            <hr></hr>  
             <br />
           </Form.Group>
           <Form.Group className="mb-3" controlId="ControlInput2" name="catname">

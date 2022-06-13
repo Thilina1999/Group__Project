@@ -1,7 +1,7 @@
 import React from "react";
 import { FormControl,Container,Nav,Navbar, Form} from "react-bootstrap";
 import "./adminNavbar.css"
-import Logo from '../../assets/miniBell logo_ccexpress 1.png';
+import Logo from '../../assets/miniBelllogo.png';
 import Profile from '../../assets/profile.png';
 import { Link } from "react-router-dom";
 

@@ -4,11 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 // import NavBar from './component/navBar/navBar';
+import Announcement from './component/Announcement/announcement';
+import NavBar1 from './component/navbarNew/navbarNew';
+// import Footer1 from './component/footerNew/Footer';
+import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
-// import Home from './component/home';
+import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
 import Footer from './component/footer/footer';
-import Buyer from './component/BuyerProtection/Buyer';
+import Company from './component/company/company';
 
 import CheckMail from './component/form/forgotPass/checkMail';
 import ResetPass from './component/form/forgotPass/resetPass';
@@ -19,8 +23,6 @@ import ProdAddForm from './component/seller/product/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
-import Sidebar from './component/sidebar/sidebar'
-import ProductView from './component/seller/product/productView'
 
 import Dashboard from './component/admin/dashboard/dashboard';
 import Profile from './component/admin/profile/profile';
@@ -31,6 +33,13 @@ import ViewUser from './component/admin/user/viewUser/veiwUser';
 import EditUser from './component/admin/user/editUser/editUser'
 import AdminNavbar from './component/admin/adminNavbar/adminNavbar';
 import AdminSidebar from './component/admin/adminSidebar/adminSidebar'
+import Sidebar from './component/sidebar/sidebar'
+import Productview from './component/seller/product/productView/productView';
+import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
+import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
+import Profileview from "./component/seller/merchant/profileView/profileView";
+import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
+import Footer1 from './component/footerNew/footerNew';
 
 
 function App() {
@@ -42,16 +51,28 @@ function App() {
         {/* <Sidebar/> */}
           <AdminNavbar/>  
          <AdminSidebar>
+        {/* <Announcement/> */}
+         {/* <NavBar1/> */}
+         <br/>
+         <br/>
+         <br/>
+        {/* <NavBar /> */}
+
+        {/* <Sidebar /> */}
         <Routes>
+          <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
-          <Route path="/Buyer" element={<Buyer />} ></Route>
+          <Route path="/company" element={<Company />} ></Route>
           {/* <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route> */}
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          
+
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
             path="/signin/checkmail/resetpass"
@@ -68,7 +89,15 @@ function App() {
             element={<UpdateCategory />}
             exact
           ></Route>
-          <Route path="/productView" element={<ProductView />} exact></Route>
+          <Route path="/productview" element={<Productview />} exact></Route>
+          <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
+          <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
+          <Route path="/viewprofile" element={<Profileview/>} exact></Route>
+          <Route
+            path="/editProduct/:id"
+            element={<ProductUpdateForm />}
+            exact
+          ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
           
           
@@ -84,6 +113,11 @@ function App() {
         </Routes>
         {/* <Footer /> */}
         </AdminSidebar>
+
+       
+        {/* <Footer /> */}
+        <br/>
+        {/* <Footer1/> */}
       </BrowserRouter>
     </div>
   );

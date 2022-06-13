@@ -4,25 +4,25 @@ import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 
-
-
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const signin = async (e) => {
+  const Signin = async (e) => {
     e.preventDefault();
-    await axios.post(`api`,{
+    const {data}= await axios.post(`http://localhost:8080/api/login`,{
       email,
       password
-    })
+    },{withCredentials: true})
     .then((res)=>{
+      axios.defaults.headers.common['Authorization'] =`Bearer ${data['token']}`
+      console.log(res);
+      setRedirect(true);
     })
     .catch((err) => {
       console.log(err);
     })
-    setRedirect(true);
   }
 
   if(redirect) {
@@ -43,7 +43,7 @@ export default function Signin() {
             </ul>
           </div>
           <div ng-app ng-init="checked = false">
-            <form className="form-signin" action method="post" name="form" onSubmit={signin}>
+            <form className="form-signin" action method="post" name="form">
               <input className="form-styling" type="text" name="username" placeholder="Email" required onChange={(e)=>{
                 setEmail(e.target.value);
               }}/>
@@ -53,7 +53,7 @@ export default function Signin() {
               }}/>
 
               <div className="btn-animate">
-                <a className="btn-signin" href type="button">Continue</a>
+                <a className="btn-signin" href type="button" onClick={Signin}>Continue</a>
               </div>
             </form>
           </div>
