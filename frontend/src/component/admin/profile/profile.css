@@ -1,16 +1,16 @@
-.form-rectangle {
-    width: 663px;
+.admin-profile-form-rectangle {
+    width: 550px;
     height: 800px;
     margin: auto;
-    margin-top: auto;
+    margin-top: -220px;
     border: 2px solid #ffffff !important;
   }
-  .topic {
+  .admin-profile-form-topic {
     font-size: 23px;
     text-align: center;
     color: black;
   }
-  .profile__img{
+  .admin-profile-form-img{
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -29,13 +29,12 @@
     padding: 0 1rem;
     margin: 20px;
   }
-  .btnGrp{
+  .admin-profilr-form-btnGrp{
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .CancelBtn {
-    
+  .admin-profile-form-cancelBtn {
     padding: 10px 60px;
     text-align: center;
     font-size: 16px;
@@ -47,10 +46,10 @@
     cursor: pointer;
     margin: 40px;
   }
-  .CancelBtn:hover {
+  .admin-profile-form-cancelBtn:hover {
     background-color: #aee7f5;
   }
-  .Savebtn {
+  .admin-profile-form-savebtn {
     padding: 10px 60px;
     text-align: center;
     font-size: 16px;
@@ -62,6 +61,6 @@
     cursor: pointer;
     margin: 40px;
   }
-  .Savebtn:hover {
+  .admin-profile-form-savebtn:hover {
     background-color: #aee7f5;
   }

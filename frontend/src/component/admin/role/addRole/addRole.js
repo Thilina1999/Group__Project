@@ -47,12 +47,12 @@ const AddRole = () => {
     
 
   return (
-    <div className="add-rectangle"><br/>
+    <div className="addrole-rectangle"><br/>
         <Form >
-          <h1 className="addroletopic"><b>Add New Role</b></h1><br/>
+          <h1 className="addrole-topic"><b>Add New Role</b></h1><br/>
           <Form.Group className="mb-4" controlId="ControlInput2" name="rolename">
             <Form.Control
-              className="form-control"
+              className="addrole-formcontrol"
               type="text"
               placeholder="Enter the Role Name"
               onChange={(e) => {
@@ -61,9 +61,9 @@ const AddRole = () => {
             />
           </Form.Group>
           
-          <div className="BtnGrp">
+          <div className="addrole-btnGrp">
           <Link to="/viewRole">
-            <Button className="CancelBtn" variant="primary" type="cancel">
+            <Button className="addrole-cancelBtn" variant="primary" type="cancel">
               Cancel
             </Button>
           </Link>
@@ -72,7 +72,7 @@ const AddRole = () => {
             onClick={(e) => DelayRedirect(e, "/viewRole")}
           >
             <Button
-              className="Savebtn" variant="primary" type="submit"
+              className="addrole-savebtn" variant="primary" type="submit"
               onClick={SendData}
             >
               Create

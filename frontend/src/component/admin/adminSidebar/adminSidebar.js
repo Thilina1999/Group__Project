@@ -50,16 +50,16 @@ const Sidebar=({children})=>{
     return(
         <div className="container">
             <div style={{width:isOpen ? "200px" : "50px"}} className="sidebar">
-                <div className="top_selection">
-                    <h1 style={{display:isOpen ? "block" : "none"}} className="logo">Logo</h1>
-                    <div style={{marginLeft:isOpen ? "50px" : "0px"}} className="bar">
+                <div className="admin-sidebar-top_selection">
+                    {/* <h1 style={{display:isOpen ? "block" : "none"}} className="admin-sidebar-logo">Logo</h1> */}
+                    <div style={{marginLeft:isOpen ? "140px" : "0px"}} className="bar">
                             <FaBars onClick={toggle}/>
                     </div>
                 </div>
                 {
                     menuItem.map((item,index)=>(
                         <NavLink to={item.path} key={index} className="link" activeclassName="active">
-                            <div className="icon">{item.icon}</div>
+                            <div className="adminicon">{item.icon}</div>
                             <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
                         </NavLink>
                     ))

@@ -45,27 +45,27 @@ const ViewRole = () => {
   };
 
     return ( 
-        <div className="view-rectangle"><br/>
+        <div className="viewrole-rectangle"><br/>
             <div className="container1">
-                <h1 className="roleTopic"><b>Role</b></h1>
+                <h1 className="viewrole-topic"><b>Role</b></h1>
                 <span>
                     <Link to="/addRole">
-                        <IconButton className="plusicon">
-                        <AiOutlinePlusCircle className="icon1" />
+                        <IconButton className="viewrole-plusicon">
+                        <AiOutlinePlusCircle className="viewrole-icon" />
                         </IconButton>
                     </Link>
                 </span>
             </div>
-            <div className="container">
+            <div className="viewrole-container">
                 <table>
                     {role.map((role) => {
                     return (
                         <React.Fragment key={role.id}>
-                            <tbody className="tablebody">
+                            <tbody className="viewrole-table">
                             <tr className="tablebody">
                                 {/* <td className="td0">{role.id}</td> */}
-                                <td className="td1">{role.rolename}</td>
-                                <td className="td2">
+                                <td className="viewrole-td1">{role.rolename}</td>
+                                <td className="viewrole-td2">
                                     <Link to="/editRole">
                                     <IconButton
                                         variant="outline-dark"
@@ -73,17 +73,17 @@ const ViewRole = () => {
                                             SetData(role.id, role.rolename)
                                          }
                                     >
-                                    <AiFillEdit className="icon" />
+                                    <AiFillEdit className="viewrole-icon" />
                                     </IconButton>
                                     </Link>
                                 </td>
-                                <td className="td2">
+                                <td className="viewrole-td2">
                                     <IconButton
                                         variant="outline-dark"
                                         onClick={() => OnDelete(role.id)}
                                         
                                     >
-                                    <AiFillDelete className="icon" />
+                                    <AiFillDelete className="viewrole-icon" />
                                     </IconButton>
                                     <script>
                                          alert("sucess");

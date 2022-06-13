@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 const AdminNavbar=()=>{
     return(
     <div>
-        <Navbar className="adminbar" bg="light" expand="lg">
+        <Navbar className="admin-navbar" bg="light" expand="lg">
             <Container fluid>
             <Navbar.Brand href="/">
                 <img
                     src={Logo}
                     width="120"
                     height="100"
-                    className="companylogo"
+                    className="admin-navbar-companylogo"
                     alt="Minibel"
                 />
             </Navbar.Brand>
@@ -28,12 +28,12 @@ const AdminNavbar=()=>{
                     aria-label="Search"
                 />
             </Form>
-            <div className="profilebtn">
-                <button className="profilebutton">
+            <div className="admin-navbar-profilebtn">
+                <button className="admin-navbar-profilebutton">
                 <Link to="/profile">
                     <img
                     src={Profile}
-                    className="profileimg"
+                    className="admin-navbar-profileimg"
                     />
                 </Link>
                 </button>
