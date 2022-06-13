@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
+// import NavBar from './component/navBar/navBar';
 import Announcement from './component/Announcement/announcement';
 import NavBar1 from './component/navbarNew/navbarNew';
 // import Footer1 from './component/footerNew/Footer';
@@ -23,6 +24,15 @@ import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
 
+import Dashboard from './component/admin/dashboard/dashboard';
+import Profile from './component/admin/profile/profile';
+import ViewRole from './component/admin/role/viewRole/viewRole';
+import AddRole from './component/admin/role/addRole/addRole';
+import EditRole from './component/admin/role/editRole/editRole';
+import ViewUser from './component/admin/user/viewUser/veiwUser';
+import EditUser from './component/admin/user/editUser/editUser'
+import AdminNavbar from './component/admin/adminNavbar/adminNavbar';
+import AdminSidebar from './component/admin/adminSidebar/adminSidebar'
 import Sidebar from './component/sidebar/sidebar'
 import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
@@ -36,8 +46,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Announcement/>
-         <NavBar1/>
+         {/* <NavBar /> */}
+        {/*<Home/> */}
+        {/* <Sidebar/> */}
+          <AdminNavbar/>  
+         <AdminSidebar>
+        {/* <Announcement/> */}
+         {/* <NavBar1/> */}
          <br/>
          <br/>
          <br/>
@@ -84,11 +99,25 @@ function App() {
             exact
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
-
+          
+          
+          <Route path="/dashboard" element={<Dashboard />} exact></Route>
+          <Route path="/profile" element={<Profile />} exact></Route>
+          <Route path="/viewrole" element={<ViewRole />} exact></Route>
+          <Route path="/addrole" element={<AddRole />} exact></Route>
+          <Route path="/editrole" element={<EditRole />} exact></Route>
+          <Route path="/viewuser" element={<ViewUser/>} exact></Route>
+          <Route path="/edituser" element={<EditUser/>} exact></Route>
+          <Route path="/adminnavbar" element={<AdminNavbar/>} exact></Route>
+          {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
         {/* <Footer /> */}
+        </AdminSidebar>
+
+       
+        {/* <Footer /> */}
         <br/>
-        <Footer1/>
+        {/* <Footer1/> */}
       </BrowserRouter>
     </div>
   );
