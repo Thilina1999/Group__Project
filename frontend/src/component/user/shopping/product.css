@@ -129,4 +129,7 @@ background-color: #202221;
   cursor: pointer;
 }
 
-
+title {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+  color: rgb(255, 0, 0);
+}

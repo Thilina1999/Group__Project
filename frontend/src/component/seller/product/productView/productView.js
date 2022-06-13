@@ -48,6 +48,18 @@ const Productview = () => {
               <div>
                 <Card className="card_product_view">
                   <CardHeader
+                    titleTypographyProps={{
+                      color: "rgb(252, 0, 0)",
+                      fontSize: 27,
+                      fontFamily:
+                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                    }}
+                    subheaderTypographyProps={{
+                      color: "#000",
+                      fontSize: 15,
+                      fontFamily:
+                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                    }}
                     title={product.producttitle}
                     subheader={product.productsubtitle}
                   />
@@ -62,7 +74,16 @@ const Productview = () => {
                   </div>
 
                   <CardContent>
-                    <Typography>Rs.{product.productprice}.00</Typography>
+                    <Typography
+                      style={{
+                        fontFamily:
+                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                        color: "rgb(252, 0, 0)",
+                        fontSize: 20,
+                      }}
+                    >
+                      Rs.{product.productprice}.00
+                    </Typography>
                   </CardContent>
 
                   <CardActions disableSpacing>

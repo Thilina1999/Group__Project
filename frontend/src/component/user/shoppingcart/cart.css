@@ -3,41 +3,51 @@
     color: rgb(252, 0, 0);
    }
 
-   .p-cart {
-    text-align: left;
+   .p-cart,.p-cart-q{
+    text-align: justify !important;
     margin-top:10px;
     font-size: 1rem;  
     font-weight: normal;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
    }
+   .p-cart-q{
+    color: rgb(252, 0, 0);
+   }
 .item-description{
     text-align: left !important;
-    margin-left: 50px;
-    margin-top: 3rem!important
+    margin: 2rem;
+    padding: 1rem;
+    margin-top: 3rem!important;
+    justify-content: center;
+    margin-right: 100px;
+    
 }
 
 .cart-item {
-    text-align: center!important;
-    border: 5px solid rgba(212, 242, 255, 1);
-    margin: 1rem;
-    margin-left:300px; 
-    margin-right: 400px;
-    border-radius: 15px !important;
+    
+    margin: 1rem;  
     display: flex;
+   justify-content: center;
+}
+.border-cart {
+    border: 5px solid rgba(212, 242, 255, 1);
+    display: flex;
+    justify-content: center;
+    border-radius: 25px;
+    
 }
  .item-div-image {
-    text-align: center;
-    border: 1px solid #ccc;
-    display: flex;
     margin:2rem;
-    margin-left: 80px!important;
     padding: 1rem;
     width: 250px;
     height: 250px;
+    margin-left: 120px;
     border-radius: 15px !important;
     background-color: rgba(255, 255, 255, 0.295) !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.39) !important;
     transition: all 0.5s ease;
+    display: flex;
+        justify-content: left;
        
     } 
 .item-div-image:hover{
@@ -45,37 +55,44 @@
         transform: scale(1.015);
 }
 
-.btns-container{
-    margin-top:32px;
-    margin-left: 80px!important;
-    display: fixed;
-   
-    
-}
+
 .icon-button-cart{
+   
+    cursor: pointer;
     transition: all 0.5s ease;
 }
 .icon-button-cart:hover {
     color: gray;
     transform: scale(1.1);
 }
-.icon-button-cart{
-    cursor: pointer;
-}
+
 .btn-increase { 
-    padding-left: 1px;          
+          
     color: rgb(252, 0, 0);
 }
         
     
 .btn-decrease,
 .btn-trash {   
-
+        
         color: rgb(252, 0, 0) !important;
-        padding-left: 3px!important;
+        
         }
  .item-image {
-       
+        display: flex;
+        justify-content: center;
         width: 200px;
         height: 200px;
      }
+
+.Cart-header{
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-weight: bold;
+    display: flex;
+     justify-content: center;
+}
+.Cart-empty{
+    font-size: larger;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+        font-weight: bold;
+}
