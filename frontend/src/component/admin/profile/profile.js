@@ -5,10 +5,10 @@ import "./profile.css";
 
 function Profile(){
     return(
-      <div className="form-rectangle">
+      <div className="admin-profile-form-rectangle">
         <Form >
-          <h1 className="topic"><b>Edit Profile</b></h1><br/>
-          <div className="profile__img"></div>
+          <h1 className="admin-profile-form-topic"><b>Edit Profile</b></h1><br/>
+          <div className="admin-profile-form-img"></div>
           <Form.Group className="pf-img">
             <Form.Group controlId="formFile" className="mb-4">
               <Form.Control type="file" />
@@ -43,15 +43,15 @@ function Profile(){
             </Row>
           </Form.Group >
 
-          <Form.Group className="BtnGrp">
+          <Form.Group className="admin-profilr-form-btnGrp">
           <Link to="/dashboard">
-            <Button className="CancelBtn" variant="primary" type="cancel">
+            <Button className="admin-profile-form-cancelBtn" variant="primary" type="cancel">
               Cancel
             </Button>
             </Link>
 
             <Link to="/dashboard">
-            <Button className="Savebtn" variant="primary" type="submit">
+            <Button className="admin-profile-form-savebtn" variant="primary" type="submit">
               Submit
             </Button>
             </Link>

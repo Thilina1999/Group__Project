@@ -1,27 +1,25 @@
-.view-rectangle {
+.viewrole-rectangle {
     width: 850px;
     height: 100%;
     margin: auto;
-    margin-top: auto;
+    margin-top: -220px;
     border: 2px solid #ffffff !important;
   }
-.roleTopic{
+.viewrole-topic{
         font-size: 30px;
         text-align: center;
         color: black;
         margin-top: 5px;
         margin-right: 15px;
 }
-.plusicon{
+.viewrole-plusicon{
     margin-left: 250px !important;
     font-size: 25px !important;
-    margin-top: 45px !important;
 }
-.icon1 {
+.viewrole-icon{
     color: rgb(0, 0, 0);
-    margin-top: 5px !important;
 }
-.container{
+.viewrole-container{
     padding: 100px;
     padding-top: 10px;
     position:relative;
@@ -32,41 +30,30 @@
     height: 50px !important;
     border-collapse: separate !important;
     border-spacing: 20px !important;
-   border: none;
-   border-bottom: none;
+    border: none;
+    border-bottom: none;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
     background-color: #75c6dc;
 }
-.td{
+.viewrole-td1{
+    text-align:left;
+    padding-left: 30px;
     font-size: larger;
     border-radius: 25px;
     background-color: rgb(250, 250, 250);
-    padding: 8px;  
 }
-.td0{
-    width: 80px !important;
-}
-.td1{
-    text-align:left;
-    padding-left: 30px;
-}
-.td2{
+.viewrole-td2{
     width: 100px !important;
+    font-size: larger;
+    border-radius: 25px;
+    background-color: rgb(250, 250, 250);
+    padding: 8px;
 }
-
-
-.icon {
+.viewrole-icon {
     color: #000000;
-
 }
-
-.icon:hover {
-    transform: translateY(-2px) scale(1.005) translateZ(0);
-}
-
-
-.icon1:hover {
+.viewrole-icon:hover {
     transform: translateY(-2px) scale(1.005) translateZ(0);
 }

@@ -16,17 +16,17 @@ const EditUser = () => {
   useEffect(() => {
     setID(data1);
     setfirstName(localStorage.getItem("UserName"));
-    setlastName(localStorage.getItem("UserName"));
+     setlastName(localStorage.getItem("UserName"));
   }, []);
 
   const UpdateUser = () => {//*
     const updateData = {
       userfirstname,
-      userlastname,
+       userlastname,
     };
 
     axios
-      .put(`http://localhost:8080/updateUser/${id}`, updateData)
+      .put(`http://localhost:8080/updateSeller/${id}`, updateData)
       .then((res) => {
         console.log(res);
       })
@@ -45,13 +45,13 @@ const EditUser = () => {
   return (
     <div className="edituser-rectangle"><br/>
         <Form>
-        <h1 className="editusertopic"><b>Update User</b></h1><br/>
+        <h1 className="edituser-topic"><b>Update User</b></h1><br/>
           <Form.Group
             className="mb-3"
             controlId="ControlInput3"
             name="user"
           >
-            <div className="userName">
+            <div className="edituser-userName">
             <Form.Label >User First Name</Form.Label>
             </div>
             <Form.Control
@@ -61,7 +61,7 @@ const EditUser = () => {
                 setfirstName(e.target.value);
               }}
             />
-            <div className="userName">
+            <div className="edituser-userName">
             <Form.Label >User Last Name</Form.Label>
             </div>
             <Form.Control
@@ -70,22 +70,22 @@ const EditUser = () => {
               onChange={(e) => {
                 setfirstName(e.target.value);
               }}
-            />
+            /> 
             </Form.Group>
-                    <h1 className="userRole">Roles</h1>
+                    <h1 className="edituser-userRole">Roles</h1>
                 <span>
                     <Link to="">
-                        <IconButton className="plusicon1">
-                        <AiOutlinePlusCircle className="icon1" />
+                        <IconButton className="edituser-plusicon">
+                        <AiOutlinePlusCircle className="edituser-icon" />
                         </IconButton>
                     </Link>
                 </span>
               
 
 
-            <div className="BtnGrp">
+            <div className="edituser-btnGrp">
               <Link to="/viewUser">
-            <Button className="CancelBtn" variant="primary" type="cancel">
+            <Button className="edituser-cancelBtn" variant="primary" type="cancel">
               Cancel
             </Button>
           </Link>
@@ -96,7 +96,7 @@ const EditUser = () => {
             }}
           >
             <Button
-              className="Savebtn" variant="primary" type="submit"
+              className="edituser-savebtn" variant="primary" type="submit"
               onClick={UpdateUser}//*
             >
               Submit

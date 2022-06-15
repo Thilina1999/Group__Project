@@ -38,18 +38,19 @@ const EditRole = () => {
   }
 
   return (
-    <div className="edit-rectangle"><br/>
+    <div className="editrole-rectangle"><br/>
         <Form>
-        <h1 className="editroletopic"><b>Update Role</b></h1><br/>
+        <h1 className="editrole-topic"><b>Update Role</b></h1><br/>
           <Form.Group
             className="mb-3"
             controlId="ControlInput3"
             name="role"
           >
-            <div className="roleName">
+            <div className="editrole-roleName">
             <Form.Label >Role Name</Form.Label>
             </div>
             <Form.Control
+              className="editrole-formcontrol"
               type="text"
               placeholder={rolename}
               onChange={(e) => {
@@ -58,9 +59,9 @@ const EditRole = () => {
             />
             </Form.Group>
 
-            <div className="BtnGrp">
+            <div className="editrole-btnGrp">
               <Link to="/viewRole">
-            <Button className="CancelBtn" variant="primary" type="cancel">
+            <Button className="editrole-cancelBtn" variant="primary" type="cancel">
               Cancel
             </Button>
           </Link>
@@ -72,7 +73,7 @@ const EditRole = () => {
           >
             
               <Button
-                className="Savebtn" variant="primary" type="submit"
+                className="editrole-savebtn" variant="primary" type="submit"
                 onClick={UpdateRole}
               >
                 Submit
