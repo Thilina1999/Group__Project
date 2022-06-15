@@ -16,22 +16,22 @@ main{
     height: 100vh;
     width: 200px;
     transition: all 0.5s;
-    margin-left: -204px;
-    margin-top: -10px;
+    margin-left: -255px;
+    margin-top: -150px;
 }
-.top_section{
+.admin-sidebar-top_selection{
     display: flex;
     align-items: center;
     padding: 20px 15px;
 }
-.logo{
+.admin-sidebar-logo{
     font-size: 30px !important;
     color: #000000;
 }
-.bars{
+.bar{
     display: flex;
-    font-size: 25px;
-    margin-left: 50px;
+    font-size: 20px;
+    /* margin-left: 140px !important; */
 }
 .link{
     display: flex;
@@ -41,15 +41,15 @@ main{
     transition: all 0.5s;
 }
 .link:hover{
-    background: #ffffff;
+    background: #75c6dc;
     color: #D4F2FF;
     transition: all 0.5s;
     text-decoration: none;
 }
 .active{
     background: #ffffff;
-    color: #D4F2FF;
+    color: #29abcf;
 }
-.icon,.link_text{
+.adminicon,.link_text{
     font-size: 20px;
 }
