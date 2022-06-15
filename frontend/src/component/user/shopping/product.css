@@ -64,12 +64,20 @@
 .product-detail-desc h4 {
   display: flex;
   margin-top: 10px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+  font-family: source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New';
 }
 
 .product-detail-desc p {
   margin-top: 10px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+  font-family: source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New';
   text-align: justify!important;
 }
 
@@ -129,7 +137,4 @@ background-color: #202221;
   cursor: pointer;
 }
 
-title {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
-  color: rgb(255, 0, 0);
-}
+

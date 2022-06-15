@@ -5,7 +5,7 @@ import axios from "axios";
 import "./viewCategory.css";
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import Photo1 from "../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png";
+
 import IconButton from "@mui/material/IconButton";
 
 
@@ -32,7 +32,7 @@ const ViewCategory = () => {
 
   return (
     <div className="container2-category">
-      <img src={Photo1} className="image1-category" />
+     
       <div className="container-category">
         <span className="font-category">
           Category

@@ -2,16 +2,16 @@
     width: 100%;
     height: 800px;
     background-color: rgba(212, 242, 255, 1);
+     background-image:url("../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png") ; 
+     background-repeat: no-repeat;
     
-    
-
 }
 .container-category{
     padding: 150px;
     padding-top: 150px;
     
-    display: flex;
-    justify-content:center;
+    /* display: flex;
+    justify-content:center; */
     
 
 }
@@ -37,11 +37,10 @@
     height: 100px;
     border-collapse: separate !important;
     border-spacing: 20px !important;
-   border: none;
-   border-bottom: none;
+    border: none;
+    border-bottom: none;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
     background-color: rgba(88, 6, 6, 0.404);
 }
 

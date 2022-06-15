@@ -14,6 +14,20 @@ const Products = () => {
   
   const params = useParams();
   const [product, setProduct] = useState([]);
+  const {  producttitle,
+    productsubtitle,
+    imageurl,
+    productprice,
+    quantity,
+    id,} = product;
+    const productCart = {
+      producttitle,
+      productsubtitle,
+      imageurl,
+      productprice,
+      quantity,
+      id,
+    }; 
   useEffect(() => {
     axios
       .get(`http://localhost:8080/getProductByid/${params.id}`)
@@ -27,7 +41,7 @@ const Products = () => {
   
  const totalStars = 5;
  const activeStars = 3;
- const itemInCart = IsInCart(product, cartItem);
+ const itemInCart = IsInCart(productCart, cartItem);
   return (
     <div className="product-detail-container">
       <div>
@@ -59,7 +73,7 @@ const Products = () => {
             <Button
               type="button"
               className="add-to-cart"
-              onClick={() => addProduct(product)}
+              onClick={() => addProduct(productCart)}
             >
               Add to Cart
             </Button>
@@ -68,7 +82,7 @@ const Products = () => {
             <Button
               type="button"
               className="add-to-cart"
-              onClick={() => inCrease(product)}
+              onClick={() => inCrease(productCart)}
             >
               Already in Cart
             </Button>
