@@ -10,13 +10,14 @@ import Typography from "@mui/material/Typography";
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./productView.css";
+import Auth from './productView';
 
 
 const Productview = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/getProducts")
+      .get("http://localhost:8080/getProducts", Auth)
       .then((response) => {
         setProducts(response.data);
         console.log(response.data);

@@ -1,16 +1,15 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Announcement from './component/Announcement/announcement';
 import NavBar1 from './component/navbarNew/navbarNew';
-// import Footer1 from './component/footerNew/Footer';
-import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
-import Footer from './component/footer/footer';
+
 import Company from './component/company/company';
 
 import CheckMail from './component/form/forgotPass/checkMail';
@@ -23,7 +22,7 @@ import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
 
-import Sidebar from './component/sidebar/sidebar'
+
 import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
 import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
@@ -31,31 +30,58 @@ import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 import Footer1 from './component/footerNew/footerNew';
 
+export const UserContext = createContext()
 
 function App() {
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined,
+  })
+
+  useEffect(() => {
+    const isLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token")
+      if (token == null){
+        localStorage.setItem("auth-token", "")
+        token = ""
+      }
+
+      const tokenResponse = await axios.post(
+        '/api/tokenIsValid', 
+        null, 
+        {headers: {"auth-token": token}}
+      )
+
+      console.log(tokenResponse.data)
+      if(tokenResponse.data){
+        setUserData({
+          token: token,
+        })
+      }
+    }
+    isLoggedIn()
+  }, [])
+
+
   return (
+    
     <div className="App">
+      <UserContext.Provider value={{ userData, setUserData }}>
       <BrowserRouter>
         <Announcement/>
          <NavBar1/>
          <br/>
          <br/>
          <br/>
-        {/* <NavBar /> */}
 
-        {/* <Sidebar /> */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
           <Route path="/signup" element={<Signup />} ></Route>
           <Route path="/company" element={<Company />} ></Route>
-          {/* <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />} exact></Route>
-          <Route path="/signin/signup" element={<Signup />} exact></Route>
-          <Route path="/sell" element={<Sell />} exact></Route> */}
+
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
+
           
 
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
@@ -90,7 +116,9 @@ function App() {
         <br/>
         <Footer1/>
       </BrowserRouter>
+      </UserContext.Provider>
     </div>
+    
   );
 }
 

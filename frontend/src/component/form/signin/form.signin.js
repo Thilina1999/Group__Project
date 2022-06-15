@@ -1,43 +1,49 @@
-import React,{ useState} from 'react';
+import React, { useState, useContext } from 'react';
 import './form.css';
 import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
+import { UserContext } from '../../../App';
+import jwtDecode from "jwt-decode"
+import Auth from './auth';
+
 
 export default function Signin() {
+  const { userData, setUserData } = useContext(UserContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let [token, setToken] = useState("");
   const [redirect, setRedirect] = useState(false);
 
   const Signin = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/api/login`,{
-      email,
-      password
-    },{withCredentials: true})
-    .then((res)=>{
-      //axios.defaults.headers.common['Authorization'] =`Bearer ${data['token']}`
-      //console.log(res.data.data)
-      setToken=res.data.data
-      setRedirect(false);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
 
-    axios.post(`http://localhost:8080/api/tt`, {
-      token: setToken,
-    }, {withCredentials: true})
-    .then((res)=>{
-      console.log(res.data.token)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    try {
+      const loginResponse = await axios.post(`http://localhost:8080/api/login`, {
+        email,
+        password
+      }, { withCredentials: true })
+
+      console.log(loginResponse)
+      setUserData({
+        token: loginResponse.data.data
+      })
+      if (loginResponse) {
+        localStorage.setItem("auth-token", loginResponse.data.data)
+        const e = jwtDecode(loginResponse.data.data)
+        localStorage.setItem("id", e.Id)
+      }
+      //setRedirect(true)
+      Auth();
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+
   }
 
-  if(redirect) {
+  if (redirect) {
     return <Navigate to="/home" />;
   }
 
@@ -49,20 +55,19 @@ export default function Signin() {
         <div className="frame">
           <div className="nav">
             <ul className="links">
-              <li className="signin-active"><a className="btn" href>Signn in</a></li>
               <br /><br />
               <li className="signin-active">Sign-In</li>
             </ul>
           </div>
           <div ng-app ng-init="checked = false">
             <form className="form-signin" action method="post" name="form">
-              <input className="form-styling" type="text" name="username" placeholder="Email" required onChange={(e)=>{
+              <input className="form-styling" type="text" name="username" placeholder="Email" required onChange={(e) => {
                 setEmail(e.target.value);
-              }}/>
+              }} />
 
-              <input className="form-styling" type="password" name="password" placeholder="Password" required onChange={(e)=>{
+              <input className="form-styling" type="password" name="password" placeholder="Password" required onChange={(e) => {
                 setPassword(e.target.value);
-              }}/>
+              }} />
 
               <div className="btn-animate">
                 <a className="btn-signin" href type="button" onClick={Signin}>Continue</a>
