@@ -31,11 +31,11 @@ const ViewUser=()=>{
     window.location.reload(true);
   };
     return ( 
-        <div className="view-rectangle">
+        <div className="viewuser-rectangle">
             <div className="container1">
-                <h1 className="roleTopic"><b>Users</b></h1>
+                <h1 className="viewuser-roleTopic"><b>Users</b></h1>
             </div>
-            <div className="container">
+            <div className="viewuser-container">
                 <table>
                     {user.map((user) => {
                     return (
@@ -43,10 +43,10 @@ const ViewUser=()=>{
                             <tbody className="tablebody">
                             <tr className="tablebody">
                                 {/* <td className="td0">{role.id}</td> */}
-                                <td className="td1">{user.firstName}</td>
-                                <td className="td1">{user.lastName}</td>
-                                <td className="td1">{user.role}</td>
-                                <td className="td2">
+                                <td className="viewuser-td1">{user.firstName}</td>
+                                <td className="viewuser-td2">{user.lastName}</td>
+                                <td className="viewuser-td3">{user.role}</td>
+                                <td className="viewuser-td4">
                                     <Link to="/editUser">
                                     <IconButton
                                         variant="outline-dark"
@@ -54,16 +54,16 @@ const ViewUser=()=>{
                                             SetData(user.firstName, user.lastName,user.role)
                                          }
                                     >
-                                    <AiFillEdit className="icon" />
+                                    <AiFillEdit className="viewuser-icon" />
                                     </IconButton>
                                     </Link>
                                 </td>
-                                <td className="td2">
+                                <td className="viewuser-td4">
                                     <IconButton
                                         variant="outline-dark"
                                         onClick={() => OnDelete(user.id)}
                                     >
-                                    <AiFillDelete className="icon" />
+                                    <AiFillDelete className="viewuser-icon" />
                                     </IconButton>
                                 </td>
                             </tr>
