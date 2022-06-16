@@ -1,0 +1,23 @@
+.adminbar{
+    background-color: #D4F2FF !important;
+    height: 70px;
+}
+.companylogo{
+    margin-right: 100px;
+}
+.profilebutton{
+    background-color: #D4F2FF; /* Green*/
+    border: none;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.profileimg{
+    size: 2px;;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.profilebtn{
+    margin-left: 800px !important;
+}
