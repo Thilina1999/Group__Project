@@ -40,6 +40,8 @@ import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 
 import Cart from './component/user/shoppingcart/cart';
+import WishList from './component/user/wish-list/wishList';
+import Buyer from './component/BuyerProtection/Buyer';
 
 
 
@@ -49,7 +51,7 @@ function App() {
     
     <div className="App">
       <BrowserRouter>
-         {/* <NavBar /> */}
+        {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
           {/* <AdminNavbar/>   */}
@@ -71,6 +73,17 @@ function App() {
 
           
 
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/company" element={<Company />}></Route>
+          {/* <Route path="/" element={<Home />} exact></Route>
+          <Route path="/signin" element={<Signin />} exact></Route>
+          <Route path="/signin/signup" element={<Signup />} exact></Route>
+          <Route path="/sell" element={<Sell />} exact></Route> */}
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/Buyer" element={<Buyer/>}></Route>
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
             path="/signin/checkmail/resetpass"
@@ -78,7 +91,7 @@ function App() {
           ></Route>
           <Route path="/productDetail/:id" element={<Product />} exact></Route>
 
-          <Route path="/sell" element={<Products/>} exact></Route>
+          <Route path="/sell" element={<Products />} exact></Route>
 
           <Route path="/addcategory" element={<AddCategory />} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory />} exact></Route>
@@ -88,27 +101,34 @@ function App() {
             exact
           ></Route>
           <Route path="/productview" element={<Productview />} exact></Route>
-          <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
-          <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
-          <Route path="/viewprofile" element={<Profileview/>} exact></Route>
+          <Route
+            path="/addprofile"
+            element={<AddProfileDetails />}
+            exact
+          ></Route>
+          <Route
+            path="/editprofile/:id"
+            element={<UpdateProfileDetails />}
+            exact
+          ></Route>
+          <Route path="/viewprofile" element={<Profileview />} exact></Route>
           <Route
             path="/editProduct/:id"
             element={<ProductUpdateForm />}
             exact
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
-          <Route path="/shoppingCart" element={<Cart/>} exact></Route>
+          <Route path="/shoppingCart" element={<Cart />} exact></Route>
+          <Route path="/wishList" element={<WishList />}></Route>
 
-          
-          
           <Route path="/dashboard" element={<Dashboard />} exact></Route>
           <Route path="/profile" element={<Profile />} exact></Route>
           <Route path="/viewrole" element={<ViewRole />} exact></Route>
           <Route path="/addrole" element={<AddRole />} exact></Route>
           <Route path="/editrole" element={<EditRole />} exact></Route>
-          <Route path="/viewuser" element={<ViewUser/>} exact></Route>
-          <Route path="/edituser" element={<EditUser/>} exact></Route>
-          <Route path="/adminnavbar" element={<AdminNavbar/>} exact></Route>
+          <Route path="/viewuser" element={<ViewUser />} exact></Route>
+          <Route path="/edituser" element={<EditUser />} exact></Route>
+          <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
         {/* <Footer /> */}

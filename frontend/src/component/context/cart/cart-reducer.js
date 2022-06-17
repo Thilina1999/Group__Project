@@ -19,15 +19,7 @@ const createCart = (payload) => {
       producttitle: payload.producttitle,
       productsubtitle: payload.productsubtitle,
       quantity: 1,
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        alert("Product is Add into cart");
-      } else {
-        alert("Product Add Failed");
-      }
-    })
-    .catch((error) => {
+    }).catch((error) => {
       console.log(error);
     });
 };
@@ -48,7 +40,9 @@ const updateCart = (product) => {
       });
 }
 const deleteCart = (id) => {
-    axios.delete(`http://localhost:8080/deleteCart/${id}`);
+    axios.delete(`http://localhost:8080/deleteCart/${id}`).catch((error) => {
+    console.log(error);
+  })
 }
 
 const cartReducer = (state, action) => {

@@ -11,7 +11,7 @@
     background-color:rgba(252, 248, 248, 0.493) !important;
     box-shadow: 0 2px 10px  rgba(0, 0, 0, 0.39) !important;
     border-radius: 15px !important;
-    cursor: pointer;
+   
 }
 .card_product:hover {
   transform: translateY(-5px) scale(1.005) translateZ(0);
@@ -24,12 +24,11 @@
 .start_icon{
   color: rgb(231, 202, 34);
 }
-.share_icon{
-  color: red;
-  
+.fav_icon{
+  transition: all 2s ease;
 }
-.share_icon:hover {
-  transform: translateY(-2px) scale(1.005) translateZ(0);
+.fav_icon:hover {
+  transform: scale(1.15);
 }
 .icon_button{
   justify-content:center;
@@ -137,4 +136,6 @@ background-color: #202221;
   cursor: pointer;
 }
 
-
+.pointer{
+  cursor: pointer;
+}

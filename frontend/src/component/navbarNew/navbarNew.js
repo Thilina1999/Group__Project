@@ -9,6 +9,7 @@ import axios from 'axios';
 import { CartContext } from "../context/cart/cart-context";
 import Avatar from '@mui/material/Avatar';
 import Profile from '../assets/profile.png';
+import { WishListContext } from "../context/wish-list/wishlist-context";
 
 const Container = styled.div`
     height: 80px;
@@ -149,8 +150,8 @@ const Image = styled.img`
 function Navbar1() {
     let firstName
 
-    const { itemCount, cartItem } = useContext(CartContext);
-    console.log("Cart:", cartItem);
+    const { itemCountList } = useContext(WishListContext);
+    const { itemCount } = useContext(CartContext);
 
     const logOut = async () => {
         const token = localStorage.getItem('auth-token')
@@ -198,8 +199,6 @@ function Navbar1() {
     }
 
     let user;
-    /*  let seller;
-     let admin; */
 
     if (localStorage.getItem('role') == 'client') {
         user = (
@@ -230,7 +229,7 @@ function Navbar1() {
                         {firstName ? ' Hi ' + firstName : ''}
                         <Button style={{ width: "50px" }}>
                             <MenuItem>
-                                <Badge badgeContent={4} color="primary">
+                                <Badge badgeContent={itemCountList} color="primary">
                                     <Favorite style={{ color: "red" }}></Favorite>
                                 </Badge>
                             </MenuItem>
@@ -319,7 +318,7 @@ function Navbar1() {
                         {firstName ? ' Hi ' + firstName : ''}
                         <Button style={{ width: "50px" }}>
                             <MenuItem>
-                                <Badge badgeContent={4} color="primary">
+                                <Badge badgeContent={itemCountList} color="primary">
                                     <Favorite style={{ color: "red" }}></Favorite>
                                 </Badge>
                             </MenuItem>
@@ -424,7 +423,7 @@ function Navbar1() {
                         {firstName ? ' Hi ' + firstName : ''}
                         <Button style={{ width: "50px" }}>
                             <MenuItem>
-                                <Badge badgeContent={4} color="primary">
+                                <Badge badgeContent={itemCountList} color="primary">
                                     <Favorite style={{ color: "red" }}></Favorite>
                                 </Badge>
                             </MenuItem>

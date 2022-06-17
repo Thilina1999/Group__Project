@@ -1,36 +1,17 @@
-import React, { createContext, useReducer, useState, useEffect } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import cartReducer, { sumItem } from "./cart-reducer";
 import axios from "axios";
 
 export const CartContext = createContext();
 
-// export const CartData =()=>{
-//     // const item=[];
-//     const [cart, setCart] = useState([]);
-//     useEffect(() => {
-//       axios
-//         .get("http://localhost:8080/getCart")
-//         .then((response) => {
-//           setCart(response.data);
-//           console.log(response.data);
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//         });
-//     }, []);
-//    item.push(cart);
-//     return cart;
-// }
-// const items=CartData();
+
 
 
 const CartContextProvide = ({ children }) =>{
   const itemarray = [];
-   const [cart, setCart] = useState([]);
+   
    useEffect(() =>{
     getData();
-   
-    
    },[])
    const getData=() => {
      axios

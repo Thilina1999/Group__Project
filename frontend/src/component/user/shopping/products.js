@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -15,10 +15,13 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "./product.css";
 import { Link } from "react-router-dom";
+import { WishListContext } from "../../context/wish-list/wishlist-context";
 
-import { CartContext } from "../../context/cart/cart-context";
-
+import { IsInList } from "../wish-list/helperList"
 const Products = () => {
+
+  const { addProductList, listItems, removeProductList } =
+    useContext(WishListContext);
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
@@ -39,31 +42,48 @@ const Products = () => {
   return (
     <div className="wrapper">
       {products.map((product) => { 
+        const {
+          producttitle,
+          productsubtitle,
+          imageurl,
+          productprice,
+          quantity,
+          id,
+        } = product;
+         const productList = {
+           producttitle,
+           productsubtitle,
+           imageurl,
+           productprice,
+           quantity,
+           id,
+         }; 
         return (
           <React.Fragment key={product.id}>
             <div>
-              <Link
-                to={`/productDetail/${product.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Card className="card_product">
-                  <CardHeader
-                    titleTypographyProps={{
-                      color: "rgb(252, 0, 0)",
-                      fontSize: 27,
-                      fontFamily:
-                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                    }}
-                    subheaderTypographyProps={{
-                      color: "#000",
-                      fontSize: 15,
-                      fontFamily:
-                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                    }}
-                    title={product.producttitle}
-                    subheader={product.productsubtitle}
-                  />
-                  <div>
+              <Card className="card_product">
+                <Link
+                  to={`/productDetail/${product.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="pointer">
+                    <CardHeader
+                      titleTypographyProps={{
+                        color: "rgb(252, 0, 0)",
+                        fontSize: 27,
+                        fontFamily:
+                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                      }}
+                      subheaderTypographyProps={{
+                        color: "#000",
+                        fontSize: 15,
+                        fontFamily:
+                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                      }}
+                      title={product.producttitle}
+                      subheader={product.productsubtitle}
+                    />
+
                     <CardMedia
                       className="card__media"
                       component="img"
@@ -71,38 +91,47 @@ const Products = () => {
                       image={product.imageurl}
                       alt="Kid Cloths"
                     />
+
+                    <CardContent>
+                      <Typography
+                        style={{
+                          fontFamily:
+                            "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                          color: "rgb(252, 0, 0)",
+                          fontSize: 20,
+                        }}
+                      >
+                        Rs.{product.productprice}.00
+                      </Typography>
+
+                      <Box>
+                        {[...new Array(totalStars)].map((arr, index) => {
+                          return index < activeStars ? (
+                            <StarIcon className="start_icon" />
+                          ) : (
+                            <StarBorderIcon className="start_icon" />
+                          );
+                        })}
+                      </Box>
+                    </CardContent>
                   </div>
-
-                  <CardContent>
-                    <Typography
-                      style={{
-                        fontFamily:
-                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                        color: "rgb(252, 0, 0)",
-                        fontSize: 20,
-                      }}
-                    >
-                      Rs.{product.productprice}.00
-                    </Typography>
-
-                    <Box>
-                      {[...new Array(totalStars)].map((arr, index) => {
-                        return index < activeStars ? (
-                          <StarIcon className="start_icon" />
-                        ) : (
-                          <StarBorderIcon className="start_icon" />
-                        );
-                      })}
-                    </Box>
-                  </CardContent>
-
-                  <CardActions disableSpacing>
-                    <IconButton>
-                      <FavoriteIcon className="share_icon" />
+                </Link>
+                <CardActions disableSpacing>
+                  {!IsInList(productList, listItems) && (
+                    <IconButton onClick={() => addProductList(productList)}>
+                      <FavoriteIcon className="fav_icon" />
                     </IconButton>
-                  </CardActions>
-                </Card>
-              </Link>
+                  )}
+                  {IsInList(productList, listItems) && (
+                    <IconButton onClick={() => removeProductList(productList)}>
+                      <FavoriteIcon
+                        className="fav_icon"
+                        style={{ color: "red" }}
+                      />
+                    </IconButton>
+                  )}
+                </CardActions>
+              </Card>
             </div>
           </React.Fragment>
         );
