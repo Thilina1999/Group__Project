@@ -1,79 +1,94 @@
-.container2{
+.container2-category{
     width: 100%;
     height: 800px;
     background-color: rgba(212, 242, 255, 1);
+     background-image:url("../../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png") ; 
+     background-repeat: no-repeat;
     
-
 }
-.container{
+.container-category{
     padding: 150px;
     padding-top: 150px;
-    position: relative;
+    
+    /* display: flex;
+    justify-content:center; */
     
 
 }
-.image1{
+.image1-category{
     position: absolute;
     left: 5px;
 }
-.font{
+.font-category{
     
     color:rgb(230, 0, 0);
-    text-align: left;
+    text-align: center;
     text-shadow: rgba(0, 0, 0, 0.521);
-    font-size:30px;
+    font-size:40px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    display: inline-block;
+    margin-right: 10px;
+   
+        justify-content: center;
 }
-table{
+.table-category{
     width: 100%;
     font-size: larger;
     height: 100px;
     border-collapse: separate !important;
     border-spacing: 20px !important;
-   border: none;
-   border-bottom: none;
+    border: none;
+    border-bottom: none;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
     background-color: rgba(88, 6, 6, 0.404);
 }
-td{
 
-    font-size: larger;
-    border-radius: 25px;
-    background-color: rgb(250, 250, 250);
-    padding: 8px;
-    
-    
-   
-}
-.td0{
+.td0-category{
     width: 80px !important;
+        font-size: larger;
+            border-radius: 25px;
+            background-color: rgb(250, 250, 250);
+            padding: 8px;
 }
-.td1{
+.td1-category{
     text-align:left;
     padding-left: 30px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+        font-size: larger;
+            border-radius: 25px;
+            background-color: rgb(250, 250, 250);
+            padding: 8px;
 }
-.td2{
+.td2-category{
     width: 100px !important;
+        font-size: larger;
+            border-radius: 25px;
+            background-color: rgb(250, 250, 250);
+            padding: 8px;
 }
-.plusicon{
-    margin-left: 1000px;
+.plusicon-category{
+    margin-left: 10px !important;
     font-size: 35px !important;
+    display: inline-block;
+    
+    
 }
 
-.icon {
+
+.icon-category {
     color: rgb(247, 73, 73);
 
 }
 
-.icon:hover {
+.icon-category:hover {
     transform: translateY(-2px) scale(1.005) translateZ(0);
 }
-.icon1 {
-    color: rgb(0, 0, 0);
+.icon1-category {
+    color: rgb(255, 0, 0);
 
 }
 
-.icon1:hover {
+.icon1-category:hover {
     transform: translateY(-2px) scale(1.005) translateZ(0);
 }

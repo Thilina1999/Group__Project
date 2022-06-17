@@ -8,7 +8,7 @@ import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpres
 
 const AddCategory = () => {
  
-  let [categoryname, setCatname] = useState("");
+  const [categoryname, setCatname] = useState("");
 
 const SendData = (e) => {
     e.preventDefault();
@@ -41,18 +41,18 @@ const SendData = (e) => {
 
   return (
     <div className="container6">
-      <img src={Image3} className="image3" alt="background"/>
-      <div className="container">
+      <img src={Image3} className="image3" alt="background" />
+      <div className="container-cat">
         <Form className="form">
           <Form.Group className="mb-3" controlId="ControlInput1" name="id">
-            <h2 className="h2">Add Category</h2>
-            <hr></hr>  
-            <br />
+            <h2 className="h2-add">Add Category</h2>
+            <hr></hr>
+            
           </Form.Group>
           <Form.Group className="mb-3" controlId="ControlInput2" name="catname">
-            <Form.Label className="label">Name</Form.Label>
+            <Form.Label className="label-add">Name</Form.Label>
             <Form.Control
-              className="form-control"
+              className="form-control-add"
               type="text"
               placeholder="Enter the Category Name"
               onChange={(e) => {
@@ -62,7 +62,7 @@ const SendData = (e) => {
           </Form.Group>
           <br />
           <Link to="/viewCategory">
-            <Button variant="outline-dark" className="button btn btn-light">
+            <Button variant="outline-dark" className="button-add btn btn-light">
               Cancel
             </Button>
           </Link>
@@ -73,7 +73,7 @@ const SendData = (e) => {
             <Button
               variant="outline-dark"
               type="submit"
-              className="button1 btn btn-light"
+              className="button1-add btn btn-light"
               onClick={SendData}
             >
               create

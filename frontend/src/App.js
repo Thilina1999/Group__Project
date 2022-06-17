@@ -40,6 +40,7 @@ import AddProfileDetails from "./component/seller/merchant/addProfileDetails/add
 import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 import Footer1 from './component/footerNew/footerNew';
+import Cart from './component/user/shoppingcart/cart';
 
 
 function App() {
@@ -49,10 +50,10 @@ function App() {
          {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
-          <AdminNavbar/>  
-         <AdminSidebar>
-        {/* <Announcement/> */}
-         {/* <NavBar1/> */}
+          {/* <AdminNavbar/>  
+         <AdminSidebar/> */}
+        <Announcement/>
+         <NavBar1/>
          <br/>
          <br/>
          <br/>
@@ -80,12 +81,12 @@ function App() {
           ></Route>
           <Route path="/productDetail/:id" element={<Product />} exact></Route>
 
-          <Route path="/sell" element={<Products />} exact></Route>
+          <Route path="/sell" element={<Products/>} exact></Route>
 
           <Route path="/addcategory" element={<AddCategory />} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory />} exact></Route>
           <Route
-            path="/editCategory"
+            path="/editCategory/:id"
             element={<UpdateCategory />}
             exact
           ></Route>
@@ -99,6 +100,8 @@ function App() {
             exact
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
+          <Route path="/shoppingCart" element={<Cart/>} exact></Route>
+
           
           
           <Route path="/dashboard" element={<Dashboard />} exact></Route>
@@ -112,12 +115,12 @@ function App() {
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
         {/* <Footer /> */}
-        </AdminSidebar>
+        
 
        
         {/* <Footer /> */}
         <br/>
-        {/* <Footer1/> */}
+        <Footer1/>
       </BrowserRouter>
     </div>
   );
