@@ -7,16 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import CartContextProvide from './component/context/cart/cart-context';
+import  WishListContextProvider from './component/context/wish-list/wishlist-context';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-     
-        <CartContextProvide>
-          <App />
-        </CartContextProvide>
-    
+    <CartContextProvide>
+      <WishListContextProvider>
+        <App />
+      </WishListContextProvider>
+    </CartContextProvide>
   </React.StrictMode>,
   document.getElementById("root")
 );
