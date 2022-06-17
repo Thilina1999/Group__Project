@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 import Announcement from './component/Announcement/announcement';
-import NavBarNew from './component/navbarNew/navbarNew';
+import NavBar1 from './component/navbarNew/navbarNew';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
@@ -39,6 +39,9 @@ import AddProfileDetails from "./component/seller/merchant/addProfileDetails/add
 import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 
+import Cart from './component/user/shoppingcart/cart';
+
+
 
 function App() {
 
@@ -49,10 +52,11 @@ function App() {
          {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
-          {/* <AdminNavbar/>  
-         <AdminSidebar> */}
+          {/* <AdminNavbar/>   */}
+        {/*  <AdminSidebar/> */}
         <Announcement/>
-         <NavBarNew/> 
+         {/* <AdminSidebar/>  */}
+         <NavBar1/>
          <br/>
          <br/>
          <br/>
@@ -74,12 +78,12 @@ function App() {
           ></Route>
           <Route path="/productDetail/:id" element={<Product />} exact></Route>
 
-          <Route path="/sell" element={<Products />} exact></Route>
+          <Route path="/sell" element={<Products/>} exact></Route>
 
           <Route path="/addcategory" element={<AddCategory />} exact></Route>
           <Route path="/viewCategory" element={<ViewCategory />} exact></Route>
           <Route
-            path="/editCategory"
+            path="/editCategory/:id"
             element={<UpdateCategory />}
             exact
           ></Route>
@@ -93,6 +97,8 @@ function App() {
             exact
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
+          <Route path="/shoppingCart" element={<Cart/>} exact></Route>
+
           
           
           <Route path="/dashboard" element={<Dashboard />} exact></Route>
@@ -107,6 +113,7 @@ function App() {
         </Routes>
         {/* <Footer /> */}
         {/* </AdminSidebar> */}
+        
 
         {/* <Footer /> */}
         <br/>

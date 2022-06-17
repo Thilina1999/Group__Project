@@ -30,6 +30,7 @@
 .icon_button{
     margin-left: 15px !important;
     margin-bottom: 20px !important;
+    
 }
 .icon_button_second {
     margin-left: 75px !important;
@@ -58,6 +59,7 @@
     margin-top: 25px;
     font-size: 50px;
     
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
     
 }
 
