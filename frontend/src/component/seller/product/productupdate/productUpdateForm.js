@@ -101,7 +101,7 @@ const OnAddProduct = async (e) => {
 
   return (
     <div className="container7_update">
-      <img src={Image4} className="image4_update" />
+     
 
       <div className="container">
         <Form className="form4_update">

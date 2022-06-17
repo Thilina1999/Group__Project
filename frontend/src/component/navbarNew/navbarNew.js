@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { logoImage } from "../Home/data";
 import { Link } from 'react-router-dom';
 import { CartContext } from "../context/cart/cart-context";
+import { WishListContext } from "../context/wish-list/wishlist-context";
 
 const Container = styled.div`
     height: 80px;
@@ -144,8 +145,9 @@ const Image = styled.img`
 `;
 
 function Navbar1(){
+    const { itemCountList, listItems } = useContext(WishListContext);
     const { itemCount, cartItem } = useContext(CartContext);
-    console.log("Cart:", cartItem);
+    console.log("list:", listItems);
   return (
     <Container>
       <Wrapper>
@@ -174,8 +176,16 @@ function Navbar1(){
           <MenuItem>Create Account</MenuItem>
           <Button style={{ width: "50px" }}>
             <MenuItem>
-              <Badge badgeContent={4} color="primary">
-                <Favorite style={{ color: "red" }}></Favorite>
+              <Badge badgeContent={itemCountList} color="primary">
+                <Link
+                  to="/wishList"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <Favorite style={{ color: "red" }}></Favorite>
+                </Link>
               </Badge>
             </MenuItem>
           </Button>
