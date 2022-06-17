@@ -83,7 +83,7 @@ export default function NavBar1() {
                 </Button>
               </Link>
               <Link
-                to="/"
+                to="/signup"
                 style={{
                   borderRadius: "50px",
                   width: "160px",

@@ -22,12 +22,17 @@ export default function Signup() {
       password
     })
       .then((res) => {
+        console.log(res)
         alert("User added..");
+        setRedirect(true);
       })
       .catch((err) => {
+        alert("");
+        setRedirect(false);
         console.log(err);
+        
       })
-    setRedirect(true);
+    
   }
 
   if (redirect) {
@@ -39,6 +44,7 @@ export default function Signup() {
     const lowercaseRegExp = /(?=.*?[a-z])/;
     const digitsRegExp = /(?=.*?[0-9])/;
     const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
+    const emailVAlidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     if (password !== a) {
       setIsError("Password and confirm password don't match");
@@ -58,6 +64,9 @@ export default function Signup() {
     }
     else if (!(specialCharRegExp.test(password))) {
       setIsError("Password should have a special character");
+    }
+    else if(!(emailVAlidation.test(email))){
+      setIsError("Email validation failed")
     }
     else {
       setIsError("");
@@ -106,7 +115,7 @@ export default function Signup() {
               <br />
               <div className="btn-animate1">
               <button className="btn-signup" type="button" onClick={submit}
-                disabled={!firstname || !lastname || !email || !password || isError}
+                disabled={!firstname || !lastname || !email || !password || isError }
               >Sign Up</button>
               </div>
 

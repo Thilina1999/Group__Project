@@ -3,15 +3,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
-// import NavBar from './component/navBar/navBar';
 import Announcement from './component/Announcement/announcement';
 import NavBar1 from './component/navbarNew/navbarNew';
-// import Footer1 from './component/footerNew/Footer';
-import NavBar from './component/navBar/navBar';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
-import Footer from './component/footer/footer';
+import Footer1 from './component/footerNew/footerNew';
+
 import Company from './component/company/company';
 
 import CheckMail from './component/form/forgotPass/checkMail';
@@ -24,6 +22,7 @@ import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
 import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
 
+
 import Dashboard from './component/admin/dashboard/dashboard';
 import Profile from './component/admin/profile/profile';
 import ViewRole from './component/admin/role/viewRole/viewRole';
@@ -33,37 +32,47 @@ import ViewUser from './component/admin/user/viewUser/veiwUser';
 import EditUser from './component/admin/user/editUser/editUser'
 import AdminNavbar from './component/admin/adminNavbar/adminNavbar';
 import AdminSidebar from './component/admin/adminSidebar/adminSidebar'
-import Sidebar from './component/sidebar/sidebar'
+
 import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
 import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
 import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
-import Footer1 from './component/footerNew/footerNew';
+
 import Cart from './component/user/shoppingcart/cart';
 import WishList from './component/user/wish-list/wishList';
 import Buyer from './component/BuyerProtection/Buyer';
 
 
+
 function App() {
+
   return (
+    
     <div className="App">
       <BrowserRouter>
         {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
-        {/* <AdminNavbar/>  
-         <AdminSidebar/> */}
-        <Announcement />
-        <NavBar1 />
-        <br />
-        <br />
-        <br />
-        {/* <NavBar /> */}
+          {/* <AdminNavbar/>   */}
+        {/*  <AdminSidebar/> */}
+        <Announcement/>
+         {/* <AdminSidebar/>  */}
+         <NavBar1/>
+         <br/>
+         <br/>
+         <br/>
 
-        {/* <Sidebar /> */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
+          <Route path="/signin" element={<Signin />} ></Route>
+          <Route path="/signup" element={<Signup />} ></Route>
+          <Route path="/company" element={<Company />} ></Route>
+
+          <Route path="/home" element={<Home />}></Route>
+
+          
+
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/company" element={<Company />}></Route>
@@ -123,12 +132,15 @@ function App() {
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
         {/* <Footer /> */}
+        {/* </AdminSidebar> */}
+        
 
         {/* <Footer /> */}
-        <br />
-        <Footer1 />
+        <br/>
+        <Footer1/> 
       </BrowserRouter>
     </div>
+    
   );
 }
 
