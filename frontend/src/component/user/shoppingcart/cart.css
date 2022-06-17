@@ -93,7 +93,11 @@
      justify-content: center;
 }
 .Cart-empty{
+    display: flex;
+    justify-content: center;
     font-size: larger;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
         font-weight: bold;
+       
+   
 }
