@@ -1,15 +1,14 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-// import NavBar from './component/navBar/navBar';
 import Announcement from './component/Announcement/announcement';
 import NavBarNew from './component/navbarNew/navbarNew';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
+import Footer1 from './component/footerNew/footerNew';
 
 import Company from './component/company/company';
 
@@ -41,49 +40,17 @@ import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 
 
-export const UserContext = createContext()
-
 function App() {
-  const [userData, setUserData] = useState({
-    token: undefined,
-    user: undefined,
-  })
-
-  useEffect(() => {
-    const isLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token")
-      if (token == null){
-        localStorage.setItem("auth-token", "")
-        token = ""
-      }
-
-      const tokenResponse = await axios.post(
-        '/api/tokenIsValid', 
-        null, 
-        {headers: {"auth-token": token}}
-      )
-
-      console.log(tokenResponse.data)
-      if(tokenResponse.data){
-        setUserData({
-          token: token,
-        })
-      }
-    }
-    isLoggedIn()
-  }, [])
-
 
   return (
     
     <div className="App">
-      <UserContext.Provider value={{ userData, setUserData }}>
       <BrowserRouter>
          {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
-          <AdminNavbar/>  
-         <AdminSidebar>
+          {/* <AdminNavbar/>  
+         <AdminSidebar> */}
         <Announcement/>
          <NavBarNew/> 
          <br/>
@@ -139,14 +106,12 @@ function App() {
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
         {/* <Footer /> */}
-        </AdminSidebar>
+        {/* </AdminSidebar> */}
 
-       
         {/* <Footer /> */}
         <br/>
-        {/* <Footer1/> */}
+        <Footer1/> 
       </BrowserRouter>
-      </UserContext.Provider>
     </div>
     
   );

@@ -1,19 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import './form.css';
 import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
-import { UserContext } from '../../../App';
 import jwtDecode from "jwt-decode"
-import Auth from './auth';
 
 
 export default function Signin() {
-  const { userData, setUserData } = useContext(UserContext);
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [firstName, setFirstName] = useState('');
 
   const Signin = async (e) => {
     e.preventDefault();
@@ -25,20 +24,30 @@ export default function Signin() {
       }, { withCredentials: true })
 
       console.log(loginResponse)
-      setUserData({
-        token: loginResponse.data.data
-      })
+
       if (loginResponse) {
         localStorage.setItem("auth-token", loginResponse.data.data)
         const e = jwtDecode(loginResponse.data.data)
         localStorage.setItem("id", e.Id)
+
+        const token = localStorage.getItem('auth-token')
+        await axios.get(`http://localhost:8080/api/user`, { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true })
+          .then((res) => {
+            setFirstName(res.data.firstName);
+            localStorage.setItem('name', res.data.firstName)
+            localStorage.setItem('role', res.data.role)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
       }
-      //setRedirect(true)
-      Auth();
+    setRedirect(true)
+
 
     }
     catch (err) {
       console.log(err);
+      setRedirect(false)
     }
 
   }

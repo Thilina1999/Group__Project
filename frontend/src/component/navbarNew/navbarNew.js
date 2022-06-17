@@ -144,7 +144,119 @@ const Image = styled.img`
 `;
 
 function Navbar1() {
+    let firstName
 
+    const logOut = async () => {
+        const token = localStorage.getItem('auth-token')
+        await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+        firstName = ''
+        localStorage.removeItem('auth-token')
+        localStorage.removeItem('name')
+        localStorage.removeItem('id')
+        localStorage.removeItem('role')
+    }
+
+    firstName = localStorage.getItem('name')
+    console.log(firstName)
+
+
+    let menu;
+
+    if (firstName === null) {
+        menu = (
+            <>
+                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} >
+                    <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
+                        Sign In
+                    </Link>
+                </Button3></MenuItem>
+                <MenuItem>
+                    <Link to={"/signup"} style={{ textDecoration: "none", color: "black" }}>
+                        Create Account
+                    </Link>
+                </MenuItem>
+            </>
+        );
+    }
+    else {
+        menu = (
+            <>
+                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} onClick={logOut} >
+                    <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
+                        Log Out
+                    </Link>
+                </Button3></MenuItem>
+            </>
+
+        )
+    }
+
+    let buyer;
+    let seller;
+    let admin;
+
+    if (localStorage.getItem('role') == 'client') {
+        buyer = (
+            <>
+                <Wrapper>
+                    <Left1>
+                        <MenuItem1><Button1 style={{ color: "blue", background: "#d4f2ff", width: "30px", height: "30px" }}><Reorder style={{ color: "gray", width: "18px" }}></Reorder></Button1></MenuItem1>
+                        <Link to="/home"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Home</MenuItem1>
+                        </Link>
+
+                        <Link to="/Buyer"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Buyer Protection</MenuItem1>
+                        </Link>
+
+                        {/* <Link to="/viewprofile"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Profile</MenuItem1>
+                        </Link> */}
+
+                        <Link to="/sell"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Sell</MenuItem1>
+                        </Link>
+                        {/* <Link to="/productview"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Product</MenuItem1>
+                        </Link>
+                        <Link to="/viewCategory"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Category</MenuItem1>
+                        </Link> */}
+                    </Left1>
+                </Wrapper>
+            </>
+        )
+    }
 
     return (
         <Container>
@@ -167,17 +279,9 @@ function Navbar1() {
                 </Center>
                 <Right>
                     <>
-                        <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} >
-                            <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
-                                Sign In
-                            </Link>
-                        </Button3></MenuItem>
-                        <MenuItem>
-                            <Link to={"/signup"} style={{ textDecoration: "none", color: "black" }}>
-                                Create Account
-                            </Link>
-                        </MenuItem>
+                        {menu}
                     </>
+                    {firstName ? ' Hi ' + firstName : ''}
                     <Button style={{ width: "50px" }}>
                         <MenuItem>
                             <Badge badgeContent={4} color="primary">
@@ -194,62 +298,8 @@ function Navbar1() {
                     </Button2>
                 </Right>
             </Wrapper>
-            <Wrapper>
-                <Left1>
-                    <MenuItem1><Button1 style={{ color: "blue", background: "#d4f2ff", width: "30px", height: "30px" }}><Reorder style={{ color: "gray", width: "18px" }}></Reorder></Button1></MenuItem1>
-                    <Link to="/home"
-                        style={{
-                            color: "#000",
-                            textDecoration: "none"
-                        }}>
+            {buyer}
 
-                        <MenuItem1>Home</MenuItem1>
-                    </Link>
-
-                    <Link to="/Buyer"
-                        style={{
-                            color: "#000",
-                            textDecoration: "none"
-                        }}>
-
-                        <MenuItem1>Buyer Protection</MenuItem1>
-                    </Link>
-
-                    <Link to="/viewprofile"
-                        style={{
-                            color: "#000",
-                            textDecoration: "none"
-                        }}>
-
-                        <MenuItem1>Profile</MenuItem1>
-                    </Link>
-
-                    <Link to="/sell"
-                        style={{
-                            color: "#000",
-                            textDecoration: "none"
-                        }}>
-
-                        <MenuItem1>Sell</MenuItem1>
-                    </Link>
-                    <Link to="/productview"
-                        style={{
-                            color: "#000",
-                            textDecoration: "none"
-                        }}>
-
-                        <MenuItem1>Product</MenuItem1>
-                    </Link>
-                    <Link to="/viewCategory"
-                        style={{
-                            color: "#000",
-                            textDecoration: "none"
-                        }}>
-
-                        <MenuItem1>Category</MenuItem1>
-                    </Link>
-                </Left1>
-            </Wrapper>
         </Container>
     )
 }
