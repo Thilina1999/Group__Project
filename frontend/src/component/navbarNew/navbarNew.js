@@ -12,6 +12,8 @@ import Avatar from '@mui/material/Avatar';
 import Profile from '../assets/profile.png';
 import { WishListContext } from "../context/wish-list/wishlist-context";
 
+import AdminSidebar from '../admin/adminSidebar/adminSidebar'
+
 const Container = styled.div`
     height: 80px;
     background-color: #d4f2ff;
@@ -150,6 +152,7 @@ const Image = styled.img`
 
 function Navbar1() {
     let firstName
+    let role
 
     const { itemCountList } = useContext(WishListContext);
     const { itemCount } = useContext(CartContext);
@@ -158,13 +161,15 @@ function Navbar1() {
     const logOut = async () => {
         try {
             const token = localStorage.getItem('auth-token')
-            await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+            const result = await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
             firstName = ''
             localStorage.removeItem('auth-token')
             localStorage.removeItem('name')
             localStorage.removeItem('id')
             localStorage.removeItem('role')
-            setRedirect(true)
+            if (result) {
+                setRedirect(true)
+            }
         }
         catch (err) {
             console.log(err)
@@ -173,6 +178,7 @@ function Navbar1() {
     }
 
     firstName = localStorage.getItem('name')
+    role = localStorage.getItem('role')
 
     let menu;
 
@@ -234,6 +240,8 @@ function Navbar1() {
                         </>
                         <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
                         {firstName ? ' Hi ' + firstName : ''}
+                        <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                        {role ? ' ' + role : ''}
                         <Button style={{ width: "50px" }}>
                             <MenuItem>
                                 <Badge badgeContent={itemCountList} color="primary">
@@ -323,6 +331,8 @@ function Navbar1() {
                         <Avatar alt="Remy Sharp" src={Profile} />
                         <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
                         {firstName ? ' Hi ' + firstName : ''}
+                        <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                        {role ? ' ' + role : ''}
                         <Button style={{ width: "50px" }}>
                             <MenuItem>
                                 <Badge badgeContent={itemCountList} color="primary">
@@ -428,6 +438,8 @@ function Navbar1() {
                         <Avatar alt="Remy Sharp" src={Profile} />
                         <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
                         {firstName ? ' Hi ' + firstName : ''}
+                        <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                        {role ? ' ' + role : ''}
                         <Button style={{ width: "50px" }}>
                             <MenuItem>
                                 <Badge badgeContent={itemCountList} color="primary">
@@ -492,8 +504,18 @@ function Navbar1() {
                             <MenuItem1>Category</MenuItem1>
                         </Link>
 
+                        <Link to="/viewCategory"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+                            <MenuItem1>Admin Dashboard</MenuItem1>
+                        </Link>
+
                     </Left1>
                 </Wrapper>
+
+
             </>
         )
     }

@@ -55,14 +55,16 @@ function App() {
         {/*<Home/> */}
         {/* <Sidebar/> */}
           {/* <AdminNavbar/>   */}
-        {/*  <AdminSidebar/> */}
-        <Announcement/>
-         {/* <AdminSidebar/>  */}
+        
+        {/* <Announcement/> */}
+         
          <NavBar1/>
+         
          <br/>
          <br/>
          <br/>
 
+       {/*   <AdminSidebar> */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} ></Route>
@@ -131,13 +133,11 @@ function App() {
           <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
-        {/* <Footer /> */}
-        {/* </AdminSidebar> */}
+       {/*  </AdminSidebar> */}
         
-
-        {/* <Footer /> */}
         <br/>
         <Footer1/> 
+        
       </BrowserRouter>
     </div>
     
