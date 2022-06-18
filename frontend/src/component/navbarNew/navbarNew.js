@@ -1,11 +1,12 @@
 import { Badge } from "@material-ui/core";
 import { Reorder, Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { logoImage } from "../Home/data";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 import { CartContext } from "../context/cart/cart-context";
 import Avatar from '@mui/material/Avatar';
 import Profile from '../assets/profile.png';
@@ -152,20 +153,26 @@ function Navbar1() {
 
     const { itemCountList } = useContext(WishListContext);
     const { itemCount } = useContext(CartContext);
+    const [redirect, setRedirect] = useState(false);
 
     const logOut = async () => {
-        const token = localStorage.getItem('auth-token')
-        await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
-        firstName = ''
-        localStorage.removeItem('auth-token')
-        localStorage.removeItem('name')
-        localStorage.removeItem('id')
-        localStorage.removeItem('role')
+        try {
+            const token = localStorage.getItem('auth-token')
+            await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+            firstName = ''
+            localStorage.removeItem('auth-token')
+            localStorage.removeItem('name')
+            localStorage.removeItem('id')
+            localStorage.removeItem('role')
+            setRedirect(true)
+        }
+        catch (err) {
+            console.log(err)
+            setRedirect(false)
+        }
     }
 
     firstName = localStorage.getItem('name')
-    console.log(firstName)
-
 
     let menu;
 
@@ -490,7 +497,7 @@ function Navbar1() {
             </>
         )
     }
-    else{
+    else {
         user = (
             <>
 
@@ -555,9 +562,13 @@ function Navbar1() {
         )
     }
 
+    if (redirect) {
+        return <Navigate to="/home" />;
+    }
+
     return (
         <Container>
-        
+
             {user}
 
         </Container>
