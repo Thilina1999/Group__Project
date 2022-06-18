@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import "./prodAddForm.css";
 import { app } from "../../../../firebase";
 import { Button, Form } from "react-bootstrap";
@@ -8,6 +8,7 @@ import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpres
 
 
 const ProdAddForm = () => {
+
 const [producttitle, SetProductTitle] = useState("");
 const [productsubtitle, SetSubTitle] = useState("");
 const [categoryname, SetCategoryName] = useState("");
