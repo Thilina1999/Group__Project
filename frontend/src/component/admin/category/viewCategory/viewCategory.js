@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, {  useEffect, useState , useContext} from "react";
 
 import axios from "axios";
 
@@ -7,13 +7,16 @@ import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 import IconButton from "@mui/material/IconButton";
-
+import {AutheContext} from "../../../context/auth-context/authContext"
 
 const ViewCategory = () => {
+  const { jwt , userId }= useContext(AutheContext)
   const [categories, setCategories] = useState([]);
     useEffect(() => {
       axios
-        .get(`http://localhost:8080/getCategory`)
+        .get(`http://localhost:8080/getCategory`, {
+          headers: { Authorization: `Bearer ${jwt}` },
+        })
         .then((response) => {
           setCategories(response.data);
           console.log(response.data);

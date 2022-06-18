@@ -195,7 +195,7 @@ function Navbar1() {
     else {
         menu = (
             <>
-                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} onClick={logOut} >
+                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} onClick={()=>logOut()} >
                     <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
                         Log Out
                     </Link>
