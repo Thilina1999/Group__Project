@@ -1,20 +1,19 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './form.css';
 import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import jwtDecode from "jwt-decode"
 
+const Signin = () => {
 
-export default function Signin() {
-
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [firstName, setFirstName] = useState('');
 
-  const Signin = async (e) => {
+  const Login = async (e) => {
     e.preventDefault();
 
     try {
@@ -30,7 +29,7 @@ export default function Signin() {
         const e = jwtDecode(loginResponse.data.data)
         localStorage.setItem("id", e.Id)
 
-        const token = localStorage.getItem('auth-token')
+       const token = localStorage.getItem("auth-token")
         await axios.get(`http://localhost:8080/api/user`, { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true })
           .then((res) => {
             setFirstName(res.data.firstName);
@@ -79,7 +78,7 @@ export default function Signin() {
               }} />
 
               <div className="btn-animate">
-                <a className="btn-signin" href type="button" onClick={Signin}>Continue</a>
+                <a className="btn-signin" href type="button" onClick={Login}>Continue</a>
               </div>
             </form>
           </div>
@@ -101,3 +100,5 @@ export default function Signin() {
     </div>
   );
 }
+
+export default Signin;
