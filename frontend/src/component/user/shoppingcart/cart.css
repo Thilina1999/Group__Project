@@ -1,0 +1,103 @@
+   .h4-cart {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    color: rgb(252, 0, 0);
+   }
+
+   .p-cart,.p-cart-q{
+    text-align: justify !important;
+    margin: top 2px !important;;
+    font-size: 1rem;  
+    font-weight: normal;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+   }
+   .p-cart-q{
+    color: rgb(252, 0, 0);
+   }
+.item-description{
+    text-align: left !important;
+    margin: 1rem;
+    padding: 1rem;
+    margin-top: 0.5rem!important;
+   
+    justify-content: center;
+    margin-right: 100px;
+    
+}
+
+.cart-item {
+    
+    margin: 1rem;  
+    display: flex;
+   justify-content: center;
+}
+.border-cart {
+    border: 2px solid rgb(101, 207, 253);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    
+}
+ .item-div-image {
+    margin:2rem;
+    padding: 1rem;
+    width: 180px;
+    height: 180px;
+    margin-left: 120px;
+    border-radius: 15px !important;
+    background-color: rgba(212, 242, 255, 0.322) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.39) !important;
+    transition: all 0.5s ease;
+    display: flex;
+        justify-content: left;
+       
+    } 
+.item-div-image:hover{
+    color: gray;
+        transform: scale(1.015);
+}
+
+
+.icon-button-cart{
+   
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.icon-button-cart:hover {
+    color: gray;
+    transform: scale(1.1);
+}
+
+.btn-increase { 
+          
+    color: rgb(252, 0, 0);
+}
+        
+    
+.btn-decrease,
+.btn-trash {   
+        
+        color: rgb(252, 0, 0) !important;
+        
+        }
+ .item-image {
+        display: flex;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+     }
+
+.Cart-header{
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-weight: bold;
+    display: flex;
+     justify-content: center;
+}
+.Cart-empty{
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+        font-weight: bold;
+       
+   
+}
