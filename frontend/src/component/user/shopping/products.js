@@ -60,11 +60,11 @@ const Products = () => {
            imageurl,
            productprice,
            quantity,
-           id,
+           productid:id,
          }; 
         return (
           <React.Fragment key={product.id}>
-            <div>
+            <div className = "">
               <Card className="card_product">
                 <Link
                   to={`/productDetail/${product.id}`}
@@ -91,7 +91,10 @@ const Products = () => {
                     <CardMedia
                       className="card__media"
                       component="img"
-                      height="300"
+                      height="350"
+                      // as an example I am modifying width and height
+                      
+                      
                       image={product.imageurl}
                       alt="Kid Cloths"
                     />

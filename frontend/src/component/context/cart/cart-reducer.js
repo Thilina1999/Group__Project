@@ -1,4 +1,9 @@
+import  React,{  useContext } from "react";
 import axios from "axios";
+
+const jwt=localStorage.getItem("auth-token") 
+ const userId = localStorage.getItem("id");
+
 export const sumItem = (cartItem) => {
   return {
     itemCount: cartItem.reduce((total, product) => total + product.quantity, 0),
@@ -10,51 +15,77 @@ export const sumItem = (cartItem) => {
   };
 };
 const createCart = (payload) => {
+ 
   // console.log(payload);
   axios
-    .post(`http://localhost:8080/createCart`, {
-      id: payload.id,
-      imageurl: payload.imageurl,
-      productprice: payload.productprice,
-      producttitle: payload.producttitle,
-      productsubtitle: payload.productsubtitle,
-      quantity: 1,
-    }).catch((error) => {
+    .post(
+      `http://localhost:8080/createCart`,
+      {
+        productid: payload.productid,
+        imageurl: payload.imageurl,
+        productprice: payload.productprice,
+        producttitle: payload.producttitle,
+        productsubtitle: payload.productsubtitle,
+        quantity: 1,
+        userid: Number(userId),
+      },
+      {
+        headers: { Authorization: `Bearer ${jwt}` },
+      }
+    )
+    .catch((error) => {
       console.log(error);
     });
+    window.location.reload(true);
 };
 const updateCart = (product) => {
-    axios
-      .put(`http://localhost:8080/updateCart/${product.id}`, {
+  console.log("ghhh",product);
+  axios
+    .put(
+      `http://localhost:8080/updateCart/${product.id}`,
+      {
+        productid: product.productid,
         imageurl: product.imageurl,
         productprice: product.productprice,
         producttitle: product.producttitle,
         productsubtitle: product.productsubtitle,
         quantity: Number(product.quantity),
-      })
-      .then(() => {
-        
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-}
+        userid: Number(userId),
+      },
+      {
+        headers: { Authorization: `Bearer ${jwt}` },
+      }
+    )
+    .then(() => {})
+    .catch((err) => {
+      console.log(err);
+    });
+};
 const deleteCart = (id) => {
-    axios.delete(`http://localhost:8080/deleteCart/${id}`).catch((error) => {
-    console.log(error);
-  })
-}
+  axios
+    .delete(`http://localhost:8080/deleteCart/${id}`, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 const cartReducer = (state, action) => {
+  
   switch (action.type) {
     case "INITIALIZE":
-      return{
+      return {
         ...action.payload,
-        ...sumItem(action.payload.cartItem)
-      }
+        ...sumItem(action.payload.cartItem),
+      };
     case "ADD_ITEM":
       //check item in the cart list
-      if (!state.cartItem.find((item) => item.id === action.payload.id)) {
+      if (
+        !state.cartItem.find(
+          (item) => item.productid === action.payload.productid
+        )
+      ) {
         state.cartItem.push({
           ...action.payload,
           quantity: 1,
@@ -82,7 +113,6 @@ const cartReducer = (state, action) => {
         cartItem: [...state.cartItem],
         ...sumItem(state.cartItem),
         ...updateCart(q),
-        
       };
     case "DECREASE":
       const decreaseIndex = state.cartItem.findIndex(

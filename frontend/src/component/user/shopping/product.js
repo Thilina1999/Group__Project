@@ -8,8 +8,11 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "./product.css";
 import { IsInCart } from "../shoppingcart/carthelper";
 import { CartContext } from "../../context/cart/cart-context";
+import { AutheContext } from "../../context/auth-context/authContext";
 
 const Products = () => {
+  const { jwt, userId } = useContext(AutheContext);
+  //  const jwt = localStorage.getItem("auth-token");
   const { addProduct, cartItem, inCrease } = useContext(CartContext);
   
   const params = useParams();
@@ -26,11 +29,13 @@ const Products = () => {
       imageurl,
       productprice,
       quantity,
-      id,
+      productid:id,
     }; 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/getProductByid/${params.id}`)
+      .get(`http://localhost:8080/getProductByid/${params.id}`, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then((res) => {
         setProduct(res.data);
       })

@@ -11,6 +11,7 @@ import {AutheContext} from "../../../context/auth-context/authContext"
 
 const ViewCategory = () => {
   const { jwt , userId }= useContext(AutheContext)
+  //  const jwt = localStorage.getItem("auth-token");
   const [categories, setCategories] = useState([]);
     useEffect(() => {
       axios
@@ -29,7 +30,9 @@ const ViewCategory = () => {
 
  
   const OnDelete = (id) => {
-    axios.delete(`http://localhost:8080/deleteCategory/${id}`);
+    axios.delete(`http://localhost:8080/deleteCategory/${id}`, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
     window.location.reload(true);
   }
 

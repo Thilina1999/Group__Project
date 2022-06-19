@@ -5,10 +5,10 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
-
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const ProdAddForm = () => {
-
+const { jwt, userId } = useContext(AutheContext);
 const [producttitle, SetProductTitle] = useState("");
 const [productsubtitle, SetSubTitle] = useState("");
 const [categoryname, SetCategoryName] = useState("");
@@ -21,7 +21,9 @@ const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/getCategory`)
+      .get(`http://localhost:8080/getCategory`, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then((response) => {
         setCategories(response.data);
         console.log(response.data);
@@ -41,18 +43,26 @@ const [categories, setCategories] = useState([]);
       description,
       price,
       quantity,
+      userId,
     };
    
     axios
-      .post(`http://localhost:8080/createProducts`, {
-        producttitle: addproduct.producttitle,
-        productsubtitle: addproduct.productsubtitle,
-        categoryname: addproduct.categoryname,
-        imageurl: addproduct.imageurl,
-        description: addproduct.description,
-        productprice: addproduct.price,
-        productquantity: addproduct.quantity,
-      })
+      .post(
+        `http://localhost:8080/createProducts`,
+        {
+          producttitle: addproduct.producttitle,
+          productsubtitle: addproduct.productsubtitle,
+          categoryname: addproduct.categoryname,
+          imageurl: addproduct.imageurl,
+          description: addproduct.description,
+          productprice: addproduct.price,
+          productquantity: addproduct.quantity,
+          userid: Number(addproduct.userId),
+        },
+        {
+          headers: { Authorization: `Bearer ${jwt}` },
+        }
+      )
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
@@ -99,7 +109,7 @@ const [categories, setCategories] = useState([]);
             <br />
             <br />
           </Form.Group>
-          <Form.Group controlId="ControlInput2" name="id2">
+          <Form.Group controlId="ControlInput2" name="id2" className="add-pro">
             <Form.Label className="label">Product Title</Form.Label>
             <Form.Control
               className="form-control_add"
@@ -111,7 +121,7 @@ const [categories, setCategories] = useState([]);
             />
             <br />
           </Form.Group>
-          <Form.Group controlId="ControlInput3" name="id3">
+          <Form.Group controlId="ControlInput3" name="id3" className="add-pro">
             <Form.Label className="label">Product SubTitle</Form.Label>
             <Form.Control
               className="form-control_add"

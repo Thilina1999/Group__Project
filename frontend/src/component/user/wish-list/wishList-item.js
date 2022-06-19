@@ -15,7 +15,7 @@ const WishListItem = (props) => {
     id,
     removeProductList,
   } = props;
-  const product = {
+  const productList = {
     producttitle,
     productsubtitle,
     imageurl,
@@ -28,7 +28,7 @@ const WishListItem = (props) => {
     <div className="list-item">
       <div className="border-list">
         <Link
-          to={`/productDetail/${product.id}`}
+          to={`/productDetail/${productList.id}`}
           style={{ textDecoration: "none" }}
         >
           <div className="item-div-image-list">
@@ -44,7 +44,7 @@ const WishListItem = (props) => {
           <IconButton
             className="icon-button-list"
             onClick={() => {
-              removeProductList(product);
+              removeProductList(productList);
             }}
           >
             <DeleteIcon className="btn-trash-list" />

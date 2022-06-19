@@ -1,4 +1,7 @@
 import axios from "axios";
+
+const jwt = localStorage.getItem("auth-token");
+const userId = localStorage.getItem("id");
 export const sumItemList = (listItems) => {
   return {
     itemCountList: listItems.reduce(
@@ -9,21 +12,34 @@ export const sumItemList = (listItems) => {
 };
 const createwishlist = (payload) => {
   axios
-    .post(`http://localhost:8080/createList`, {
-      id: payload.id,
-      imageurl: payload.imageurl,
-      productprice: payload.productprice,
-      producttitle: payload.producttitle,
-      productsubtitle: payload.productsubtitle,
-      quantity: 1,
-    }).catch((error) => {
+    .post(
+      `http://localhost:8080/createList`,
+      {
+        productid: payload.productid,
+        imageurl: payload.imageurl,
+        productprice: payload.productprice,
+        producttitle: payload.producttitle,
+        productsubtitle: payload.productsubtitle,
+        quantity: 1,
+        userid: Number(userId),
+      },
+      {
+        headers: { Authorization: `Bearer ${jwt}` },
+      }
+    )
+    .catch((error) => {
       console.log(error);
     });
+    window.location.reload(true);
 };
 const deleteList = (id) => {
-  axios.delete(`http://localhost:8080/deleteList/${id}`).catch((error) => {
-    console.log(error);
-  })
+  axios
+    .delete(`http://localhost:8080/deleteList/${id}`, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 const wishListReducer = (state, action) => {
   switch (action.type) {
@@ -33,7 +49,11 @@ const wishListReducer = (state, action) => {
         ...sumItemList(action.payload.listItems),
       };
     case "Add_List":
-      if (!state.listItems.find((item) => item.id === action.payload.id)) {
+      if (
+        !state.listItems.find(
+          (item) => item.productid === action.payload.productid
+        )
+      ) {
         state.listItems.push({
           ...action.payload,
           quantity: 1,
