@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import "./addcategory.css";
 import { useNavigate, Link } from "react-router-dom";
 import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const AddCategory = () => {
- 
+  const { jwt, userId } = useContext(AutheContext);
+  // console.log(jwt, userId);
+  //  const jwt = localStorage.getItem('auth-token')
   const [categoryname, setCatname] = useState("");
 
 const SendData = (e) => {
@@ -18,7 +21,9 @@ const SendData = (e) => {
       categoryname,
     };
     axios
-      .post(`http://localhost:8080/createCategory`, addCategerytData)
+      .post(`http://localhost:8080/createCategory`, addCategerytData, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then((res) => {
         console.log(res);
 

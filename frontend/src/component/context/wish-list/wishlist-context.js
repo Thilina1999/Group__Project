@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer, useEffect,useContext } from "react";
 import wishListReducer, { sumItemList } from "./wishlist-reducer";
 import axios from "axios";
-
+import { AutheContext } from "../auth-context/authContext";
 
 export const WishListContext = createContext();
 
@@ -9,17 +9,21 @@ export const WishListContext = createContext();
 
 
 const WishListContextProvider =({ children })=>{
+  const { jwt, userId } = useContext(AutheContext);
     const itemListarray = [];
   useEffect(() => {
     getDataList();
   }, []);
        const getDataList = () => {
          axios
-           .get("http://localhost:8080/getList")
+           .get(`http://localhost:8080/getListbyUserId/${userId}`, {
+             headers: { Authorization: `Bearer ${jwt}` },
+           })
            .then((response) => {
              response.data.map((item) => {
                itemListarray.push({
                  id: item.id,
+                 productid: item.productid,
                  imageurl: item.imageurl,
                  productprice: item.productprice,
                  producttitle: item.producttitle,

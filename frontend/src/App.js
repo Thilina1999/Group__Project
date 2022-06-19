@@ -48,30 +48,27 @@ import Buyer from './component/BuyerProtection/Buyer';
 function App() {
 
   return (
-    
     <div className="App">
       <BrowserRouter>
         {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
-          {/* <AdminNavbar/>   */}
-        {/*  <AdminSidebar/> */}
-        <Announcement/>
-         {/* <AdminSidebar/>  */}
-         <NavBar1/>
-         <br/>
-         <br/>
-         <br/>
+        {/* <AdminNavbar/>   */}
 
+        <Announcement />
+
+        <NavBar1 />
+        <br />
+        <br />
+        <br />
+        {/* <AdminSidebar>  */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />} ></Route>
-          <Route path="/signup" element={<Signup />} ></Route>
-          <Route path="/company" element={<Company />} ></Route>
+          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/company" element={<Company />}></Route>
 
           <Route path="/home" element={<Home />}></Route>
-
-          
 
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
@@ -83,7 +80,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/Buyer" element={<Buyer/>}></Route>
+          <Route path="/Buyer" element={<Buyer />}></Route>
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
             path="/signin/checkmail/resetpass"
@@ -131,16 +128,14 @@ function App() {
           <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
-        {/* <Footer /> */}
-        {/* </AdminSidebar> */}
-        
+      
+        {/* </AdminSidebar>  */}
 
         {/* <Footer /> */}
-        <br/>
-        <Footer1/> 
+        <br />
+        <Footer1 />
       </BrowserRouter>
     </div>
-    
   );
 }
 

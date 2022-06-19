@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from "react";
+import React, {  useState, useEffect,useContext } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -11,13 +11,16 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./productView.css";
-
+import {AutheContext} from "../../../context/auth-context/authContext"
 
 const Productview = () => {
+  const { jwt, userId}= useContext(AutheContext)
    const [products, setProducts] = useState([]);
    useEffect(() => {
      axios
-       .get("http://localhost:8080/getProducts")
+       .get(`http://localhost:8080/getProductByUserId/${userId}`, {
+         headers: { Authorization: `Bearer ${jwt}` },
+       })
        .then((response) => {
          setProducts(response.data);
          console.log(response.data);
@@ -27,7 +30,9 @@ const Productview = () => {
        });
    }, []);
   const OnDelete = (id) => {
-    axios.delete(`http://localhost:8080/deleteProduct/${id}`);
+    axios.delete(`http://localhost:8080/deleteProduct/${id}`, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
     window.location.reload(true);
   };
 
