@@ -1,10 +1,16 @@
 import { Badge } from "@material-ui/core";
-import { Reorder, Search, ShoppingCartOutlined } from "@material-ui/icons";
-import { Favorite } from "@material-ui/icons";
-import React from 'react';
+import { Reorder, Search, ShoppingCartOutlined, Favorite } from "@material-ui/icons";
+import { 
+    GridOff,
+    Paper,
+    InputBase,
+    IconButton,
+} from "@material-ui/core";
+import React,{ useState }from'react';
 import styled from 'styled-components';
 import { logoImage } from "../Home/data";
 import { Link } from 'react-router-dom';
+import SelectCategory from './selectCategory';
 
 const Container = styled.div`
     height: 80px;
@@ -25,7 +31,6 @@ const Left =  styled.div`
     align-items: center;
     margin-left: 0px;
     margin-top: -50px;
-     
 `;
 
 const Left1 =  styled.div`
@@ -47,20 +52,20 @@ const Right = styled.div`
 `;
 
 const Language = styled.span`
-    font-size: 14px;
+    font-size: 13px;
     cursor: pointer;
 `;
 
 const SearchContainer = styled.div`
-    border: 0.5px solid lightgray;
-    display: flex;
-    border-radius: 50px;
-    align-items: center;
-    margin-left: 25px;
-    padding: 5px;
-    width: 300px;
-    border: none;
-    background-color: white;
+    // border: 0.5px solid lightgray;
+    // display: flex;
+    // border-radius: 50px;
+    // align-items: center;
+    // margin-left: 25px;
+    // padding: 5px;
+    // width: 300px;
+    // border: none;
+    // background-color: white;
      
 `;
 
@@ -133,24 +138,102 @@ const MenuItem =  styled.div`
     }
 `;
 
+const MenuItem3 =  styled.div`
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    
+    &:hover{
+        color: gray;
+        transform: scale(1.1);
+    }
+`;
+
 const ImgContainer = styled.div`
      diplay: flex;
 `;
 
 const Image = styled.img`
-     height: 100px;
-     width: 100px;
+     height: 110px;
+     width: 130px;
 `;
 
+//  const categories = styled.div`
+ 
+//  `;
+
+//  const selectCategory = styled.div`
+ 
+//  `;
+ 
+    // const FilterProduct = ({ categories }) => {
+    //     const [keyword, setKeyword] = React.useState("");
+    //     const [resultMessage, setResutlMessage] = React.useState("");
+
+    //     const [selectedCategory, setSelectedCategory] = 
+    //     React.useState(defaultCategory);
+    // }
+
+    // const handleSelectChange = (event) => {
+    //     const { value } = event.target;
+    //     const category =  categories.find((cat) => cat.id === value);
+    //     setSelectedCategory(category);
+    // };
+
+    // const handleInputChange = (event) => {
+    //     if(!keyword || !event.target.value){
+    //         setResutlMessage("");
+    //         setSearchResult([]);
+    //         setSelectedCategory(defaultCategory);
+    //     }
+    //     setKeyword(event.target.value);
+    // }
+
+
+
 function Navbar1(){
+//   const [value,setValue] = useState('');
+//   const onChange = (event) => {
+//         setValue(event.target.value);
+//   }
+//   const onSearch = (searchTerm) => {
+//     //our api to fetch the search result
+//     console.log('search', 'searchTerm');
+//   }
+
   return (
     <Container>
         <Wrapper>
             <Left>
                 <Language>EN</Language>
                 <SearchContainer>
-                    <Input/>
-                    <Search style={{fontSize:"16", width:"230"}}></Search>
+                {/* <Paper component="form" className="root" omSubmit={()=>{}}>
+                <SelectCategory
+                categories={[defaultCategory, ...categories]}
+                selectCategory={selectCategory}
+                onChange={handleSelectChange}
+                />
+                    <InputBase
+                    className="input"
+                    onChange={handleInputChange}
+                    placeholder="Search for a product"
+                    inputProps={{"arial-label":"Search for a product"}}
+                    />
+                    <IconButton type="submit" arial-label="search">
+                    <Search />
+                    </IconButton>
+                    
+                </Paper> */}
+                {/* {resultMessage && <p className="result-message">{resultMessage}</p>} */}
+                {/* <div className="search-container">
+                    <div className="search-inner">
+                            <input type="text" value={value} onChange={onChange} />
+                            <button onClick={()=>onSearch(value)}><Search style={{fontSize:"16", width:"20"}}> </Search></button>
+                       
+                    </div>
+                </div> */}
                 </SearchContainer>
             </Left>
             <Center>
@@ -163,7 +246,7 @@ function Navbar1(){
                 </Logo>
             </Center>
             <Right>
-            <MenuItem><Button3 style={{padding:"10px 10px", width:"70px"}} >Sign In</Button3></MenuItem>
+            <Button3 style={{padding:"10px 10px", width:"120px"}}><MenuItem3>Sign In</MenuItem3></Button3>
                 <MenuItem>Create Account</MenuItem>
                 <Button style={{width:"50px"}}>
                 <MenuItem>
@@ -234,6 +317,14 @@ function Navbar1(){
                 }}>
                    
                     <MenuItem1>Category</MenuItem1>
+                </Link>
+                <Link to="/merchantapplication"
+                 style={{
+                     color:"#000",
+                    textDecoration:"none"
+                }}>
+                   
+                    <MenuItem1>Privilege</MenuItem1>
                 </Link>
             </Left1>  
         </Wrapper>   

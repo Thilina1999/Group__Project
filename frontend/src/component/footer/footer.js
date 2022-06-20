@@ -24,7 +24,7 @@ export default function Footer() {
   </Card>
   <Card style={{ border: 'none', backgroundColor: '#D4F2FF', height: '210px', paddingTop: '40px' }}>
     <Card.Body>
-      <Card.Title style={{ marginRight: '120px'}}>Customer Care</Card.Title>
+      <Card.Title style={{ marginRight: '150px'}}>Customer Care</Card.Title>
       <ul style={{ textAlign: 'left', listStyleType: 'none'}}>
         <Nav.Link><li>Customer Service</li></Nav.Link>
         <Nav.Link><li>Buyer Protection</li></Nav.Link>

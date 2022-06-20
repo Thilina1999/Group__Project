@@ -13,9 +13,10 @@ import "../profileView/profileView.css";
 
 const Profileview = () => {
     const [profile, SetProfile] = useState([]);
+    const q=5 ;
     useEffect(() => {
       axios
-        .get("http://localhost:8080/getMerchant")
+        .get(`http://localhost:8080/getMerchantByid/${""}`)
         .then((response) => {
           SetProfile(response.data);
           console.log(response.data);
@@ -24,15 +25,25 @@ const Profileview = () => {
           console.log(error);
         });
     }, []);
-  
+  console.log("profile:",profile.length)
     return (
-      <div className="head">
+      <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
           <Link to="/addprofile">
-            <IconButton className="icon_button" size="large" >
+            {
+              profile.length == 0 &&(
+              <IconButton className="icon_button" size="large" >
               <AiOutlinePlusCircle className="view_icon" />
             </IconButton>
+            )}
+             {
+              profile.length != 0 &&(
+              <IconButton className="icon_button" size="large" >
+              <AiFillEdit className="view_icon" />
+            </IconButton>
+            )}
+           
           </Link>
         </div>
         <div className="wrapper_view">
@@ -41,9 +52,8 @@ const Profileview = () => {
               <React.Fragment key={merchant.id}>
                 <div>
                   <Card className="card_merchant_view">
-                    <CardHeader
+                    <CardHeader className="header"
                       title={merchant.merchantlegalname} 
-                      subheader={merchant.officialwebsite}
                     />
                     <div>
                       <CardMedia
@@ -51,27 +61,30 @@ const Profileview = () => {
                         component="img"
                         height="300"
                         image={merchant.companylogourl}
-                        alt="Kid Cloths"
+                        alt=""
                       />
                     </div>
-  
-                    <CardContent>
-                      <Typography>Reach via: {merchant.contactpersonemailid}</Typography>
-                    </CardContent>
-                    <CardContent>
-                      <Typography>Contact Us: {merchant.contactpersonmobilenumber}</Typography>
-                    </CardContent>
-                    <CardContent>
-                      <Typography>{merchant.businessaddress}</Typography>
-                    </CardContent>
-                    <CardContent>
+                    
+                    <CardContent className="infocard">
                       <Typography>: {merchant. profile}</Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>: {merchant.productdescription}</Typography>
+                    <CardContent className="infocard">
+                      <Typography>Reach via:<b>{merchant.officialwebsite}</b> </Typography>
+                    </CardContent >
+                    <CardContent className="infocard">
+                      <Typography><b> {merchant.contactpersonemailid}</b></Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>Average Product Value: {merchant.averageproductvalue}</Typography>
+                    <CardContent className="infocard">
+                      <Typography><b>{merchant.contactpersonmobilenumber}</b></Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography><b>{merchant.businessaddress}</b></Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography><b> Product Description:</b> {merchant.productdescription}</Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography>Average Product Value: <b>{merchant.averageproductvalue}</b> </Typography>
                     </CardContent>
 
                     <CardActions disableSpacing>

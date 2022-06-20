@@ -109,6 +109,7 @@ function Slider(){
                 <ImgContainer>
                     <Image src={item.backgroundImage} />
                 </ImgContainer>
+                <br/>
                 <InfoContainer>
                     <Button> Get Started </Button>
                 </InfoContainer>

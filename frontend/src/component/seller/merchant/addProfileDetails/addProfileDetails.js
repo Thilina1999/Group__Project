@@ -5,7 +5,6 @@ import { Button, Form } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
-
 const AddProfileDetails=()=> {
   
   let [Merchantid, SetMerchantid] = useState("");
@@ -34,8 +33,8 @@ const AddProfileDetails=()=> {
         AverageProductValue,
         CompanyLogourl,
       };
-      console.log(Merchantid);
-      console.log(typeof(Merchantid));
+      console.log(addmerchant);
+    
       axios
         .post(`http://localhost:8080/createMerchant`, {
           
@@ -47,7 +46,7 @@ const AddProfileDetails=()=> {
           profile: addmerchant.Profile,
           productdescription: addmerchant.ProductDescription,
           averageproductvalue: addmerchant.AverageProductValue,
-          companylogourl: addmerchant.UploadCompanyLogo,
+          companylogourl: addmerchant.CompanyLogourl,
         })
         .then((response) => {
           console.log(response);
@@ -97,7 +96,7 @@ const AddProfileDetails=()=> {
               <br/>
             </Form.Group>
             <Form.Group controlId="ControlInput2" name="id2">
-              <Form.Label className="label">Merchant Name</Form.Label>
+              <Form.Label className="label"><p>Merchant Name</p></Form.Label>
               <Form.Control
                 className="form-controlOne_add"
                 type="text"
@@ -109,12 +108,12 @@ const AddProfileDetails=()=> {
               <br />
             </Form.Group>
             <Form.Group controlId="formFile">
-              <Form.Label className="label">Upload Company logo</Form.Label>
+              <Form.Label className="label"><p>Upload Company logo</p></Form.Label>
               <Form.Control type="file" onChange={OnAddlogo} />
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput3" name="id3">
-              <Form.Label className="label">Official Website</Form.Label>
+              <Form.Label className="label"><p>Official Website</p></Form.Label>
               <Form.Control
                 className="form-controlOne_add"
                 type="text"
@@ -126,11 +125,12 @@ const AddProfileDetails=()=> {
               <br />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label">Email Address</Form.Label>
+              <Form.Label className="label"><p>Email Address</p></Form.Label>
               <Form.Control
                 className="form-controlOne_add"
                 type="email"
                 placeholder="Email Address"
+                errorMessage="It should be a valid email address!"
                 onChange={(e) => {
                   SetContactPersonEmailID(e.target.value);
                 }}
@@ -138,7 +138,7 @@ const AddProfileDetails=()=> {
                <br />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label">Mobile Number</Form.Label>
+              <Form.Label className="label"><p>Mobile Number</p></Form.Label>
               <Form.Control
                 className="form-controlOne_add"
                 type="text"
@@ -150,7 +150,7 @@ const AddProfileDetails=()=> {
               <br />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label">Address</Form.Label>
+              <Form.Label className="label"><p>Address</p></Form.Label>
               <Form.Control
                 className="form-controlOne_add"
                 type="text"
@@ -162,7 +162,7 @@ const AddProfileDetails=()=> {
              <br/>
             </Form.Group>
             <Form.Group controlId="ControlInput4" name="id3">
-              <Form.Label className="label">Profile</Form.Label>
+              <Form.Label className="label"><p>Profile</p></Form.Label>
               <Form.Control
                 className="text1_add"
                 as="textarea"
@@ -175,7 +175,7 @@ const AddProfileDetails=()=> {
             <br/>
             </Form.Group>
             <Form.Group controlId="ControlInput4" name="id3">
-              <Form.Label className="label">Product Description</Form.Label>
+              <Form.Label className="label"><p>Product Description</p></Form.Label>
               <Form.Control
                 className="text1_add"
                 as="textarea"
@@ -188,7 +188,7 @@ const AddProfileDetails=()=> {
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput5" name="id4">
-              <Form.Label className="label">Average Product Value</Form.Label>
+              <Form.Label className="label"><p>Average Product Value</p></Form.Label>
               <Form.Control
                 className="form-controlOne_add"
                 type="number"
@@ -210,6 +210,10 @@ const AddProfileDetails=()=> {
                 type="set"
                 className="button4_add btn btn-light"
                 onClick={Addprofile}
+            //     disabled={!this.addmerchant.MerchantlegalName || !this.addmerchant.OfficialWebsite || 
+            //     !this.addmerchant.ContactPersonEmailID || !this.addmerchant.ContactPersonMobileNumber ||
+            //   !this.addmerchant.BusinessAddress || !this.addmerchant.Profile || !this.addmerchant.ProductDescription ||
+            // !this.addmerchant.AverageProductValue || !this.addmerchant.UploadCompanyLogo }
               >
                 Set
               </Button>
@@ -221,3 +225,4 @@ const AddProfileDetails=()=> {
 }
 
 export default AddProfileDetails;
+ 

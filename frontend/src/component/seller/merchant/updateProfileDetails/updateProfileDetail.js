@@ -18,16 +18,16 @@ const UpdateProfileDetails=()=> {
     let [ProductDescription,SetProductDescription]=useState("");
     let [AverageProductValue,SetAverageProductValue]=useState("");
     let [CompanyLogourl,SetCompanyLogourl]=useState("");
-    let [productlist, SetProductlist] = useState([]);
+    let [merchantlist, SetMerchantlist] = useState([]);
      
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/getMerchantByid${params.id}`)
-      .then((res) => {
-        SetProductlist(res.data);
+      .get(`http://localhost:8080/getMerchantByid/${params.id}`)
+      .then((response) => {
+        SetMerchantlist(response.data);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -93,16 +93,16 @@ const UpdateProfileDetails=()=> {
       <div className="container">
         <Form className="form4_add">
           <Form.Group controlId="ControlInput1" name="id1">
-            <h2 className="h2">Merchant Profile</h2>
+            <h2 className="h2">Update Merchant Profile</h2>
             <hr></hr>
             <br/>
           </Form.Group>
           <Form.Group controlId="ControlInput2" name="id2">
-            <Form.Label className="label">Merchant Name</Form.Label>
+            <Form.Label className="label"><p>Merchant Name</p></Form.Label>
             <Form.Control
               className="form-controlOne_add"
               type="text"
-              placeholder={MerchantlegalName.MerchantlegalName}
+              placeholder={merchantlist.merchantlegalname}
               onChange={(e) => {
                 SetMerchantlegalName(e.target.value);
               }}
@@ -110,16 +110,16 @@ const UpdateProfileDetails=()=> {
             <br />
           </Form.Group>
           <Form.Group controlId="formFile">
-            <Form.Label className="label">Upload Company logo</Form.Label>
+            <Form.Label className="label"><p>Upload Company logo</p></Form.Label>
             <Form.Control type="file" onChange={OnAddlogo} />
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput3" name="id3">
-            <Form.Label className="label">Official Website</Form.Label>
+            <Form.Label className="label"><p>Official Website</p></Form.Label>
             <Form.Control
               className="form-controlOne_add"
               type="text"
-              placeholder={OfficialWebsite.OfficialWebsite}
+              placeholder={merchantlist.officialwebsite}
               onChange={(e) => {
                 SetOfficialWebsite(e.target.value);
               }}
@@ -127,11 +127,11 @@ const UpdateProfileDetails=()=> {
             <br />
           </Form.Group>
           <Form.Group>
-            <Form.Label className="label">Email Address</Form.Label>
+            <Form.Label className="label"><p>Email Address</p></Form.Label>
             <Form.Control
               className="form-controlOne_add"
               type="email"
-              placeholder={ContactPersonEmailID.ContactPersonEmailID}
+              placeholder={merchantlist.contactpersonemailid}
               onChange={(e) => {
                 SetContactPersonEmailID(e.target.value);
               }}
@@ -139,11 +139,11 @@ const UpdateProfileDetails=()=> {
              <br />
           </Form.Group>
           <Form.Group>
-            <Form.Label className="label">Mobile Number</Form.Label>
+            <Form.Label className="label"><p>Mobile Number</p></Form.Label>
             <Form.Control
               className="form-controlOne_add"
               type="text"
-              placeholder={ContactPersonMobileNumber.ContactPersonMobileNumber}
+              placeholder={merchantlist.contactpersonmobilenumber}
               onChange={(e) => {
                 SetContactPersonMobileNumber(e.target.value);
               }}
@@ -151,11 +151,11 @@ const UpdateProfileDetails=()=> {
             <br />
           </Form.Group>
           <Form.Group>
-            <Form.Label className="label">Address</Form.Label>
+            <Form.Label className="label"><p>Address</p></Form.Label>
             <Form.Control
               className="form-controlOne_add"
               type="text"
-              placeholder={BusinessAddress.BusinessAddress}
+              placeholder={merchantlist.businessaddress}
               onChange={(e) => {
                 SetBusinessAddress(e.target.value);
               }}
@@ -163,11 +163,11 @@ const UpdateProfileDetails=()=> {
            <br/>
           </Form.Group>
           <Form.Group controlId="ControlInput4" name="id3">
-            <Form.Label className="label">Profile</Form.Label>
+            <Form.Label className="label"><p>Profile</p></Form.Label>
             <Form.Control
               className="text1_add"
               as="textarea"
-              placeholder={Profile.Profile}
+              placeholder={merchantlist.profile}
               style={{ height: "200px" }}
               onChange={(e) => {
                 SetProfile(e.target.value);
@@ -176,11 +176,11 @@ const UpdateProfileDetails=()=> {
           <br/>
           </Form.Group>
           <Form.Group controlId="ControlInput4" name="id3">
-            <Form.Label className="label">Product Description</Form.Label>
+            <Form.Label className="label"><p>Product Description</p></Form.Label>
             <Form.Control
               className="text1_add"
               as="textarea"
-              placeholder={Description.Description}
+              placeholder={merchantlist.productdescription}
               style={{ height: "200px" }}
               onChange={(e) => {
                 SetProductDescription(e.target.value);
@@ -189,11 +189,11 @@ const UpdateProfileDetails=()=> {
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput5" name="id4">
-            <Form.Label className="label">Average Product Value</Form.Label>
+            <Form.Label className="label"><p>Average Product Value</p></Form.Label>
             <Form.Control
               className="form-controlOne_add"
               type="number"
-              placeholder={AverageProductValue.AverageProductValue}
+              placeholder={merchantlist.averageproductvalue}
               onChange={(e) => {
                 SetAverageProductValue(e.target.valueAsNumber);
               }}
@@ -211,6 +211,10 @@ const UpdateProfileDetails=()=> {
               type="set"
               className="button4_add btn btn-light"
               onClick={Updateprofile}
+              disabled={!this.addmerchant.MerchantlegalName || !this.addmerchant.OfficialWebsite || 
+                !this.addmerchant.ContactPersonEmailID || !this.addmerchant.ContactPersonMobileNumber ||
+              !this.addmerchant.BusinessAddress || !this.addmerchant.Profile || !this.addmerchant.ProductDescription ||
+            !this.addmerchant.AverageProductValue || !this.addmerchant.UploadCompanyLogo }
             >
               Update
             </Button>

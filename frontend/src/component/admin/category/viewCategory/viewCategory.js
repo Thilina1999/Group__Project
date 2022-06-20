@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
-
 import "./viewCategory.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -39,7 +37,7 @@ const ViewCategory = () => {
   return (
     <div className="container2">
       <img src={Photo1} className="image1" />
-      <div className="container">
+      <div className="container" >
         <span className="font">Category</span>
         <span>
           <Link to="/addcategory">
