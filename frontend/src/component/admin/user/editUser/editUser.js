@@ -1,45 +1,42 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
 import { AiOutlinePlusCircle} from "react-icons/ai";
 import "./editUser.css";
 import IconButton from "@mui/material/IconButton";
 
 const EditUser = () => {
-  const [id, setID] = useState("");
-  const [userfirstname, setfirstName] = useState("");
-  const [userlastname, setlastName] = useState("");
+  // const params = useParams();
+  const [id, SetID] = useState("");
+  const [firstName, SetfirstName] = useState("");
+  const [userlastname, SetlastName] = useState("");
+  const [role, SetRole]=useState("");
 
   const data1 = Number(localStorage.getItem("UserId"));
+  useEffect(() =>{
+    SetID(data1);
+    SetfirstName(localStorage.getItem("FirstName"));
+  },[]);
 
-  useEffect(() => {
-    setID(data1);
-    setfirstName(localStorage.getItem("UserName"));
-     setlastName(localStorage.getItem("UserName"));
-  }, []);
-
-  const UpdateUser = () => {//*
+  const UpdateUser = () =>{
     const updateData = {
-      userfirstname,
-       userlastname,
+      firstName,
     };
 
     axios
-      .put(`http://localhost:8080/updateSeller/${id}`, updateData)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+     .put(`http://localhost:8080/updateUser/${id}`,updateData)
+     .then((res) => {
+       console.log(res);
+     })
+     .catch((err) =>{
+       console.log(err);
+     });
   };
-
-  const navigate = useNavigate();
-
-  function DelayRedirect(e, path) {
+  const navigate=useNavigate();
+  function DelayRedirect(e,path){
     e.preventDefault();
-    setTimeout(() => navigate(path), 300);
+    setTimeout(() => navigate(path),300);
   }
 
   return (
@@ -56,30 +53,40 @@ const EditUser = () => {
             </div>
             <Form.Control
               type="text"
-              placeholder={userfirstname}
+              placeholder={firstName}
               onChange={(e) => {
-                setfirstName(e.target.value);
+                SetfirstName(e.target.value);
               }}
             />
-            <div className="edituser-userName">
+             <div className="edituser-userName">
             <Form.Label >User Last Name</Form.Label>
             </div>
             <Form.Control
               type="text"
-              placeholder={userlastname}
+              placeholder={userlastname.lastName}
               onChange={(e) => {
-                setfirstName(e.target.value);
+                SetlastName(e.target.value);
+              }}
+            /> 
+             <div className="edituser-userrole">
+            <Form.Label >Role</Form.Label>
+            </div>
+            <Form.Control
+              type="text"
+              placeholder={role}
+              onChange={(e) => {
+                SetlastName(e.target.value);
               }}
             /> 
             </Form.Group>
-                    <h1 className="edituser-userRole">Roles</h1>
+                    {/* <h1 className="edituser-userRole">Roles</h1>
                 <span>
                     <Link to="">
                         <IconButton className="edituser-plusicon">
                         <AiOutlinePlusCircle className="edituser-icon" />
                         </IconButton>
                     </Link>
-                </span>
+                </span> */}
               
 
 

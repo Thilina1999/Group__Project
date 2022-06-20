@@ -49,10 +49,11 @@ function App() {
          {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
-          <AdminNavbar/>  
+        <AdminNavbar/>
          <AdminSidebar>
-        {/* <Announcement/> */}
-         {/* <NavBar1/> */}
+             
+        {/* <Announcement/>
+         <NavBar1/> */}
          <br/>
          <br/>
          <br/>

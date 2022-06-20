@@ -1,0 +1,114 @@
+.admin-home{
+    margin-top: -200px;
+    margin-left: 15px;
+}
+.admin-detailcard{
+    display: flex;
+    padding: 5px;
+    height: auto;
+    /* width: 100%; */
+}
+.admin-usercount{
+    margin-left: 40px;
+    margin-right: 40px;
+    /* -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.47); */
+    /* box-shadow: 3px 3px 3px 3px rgba(201, 201, 201, 0.47); */
+}
+.admin-productcount{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.admin-count{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.admin-usercount-text{
+    font-size: 18px;
+    background: #e9f5fa;
+}
+.admin-productcount-text{
+    font-size: 18px;
+    background: #e9f5fa;
+}
+.admin-count-text{
+    font-size: 18px;
+    background: #e9f5fa;
+}
+.admin-usercount-element{
+    display: flex;
+    /* align-items: center; */
+}
+.admin-usercount-title{
+    font-size: 15px;
+}
+.admin-usercount-number{
+    align-items: center ;
+    margin-left: 110px;
+    font-size: 25px;
+}
+.admin-usercount-icon{
+    align-items: right;
+    margin-left: 110px;
+    margin-top: 20px;
+    padding: 4px;
+    border-radius: 5px;
+    align-self: flex-end;
+    background-color: #36caf3;
+    color: #115669;
+}
+.admin-productcount-element{
+    display: flex;
+    /* align-items: center; */
+}
+.admin-productcount-title{
+    font-size: 15px;
+}
+.admin-productcount-number{
+    align-items: center ;
+    margin-left: 110px;
+    font-size: 25px;
+}
+.admin-productcount-icon{
+    align-items: right;
+    margin-left: 110px;
+    margin-top: 20px;
+    padding: 4px;
+    border-radius: 5px;
+    align-self: flex-end;
+    background-color: #36caf3;
+    color: #115669;
+}
+.admin-count-element{
+    display: flex;
+    /* align-items: center; */
+}
+.admin-count-title{
+    font-size: 15px;
+}
+.admin-count-number{
+    align-items: center ;
+    margin-left: 110px;
+    font-size: 25px;
+}
+.admin-count-icon{
+    align-items: right;
+    margin-left: 110px;
+    margin-top: 20px;
+    padding: 4px;
+    border-radius: 5px;
+    align-self: flex-end;
+    background-color: #36caf3;
+    color: #115669;
+}
+.admin-chart{
+    margin-top: 50px;
+    
+}
+.admin-piechart{
+    height: 430px;
+    padding: 5px;
+    width: 350px;
+    border-style: groove;
+    border-width: 2px;
+    border-color: #36caf3;
+}

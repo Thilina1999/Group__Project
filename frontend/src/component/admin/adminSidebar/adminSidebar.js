@@ -10,6 +10,7 @@ import {
 import {MdCategory} from "react-icons/md"
 import { NavLink } from "react-router-dom";
 import "./adminSidebar.css";
+import Logo from "../../assets/miniBelllogo.png"
 
 const Sidebar=({children})=>{
     const[isOpen,setIsOpen]=useState(false);
@@ -52,7 +53,16 @@ const Sidebar=({children})=>{
             <div style={{width:isOpen ? "200px" : "50px"}} className="sidebar">
                 <div className="admin-sidebar-top_selection">
                     {/* <h1 style={{display:isOpen ? "block" : "none"}} className="admin-sidebar-logo">Logo</h1> */}
-                    <div style={{marginLeft:isOpen ? "140px" : "0px"}} className="bar">
+                    <div style={{display: isOpen ? "block" : "none"}} >
+                   <img
+                    src={Logo}
+                    width="100"
+                    height="80"
+                    className="admin-sidebar-companylogo"
+                    alt="Minibel"
+                />
+                   </div>
+                    <div style={{marginLeft:isOpen ? "30px" : "0px"}} className="bar">
                             <FaBars onClick={toggle}/>
                     </div>
                 </div>

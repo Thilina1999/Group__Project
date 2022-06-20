@@ -22,16 +22,24 @@ main{
 .admin-sidebar-top_selection{
     display: flex;
     align-items: center;
-    padding: 20px 15px;
+    padding: 10px 15px;
 }
 .admin-sidebar-logo{
+    margin-top: 10px;
     font-size: 30px !important;
     color: #000000;
+}
+.admin-sidebar-companylogo{
+    
 }
 .bar{
     display: flex;
     font-size: 20px;
-    /* margin-left: 140px !important; */
+    cursor: pointer;
+     /* margin-left: 140px !important;  */
+}
+.bar:hover{
+    cursor: pointer;
 }
 .link{
     display: flex;

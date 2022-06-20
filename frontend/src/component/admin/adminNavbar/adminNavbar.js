@@ -1,7 +1,7 @@
 import React from "react";
 import { FormControl,Container,Nav,Navbar, Form} from "react-bootstrap";
 import "./adminNavbar.css"
-import Logo from '../../assets/miniBelllogo.png';
+// import Logo from '../../assets/miniBelllogo.png';
 import Profile from '../../assets/profile.png';
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const AdminNavbar=()=>{
     <div>
         <Navbar className="admin-navbar" bg="light" expand="lg">
             <Container fluid>
-            <Navbar.Brand href="/">
+             {/* <Navbar.Brand href="/">
                 <img
                     src={Logo}
                     width="120"
@@ -18,14 +18,15 @@ const AdminNavbar=()=>{
                     className="admin-navbar-companylogo"
                     alt="Minibel"
                 />
-            </Navbar.Brand>
+            </Navbar.Brand> */}
 
-            <Form className="d-flex">
+            <Form className="admin-searchbar">
                 <FormControl
                     type="search"
                     placeholder="Search"
                     className="me-2"
                     aria-label="Search"
+                    
                 />
             </Form>
             <div className="admin-navbar-profilebtn">
@@ -49,7 +50,14 @@ const AdminNavbar=()=>{
                 </Nav>
             </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar> 
+        {/* <Container>
+      <Navbar expand="lg" variant="light" bg="blue">
+        <Container>
+          <Navbar.Brand href="#">Navbar</Navbar.Brand>
+        </Container>
+      </Navbar>
+    </Container> */}
     </div>
     );
 }

@@ -47,11 +47,11 @@ const ViewUser=()=>{
                                 <td className="viewuser-td2">{user.lastName}</td>
                                 <td className="viewuser-td3">{user.role}</td>
                                 <td className="viewuser-td4">
-                                    <Link to="/editUser">
+                                    <Link to="/edituser">
                                     <IconButton
                                         variant="outline-dark"
                                         onClick={() =>
-                                            SetData(user.firstName, user.lastName,user.role)
+                                            SetData(user.id,user.firstName, user.lastName,user.role)
                                          }
                                     >
                                     <AiFillEdit className="viewuser-icon" />

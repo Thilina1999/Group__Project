@@ -1,10 +1,16 @@
 .admin-navbar{
     background-color: #D4F2FF !important;
     height: 70px;
-    
+    width: 100%;
+    /* margin-top: -170px;
+    margin-left: -20px;
+    margin-bottom: 200px; */
 }
 .admin-navbar-companylogo{
     margin-right: 100px;
+}
+.admin-searchbar{
+    margin-left: 250px;
 }
 .admin-navbar-profilebtn{
     margin-left: 800px !important;
