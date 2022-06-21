@@ -11,37 +11,57 @@ import { CartContext } from "../../context/cart/cart-context";
 
 const Products = () => {
   const { addProduct, cartItem, inCrease } = useContext(CartContext);
-  
+
   const params = useParams();
+  const [average, setAverage] = useState([]);
   const [product, setProduct] = useState([]);
-  const {  producttitle,
+
+  const { producttitle,
     productsubtitle,
     imageurl,
     productprice,
     quantity,
-    id,} = product;
-    const productCart = {
-      producttitle,
-      productsubtitle,
-      imageurl,
-      productprice,
-      quantity,
-      id,
-    }; 
+    id, } = product;
+
+  const productCart = {
+    producttitle,
+    productsubtitle,
+    imageurl,
+    productprice,
+    quantity,
+    id,
+  };
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/getProductByid/${params.id}`)
-      .then((res) => {
-        setProduct(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },[]);
-  
- const totalStars = 5;
- const activeStars = 3;
- const itemInCart = IsInCart(productCart, cartItem);
+    (async () => {
+
+      await axios
+        .get(`http://localhost:8080/getProductByid/${params.id}`)
+        .then((res) => {
+          setProduct(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    )();
+
+    (
+      async () => {
+        await axios.get(`http://localhost:8080/api/getAverageRating/${params.id}`)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+    )();
+  }, [params.id]);
+
+  const totalStars = 5;
+  const activeStars = 3;
+  const itemInCart = IsInCart(productCart, cartItem);
   return (
     <div className="product-detail-container">
       <div>

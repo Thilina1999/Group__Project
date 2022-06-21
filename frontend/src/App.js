@@ -45,6 +45,8 @@ import Buyer from './component/BuyerProtection/Buyer';
 
 
 
+
+
 function App() {
 
   return (
@@ -72,7 +74,6 @@ function App() {
           <Route path="/company" element={<Company />} ></Route>
 
           <Route path="/home" element={<Home />}></Route>
-
           
 
           <Route path="/signin" element={<Signin />}></Route>

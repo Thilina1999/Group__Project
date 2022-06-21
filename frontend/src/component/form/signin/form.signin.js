@@ -51,9 +51,15 @@ const Signin = () => {
 
   }
 
+/*   setTimeout(doSomething, 3000);
+  function doSomething() {
+    //do whatever you want here */
+ 
   if (redirect) {
+
     return <Navigate to="/home" />;
   }
+  
 
   return (
     <div className="body">

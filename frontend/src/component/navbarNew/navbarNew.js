@@ -1,7 +1,7 @@
 import { Badge } from "@material-ui/core";
 import { Reorder, Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { logoImage } from "../Home/data";
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { CartContext } from "../context/cart/cart-context";
 import Avatar from '@mui/material/Avatar';
 import Profile from '../assets/profile.png';
 import { WishListContext } from "../context/wish-list/wishlist-context";
+import jwtDecode from "jwt-decode"
 
 import AdminSidebar from '../admin/adminSidebar/adminSidebar'
 
@@ -157,16 +158,37 @@ function Navbar1() {
     const { itemCountList } = useContext(WishListContext);
     const { itemCount } = useContext(CartContext);
     const [redirect, setRedirect] = useState(false);
+    const token = localStorage.getItem('auth-token')
+
+    /* const e = jwtDecode(token) 
+
+    useEffect(() => {
+        (
+            async () => {
+                try {
+                    let dateNow = new Date()
+                    if ((e.StandardClaims.exp) * 1000 < dateNow.getTime()) {
+                        await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+                        console.log("Token has expired")
+                    }
+                    else {
+                        setRedirect(true)
+                    }
+                }
+                catch (err) {
+                    console.log(err);
+                }
+            }
+        )();
+    }, [e.StandardClaims.exp, token]) */
+
+    
 
     const logOut = async () => {
         try {
-            const token = localStorage.getItem('auth-token')
             const result = await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
             firstName = ''
-            localStorage.removeItem('auth-token')
-            localStorage.removeItem('name')
-            localStorage.removeItem('id')
-            localStorage.removeItem('role')
+            localStorage.clear()
             if (result) {
                 setRedirect(true)
             }
@@ -176,6 +198,7 @@ function Navbar1() {
             setRedirect(false)
         }
     }
+
 
     firstName = localStorage.getItem('name')
     role = localStorage.getItem('role')
@@ -435,7 +458,9 @@ function Navbar1() {
                             {menu}
                         </>
                         <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
-                        <Avatar alt="Remy Sharp" src={Profile} />
+                        <Link to="/profile">
+                            <Avatar alt="Remy Sharp" src={Profile} />
+                        </Link>
                         <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
                         {firstName ? ' Hi ' + firstName : ''}
                         <p>       &nbsp;&nbsp;&nbsp; &nbsp; </p>
@@ -502,14 +527,6 @@ function Navbar1() {
                                 textDecoration: "none"
                             }}>
                             <MenuItem1>Category</MenuItem1>
-                        </Link>
-
-                        <Link to="/viewCategory"
-                            style={{
-                                color: "#000",
-                                textDecoration: "none"
-                            }}>
-                            <MenuItem1>Admin Dashboard</MenuItem1>
                         </Link>
 
                     </Left1>
