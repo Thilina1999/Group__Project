@@ -31,7 +31,6 @@ const Left = styled.div`
     align-items: center;
     margin-left: 0px;
     margin-top: -50px;
-     
 `;
 
 const Left1 = styled.div`
@@ -53,7 +52,7 @@ const Right = styled.div`
 `;
 
 const Language = styled.span`
-    font-size: 14px;
+    font-size: 13px;
     cursor: pointer;
 `;
 
@@ -139,13 +138,26 @@ const MenuItem = styled.div`
     }
 `;
 
+const MenuItem3 =  styled.div`
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 0px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    
+    &:hover{
+        color: gray;
+        transform: scale(1.1);
+    }
+`;
+
 const ImgContainer = styled.div`
      diplay: flex;
 `;
 
 const Image = styled.img`
-     height: 100px;
-     width: 100px;
+     height: 110px;
+     width: 130px;
 `;
 
 function Navbar1() {
@@ -180,7 +192,7 @@ function Navbar1() {
         menu = (
             <>
                 <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} >
-                    <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
+                    <Link to={"/sidebarnew"} style={{ textDecoration: "none", color: "black" }}>
                         Sign In
                     </Link>
                 </Button3></MenuItem>

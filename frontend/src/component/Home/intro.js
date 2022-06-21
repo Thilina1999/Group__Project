@@ -68,11 +68,11 @@ function Intro ({item}){
                 ))}
            </Item1>
            <Item2>
-                <SubTitle>Trending</SubTitle>
-                <Title>We Want to Hear Your Thoughts</Title> <br/>
-                <Para>miniBell never stop giving the best for your little one - that's what motivates us <br/>
-                to keep making improvements. </Para> 
-                <Button> Get Started </Button> 
+                <SubTitle>Selling as a business?</SubTitle>
+                <Title>We make it easy</Title> <br/>
+                <Para>miniBell never stop giving the best for you as well as for your little one.<br/>
+                Sell your items fast—millions of buyers are waiting.</Para> 
+                <Button> Get Started as a <b>SELLER!</b> </Button> 
             </Item2>  
         </Container>
     
