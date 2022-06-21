@@ -11,6 +11,7 @@
 .container1{
   display: inline-flex;
   position: relative;
+  left: 90px;
 }
 
 .img{

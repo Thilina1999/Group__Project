@@ -1,0 +1,66 @@
+.admin-profile-form-rectangle {
+    width: 550px;
+    height: 800px;
+    margin: auto;
+    margin-top: -220px;
+    border: 2px solid #ffffff !important;
+  }
+  .admin-profile-form-topic {
+    font-size: 23px;
+    text-align: center;
+    color: black;
+  }
+  .admin-profile-form-img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 3px solid #75c6dc;
+    margin-top: 20px;
+    display: block;
+    margin-top: -15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+  }
+  .box1 {
+    border: 1px solid #75c6dc;
+    border-radius: 50px;
+    height: 30px;
+    padding: 0 1rem;
+    margin: 20px;
+  }
+  .admin-profilr-form-btnGrp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .admin-profile-form-cancelBtn {
+    padding: 10px 60px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #75c6dc;
+    border-radius: 20px;
+    background-color: white;
+    color: #75c6dc;
+    display: inline-block;
+    cursor: pointer;
+    margin: 40px;
+  }
+  .admin-profile-form-cancelBtn:hover {
+    background-color: #aee7f5;
+  }
+  .admin-profile-form-savebtn {
+    padding: 10px 60px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #75c6dc;
+    border-radius: 20px;
+    background-color: #75c6dc;
+    color: White;
+    display: inline-block;
+    cursor: pointer;
+    margin: 40px;
+  }
+  .admin-profile-form-savebtn:hover {
+    background-color: #aee7f5;
+  }

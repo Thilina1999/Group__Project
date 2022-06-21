@@ -1,0 +1,24 @@
+.admin-navbar{
+    background-color: #D4F2FF !important;
+    height: 70px;
+    
+}
+.admin-navbar-companylogo{
+    margin-right: 100px;
+}
+.admin-navbar-profilebtn{
+    margin-left: 800px !important;
+}
+.admin-navbar-profilebutton{
+    background-color: #D4F2FF; /* Green*/
+    border: none;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.admin-navbar-profileimg{
+    size: 2px;;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

@@ -1,3 +1,4 @@
+
 .wrapper{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(21rem,21rem));
@@ -11,7 +12,7 @@
     background-color:rgba(252, 248, 248, 0.493) !important;
     box-shadow: 0 2px 10px  rgba(0, 0, 0, 0.39) !important;
     border-radius: 15px !important;
-    cursor: pointer;
+   
 }
 .card_product:hover {
   transform: translateY(-5px) scale(1.005) translateZ(0);
@@ -24,20 +25,20 @@
 .start_icon{
   color: rgb(231, 202, 34);
 }
-.share_icon{
-  color: red;
-  
+.fav_icon{
+  transition: all 2s ease;
 }
-.share_icon:hover {
-  transform: translateY(-2px) scale(1.005) translateZ(0);
+.fav_icon:hover {
+  transform: scale(1.15);
 }
 .icon_button{
   justify-content:center;
 }
 .product-detail-container {
+
   display: flex;
-  gap: 70px;
-  margin: 40px;
+  gap: 80px;
+  margin: 150px;
   margin-top: 60px;
   color: #324d67 !important;
 
@@ -63,10 +64,21 @@
 .product-detail-desc h4 {
   display: flex;
   margin-top: 10px;
+  font-family: source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New';
 }
 
 .product-detail-desc p {
   margin-top: 10px;
+  font-family: source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New';
+  text-align: justify!important;
 }
 
 
@@ -93,21 +105,23 @@
 }
 
 .buttons .add-to-cart {
-  padding: 10px 20px;
-  border: 1px solid #f02d34;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  background-color: white;
-  color: #f02d34;
+background-color: #202221;
+  border-radius: 50px;
+  border-width: 0;
+  box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+  color: rgb(248, 248, 248);
   cursor: pointer;
-  width: 200px;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  height: 50px;
+  padding: 0 25px;
+  transition: all 200ms;
 }
 
 .buttons .add-to-cart:hover {
-  transform: scale(1.1, 1.1)
+  background-color: #414241;
+    transform: scale(1.05);
 }
 
 
@@ -123,17 +137,6 @@
   cursor: pointer;
 }
 
-.quantity-desc .minus {
-  border-right: 1px solid gray;
-  color: #f02d34;
-}
-
-.quantity-desc .num {
-  border-right: 1px solid gray;
-  font-size: 20px;
-}
-
-.quantity-desc .plus {
-  color: rgb(49, 168, 49);
-
+.pointer{
+  cursor: pointer;
 }

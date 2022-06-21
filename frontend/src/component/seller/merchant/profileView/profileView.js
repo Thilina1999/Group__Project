@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -10,13 +10,18 @@ import Typography from "@mui/material/Typography";
 import { AiOutlinePlusCircle, AiFillEdit } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../profileView/profileView.css";
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const Profileview = () => {
+    const { jwt, userId } = useContext(AutheContext);
     const [profile, SetProfile] = useState([]);
-    const q=5 ;
     useEffect(() => {
       axios
-        .get(`http://localhost:8080/getMerchantByid/${""}`)
+        .get(`http://localhost:8080/getMerchantByid/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${jwt}` },
+        }
+        )
         .then((response) => {
           SetProfile(response.data);
           console.log(response.data);
@@ -30,7 +35,7 @@ const Profileview = () => {
       <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          <Link to="/addprofile">
+          {/* <Link>
             {
               profile.length == 0 &&(
               <IconButton className="icon_button" size="large" >
@@ -44,7 +49,7 @@ const Profileview = () => {
             </IconButton>
             )}
            
-          </Link>
+          </Link> */}
         </div>
         <div className="wrapper_view">
           {profile.map((merchant) => {

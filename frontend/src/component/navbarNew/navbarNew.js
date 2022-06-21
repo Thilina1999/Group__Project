@@ -1,16 +1,16 @@
 import { Badge } from "@material-ui/core";
-import { Reorder, Search, ShoppingCartOutlined, Favorite } from "@material-ui/icons";
-import { 
-    GridOff,
-    Paper,
-    InputBase,
-    IconButton,
-} from "@material-ui/core";
-import React,{ useState }from'react';
+import { Reorder, Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Favorite } from "@material-ui/icons";
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { logoImage } from "../Home/data";
 import { Link } from 'react-router-dom';
-import SelectCategory from './selectCategory';
+import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import { CartContext } from "../context/cart/cart-context";
+import Avatar from '@mui/material/Avatar';
+import Profile from '../assets/profile.png';
+import { WishListContext } from "../context/wish-list/wishlist-context";
 
 const Container = styled.div`
     height: 80px;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
 `;
 
-const Left =  styled.div`
+const Left = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@ const Left =  styled.div`
     margin-top: -50px;
 `;
 
-const Left1 =  styled.div`
+const Left1 = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
@@ -57,15 +57,15 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-    // border: 0.5px solid lightgray;
-    // display: flex;
-    // border-radius: 50px;
-    // align-items: center;
-    // margin-left: 25px;
-    // padding: 5px;
-    // width: 300px;
-    // border: none;
-    // background-color: white;
+    border: 0.5px solid lightgray;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    margin-left: 25px;
+    padding: 5px;
+    width: 300px;
+    border: none;
+    background-color: white;
      
 `;
 
@@ -93,7 +93,7 @@ const Button2 = styled.div`
     border-radius: 50px;
     curosr: pointer;    
 `;
- 
+
 const Button3 = styled.div`
     background-color: white;
     padding: 5px ;
@@ -111,7 +111,7 @@ const Logo = styled.h1`
     cursor: pointer;
 `;
 
-const MenuItem1 =  styled.div`
+const MenuItem1 = styled.div`
     font-size: 14px;
     margin-top: 30px;
     cursor: pointer;
@@ -125,7 +125,7 @@ const MenuItem1 =  styled.div`
     }
 `;
 
-const MenuItem =  styled.div`
+const MenuItem = styled.div`
     font-size: 14px;
     cursor: pointer;
     margin-left: 40px;
@@ -160,176 +160,490 @@ const Image = styled.img`
      width: 130px;
 `;
 
-//  const categories = styled.div`
- 
-//  `;
+function Navbar1() {
+    let firstName
 
-//  const selectCategory = styled.div`
- 
-//  `;
- 
-    // const FilterProduct = ({ categories }) => {
-    //     const [keyword, setKeyword] = React.useState("");
-    //     const [resultMessage, setResutlMessage] = React.useState("");
+    const { itemCountList } = useContext(WishListContext);
+    const { itemCount } = useContext(CartContext);
+    const [redirect, setRedirect] = useState(false);
 
-    //     const [selectedCategory, setSelectedCategory] = 
-    //     React.useState(defaultCategory);
-    // }
+    const logOut = async () => {
+        try {
+            const token = localStorage.getItem('auth-token')
+            await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+            firstName = ''
+            localStorage.removeItem('auth-token')
+            localStorage.removeItem('name')
+            localStorage.removeItem('id')
+            localStorage.removeItem('role')
+            setRedirect(true)
+        }
+        catch (err) {
+            console.log(err)
+            setRedirect(false)
+        }
+    }
 
-    // const handleSelectChange = (event) => {
-    //     const { value } = event.target;
-    //     const category =  categories.find((cat) => cat.id === value);
-    //     setSelectedCategory(category);
-    // };
+    firstName = localStorage.getItem('name')
 
-    // const handleInputChange = (event) => {
-    //     if(!keyword || !event.target.value){
-    //         setResutlMessage("");
-    //         setSearchResult([]);
-    //         setSelectedCategory(defaultCategory);
-    //     }
-    //     setKeyword(event.target.value);
-    // }
+    let menu;
 
+    if (firstName === null) {
+        menu = (
+            <>
+                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} >
+                    <Link to={"/sidebarnew"} style={{ textDecoration: "none", color: "black" }}>
+                        Sign In
+                    </Link>
+                </Button3></MenuItem>
+                <MenuItem>
+                    <Link to={"/signup"} style={{ textDecoration: "none", color: "black" }}>
+                        Create Account
+                    </Link>
+                </MenuItem>
+            </>
+        );
+    }
+    else {
+        menu = (
+            <>
+                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} onClick={()=>logOut()} >
+                    <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
+                        Log Out
+                    </Link>
+                </Button3></MenuItem>
+            </>
 
+        )
+    }
 
-function Navbar1(){
-//   const [value,setValue] = useState('');
-//   const onChange = (event) => {
-//         setValue(event.target.value);
-//   }
-//   const onSearch = (searchTerm) => {
-//     //our api to fetch the search result
-//     console.log('search', 'searchTerm');
-//   }
+    let user;
 
-  return (
-    <Container>
-        <Wrapper>
-            <Left>
+    if (localStorage.getItem('role') == 'client') {
+        user = (
+          <>
+            <Wrapper>
+              <Left>
                 <Language>EN</Language>
                 <SearchContainer>
-                {/* <Paper component="form" className="root" omSubmit={()=>{}}>
-                <SelectCategory
-                categories={[defaultCategory, ...categories]}
-                selectCategory={selectCategory}
-                onChange={handleSelectChange}
-                />
-                    <InputBase
-                    className="input"
-                    onChange={handleInputChange}
-                    placeholder="Search for a product"
-                    inputProps={{"arial-label":"Search for a product"}}
-                    />
-                    <IconButton type="submit" arial-label="search">
-                    <Search />
-                    </IconButton>
-                    
-                </Paper> */}
-                {/* {resultMessage && <p className="result-message">{resultMessage}</p>} */}
-                {/* <div className="search-container">
-                    <div className="search-inner">
-                            <input type="text" value={value} onChange={onChange} />
-                            <button onClick={()=>onSearch(value)}><Search style={{fontSize:"16", width:"20"}}> </Search></button>
-                       
-                    </div>
-                </div> */}
+                  <Input />
+                  <Search style={{ fontSize: "16", width: "230" }}></Search>
                 </SearchContainer>
-            </Left>
-            <Center>
+              </Left>
+              <Center>
                 <Logo>
-                    {logoImage.map((item) =>(
+                  {logoImage.map((item) => (
                     <ImgContainer bg={item.bg} key={item.id}>
-                        <Image src={item.backgroundImage} />
+                      <Image src={item.backgroundImage} />
                     </ImgContainer>
-                    ))}
+                  ))}
                 </Logo>
-            </Center>
-            <Right>
-            <Button3 style={{padding:"10px 10px", width:"120px"}}><MenuItem3>Sign In</MenuItem3></Button3>
-                <MenuItem>Create Account</MenuItem>
-                <Button style={{width:"50px"}}>
-                <MenuItem>
-                    <Badge badgeContent={4} color="primary">
-                        <Favorite style={{color:"red"}}></Favorite>
-                    </Badge>   
-                </MenuItem>
+              </Center>
+              <Right>
+                <>{menu}</>
+                <p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                {firstName ? " Hi " + firstName : ""}
+                <Button style={{ width: "50px" }}>
+                  <MenuItem>
+                    <Badge badgeContent={itemCountList} color="primary">
+                      <Link
+                        to="/wishList"
+                        style={{
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <Favorite style={{ color: "red" }}></Favorite>
+                      </Link>
+                    </Badge>
+                  </MenuItem>
                 </Button>
                 <Button2>
-                <MenuItem>
-                    <Badge badgeContent={2} color="primary">
-                        <ShoppingCartOutlined></ShoppingCartOutlined>
+                  <MenuItem>
+                    <Badge badgeContent={itemCount} color="primary">
+                      <Link
+                        to="/shoppingCart"
+                        style={{
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <ShoppingCartOutlined />
+                      </Link>
                     </Badge>
-                </MenuItem>
+                  </MenuItem>
                 </Button2>
-            </Right>
-        </Wrapper>
-        <Wrapper>
-            <Left1>
-                <MenuItem1><Button1 style={{color: "blue", background: "#d4f2ff", width: "30px", height: "30px"}}><Reorder style={{color: "gray", width: "18px"}}></Reorder></Button1></MenuItem1>
-                <Link to="/home"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Home</MenuItem1>
-                </Link> 
-               
-                <Link to="/Buyer"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Buyer Protection</MenuItem1>
+              </Right>
+            </Wrapper>
+
+            <Wrapper>
+              <Left1>
+                <MenuItem1>
+                  <Button1
+                    style={{
+                      color: "blue",
+                      background: "#d4f2ff",
+                      width: "30px",
+                      height: "30px",
+                    }}
+                  >
+                    <Reorder style={{ color: "gray", width: "18px" }}></Reorder>
+                  </Button1>
+                </MenuItem1>
+                <Link
+                  to="/home"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Home</MenuItem1>
                 </Link>
-                
-                <Link to="/viewprofile"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Profile</MenuItem1>
+
+                <Link
+                  to="/Buyer"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Buyer Protection</MenuItem1>
                 </Link>
-               
-                <Link to="/sell"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Sell</MenuItem1>
+
+                <Link
+                  to="/sell"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Sell</MenuItem1>
                 </Link>
-                <Link to="/productview"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Product</MenuItem1>
+              </Left1>
+            </Wrapper>
+          </>
+        );
+    }
+    else if (localStorage.getItem('role') == 'seller') {
+        user = (
+          <>
+            <Wrapper>
+              <Left>
+                <Language>EN</Language>
+                <SearchContainer>
+                  <Input />
+                  <Search style={{ fontSize: "16", width: "230" }}></Search>
+                </SearchContainer>
+              </Left>
+              <Center>
+                <Logo>
+                  {logoImage.map((item) => (
+                    <ImgContainer bg={item.bg} key={item.id}>
+                      <Image src={item.backgroundImage} />
+                    </ImgContainer>
+                  ))}
+                </Logo>
+              </Center>
+              <Right>
+                <>{menu}</>
+                <p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                <Avatar alt="Remy Sharp" src={Profile} />
+                <p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                {firstName ? " Hi " + firstName : ""}
+                <Button style={{ width: "50px" }}>
+                  <MenuItem>
+                    <Badge badgeContent={itemCountList} color="primary">
+                      <Link
+                        to="/wishList"
+                        style={{
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <Favorite style={{ color: "red" }}></Favorite>
+                      </Link>
+                    </Badge>
+                  </MenuItem>
+                </Button>
+                <Button2>
+                  <MenuItem>
+                    <Badge badgeContent={itemCount} color="primary">
+                      <Link
+                        to="/shoppingCart"
+                        style={{
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <ShoppingCartOutlined />
+                      </Link>
+                    </Badge>
+                  </MenuItem>
+                </Button2>
+              </Right>
+            </Wrapper>
+
+            <Wrapper>
+              <Left1>
+                <MenuItem1>
+                  <Button1
+                    style={{
+                      color: "blue",
+                      background: "#d4f2ff",
+                      width: "30px",
+                      height: "30px",
+                    }}
+                  >
+                    <Reorder style={{ color: "gray", width: "18px" }}></Reorder>
+                  </Button1>
+                </MenuItem1>
+                <Link
+                  to="/home"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Home</MenuItem1>
                 </Link>
-                <Link to="/viewCategory"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Category</MenuItem1>
+
+                <Link
+                  to="/Buyer"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Buyer Protection</MenuItem1>
                 </Link>
-                <Link to="/merchantapplication"
-                 style={{
-                     color:"#000",
-                    textDecoration:"none"
-                }}>
-                   
-                    <MenuItem1>Privilege</MenuItem1>
+
+                <Link
+                  to="/viewprofile"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Profile</MenuItem1>
                 </Link>
-            </Left1>  
-        </Wrapper>   
-    </Container> 
-  )
+
+                <Link
+                  to="/sell"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Sell</MenuItem1>
+                </Link>
+                <Link
+                  to="/productview"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Product</MenuItem1>
+                </Link>
+              </Left1>
+            </Wrapper>
+          </>
+        );
+    }
+    else if (localStorage.getItem('role') == 'admin') {
+        user = (
+          <>
+            <Wrapper>
+              <Left>
+                <Language>EN</Language>
+                <SearchContainer>
+                  <Input />
+                  <Search style={{ fontSize: "16", width: "230" }}></Search>
+                </SearchContainer>
+              </Left>
+              <Center>
+                <Logo>
+                  {logoImage.map((item) => (
+                    <ImgContainer bg={item.bg} key={item.id}>
+                      <Image src={item.backgroundImage} />
+                    </ImgContainer>
+                  ))}
+                </Logo>
+              </Center>
+              <Right>
+                <>{menu}</>
+                <p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                <Avatar alt="Remy Sharp" src={Profile} />
+                <p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                {firstName ? " Hi " + firstName : ""}
+                <Button style={{ width: "50px" }}>
+                  <MenuItem>
+                    <Badge badgeContent={itemCountList} color="primary">
+                      <Link
+                        to="/wishList"
+                        style={{
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <Favorite style={{ color: "red" }}></Favorite>
+                      </Link>
+                    </Badge>
+                  </MenuItem>
+                </Button>
+                <Button2>
+                  <MenuItem>
+                    <Badge badgeContent={itemCount} color="primary">
+                      <Link
+                        to="/shoppingCart"
+                        style={{
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <ShoppingCartOutlined />
+                      </Link>
+                    </Badge>
+                  </MenuItem>
+                </Button2>
+              </Right>
+            </Wrapper>
+
+            <Wrapper>
+              <Left1>
+                <MenuItem1>
+                  <Button1
+                    style={{
+                      color: "blue",
+                      background: "#d4f2ff",
+                      width: "30px",
+                      height: "30px",
+                    }}
+                  >
+                    <Reorder style={{ color: "gray", width: "18px" }}></Reorder>
+                  </Button1>
+                </MenuItem1>
+                <Link
+                  to="/home"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Home</MenuItem1>
+                </Link>
+
+                <Link
+                  to="/Buyer"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Buyer Protection</MenuItem1>
+                </Link>
+
+                <Link
+                  to="/sell"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Sell</MenuItem1>
+                </Link>
+
+                <Link
+                  to="/viewCategory"
+                  style={{
+                    color: "#000",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuItem1>Category</MenuItem1>
+                </Link>
+              </Left1>
+            </Wrapper>
+          </>
+        );
+    }
+    else {
+        user = (
+            <>
+
+                <Wrapper>
+                    <Left>
+                        <Language>EN</Language>
+                        <SearchContainer>
+                            <Input />
+                            <Search style={{ fontSize: "16", width: "230" }}></Search>
+                        </SearchContainer>
+                    </Left>
+                    <Center>
+                        <Logo>
+                            {logoImage.map((item) => (
+                                <ImgContainer bg={item.bg} key={item.id}>
+                                    <Image src={item.backgroundImage} />
+                                </ImgContainer>
+                            ))}
+                        </Logo>
+                    </Center>
+                    <Right>
+                        <>
+                            {menu}
+                        </>
+
+                    </Right>
+                </Wrapper>
+
+
+                <Wrapper>
+                    <Left1>
+                        <MenuItem1><Button1 style={{ color: "blue", background: "#d4f2ff", width: "30px", height: "30px" }}><Reorder style={{ color: "gray", width: "18px" }}></Reorder></Button1></MenuItem1>
+                        <Link to="/home"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Home</MenuItem1>
+                        </Link>
+
+                        <Link to="/Buyer"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Buyer Protection</MenuItem1>
+                        </Link>
+
+                        <Link to="/sell"
+                            style={{
+                                color: "#000",
+                                textDecoration: "none"
+                            }}>
+
+                            <MenuItem1>Sell</MenuItem1>
+                        </Link>
+                    </Left1>
+                </Wrapper>
+            </>
+        )
+    }
+
+    if (redirect) {
+        return <Navigate to="/home" />;
+    }
+
+    return (
+        <Container>
+
+            {user}
+
+        </Container>
+    );
+
 }
 
 export default Navbar1;

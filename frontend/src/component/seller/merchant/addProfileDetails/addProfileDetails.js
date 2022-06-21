@@ -1,12 +1,13 @@
-import React,{ useState,useEffect }from'react';
+import React,{ useState, useEffect, useContext }from'react';
 import './addProfileDetails.css';
 import { app } from "../../../../firebase"
 import { Button, Form } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const AddProfileDetails=()=> {
-  
+  const { jwt, userId } = useContext(AutheContext);
   let [Merchantid, SetMerchantid] = useState("");
   let [MerchantlegalName, SetMerchantlegalName] = useState("");
   let [OfficialWebsite,SetOfficialWebsite]=useState("");
@@ -32,6 +33,7 @@ const AddProfileDetails=()=> {
         ProductDescription,
         AverageProductValue,
         CompanyLogourl,
+        userId,
       };
       console.log(addmerchant);
     
@@ -47,7 +49,13 @@ const AddProfileDetails=()=> {
           productdescription: addmerchant.ProductDescription,
           averageproductvalue: addmerchant.AverageProductValue,
           companylogourl: addmerchant.CompanyLogourl,
-        })
+          userid: Number(addmerchant.userId),
+        },
+        {
+          headers: { Authorization: `Bearer ${jwt}` },
+        }
+        )
+        
         .then((response) => {
           console.log(response);
           if (response.status === 200) {

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navbar, Container, Form, FormControl, Button, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
-// import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
+
 import { Link } from 'react-router-dom';
 import Logo from '../assets/miniBelllogo.png';
 import { Badge } from "@material-ui/core";
 import { ShoppingCartOutlined } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";
+import { CartContext } from '../context/cart/cart-context';
 
 export default function NavBar1() {
+  const { itemCount , cartItem } = useContext(CartContext);
+  console.log("Cart:", cartItem);
   return (
     <>
       <Navbar style={{ backgroundColor: "#75C6DC", height: "15px" }}>
@@ -81,7 +84,7 @@ export default function NavBar1() {
                 </Button>
               </Link>
               <Link
-                to="/"
+                to="/signup"
                 style={{
                   borderRadius: "50px",
                   width: "160px",
@@ -115,10 +118,11 @@ export default function NavBar1() {
                   marginLeft: "400px",
                 }}
               >
+                
                 <Badge badgeContent={4} color="primary">
                   <Favorite style={{ color: "red" }}></Favorite>
                 </Badge>
-                <Badge badgeContent={2} color="primary">
+                <Badge badgeContent={itemCount} color="primary">
                   <ShoppingCartOutlined></ShoppingCartOutlined>
                 </Badge>
               </Container>

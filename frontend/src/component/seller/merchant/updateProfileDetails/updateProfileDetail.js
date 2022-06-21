@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import { app } from "../../../../firebase";
 import { Description } from "@material-ui/icons";
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const UpdateProfileDetails=()=> {
     const params = useParams();
+    const { jwt, userId } = useContext(AutheContext);
     let [Merchantid, SetMerchantid] = useState("");
     let [MerchantlegalName, SetMerchantlegalName] = useState("");
     let [OfficialWebsite,SetOfficialWebsite]=useState("");
@@ -19,10 +21,15 @@ const UpdateProfileDetails=()=> {
     let [AverageProductValue,SetAverageProductValue]=useState("");
     let [CompanyLogourl,SetCompanyLogourl]=useState("");
     let [merchantlist, SetMerchantlist] = useState([]);
-     
+    
   useEffect(() => {
+    
     axios
-      .get(`http://localhost:8080/getMerchantByid/${params.id}`)
+      .get(`http://localhost:8080/getDataById/${params.id}`,
+      {
+        headers: { Authorization: `Bearer ${jwt}` },
+      }
+      )
       .then((response) => {
         SetMerchantlist(response.data);
       })
@@ -43,6 +50,7 @@ const UpdateProfileDetails=()=> {
           ProductDescription,
           AverageProductValue,
           CompanyLogourl,
+          userId,
         };
 
     axios.put(`http://localhost:8080/updateMerchant/${params.id}`,{
@@ -55,8 +63,13 @@ const UpdateProfileDetails=()=> {
         productdescription: addmerchant.ProductDescription,
         averageproductvalue: addmerchant.AverageProductValue,
         companylogourl: addmerchant.UploadCompanyLogo,
-        
-    }).then((response) => {
+        userid: Number(addmerchant.userId),
+    },
+    {
+      headers: { Authorization: `Bearer ${jwt}` },
+    }
+    
+    ).then((response) => {
         if (response.status === 200) {
             alert("Profile Update");
           } else {
@@ -88,7 +101,9 @@ const UpdateProfileDetails=()=> {
     e.preventDefault();
     setTimeout(() => navigate(path), 600);
   }
+  console.log(merchantlist)
   return (
+    
     <div className="containerFour_add">
       <div className="container">
         <Form className="form4_add">
@@ -211,10 +226,10 @@ const UpdateProfileDetails=()=> {
               type="set"
               className="button4_add btn btn-light"
               onClick={Updateprofile}
-              disabled={!this.addmerchant.MerchantlegalName || !this.addmerchant.OfficialWebsite || 
-                !this.addmerchant.ContactPersonEmailID || !this.addmerchant.ContactPersonMobileNumber ||
-              !this.addmerchant.BusinessAddress || !this.addmerchant.Profile || !this.addmerchant.ProductDescription ||
-            !this.addmerchant.AverageProductValue || !this.addmerchant.UploadCompanyLogo }
+            //   disabled={!this.addmerchant.MerchantlegalName || !this.addmerchant.OfficialWebsite || 
+            //     !this.addmerchant.ContactPersonEmailID || !this.addmerchant.ContactPersonMobileNumber ||
+            //   !this.addmerchant.BusinessAddress || !this.addmerchant.Profile || !this.addmerchant.ProductDescription ||
+            // !this.addmerchant.AverageProductValue || !this.addmerchant.UploadCompanyLogo }
             >
               Update
             </Button>
