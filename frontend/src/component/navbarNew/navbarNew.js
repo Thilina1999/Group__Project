@@ -170,13 +170,13 @@ function Navbar1() {
     const logOut = async () => {
         try {
             const token = localStorage.getItem('auth-token')
-            await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+            // await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
             firstName = ''
             localStorage.removeItem('auth-token')
             localStorage.removeItem('name')
             localStorage.removeItem('id')
             localStorage.removeItem('role')
-            setRedirect(true)
+            
         }
         catch (err) {
             console.log(err)
@@ -554,7 +554,7 @@ function Navbar1() {
                 </Link>
 
                 <Link
-                  to="/viewCategory"
+                  to="/featuedinfo"
                   style={{
                     color: "#000",
                     textDecoration: "none",

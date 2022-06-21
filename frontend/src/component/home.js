@@ -5,17 +5,24 @@ import Intro from './Home/intro'
 import Categories from './Home/categories'
 import Branding from './Home/brands'
 //import LayoutBuyer from './layout/layoutBuyer'
+import Navbar1 from "./navbarNew/navbarNew"
+import Announcement from './Announcement/announcement';
+
 
 export default function Home() {
   return (
     <div>
-        <Slider />
-        <ProductItems />
-        <Intro />
-        <Categories />
-        <Branding />
+      <Announcement />
+      <Navbar1 />
+      <br />
+      <br />
+      <Slider />
+      <ProductItems />
+      <Intro />
+      <Categories />
+      <Branding />
     </div>
-  )
+  );
 }
 
 

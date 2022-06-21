@@ -45,7 +45,7 @@ const Products = () => {
   },[]);
   
  const totalStars = 5;
- const activeStars = 3;
+ const activeStars = 4;
  const itemInCart = IsInCart(productCart, cartItem);
   return (
     <div className="product-detail-container">
