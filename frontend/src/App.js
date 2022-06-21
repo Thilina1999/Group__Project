@@ -8,7 +8,9 @@ import NavBar1 from './component/navbarNew/navbarNew';
 import Signin from './component/form/signin/form.signin';
 import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
-import Footer1 from './component/footerNew/footerNew';
+import AddApplication from './component/seller/merchantApplication/merchantApplication';
+import Footer from './component/footer/footer';
+
 
 import Company from './component/company/company';
 
@@ -20,7 +22,7 @@ import Product from './component/user/shopping/product';
 import ProdAddForm from './component/seller/product/prodAddForm/prodAddForm';
 import AddCategory from './component/admin/category/addCategory/addcategory';
 import ViewCategory from './component/admin/category/viewCategory/viewCategory';
-import UpdateCategory from './component/admin/category/updateCategory/updateCategory'
+import UpdateCategory from './component/admin/category/updateCategory/updateCategory';
 
 
 import Dashboard from './component/admin/dashboard/dashboard';
@@ -38,11 +40,14 @@ import ProductUpdateForm from "./component/seller/product/productupdate/productU
 import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
 import Profileview from "./component/seller/merchant/profileView/profileView";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
+import Addprivilege from "./component/admin/privilege/addPrivilege/addPrivilege";
+import Viewprivilege from './component/admin/privilege/showPrivilege/showPrivilege';
+import Footer1 from './component/footerNew/footerNew';
 
 import Cart from './component/user/shoppingcart/cart';
 import WishList from './component/user/wish-list/wishList';
 import Buyer from './component/BuyerProtection/Buyer';
-
+import Sidebar from './component/sidebarNew/sidebarNew';
 
 
 function App() {
@@ -80,6 +85,8 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/merchantapplication" element={<AddApplication/>} exact></Route>
+
           <Route path="/Buyer" element={<Buyer />}></Route>
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
@@ -98,6 +105,11 @@ function App() {
             exact
           ></Route>
           <Route path="/productview" element={<Productview />} exact></Route>
+          <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
+          <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
+          <Route path="/viewprofile" element={<Profileview/>} exact></Route>
+          <Route path="/addprivilege" element={<Addprivilege/>} exact></Route>
+          <Route path="/showPrivilege" element={<Viewprivilege/>} exact></Route>
           <Route
             path="/addprofile"
             element={<AddProfileDetails />}
@@ -110,11 +122,12 @@ function App() {
           ></Route>
           <Route path="/viewprofile" element={<Profileview />} exact></Route>
           <Route
-            path="/editProduct/:id"
+            path="/editProduct/:id"Profileview
             element={<ProductUpdateForm />}
             exact
           ></Route>
           <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
+          
           <Route path="/shoppingCart" element={<Cart />} exact></Route>
           <Route path="/wishList" element={<WishList />}></Route>
 
@@ -126,6 +139,7 @@ function App() {
           <Route path="/viewuser" element={<ViewUser />} exact></Route>
           <Route path="/edituser" element={<EditUser />} exact></Route>
           <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
+          <Route path="/sidebarnew" element={<Sidebar />} exact></Route>
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
       

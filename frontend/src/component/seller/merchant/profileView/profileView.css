@@ -1,66 +1,73 @@
-.head{
+.head1{
     background-color: rgba(212, 242, 255, 1);
+    background-image: url(https://www.alisonwinterroth.com/wp-content/uploads/2021/08/Newborn-baby-portraits-Slideshow-3020.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;    
 }
+
 .wrapper_view {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
     gap: 3rem;
-    justify-content: center;
-    padding: 50px;
-    
+    justify-content: space-between;
+    padding: 10px 420px;
 }
 
 .card_merchant_view {
+    width: 1000px;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.295) !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.39) !important;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.39) !important; */
     border-radius: 15px !important;
-    
 }
 
 .card_merchant_view:hover {
     transform: translateY(-2px) scale(1.001) translateZ(0);
-
 }
 
 .card__media_view {
     padding: auto;
 }
+
 .icon_button{
     margin-left: 15px !important;
     margin-bottom: 20px !important;
 }
-.icon_button_second {
-    margin-left: 75px !important;
-    
-}
-.view_icon {
-    display: inline-block;
-    color: rgb(255, 0, 0);
-    
 
+.icon_button_second {
+    justify-items: right;       
+}
+
+.view_icon {
+    color: #698f99; 
 }
 
 .view_icon:hover {
-    transform: translateY(-2px) scale(1.005) translateZ(0);
+    transition: all 0.5s ease;
 }
+
 .header_view{
     width: 100%;
     height: 100px;
-    white-space: nowrap;
-    
+    white-space: nowrap; 
 }
 
 .font_view {
     display: inline-block;
-    color: rgb(230, 0, 0);
+    color: black; 
     margin-top: 25px;
-    font-size: 50px;
-       
+    font-size: 30px;   
 }
 
+ .header{
+     font-size: x-large;    
+ }
 
+ .infocard{
+     display: flex;
+ }
 
+ 
 
 
 

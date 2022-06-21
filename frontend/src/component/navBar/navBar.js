@@ -49,6 +49,7 @@ export default function NavBar1() {
                   borderRadius: "50px",
                   border: "none",
                   padding: "5px",
+
                 }}
               />
 

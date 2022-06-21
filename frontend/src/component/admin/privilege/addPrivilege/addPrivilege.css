@@ -5,14 +5,14 @@ h2{
     font-weight: bold;
 }
 
-.containerFour_add{
+.container44_add{
     margin-top: -50px!important;
     width: 100%;
     height: 2000px;
     background-color: white;
 }
 
-.form-controlOne_add {
+.form-control11_add {
     width: 100%;
     height: 35px;
     box-sizing: border-box;
@@ -26,17 +26,29 @@ h2{
     border-radius: 15px !important;
      
 }
-    
-.button4_add{
+
+.button33_add{
     border: none;
     border-radius: 20px;
     margin-top: 25px;
+    margin-left: 200px;
     padding: 15px 35px 15px 35px;
-    background-color: #d4f2ff;
+    background-color:#d4f2ff;
     cursor: pointer;
     font-weight: 500;
-    transition: all 0.5s ease;
-      
+    transition: all 0.5s ease;    
+}
+    
+.button44_add{
+    border: none;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-left: 200px;
+    padding: 15px 35px 15px 35px;
+    background-color: #4e9abb;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.5s ease;    
 }
 
 p{
