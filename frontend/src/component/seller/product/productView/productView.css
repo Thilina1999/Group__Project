@@ -36,9 +36,9 @@
     margin-left: 75px !important;
     
 }
-.view_icon {
+.view_icon_product {
     display: inline-block;
-    color: rgb(255, 0, 0);
+    color: rgb(35, 143, 170);
     
 
 }
@@ -53,13 +53,13 @@
     
 }
 
-.font_view {
+.font_view_product {
     display: inline-block;
-    color: rgb(230, 0, 0);
+    color: black;
     margin-top: 25px;
-    font-size: 50px;
-    
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Montserrat;
     
 }
 

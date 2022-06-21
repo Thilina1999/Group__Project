@@ -12,7 +12,7 @@ const WishListItem = (props) => {
     imageurl,
     productprice,
     quantity,
-    id,
+    productid,
     removeProductList,
   } = props;
   const productList = {
@@ -21,14 +21,14 @@ const WishListItem = (props) => {
     imageurl,
     productprice,
     quantity,
-    id,
+    productid,
   };
 
   return (
     <div className="list-item">
       <div className="border-list">
         <Link
-          to={`/productDetail/${productList.id}`}
+          to={`/productDetail/${productList.productid}`}
           style={{ textDecoration: "none" }}
         >
           <div className="item-div-image-list">

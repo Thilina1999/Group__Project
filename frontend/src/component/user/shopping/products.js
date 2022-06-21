@@ -17,7 +17,7 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import { WishListContext } from "../../context/wish-list/wishlist-context";
 import { AutheContext } from "../../context/auth-context/authContext";
-import { IsInList } from "../wish-list/helperList"
+import { IsInList,GetId } from "../wish-list/helperList"
 const Products = () => {
 
   const { addProductList, listItems, removeProductList } =
@@ -62,9 +62,12 @@ const Products = () => {
            quantity,
            productid:id,
          }; 
+         const array = GetId(productList,listItems);
+        //  console.log(id1);
+           
         return (
           <React.Fragment key={product.id}>
-            <div className = "">
+            <div className="">
               <Card className="card_product">
                 <Link
                   to={`/productDetail/${product.id}`}
@@ -73,16 +76,14 @@ const Products = () => {
                   <div className="pointer">
                     <CardHeader
                       titleTypographyProps={{
-                        color: "rgb(252, 0, 0)",
+                        color: "#000",
                         fontSize: 27,
-                        fontFamily:
-                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                        fontFamily: "Montserrat;",
                       }}
                       subheaderTypographyProps={{
                         color: "#000",
                         fontSize: 15,
-                        fontFamily:
-                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                        fontFamily: "Montserrat;",
                       }}
                       title={product.producttitle}
                       subheader={product.productsubtitle}
@@ -93,8 +94,7 @@ const Products = () => {
                       component="img"
                       height="350"
                       // as an example I am modifying width and height
-                      
-                      
+
                       image={product.imageurl}
                       alt="Kid Cloths"
                     />
@@ -102,8 +102,7 @@ const Products = () => {
                     <CardContent>
                       <Typography
                         style={{
-                          fontFamily:
-                            "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                          fontFamily: "Montserrat;",
                           color: "rgb(252, 0, 0)",
                           fontSize: 20,
                         }}
@@ -130,7 +129,7 @@ const Products = () => {
                     </IconButton>
                   )}
                   {IsInList(productList, listItems) && (
-                    <IconButton onClick={() => removeProductList(productList)}>
+                    <IconButton onClick={() => removeProductList(array)}>
                       <FavoriteIcon
                         className="fav_icon"
                         style={{ color: "red" }}

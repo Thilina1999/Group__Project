@@ -104,13 +104,13 @@ const [categories, setCategories] = useState([]);
       <div className="container-add-product">
         <Form className="form_add-product">
           <Form.Group controlId="ControlInput1" name="id1">
-            <h2 className="h2">Add Product</h2>
+            <h2 className="h2-add-product">Add Product</h2>
             <hr></hr>
             <br />
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput2" name="id2" className="add-pro">
-            <Form.Label className="label">Product Title</Form.Label>
+            <Form.Label className="label-product">Product Title</Form.Label>
             <Form.Control
               className="form-control_add"
               type="text"
@@ -122,7 +122,7 @@ const [categories, setCategories] = useState([]);
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput3" name="id3" className="add-pro">
-            <Form.Label className="label">Product SubTitle</Form.Label>
+            <Form.Label className="label-product">Product SubTitle</Form.Label>
             <Form.Control
               className="form-control_add"
               type="text"
@@ -134,7 +134,7 @@ const [categories, setCategories] = useState([]);
             <br />
           </Form.Group>
           <Form.Group>
-            <Form.Label className="label">Category Select</Form.Label>
+            <Form.Label className="label-product">Category Select</Form.Label>
             <Form.Select
               className="form-control_add"
               onChange={(e) => SetCategoryName(e.target.value)}
@@ -153,7 +153,7 @@ const [categories, setCategories] = useState([]);
             <br />
           </Form.Group>
           <Form.Group controlId="formFile">
-            <Form.Label className="label">file input</Form.Label>
+            <Form.Label className="label-product">file input</Form.Label>
             <Form.Control
               type="file"
               onChange={OnAddProduct}
@@ -162,7 +162,7 @@ const [categories, setCategories] = useState([]);
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput4" name="id3">
-            <Form.Label className="label">Description</Form.Label>
+            <Form.Label className="label-product">Description</Form.Label>
             <Form.Control
               className="text_add"
               as="textarea"
@@ -174,7 +174,7 @@ const [categories, setCategories] = useState([]);
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput5" name="id4">
-            <Form.Label className="label">Product Price</Form.Label>
+            <Form.Label className="label-product">Product Price</Form.Label>
             <Form.Control
               className="form-control_add"
               type="number"
@@ -186,7 +186,7 @@ const [categories, setCategories] = useState([]);
             <br />
           </Form.Group>
           <Form.Group controlId="ControlInput6" name="id4">
-            <Form.Label className="label">Product Quantity</Form.Label>
+            <Form.Label className="label-product">Product Quantity</Form.Label>
             <Form.Control
               className="form-control_add"
               type="number"
@@ -214,7 +214,7 @@ const [categories, setCategories] = useState([]);
             <Button
               variant="outline-dark"
               type="submit"
-              className="button_create_add btn btn-light"
+              className="button_create_add-pro btn btn-light"
               onClick={Addproduct}
             >
               create

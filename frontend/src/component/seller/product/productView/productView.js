@@ -39,10 +39,10 @@ const Productview = () => {
   return (
     <div className="head">
       <div className="header_view">
-        <h2 className="font_view">Product</h2>
+        <h2 className="font_view_product">Product</h2>
         <Link to="/addProduct">
           <IconButton className="icon_button" size="large">
-            <AddCircleIcon className="view_icon" />
+            <AddCircleIcon className="view_icon_product" />
           </IconButton>
         </Link>
       </div>
@@ -54,16 +54,14 @@ const Productview = () => {
                 <Card className="card_product_view">
                   <CardHeader
                     titleTypographyProps={{
-                      color: "rgb(252, 0, 0)",
+                      color: "#000",
                       fontSize: 27,
-                      fontFamily:
-                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                      fontFamily: "Montserrat;",
                     }}
                     subheaderTypographyProps={{
                       color: "#000",
                       fontSize: 15,
-                      fontFamily:
-                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                      fontFamily: "Montserrat",
                     }}
                     title={product.producttitle}
                     subheader={product.productsubtitle}
@@ -81,9 +79,8 @@ const Productview = () => {
                   <CardContent>
                     <Typography
                       style={{
-                        fontFamily:
-                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                        color: "rgb(252, 0, 0)",
+                        fontFamily: "Montserrat;",
+                        color: "#000",
                         fontSize: 20,
                       }}
                     >
