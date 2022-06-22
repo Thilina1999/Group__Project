@@ -176,14 +176,14 @@ function Navbar1() {
     const token = localStorage.getItem('auth-token')
     const logOut = async () => {
         try {
-           
-            await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+            const token = localStorage.getItem('auth-token')
+            // await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
             firstName = ''
             localStorage.removeItem('auth-token')
             localStorage.removeItem('name')
             localStorage.removeItem('id')
             localStorage.removeItem('role')
-            setRedirect(true)
+            
         }
         catch (err) {
             console.log(err)
@@ -232,7 +232,7 @@ const OnClickSearch = async (e)=>{
     else {
         menu = (
             <>
-                <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} onClick={()=>logOut()} >
+                <MenuItem><Button3 style={{ padding: "10px 10px", width: "100px" }} onClick={()=>logOut()} >
                     <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
                         Log Out
                     </Link>
@@ -461,16 +461,6 @@ const OnClickSearch = async (e)=>{
                 </Link>
 
                 <Link
-                  to="/viewprofile"
-                  style={{
-                    color: "#000",
-                    textDecoration: "none",
-                  }}
-                >
-                  <MenuItem1>Profile</MenuItem1>
-                </Link>
-
-                <Link
                   to="/sell"
                   style={{
                     color: "#000",
@@ -480,13 +470,13 @@ const OnClickSearch = async (e)=>{
                   <MenuItem1>Sell</MenuItem1>
                 </Link>
                 <Link
-                  to="/productview"
+                  to="/featuedinfo"
                   style={{
                     color: "#000",
                     textDecoration: "none",
                   }}
                 >
-                  <MenuItem1>Product</MenuItem1>
+                  <MenuItem1>Seller Panel</MenuItem1>
                 </Link>
               </Left1>
             </Wrapper>

@@ -26,6 +26,7 @@ const Title = styled.div`
 `;
 
 function ProductItems(){
+  
   return (
         <Container>
             <SubTitle>Trending</SubTitle>

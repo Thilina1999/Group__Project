@@ -9,6 +9,10 @@ import "./product.css";
 import { IsInCart } from "../shoppingcart/carthelper";
 import { CartContext } from "../../context/cart/cart-context";
 import { AutheContext } from "../../context/auth-context/authContext";
+import Navbar1 from "../../navbarNew/navbarNew";
+import Announcement from "../../Announcement/announcement";
+import Footer1 from "../../footerNew/footerNew";
+
 
 const Products = () => {
   const { jwt, userId } = useContext(AutheContext);
@@ -45,56 +49,76 @@ const Products = () => {
   },[]);
   
  const totalStars = 5;
- const activeStars = 3;
+ const activeStars = 4;
  const itemInCart = IsInCart(productCart, cartItem);
   return (
-    <div className="product-detail-container">
-      <div>
-        <div className="image-container">
-          <img src={product.imageurl} className="product-detail-image" />
-        </div>
-      </div>
-
-      <div className="product-detail-desc">
-        <h1>{product.producttitle}</h1>
-        <h4>{product.productsubtitle}</h4>
-        <div className="reviews">
-          <div>
-            {[...new Array(totalStars)].map((arr, index) => {
-              return index < activeStars ? (
-                <StarIcon className="start_icon" />
-              ) : (
-                <StarBorderIcon className="start_icon" />
-              );
-            })}
+    <>
+      <Announcement />
+      <Navbar1 />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className="product-detail-container">
+        <div>
+          <div className="image-container">
+            <img src={product.imageurl} className="product-detail-image" />
           </div>
         </div>
-        <h4>Details: </h4>
-        <p>{product.description}</p>
-        <p className="price">Rs.{product.productprice}.00</p>
 
-        <div className="buttons">
-          {!itemInCart && (
-            <Button
-              type="button"
-              className="add-to-cart"
-              onClick={() => addProduct(productCart)}
+        <div className="product-detail-desc">
+          <h1 className="h-product">{product.producttitle}</h1>
+          <h4
+            style={{
+              textAlign: "left",
+            }}
+          >
+            {product.productsubtitle}
+          </h4>
+          <div className="reviews">
+            <div
+              style={{
+                textAlign: "left",
+              }}
             >
-              Add to Cart
-            </Button>
-          )}
-          {itemInCart && (
-            <Button
-              type="button"
-              className="add-to-cart"
-              onClick={() => inCrease(productCart)}
-            >
-              Already in Cart
-            </Button>
-          )}
+              {[...new Array(totalStars)].map((arr, index) => {
+                return index < activeStars ? (
+                  <StarIcon className="start_icon" />
+                ) : (
+                  <StarBorderIcon className="start_icon" />
+                );
+              })}
+            </div>
+          </div>
+          <h4>Details: </h4>
+          <p className="p-product">{product.description}</p>
+          <p className="price">Rs.{product.productprice}.00</p>
+
+          <div className="buttons">
+            {!itemInCart && (
+              <Button
+                type="button"
+                className="add-to-cart"
+                onClick={() => addProduct(productCart)}
+              >
+                Add to Cart
+              </Button>
+            )}
+            {itemInCart && (
+              <Button
+                type="button"
+                className="add-to-cart"
+                onClick={() => inCrease(productCart)}
+                disabled={true}
+              >
+                Already in Cart
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      <Footer1/>
+    </>
   );
 };
 

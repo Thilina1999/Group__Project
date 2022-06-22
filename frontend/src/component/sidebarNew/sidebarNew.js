@@ -1,5 +1,6 @@
 import React, { useState } from "react";
- 
+import { Link } from "react-router-dom";
+
 import {
   ProSidebar,
   Menu,
@@ -29,30 +30,28 @@ const Header = () => {
 
   return (
     <>
-      <div id="header">
-         
+      <div id="header" className="header1">
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
-          <div className="logotext">
-               
+            <div className="logotext">
               <p>{menuCollapse ? "Hi!" : "Dashboard"}</p>
             </div>
             <div className="closemenu" onClick={menuIconClick}>
-               
-              {menuCollapse ? (
-                <FiArrowRightCircle/>
-              ) : (
-                <FiArrowLeftCircle/>
-              )}
+              {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
             </div>
-            <br/><br/>
+            <br />
+            <br />
           </SidebarHeader>
           <SidebarContent>
             <Menu iconShape="square">
-              <MenuItem icon={<FiHome />}>
-                Home
-              </MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
+              
+                <MenuItem icon={<FiHome />}>Dashboard
+                <Link to="/featuedinfo"/></MenuItem>
+            
+             
+                <MenuItem icon={<FaList />}>Product
+                 <Link to="/productview"/></MenuItem>
+             
               <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
               <MenuItem icon={<RiPencilLine />}>Author</MenuItem>
               <MenuItem icon={<BiCog />}>Settings</MenuItem>

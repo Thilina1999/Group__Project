@@ -1,13 +1,13 @@
 .head{
     background-color: rgba(212, 242, 255, 1);
 }
-.wrapper_view {
+.wrapper_view_product{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
-    gap: 3rem;
-    justify-content: center;
-    
-    padding: 50px;
+        grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
+        gap: 3rem;
+        justify-content: center;
+        background-color: rgba(212, 242, 255, 1);
+        padding: 50px;
     
 }
 
@@ -36,9 +36,9 @@
     margin-left: 75px !important;
     
 }
-.view_icon {
+.view_icon_product {
     display: inline-block;
-    color: rgb(255, 0, 0);
+    color: rgb(35, 143, 170);
     
 
 }
@@ -46,20 +46,14 @@
 .view_icon:hover {
     transform: translateY(-2px) scale(1.005) translateZ(0);
 }
-.header_view{
-    width: 100%;
-    height: 100px;
-    white-space: nowrap;
-    
-}
 
-.font_view {
+.font_view_product {
     display: inline-block;
-    color: rgb(230, 0, 0);
+    color: black;
     margin-top: 25px;
-    font-size: 50px;
-    
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Montserrat;
     
 }
 
