@@ -50,7 +50,7 @@ import WishList from './component/user/wish-list/wishList';
 import Buyer from './component/BuyerProtection/Buyer';
 import Sidebar from './component/sidebarNew/sidebarNew';
 import FeaturedInfo from './component/seller/dashboard/featuredInfo';
-
+import SearchData from './component/user/shopping/search'
 
 function App() {
 
@@ -139,7 +139,8 @@ function App() {
           <Route path="/edituser" element={<EditUser />} exact></Route>
           <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
           <Route path="/sidebarnew" element={<Sidebar />} exact></Route>
-          {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
+          <Route path="/searchBar/:name" element={<SearchData/>} exact></Route>
+         
         </Routes>
   
       </BrowserRouter>
