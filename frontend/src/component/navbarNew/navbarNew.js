@@ -418,16 +418,6 @@ function Navbar1() {
                 </Link>
 
                 <Link
-                  to="/viewprofile"
-                  style={{
-                    color: "#000",
-                    textDecoration: "none",
-                  }}
-                >
-                  <MenuItem1>Profile</MenuItem1>
-                </Link>
-
-                <Link
                   to="/sell"
                   style={{
                     color: "#000",
@@ -437,13 +427,13 @@ function Navbar1() {
                   <MenuItem1>Sell</MenuItem1>
                 </Link>
                 <Link
-                  to="/productview"
+                  to="/featuedinfo"
                   style={{
                     color: "#000",
                     textDecoration: "none",
                   }}
                 >
-                  <MenuItem1>Product</MenuItem1>
+                  <MenuItem1>Seller Panel</MenuItem1>
                 </Link>
               </Left1>
             </Wrapper>
@@ -554,7 +544,7 @@ function Navbar1() {
                 </Link>
 
                 <Link
-                  to="/featuedinfo"
+                  to="/viewCategory"
                   style={{
                     color: "#000",
                     textDecoration: "none",

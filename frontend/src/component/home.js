@@ -7,6 +7,7 @@ import Branding from './Home/brands'
 //import LayoutBuyer from './layout/layoutBuyer'
 import Navbar1 from "./navbarNew/navbarNew"
 import Announcement from './Announcement/announcement';
+import Footer1 from './footerNew/footerNew'
 
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Intro />
       <Categories />
       <Branding />
+      <Footer1/>
     </div>
   );
 }

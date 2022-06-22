@@ -5,6 +5,10 @@ import Header from "../../../component/sidebarNew/sidebarNew";
 
 
 export default function FeaturedInfo() {
+  
+
+
+
   return (
     <div className="ft">
       <div>
@@ -13,7 +17,7 @@ export default function FeaturedInfo() {
       <div>
         <div className="featured">
           <div className="featuredItem-left">
-            <span className="featuredTitle">Revanue</span>
+            <span className="featuredTitle">Added Product Count</span>
             <div className="featuredMoneyContainer">
               <span className="featuredMoney">$2,415</span>
               <span className="featuredMoneyRate">

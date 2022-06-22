@@ -118,8 +118,6 @@ const OnAddProduct = async (e) => {
 
   return (
     <div className="container7_update">
-     
-
       <div className="container">
         <Form className="form4_update">
           <Form.Group controlId="ControlInput1" name="id1">
@@ -220,7 +218,7 @@ const OnAddProduct = async (e) => {
           <Link to="/productview">
             <Button
               variant="outline-dark"
-              className="button3_update btn btn-light"
+              className="button4_update btn btn-light"
             >
               Cancel
             </Button>
@@ -232,7 +230,7 @@ const OnAddProduct = async (e) => {
             <Button
               variant="outline-dark"
               type="submit"
-              className="button4_update btn btn-light"
+              className="button5_update btn btn-light"
               onClick={UpdateProduct}
             >
               Update

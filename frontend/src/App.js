@@ -139,12 +139,7 @@ function App() {
           <Route path="/sidebarnew" element={<Sidebar />} exact></Route>
           {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
         </Routes>
-      
-        {/* </AdminSidebar>  */}
-
-        {/* <Footer /> */}
-        <br />
-        <Footer1 />
+  
       </BrowserRouter>
     </div>
   );

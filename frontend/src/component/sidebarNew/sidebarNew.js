@@ -44,8 +44,14 @@ const Header = () => {
           </SidebarHeader>
           <SidebarContent>
             <Menu iconShape="square">
-              <MenuItem icon={<FiHome />}>Home</MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
+              
+                <MenuItem icon={<FiHome />}>Dashboard
+                <Link to="/featuedinfo"/></MenuItem>
+            
+             
+                <MenuItem icon={<FaList />}>Product
+                 <Link to="/productview"/></MenuItem>
+             
               <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
               <MenuItem icon={<RiPencilLine />}>Author</MenuItem>
               <MenuItem icon={<BiCog />}>Settings</MenuItem>
@@ -53,9 +59,7 @@ const Header = () => {
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <Link to="/home">
-                <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-              </Link>
+              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
             </Menu>
           </SidebarFooter>
         </ProSidebar>
