@@ -10,7 +10,7 @@ export default function ResetPass() {
 
   const resetPass = async (e) => {
     e.preventDefault();
-    await axios.post(`api`, {
+    await axios.post(`http://localhost:8080/api/reset`, {
       password
     })
       .then((res) => {

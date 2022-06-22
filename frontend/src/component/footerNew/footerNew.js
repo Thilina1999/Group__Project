@@ -17,7 +17,8 @@ const Left = styled.div`
 `;
 
 const Logo = styled.h1`
-
+    height: 10px;
+    width: 10px;
 `;
 
 const SocialContainer = styled.div`
@@ -52,7 +53,7 @@ const Center2 = styled.div`
 
 const Title = styled.h3`
     margin-bottom: 30px;
-    font-size: 20px;
+    font-size: 18px;
     
 `;
 
@@ -137,7 +138,8 @@ function Footer1(){
         </Right>
     </Container>
   )
+  
 }
-<hr></hr>
+
 
 export default Footer1;

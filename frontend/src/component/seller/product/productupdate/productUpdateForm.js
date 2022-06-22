@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
@@ -6,10 +6,11 @@ import { useNavigate, Link } from "react-router-dom";
 import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
 import { app } from "../../../../firebase";
 import "../productupdate/productUpdateForm.css";
-
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 
 const ProductUpdateForm = () => {
+  const { jwt, userId } = useContext(AutheContext);
   const params = useParams();
   const [producttitle, SetProductTitle] = useState("");
   const [productsubtitle, SetSubTitle] = useState("");
@@ -23,10 +24,13 @@ const ProductUpdateForm = () => {
 
 
 
+
 useEffect(() => {
   
       axios
-        .get(`http://localhost:8080/getCategory`)
+        .get(`http://localhost:8080/getCategory`, {
+          headers: { Authorization: `Bearer ${jwt}` },
+        })
         .then((response) => {
           setCategories(response.data);
           console.log(response.data);
@@ -38,7 +42,9 @@ useEffect(() => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/getProductByid/${params.id}`)
+      .get(`http://localhost:8080/getProductByid/${params.id}`, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then((res) => {
         SetProductlist(res.data);
       })
@@ -55,25 +61,36 @@ const UpdateProduct = () => {
     description,
     price,
     quantity,
+    userId,
   };
   console.log(addproduct.producttitle);
-  axios.put(`http://localhost:8080/updateProduct/${params.id}`,{
-    producttitle: addproduct.producttitle,
-    productsubtitle: addproduct.productsubtitle,
-    categoryname: addproduct.categoryname,
-    imageurl: addproduct.imageurl,
-    description: addproduct.description,
-    productprice: addproduct.price,
-    productquantity: addproduct.quantity,
-  }).then((response) => {
-     if (response.status === 200) {
-       alert("Product Update");
-     } else {
-       alert("Product Update Failed");
-     }
-  }).catch((err) => {
-    console.log(err);
-  });
+  axios
+    .put(
+      `http://localhost:8080/updateProduct/${params.id}`,
+      {
+        producttitle: addproduct.producttitle,
+        productsubtitle: addproduct.productsubtitle,
+        categoryname: addproduct.categoryname,
+        imageurl: addproduct.imageurl,
+        description: addproduct.description,
+        productprice: addproduct.price,
+        productquantity: addproduct.quantity,
+        userid: Number(addproduct.userId),
+      },
+      {
+        headers: { Authorization: `Bearer ${jwt}` },
+      }
+    )
+    .then((response) => {
+      if (response.status === 200) {
+        alert("Product Update");
+      } else {
+        alert("Product Update Failed");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 const OnAddProduct = async (e) => {

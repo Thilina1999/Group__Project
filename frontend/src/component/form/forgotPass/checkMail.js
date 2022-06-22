@@ -9,7 +9,7 @@ export default function CheckMail() {
 
   const checkMail = async (e) => {
     e.preventDefault();
-    await axios.post(`api`,{
+    await axios.post(`http://localhost:8080/api/forgot`,{
       email
     })
     .then((res)=>{

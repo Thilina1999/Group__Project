@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -10,12 +10,18 @@ import Typography from "@mui/material/Typography";
 import { AiOutlinePlusCircle, AiFillEdit } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../profileView/profileView.css";
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const Profileview = () => {
+    const { jwt, userId } = useContext(AutheContext);
     const [profile, SetProfile] = useState([]);
     useEffect(() => {
       axios
-        .get("http://localhost:8080/getMerchant")
+        .get(`http://localhost:8080/getMerchantByid/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${jwt}` },
+        }
+        )
         .then((response) => {
           SetProfile(response.data);
           console.log(response.data);
@@ -24,16 +30,26 @@ const Profileview = () => {
           console.log(error);
         });
     }, []);
-  
+  console.log("profile:",profile.length)
     return (
-      <div className="head">
+      <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          <Link to="/addprofile">
-            <IconButton className="icon_button" size="large" >
+          {/* <Link>
+            {
+              profile.length == 0 &&(
+              <IconButton className="icon_button" size="large" >
               <AiOutlinePlusCircle className="view_icon" />
             </IconButton>
-          </Link>
+            )}
+             {
+              profile.length != 0 &&(
+              <IconButton className="icon_button" size="large" >
+              <AiFillEdit className="view_icon" />
+            </IconButton>
+            )}
+           
+          </Link> */}
         </div>
         <div className="wrapper_view">
           {profile.map((merchant) => {
@@ -41,9 +57,8 @@ const Profileview = () => {
               <React.Fragment key={merchant.id}>
                 <div>
                   <Card className="card_merchant_view">
-                    <CardHeader
+                    <CardHeader className="header"
                       title={merchant.merchantlegalname} 
-                      subheader={merchant.officialwebsite}
                     />
                     <div>
                       <CardMedia
@@ -51,27 +66,30 @@ const Profileview = () => {
                         component="img"
                         height="300"
                         image={merchant.companylogourl}
-                        alt="Kid Cloths"
+                        alt=""
                       />
                     </div>
-  
-                    <CardContent>
-                      <Typography>Reach via: {merchant.contactpersonemailid}</Typography>
-                    </CardContent>
-                    <CardContent>
-                      <Typography>Contact Us: {merchant.contactpersonmobilenumber}</Typography>
-                    </CardContent>
-                    <CardContent>
-                      <Typography>{merchant.businessaddress}</Typography>
-                    </CardContent>
-                    <CardContent>
+                    
+                    <CardContent className="infocard">
                       <Typography>: {merchant. profile}</Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>: {merchant.productdescription}</Typography>
+                    <CardContent className="infocard">
+                      <Typography>Reach via:<b>{merchant.officialwebsite}</b> </Typography>
+                    </CardContent >
+                    <CardContent className="infocard">
+                      <Typography><b> {merchant.contactpersonemailid}</b></Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>Average Product Value: {merchant.averageproductvalue}</Typography>
+                    <CardContent className="infocard">
+                      <Typography><b>{merchant.contactpersonmobilenumber}</b></Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography><b>{merchant.businessaddress}</b></Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography><b> Product Description:</b> {merchant.productdescription}</Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography>Average Product Value: <b>{merchant.averageproductvalue}</b> </Typography>
                     </CardContent>
 
                     <CardActions disableSpacing>

@@ -1,3 +1,3 @@
 export const IsInList = (product, listItems) => {
-  return listItems.find((item) => item.id === product.id);
+  return listItems.find((item) => item.productid === product.productid);
 };
