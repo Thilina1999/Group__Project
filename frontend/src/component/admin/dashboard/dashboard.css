@@ -1,6 +1,7 @@
 .admin-home{
     margin-top: -200px;
     margin-left: 15px;
+    margin-top: 50px;
 }
 .admin-detailcard{
     display: flex;
@@ -18,7 +19,7 @@
     margin-left: 40px;
     margin-right: 40px;
 }
-.admin-count{
+.admin-categorycount{
     margin-left: 40px;
     margin-right: 40px;
 }
@@ -30,7 +31,7 @@
     font-size: 18px;
     background: #e9f5fa;
 }
-.admin-count-text{
+.admin-categorycount-text{
     font-size: 18px;
     background: #e9f5fa;
 }
@@ -78,19 +79,19 @@
     background-color: #36caf3;
     color: #115669;
 }
-.admin-count-element{
+.admin-categorycount-element{
     display: flex;
     /* align-items: center; */
 }
-.admin-count-title{
+.admin-categorycount-title{
     font-size: 15px;
 }
-.admin-count-number{
+.admin-categorycount-number{
     align-items: center ;
     margin-left: 110px;
     font-size: 25px;
 }
-.admin-count-icon{
+.admin-categorycount-icon{
     align-items: right;
     margin-left: 110px;
     margin-top: 20px;
@@ -101,6 +102,7 @@
     color: #115669;
 }
 .admin-chart{
+    display: flex;
     margin-top: 50px;
     
 }
@@ -111,4 +113,12 @@
     border-style: groove;
     border-width: 2px;
     border-color: #36caf3;
+}
+.admin-barchart{
+    height: 430px;
+    width: 750px;
+    border-style: groove;
+    border-width: 2px;
+    border-color: #36caf3;
+    margin-left: 40px;
 }

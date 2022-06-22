@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import "./addRole.css";
 import { useNavigate, Link } from "react-router-dom";
+import { AutheContext } from "../../../context/auth-context/authContext";
 // import { ToastContainer,toast } from "react-toastify";
 // import {ToastProperties} from "./../../toast"
 // import "react-toastify/dist/ReactToastify.css";
 
 const AddRole = () => {
+  const {jwt, userId }= useContext(AutheContext)
   let [rolename, setRolename] = useState("");
 
   // const handleClick=()=>{
@@ -24,7 +26,9 @@ const AddRole = () => {
     };
     
     axios
-       .post(`http://localhost:8080/createRole`, addRoleData)
+       .post(`http://localhost:8080/createRole`, addRoleData ,{
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then((res) => {
         console.log(res);
 

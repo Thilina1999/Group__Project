@@ -7,7 +7,9 @@ import {
     FaMailBulk,//mail
     FaBars
 }from "react-icons/fa";
+import {MdHome} from "react-icons/md";
 import {MdCategory} from "react-icons/md"
+import {BsPersonCircle} from "react-icons/bs"
 import { NavLink } from "react-router-dom";
 import "./adminSidebar.css";
 import Logo from "../../assets/miniBelllogo.png"
@@ -16,6 +18,11 @@ const Sidebar=({children})=>{
     const[isOpen,setIsOpen]=useState(false);
     const toggle=()=>setIsOpen(!isOpen);
     const menuItem=[
+        {
+            path:"/home",
+            name:"Home",
+            icon:<MdHome/>
+        },
         {
             path:"/dashboard",
             name:"Dashboard",
@@ -45,6 +52,11 @@ const Sidebar=({children})=>{
             path:"/viewCategory",
             name:"Category",
             icon:<MdCategory/>
+        },
+        {
+            path:"/profile",
+            name:"Profile",
+            icon:<BsPersonCircle/>
         }
         
     ]
@@ -56,6 +68,7 @@ const Sidebar=({children})=>{
                     <div style={{display: isOpen ? "block" : "none"}} >
                    <img
                     src={Logo}
+                    path="/company"
                     width="100"
                     height="80"
                     className="admin-sidebar-companylogo"

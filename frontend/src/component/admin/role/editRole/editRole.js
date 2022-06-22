@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
 import "./editRole.css";
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const EditRole = () => {
+  const {jwt, userId }= useContext(AutheContext)
   const [id, setID] = useState("");
   const [rolename, setRole] = useState("");
 
@@ -21,7 +23,9 @@ const EditRole = () => {
     };
 
     axios
-      .put(`http://localhost:8080/updateRole/${id}`, updateData)
+      .put(`http://localhost:8080/updateRole/${id}`, updateData ,{
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .then((res) => {
         console.log(res);
       })

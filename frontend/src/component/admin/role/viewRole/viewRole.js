@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./viewRole.css"
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 // import {Alert,Button} from "react-bootstrap"
+import {AutheContext} from "../../../context/auth-context/authContext"
 
 const ViewRole = () => {
+    const { jwt, userId } = useContext(AutheContext)
     const [role, setRole] = useState([]);
     // const [show,setShow] = useState(true);
     const GetRole = () => {
         useEffect(() => {
           axios
-            .get(`http://localhost:8080/getRole`)
+            .get(`http://localhost:8080/getRole`,{
+                headers: { Authorization: `Bearer ${jwt}` },
+              })
             .then((res) => {
               setRole(res.data);
             })

@@ -2,7 +2,7 @@
     width: 500px;
     height: 100%;
     margin: auto;
-    margin-top: -220px;
+    margin-top: 50px;
     border: 2px solid #ffffff !important;
 }
 .edituser-topic{
@@ -23,6 +23,12 @@
     text-align: left;
     color: black;
     margin-left: 10px;
+}
+.edituser-multi-select-text{
+    font-size: 18px;
+    text-align: left !important;
+    color: black;
+    margin-left: -370px;
 }
 .edituser-plusicon{
     margin-left: 20px;

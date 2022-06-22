@@ -3,7 +3,13 @@
     height: 900px;
     background-color: rgba(212, 242, 255, 1);
 }
+.container-update {
+    padding: center;
+    padding-top: 70px;
+    position: relative;
 
+
+}
 .imag2{
      position: absolute;
     left: 300px;
@@ -12,6 +18,7 @@
 h1{
     text-align: left;
     color: rgb(255, 7, 7);
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
 }
 
 
@@ -29,24 +36,57 @@ h1{
     margin: 100px;
 }
 
-.form-control {
+.form-control-update {
     width: 100%;
     height: 45px;
     box-sizing: border-box;
     border-radius: 50px !important;
 }
-.button{
-    width: 250px;
-    border-radius: 50px !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-left: 120px;
+.button-update{
+    background-color: #202221;
+        border-radius: 50px;
+        border-width: 0;
+        box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+        color: rgb(248, 248, 248);
+        cursor: pointer;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+        font-size: 1em;
+        height: 50px;
+        padding: 0 25px;
+        transition: all 200ms;
+        width: 250px;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-left: 110px;
+    
     
 }
+.button-update:hover {
+    background-color: #414241;
+    transform: scale(1.05);
+}
 .button1{
-      width: 250px;
-    border-radius: 50px !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-left: 150px;
+    background-color: #202221;
+        border-radius: 50px;
+        border-width: 0;
+        box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+        color: rgb(248, 248, 248);
+        cursor: pointer;
+        display: inline-block;
+        font-family: Arial, sans-serif;
+        font-size: 1em;
+        height: 50px;
+        padding: 0 25px;
+        transition: all 200ms;
+        width: 250px;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-left: 110px;
+}
+.button1:hover {
+    background-color: #414241;
+    transform: scale(1.05);
 }
 .link{
     text-decoration: none;

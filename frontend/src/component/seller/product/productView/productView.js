@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useState, useEffect,useContext } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -7,36 +7,42 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./productView.css";
-
+import {AutheContext} from "../../../context/auth-context/authContext"
 
 const Productview = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/getProducts")
-      .then((response) => {
-        setProducts(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-const OnDelete = (id)=>{
-    axios.delete(`http://localhost:8080/deleteProduct/${id}`);
+  const { jwt, userId}= useContext(AutheContext)
+   const [products, setProducts] = useState([]);
+   useEffect(() => {
+     axios
+       .get(`http://localhost:8080/getProductByUserId/${userId}`, {
+         headers: { Authorization: `Bearer ${jwt}` },
+       })
+       .then((response) => {
+         setProducts(response.data);
+         console.log(response.data);
+       })
+       .catch((error) => {
+         console.log(error);
+       });
+   }, []);
+  const OnDelete = (id) => {
+    axios.delete(`http://localhost:8080/deleteProduct/${id}`, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
     window.location.reload(true);
-}
+  };
 
   return (
     <div className="head">
       <div className="header_view">
         <h2 className="font_view">Product</h2>
         <Link to="/addProduct">
-          <IconButton className="icon_button" size="large" >
-            <AiOutlinePlusCircle className="view_icon" />
+          <IconButton className="icon_button" size="large">
+            <AddCircleIcon className="view_icon" />
           </IconButton>
         </Link>
       </div>
@@ -47,6 +53,18 @@ const OnDelete = (id)=>{
               <div>
                 <Card className="card_product_view">
                   <CardHeader
+                    titleTypographyProps={{
+                      color: "rgb(252, 0, 0)",
+                      fontSize: 27,
+                      fontFamily:
+                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                    }}
+                    subheaderTypographyProps={{
+                      color: "#000",
+                      fontSize: 15,
+                      fontFamily:
+                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                    }}
                     title={product.producttitle}
                     subheader={product.productsubtitle}
                   />
@@ -61,7 +79,16 @@ const OnDelete = (id)=>{
                   </div>
 
                   <CardContent>
-                    <Typography>Rs.{product.productprice}.00</Typography>
+                    <Typography
+                      style={{
+                        fontFamily:
+                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
+                        color: "rgb(252, 0, 0)",
+                        fontSize: 20,
+                      }}
+                    >
+                      Rs.{product.productprice}.00
+                    </Typography>
                   </CardContent>
 
                   <CardActions disableSpacing>

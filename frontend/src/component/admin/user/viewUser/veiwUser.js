@@ -1,16 +1,20 @@
-import React,{useEffect,useState} from "react";
+import React,{useContext, useEffect,useState} from "react";
 import axios from "axios";
 import "./viewUser.css"
 import {AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
+import {AutheContext} from "../../../context/auth-context/authContext"
 
 const ViewUser=()=>{
+    const { jwt , userId }= useContext(AutheContext)
     const [user, setUser] = useState([]);
     const GetUser = () => {
         useEffect(() => {
           axios
-             .get(`http://localhost:8080/getUser`)
+             .get(`http://localhost:8080/getUser`, {
+                headers: { Authorization: `Bearer ${jwt}` },
+              })
             .then((res) => {
               setUser(res.data);
             console.log(res.data);
@@ -47,7 +51,7 @@ const ViewUser=()=>{
                                 <td className="viewuser-td2">{user.lastName}</td>
                                 <td className="viewuser-td3">{user.role}</td>
                                 <td className="viewuser-td4">
-                                    <Link to="/edituser">
+                                    <Link to={`/edituser/${user.id}`}>
                                     <IconButton
                                         variant="outline-dark"
                                         onClick={() =>

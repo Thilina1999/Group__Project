@@ -1,43 +1,81 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import axios from "axios";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
 import { AiOutlinePlusCircle} from "react-icons/ai";
 import "./editUser.css";
 import IconButton from "@mui/material/IconButton";
+import {Multiselect} from "multiselect-react-dropdown";
+import { AutheContext } from "../../../context/auth-context/authContext";
 
 const EditUser = () => {
-  // const params = useParams();
-  const [id, SetID] = useState("");
+  const { jwt , userId }= useContext(AutheContext);
+  const params = useParams();
+  const [id, SetID] = useState(0);
   const [firstName, SetfirstName] = useState("");
   const [userlastname, SetlastName] = useState("");
   const [role, SetRole]=useState("");
-
-  const data1 = Number(localStorage.getItem("UserId"));
-  useEffect(() =>{
-    SetID(data1);
-    SetfirstName(localStorage.getItem("FirstName"));
-  },[]);
-
-  const UpdateUser = () =>{
-    const updateData = {
-      firstName,
-    };
-
+  const [previlage, Setprevilage]= useState("");
+  const [user, setUserData]=useState([]);
+  console.log(params.id)
+  console.log(user)
+  useEffect(() => {
     axios
-     .put(`http://localhost:8080/updateUser/${id}`,updateData)
-     .then((res) => {
-       console.log(res);
-     })
-     .catch((err) =>{
-       console.log(err);
-     });
-  };
+      .get(`http://localhost:8080/getUserId/${params.id}`, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
+      .then((res) => {
+        console.log(res.data)
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  const UpdateUser = () => {
+    var adduser = {
+      id,
+      firstName,
+      userlastname,
+      role,
+    };
+    console.log(adduser.role);
+    axios
+     .put(`http://localhost:8080/updateUser/${params.id}`,
+     {
+       id:Number(adduser.id),
+       firstName:adduser.firstName,
+       userlastname:adduser.lastName,
+       role: adduser.role,
+       previlage: adduser.previlage,},
+        {
+      headers: { Authorization: `Bearer ${jwt}` },
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        alert("User Update");
+      } else {
+        alert("Usert Update Failed");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
   const navigate=useNavigate();
   function DelayRedirect(e,path){
     e.preventDefault();
     setTimeout(() => navigate(path),300);
   }
+
+  const multidata = [
+    {Previlage:'Edit access', id: 1},
+    {Previlage:'View access', id: 2},
+    {Previlage:'View1 access', id: 3},
+    {Previlage:'View2 access', id: 4},
+    {Previlage:'View3 access', id: 5},
+]
+const [options]=useState(multidata);
 
   return (
     <div className="edituser-rectangle"><br/>
@@ -53,7 +91,8 @@ const EditUser = () => {
             </div>
             <Form.Control
               type="text"
-              placeholder={firstName}
+              placeholder={user.firstName}
+              readOnly
               onChange={(e) => {
                 SetfirstName(e.target.value);
               }}
@@ -63,7 +102,8 @@ const EditUser = () => {
             </div>
             <Form.Control
               type="text"
-              placeholder={userlastname.lastName}
+              placeholder={user.lastName}
+              readOnly
               onChange={(e) => {
                 SetlastName(e.target.value);
               }}
@@ -73,12 +113,43 @@ const EditUser = () => {
             </div>
             <Form.Control
               type="text"
-              placeholder={role}
+              placeholder={user.role}
+              readOnly
               onChange={(e) => {
-                SetlastName(e.target.value);
+                SetRole(e.target.value);
               }}
             /> 
             </Form.Group>
+            <Form.Group >
+              {/* <Form.Label className="edituser-multi-select-text">Add previlages</Form.Label>
+              <div className="edituser-multiple-select" style={{width:"500px", justifyContenct:"center", display:"flex"}}>
+                <div>
+                  <Multiselect options={options} displayValue="Previlage"/>
+                </div>
+              </div> */}
+              <Form.Label className="edituser-select-previlage">Select Previlages</Form.Label>
+              <Form.Select
+                // defaultValue="select..."
+                className="edituser-previlage-set"
+                onChange={(e) => Setprevilage(e.target.value)}
+              >
+                <option>Edit Access</option>
+                <option>Previlage1</option>
+                <option>Previlage2</option>
+                
+              </Form.Select>
+            </Form.Group>
+            
+            {/* <Form.Group>
+              <Form.Label>Previlages</Form.Label>
+              <Form.Select
+              onChange={(e) => Setprevilage(e.target.value)}
+              >
+                <option>Select previlage</option>
+                {}
+              </Form.Select>
+            </Form.Group> */}
+
                     {/* <h1 className="edituser-userRole">Roles</h1>
                 <span>
                     <Link to="">

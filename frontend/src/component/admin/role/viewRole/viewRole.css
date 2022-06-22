@@ -2,7 +2,7 @@
     width: 850px;
     height: 100%;
     margin: auto;
-    margin-top: -220px;
+    margin-top: 50px;
     border: 2px solid #ffffff !important;
   }
 .viewrole-topic{
@@ -24,7 +24,7 @@
     padding-top: 10px;
     position:relative;
 }
-table{
+.table{
     width:100%;
     font-size: 15px;
     height: 50px !important;

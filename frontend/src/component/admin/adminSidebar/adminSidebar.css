@@ -13,11 +13,12 @@ main{
 .sidebar{
     background: #D4F2FF;
     color: #000000;
-    height: 100vh;
+    height: 130vh;
     width: 200px;
     transition: all 0.5s;
-    margin-left: -255px;
-    margin-top: -150px;
+    margin-left: -120px;
+    /* margin-left: -255px;
+    margin-top: -150px; */
 }
 .admin-sidebar-top_selection{
     display: flex;
@@ -28,9 +29,6 @@ main{
     margin-top: 10px;
     font-size: 30px !important;
     color: #000000;
-}
-.admin-sidebar-companylogo{
-    
 }
 .bar{
     display: flex;
