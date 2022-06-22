@@ -34,13 +34,17 @@ const CartItem = (props) => {
           <img src={imageurl} alt="product" className="item-image" />
         </div>
         <div className="item-description">
+          <div className="one">
           <h4 className="h4-cart">{producttitle}</h4>
 
           <p>{productsubtitle}</p>
-
-          <p className="p-cart">Rs.{productprice}.00</p>
+          </div>
+          <div className="two">
+          <p className="p-cart">LKR {productprice}.00</p>
 
           <p className="p-cart-q">{`Quantity: ${quantity}`}</p>
+          </div>
+          
           <IconButton
             onClick={() => inCrease(productCart)}
             edge="end"
@@ -56,7 +60,9 @@ const CartItem = (props) => {
             >
               <RemoveCircleIcon className="btn-decrease" />
             </IconButton>
+            
           )}
+           
 
           {quantity === 1 && (
             <IconButton

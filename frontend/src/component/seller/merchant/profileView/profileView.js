@@ -38,21 +38,28 @@ const Profileview = () => {
       <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          {/* <Link>
+          
             {
               profile.length == 0 &&(
-              <IconButton className="icon_button" size="large" >
-              <AiOutlinePlusCircle className="view_icon" />
-            </IconButton>
+             
+              <Link
+                        to="/addprofile"
+                        style={{ textDecoration: "none" }}
+                      >
+                         <IconButton className="icon_button" size="large" >
+              <AiOutlinePlusCircle className="view_icon"  />
+              </IconButton>
+                      </Link>
+            
             )}
              {
               profile.length != 0 &&(
               <IconButton className="icon_button" size="large" >
-              <AiFillEdit className="view_icon" />
+              {/* <AiFillEdit className="view_icon" /> */}
             </IconButton>
             )}
-           
-          </Link> */}
+  
+          
         </div>
         <div className=" ">
           {profile.map((merchant) => {

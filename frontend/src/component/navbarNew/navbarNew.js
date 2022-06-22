@@ -1,5 +1,5 @@
 import { Badge } from "@material-ui/core";
-import { Reorder, Search, ShoppingCartOutlined } from "@material-ui/icons";
+import { Reorder, Search, ShoppingCartOutlined, SpaceBar } from "@material-ui/icons";
 import { Favorite } from "@material-ui/icons";
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
@@ -95,17 +95,40 @@ const Button1 = styled.div`
 
 const Button2 = styled.div`
     background-color: white;
-    padding: 5px ;
+    padding: 5px;
     border-radius: 50px;
     curosr: pointer;    
 `;
 
 const Button3 = styled.div`
     background-color: white;
+    padding: 5px;
+    border-radius: 50px;
+    curosr: pointer;   
+    text-align: center; 
+    cursor: pointer;
+    margin-left: 5px;
+    width: 20px;
+
+    &:hover{
+      color: gray;
+     
+  }
+`;
+
+const Button4 = styled.div`
+    background-color: none;
     padding: 5px ;
     border-radius: 50px;
     curosr: pointer;   
     text-align: center; 
+    cursor: pointer;
+    margin-left: 5px;
+
+    &:hover{
+      color: gray;
+     
+  }
 `;
 
 const Center = styled.div`
@@ -165,6 +188,8 @@ const Image = styled.img`
      height: 110px;
      width: 130px;
 `;
+
+ 
 
 function Navbar1() {
     let firstName
@@ -355,23 +380,25 @@ const OnClickSearch = async (e)=>{
           <>
             <Wrapper>
               <Left>
-                <Language>EN</Language>
+                <Language>EN</Language> 
                 {/* <SearchContainer> */}
+              
               <Form.Group controlId="ControlInput2" name="id2">
               {/* <Form.Label className="label"><p>Merchant Legal Name</p></Form.Label> */}
-              <Form.Control
+               
+              <Form.Control  
                 className="form-controlOne_add"
                 type="text"
-                placeholder="Search your product"
+                placeholder="Search the product"
                 onChange={(e) => {
                   setName(e.target.value)
                 }}
-               
               />
+               
                </Form.Group>
-               <Button3 style={{ padding: "10px 10px", width: "70px" }} onClick={()=>OnClickSearch()} >
-                     gggg
-                </Button3>
+               <Button4 style={{ padding: "10px 10px", width: "70px" }} onClick={()=>OnClickSearch()} >
+                     <Search></Search>
+                </Button4>
                 
               
                   {/* <Search style={{ fontSize: "16", width: "230" }}></Search> */}

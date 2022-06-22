@@ -32,9 +32,11 @@
 
 .font_view {
     display: inline-block;
-    color: rgb(127, 127, 127);; 
+    color: rgb(0, 0, 0);
     margin-top: 25px;
     font-size: 30px;   
+    font-family: 'Montserrat' ;
+    font-weight: bolder;
 }
 
  .header{
@@ -63,12 +65,12 @@
  
  .infocard{
     text-align: left;
-    font-family: montserrat;
+    font-family: 'Montserrat' ;
  }
 
 .input{
     color: rgb(127, 127, 127);
-    font-family: montserrat;
+    font-family: 'Montserrat' ;
 }
 
 .button {
@@ -84,7 +86,7 @@
 }
 
 .view_icon {
-    color: #698f99; 
+    color: #488898; 
     border-radius: 10px;
 }
 

@@ -33,11 +33,13 @@ const SubTitle = styled.div`
 const Title = styled.div`
     font-weight: bold;
     font-size: 30px;
+    font-family: 'montserrat';
 `;
 
 const Para = styled.div`
     color: gray;
     font-size: 15px;
+    font-family: 'montserrat';
 `;
 
 const Button = styled.button`

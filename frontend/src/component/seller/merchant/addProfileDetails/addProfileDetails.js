@@ -18,7 +18,7 @@ const AddProfileDetails=()=> {
   let [ProductDescription,SetProductDescription]=useState("");
   let [AverageProductValue,SetAverageProductValue]=useState("");
   let [CompanyLogourl,SetCompanyLogourl]=useState("");
- 
+  const [isError, setIsError] = useState("");
     
   const Addprofile = (e) => {
       e.preventDefault();
@@ -92,6 +92,17 @@ const AddProfileDetails=()=> {
         function DelayRedirect(e, path) {
           e.preventDefault();
           setTimeout(() => navigate(path), 600);
+        }
+
+        const validation = (a) => {
+          const emailVAlidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+          if(!(emailVAlidation.test(ContactPersonEmailID))){
+            setIsError("Email validation failed")
+          } 
+          else {
+            setIsError("");
+          }
         }
 
     return (
@@ -218,10 +229,7 @@ const AddProfileDetails=()=> {
                 type="set"
                 className="button4_add btn btn-light"
                 onClick={Addprofile}
-            //     disabled={!this.addmerchant.MerchantlegalName || !this.addmerchant.OfficialWebsite || 
-            //     !this.addmerchant.ContactPersonEmailID || !this.addmerchant.ContactPersonMobileNumber ||
-            //   !this.addmerchant.BusinessAddress || !this.addmerchant.Profile || !this.addmerchant.ProductDescription ||
-            // !this.addmerchant.AverageProductValue || !this.addmerchant.UploadCompanyLogo }
+                disabled={!MerchantlegalName || !OfficialWebsite || !ContactPersonEmailID || !ContactPersonMobileNumber || !BusinessAddress || !Profile || !ProductDescription || !AverageProductValue || isError}
               >
                 Set
               </Button>
