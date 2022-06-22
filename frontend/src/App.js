@@ -39,6 +39,7 @@ import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
 import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
 import Profileview from "./component/seller/merchant/profileView/profileView";
+// import Profileviewnew from "./component/seller/merchant/profileViewNew/profileViewNew";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 import Addprivilege from "./component/admin/privilege/addPrivilege/addPrivilege";
 import Viewprivilege from './component/admin/privilege/showPrivilege/showPrivilege';
@@ -105,6 +106,7 @@ function App() {
           <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
           <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
           <Route path="/viewprofile" element={<Profileview/>} exact></Route>
+          {/* <Route path="/viewprofilenew" element={<Profileviewnew/>} exact></Route> */}
           <Route path="/addprivilege" element={<Addprivilege/>} exact></Route>
           <Route path="/showPrivilege" element={<Viewprivilege/>} exact></Route>
           <Route

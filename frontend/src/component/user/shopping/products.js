@@ -23,6 +23,8 @@ import Announcement from "../../Announcement/announcement";
 import Footer1 from "../../footerNew/footerNew";
 
 
+// import FilterProduct from "../search/searchIndex";
+
 const Products = () => {
 
   const { addProductList, listItems, removeProductList } =
