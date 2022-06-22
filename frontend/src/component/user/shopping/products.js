@@ -17,7 +17,9 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import { WishListContext } from "../../context/wish-list/wishlist-context";
 import { AutheContext } from "../../context/auth-context/authContext";
-import { IsInList } from "../wish-list/helperList"
+import { IsInList } from "../wish-list/helperList";
+// import FilterProduct from "../search/searchIndex";
+
 const Products = () => {
 
   const { addProductList, listItems, removeProductList } =
@@ -62,6 +64,7 @@ const Products = () => {
            quantity,
            productid:id,
          }; 
+
         return (
           <React.Fragment key={product.id}>
             <div className = "">
