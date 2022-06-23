@@ -31,7 +31,9 @@ const ViewRole = () => {
         localStorage.setItem("RoleName", data2);
       };
   const OnDelete = (id) => {
-    axios.delete(`http://localhost:8080/deleteRole/${id}`);
+    axios.delete(`http://localhost:8080/deleteRole/${id}`,{
+        headers: { Authorization: `Bearer ${jwt}` },
+    });
     window.location.reload(true);
   };
 

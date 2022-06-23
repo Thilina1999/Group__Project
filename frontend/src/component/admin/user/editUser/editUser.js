@@ -38,15 +38,16 @@ const EditUser = () => {
       firstName,
       userlastname,
       role,
+      previlage,
     };
     console.log(adduser.role);
     axios
      .put(`http://localhost:8080/updateUser/${params.id}`,
      {
-       id:Number(adduser.id),
-       firstName:adduser.firstName,
-       userlastname:adduser.lastName,
-       role: adduser.role,
+      //  id:Number(adduser.id),
+      //  firstName:adduser.firstName,
+      //  userlastname:adduser.lastName,
+      //  role: adduser.role,
        previlage: adduser.previlage,},
         {
       headers: { Authorization: `Bearer ${jwt}` },
@@ -55,27 +56,19 @@ const EditUser = () => {
       if (response.status === 200) {
         alert("User Update");
       } else {
-        alert("Usert Update Failed");
+        alert("User Update Failed");
       }
     })
     .catch((err) => {
       console.log(err);
     });
   }
+  
   const navigate=useNavigate();
   function DelayRedirect(e,path){
     e.preventDefault();
     setTimeout(() => navigate(path),300);
   }
-
-  const multidata = [
-    {Previlage:'Edit access', id: 1},
-    {Previlage:'View access', id: 2},
-    {Previlage:'View1 access', id: 3},
-    {Previlage:'View2 access', id: 4},
-    {Previlage:'View3 access', id: 5},
-]
-const [options]=useState(multidata);
 
   return (
     <div className="edituser-rectangle"><br/>
@@ -119,48 +112,17 @@ const [options]=useState(multidata);
                 SetRole(e.target.value);
               }}
             /> 
+            <div className="edituser-userrole">
+            <Form.Label >Previlages</Form.Label>
+            </div>
+            <Form.Control
+              type="text"
+              placeholder={user.previlage}
+              onChange={(e) => {
+                Setprevilage(e.target.value);
+              }}
+            /> 
             </Form.Group>
-            <Form.Group >
-              {/* <Form.Label className="edituser-multi-select-text">Add previlages</Form.Label>
-              <div className="edituser-multiple-select" style={{width:"500px", justifyContenct:"center", display:"flex"}}>
-                <div>
-                  <Multiselect options={options} displayValue="Previlage"/>
-                </div>
-              </div> */}
-              <Form.Label className="edituser-select-previlage">Select Previlages</Form.Label>
-              <Form.Select
-                // defaultValue="select..."
-                className="edituser-previlage-set"
-                onChange={(e) => Setprevilage(e.target.value)}
-              >
-                <option>Edit Access</option>
-                <option>Previlage1</option>
-                <option>Previlage2</option>
-                
-              </Form.Select>
-            </Form.Group>
-            
-            {/* <Form.Group>
-              <Form.Label>Previlages</Form.Label>
-              <Form.Select
-              onChange={(e) => Setprevilage(e.target.value)}
-              >
-                <option>Select previlage</option>
-                {}
-              </Form.Select>
-            </Form.Group> */}
-
-                    {/* <h1 className="edituser-userRole">Roles</h1>
-                <span>
-                    <Link to="">
-                        <IconButton className="edituser-plusicon">
-                        <AiOutlinePlusCircle className="edituser-icon" />
-                        </IconButton>
-                    </Link>
-                </span> */}
-              
-
-
             <div className="edituser-btnGrp">
               <Link to="/viewUser">
             <Button className="edituser-cancelBtn" variant="primary" type="cancel">

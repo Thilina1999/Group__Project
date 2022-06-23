@@ -16,9 +16,7 @@ import {
   Legend 
 } from 'chart.js';
 import { Pie, Bar } from 'react-chartjs-2';
-//  import Sidebar from "../adminSidebar/adminSidebar"
-import {AutheContext} from "../../context/auth-context/authContext"
-// import faker from "faker";
+import {AutheContext} from "../../context/auth-context/authContext";
 
 ChartJS.register(
   ArcElement,
@@ -39,25 +37,8 @@ export const Dashboard = () => {
     customercount:0,
   });
   const [categorycount,setcategorycount]=useState(0);
-  const [categorywisecount,setcategorywisecount] = useState({
-    categoryname:[""],
-    catcount:[0],
-  });
-  // useEffect(() =>{
-  //   const Getusercount = () => {
-  //       axios
-  //         .get(`http://localhost:8080/getUserCount`)
-  //         .then((res)=>{
-  //           setusercount(res.data);
-  //         })
-  //         .catch((err)=>{
-  //           console.log(err);
-  //         });
-  //       },[]);
-  //       Getusercount();
-  //   };
+  const [categorywisecount,setcategorywisecount] = useState([]);
     
-  
   const Getusercount = () => {
     useEffect(() =>{
       axios
@@ -127,7 +108,7 @@ export const Dashboard = () => {
         headers: { Authorization: `Bearer ${jwt}` },
       })
       .then((res)=>{
-        setcategorywisecount(res.data);
+        setcategorywisecount(res.data.data);
       })
       .catch((err)=>{
         console.log(err);
@@ -142,7 +123,6 @@ export const Dashboard = () => {
       {
         label: '# of Votes',
            data: [usertypecount.sellercount.countuser, usertypecount.customercount.countuser],
-        //data:[20,15],
         backgroundColor: [
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 99, 132, 0.2)'
@@ -169,16 +149,23 @@ export const Dashboard = () => {
       },
     },
   };
-  const labels = ['Shoes', 'Frock','Shirts', 'Hat'];
+  const labels = [];
+  const data1 =[];
+{
+  categorywisecount.map((item)=>{
+    labels.push(item.categoryName)
+    data1.push(item.prodCount)
+  })
+}
+console.log(labels)
   const bardata = {
     labels,
     datasets: [
       
       {
-        label:"category quantity",
-        //data: [categorywisecount.catcount.prodCount],
-         data:[20,5,8,4],
-          
+        label:"product count",
+        
+        data:data1,
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
@@ -242,8 +229,9 @@ export const Dashboard = () => {
             <Pie data={data} />
         </div>
         <div className="admin-barchart">
-        <div><h5><b>Category Quantities</b></h5></div>
-        <Bar options={options} data={bardata} />;
+        <div><h5><b>Category and Products</b></h5></div>
+        <Bar options={labels} data={bardata} />
+        
         </div>
       </div>
     </div>

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
 import { Button,Form,Row,Col } from "react-bootstrap";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import {app} from "../../../firebase"
 import "./profile.css";
+import {AutheContext} from "../../context/auth-context/authContext"
 
 function Profile(){
+  const { jwt , userId }= useContext(AutheContext)
   const params = useParams();
   const name = localStorage.getItem('name')
   const email = localStorage.getItem("email")
@@ -15,6 +18,31 @@ function Profile(){
   const [dob, setdob] = useState("");
   const [profileimgeurl,setprofileimgurl] = useState("");
 
+  useEffect(() =>{
+
+  })
+  const UpdateProfile = () =>{
+    var adddata = {
+      telno,
+      gender,
+      profileimgeurl,
+    };
+    axios.put(`http://localhost:8080/updateMerchant/${params.userid}`,{
+      telno:adddata.telno,
+      gender:adddata.gender,
+      profileimgeurl:adddata.profileimgeurl,
+    },{
+      headers: { Authorization: `Bearer ${jwt}` },
+    }).then((response) => {
+      if (response.status === 200) {
+          alert("Profile Update");
+        } else {
+          alert("Profile Update Failed");
+        }
+     }).catch((err) => {
+       console.log(err);
+     });
+  }
   const Profileimage = async(e) => {
     let profileimg = "";
     const file = e.target.files[0];
@@ -60,22 +88,25 @@ function Profile(){
           <Form.Label className="admin-profile-txt-tel">Telephone Number</Form.Label>
             <Form.Control 
               type="text" 
-              placeholder="" />
+              placeholder={telno.telephone}
+              onChange={(e) => {
+                settelno(e.target.value);
+              }}/>
           </Form.Group>
 
           <Form.Group className="mb-4" controlId="formBasicCheckbox">
             <Row>
-              <Col>
+              {/* <Col>
               <Form.Label className="admin-profile-txt-dob">Date of Birth</Form.Label>
-                <Form.Control placeholder="" />
-              </Col>
+                <Form.Control placeholder={dob.} />
+              </Col> */}
               <Col>
                 <Form.Group as={Col} controlId="formGridState">
-                <Form.Label className="admin-profile-txt-gen">Gender</Form.Label>
-                  <Form.Select defaultValue="Choose...">
-                    <option>Female</option>
-                    <option>Male</option>
-                  </Form.Select>
+                <Form.Label className="admin-profile-txt-dob">Gender</Form.Label>
+                <Form.Control placeholder={gender.gender}
+                onChange={(e) => {
+                  setgender(e.target.value);
+                }} />
                 </Form.Group>
               </Col>
             </Row>
@@ -83,13 +114,20 @@ function Profile(){
 
           <Form.Group className="admin-profilr-form-btnGrp">
           <Link to="/dashboard">
-            <Button className="admin-profile-form-cancelBtn" variant="primary" type="cancel">
+            <Button 
+            className="admin-profile-form-cancelBtn" 
+            variant="primary" 
+            type="cancel">
               Cancel
             </Button>
             </Link>
 
             <Link to="/dashboard">
-            <Button className="admin-profile-form-savebtn" variant="primary" type="submit">
+            <Button 
+            className="admin-profile-form-savebtn" 
+            variant="primary" 
+            type="set" 
+            onClick={UpdateProfile}>
               Submit
             </Button>
             </Link>

@@ -27,7 +27,11 @@ const EditRole = () => {
         headers: { Authorization: `Bearer ${jwt}` },
       })
       .then((res) => {
-        console.log(res);
+        if (res.status === 200) {
+          // alert("Role Update");
+        } else {
+          alert("Role Update Failed");
+        }
       })
       .catch((err) => {
         console.log(err);

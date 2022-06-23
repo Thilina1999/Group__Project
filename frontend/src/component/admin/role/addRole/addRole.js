@@ -5,18 +5,10 @@ import axios from "axios";
 import "./addRole.css";
 import { useNavigate, Link } from "react-router-dom";
 import { AutheContext } from "../../../context/auth-context/authContext";
-// import { ToastContainer,toast } from "react-toastify";
-// import {ToastProperties} from "./../../toast"
-// import "react-toastify/dist/ReactToastify.css";
 
 const AddRole = () => {
   const {jwt, userId }= useContext(AutheContext)
   let [rolename, setRolename] = useState("");
-
-  // const handleClick=()=>{
-  //   toast.success("added")
-  // }
-  // const notify=()=>toast("added");
   
   const SendData = (e) => {
     e.preventDefault();
@@ -31,13 +23,11 @@ const AddRole = () => {
       })
       .then((res) => {
         console.log(res);
-
-        if (res.status === 201) {
-          alert("Role Add");
+        if (res.status === 200) {
+          alert("Role add");
         } else {
-          Promise.reject();
+          alert("Role add failed");
         }
-        e.target.reset();
       })
       .catch((err) => {
         console.log(err);
