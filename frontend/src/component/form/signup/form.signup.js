@@ -100,6 +100,7 @@ export default function Signup() {
 
               <input className="form-styling2" type="email" name="email" placeholder="Email" required onChange={(e) => {
                 setEmail(e.target.value);
+                validation(e)
               }} />
 
               <input className="form-styling2" type="Password" name="password" placeholder="Password" required onChange={(e) => {

@@ -1,27 +1,21 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import { Form, Button, Container, FormLabel } from 'react-bootstrap';
-import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function CheckMail() {
   const [email, setEmail] = useState("");
-  const [redirect, setRedirect] = useState(false);
 
   const checkMail = async (e) => {
     e.preventDefault();
     await axios.post(`http://localhost:8080/api/forgot`,{
       email
     })
-    .then((res)=>{
+    .then(() => {
+      alert("Check your email")
     })
     .catch((err) => {
-      console.log(err);
+      alert(err.response.data.message)
     })
-    setRedirect(true);
-  }
-
-  if(redirect) {
-    return <Navigate to="/signin/checkmail/resetpass" />;
   }
 
   return (
@@ -42,7 +36,7 @@ export default function CheckMail() {
           fontSize: '20px',
           fontWeight: '500'
         }}>Forgot Password</FormLabel>
-        <Form style={{ textAlign: 'left' }} onSubmit={checkMail}>
+        <Form style={{ textAlign: 'left' }} onSubmit={() => checkMail}>
 
           No Problem! Enter your email below and then you can reset your password.<br />
           <br />
@@ -52,13 +46,49 @@ export default function CheckMail() {
               setEmail(e.target.value);
             }}/>
           </Form.Group>
-          <Link to="/signin/checkmail/resetpass">
           <Button type="submit" style={{ backgroundColor: '#75C6DC', borderRadius: '20px'}}>
             Submit
           </Button>
-          </Link>
         </Form>
       </Container>
     </div>
   );
 }
+ */
+
+import React, {useState} from 'react';
+import axios from "axios";
+
+const Forgot = () => {
+    const [email, setEmail] = useState('');
+
+    const submit = async (e) => {
+        e.preventDefault();
+
+        await axios.post('http://localhost:8080/api/forgot', {
+            email
+        })
+        .then(() => {
+          alert("check your email")
+        })
+    }
+
+    return (
+        <main className="form-signin">
+            <form onSubmit={submit}>
+                <h1 className="h3 mb-3 fw-normal">Please set your email</h1>
+
+                <div className="form-floating">
+                    <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
+                           onChange={e => setEmail(e.target.value)}
+                    />
+                    <label htmlFor="floatingInput">Email address</label>
+                </div>
+
+                <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            </form>
+        </main>
+    );
+};
+
+export default Forgot;

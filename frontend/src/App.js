@@ -96,9 +96,9 @@ function App() {
           <Route path="/merchantapplication" element={<AddApplication/>} exact></Route>
 
           <Route path="/Buyer" element={<Buyer />}></Route>
-          <Route path="/signin/checkmail" element={<CheckMail />}></Route>
+          <Route path="signin/checkmail" element={<CheckMail />}></Route>
           <Route
-            path="/signin/checkmail/resetpass"
+            path="signin/resetpass/:token"
             element={<ResetPass />}
           ></Route>
           <Route path="/productDetail/:id" element={<Product />} exact></Route>

@@ -17,7 +17,11 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
-import {CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea, CardActions } from '@mui/material';
+
+import { MdDeleteOutline } from "react-icons/md";
+
+import Alert from '@mui/material/Alert';
 
 import { GrSend } from "react-icons/gr";
 
@@ -33,6 +37,8 @@ const Products = () => {
   const [value, setValue] = useState()
   const [comment, setComment] = useState("")
   const [allComments, setAllComments] = useState([])
+
+  const [isAlert, setIsAlert] = useState("")
 
 
   const { producttitle,
@@ -65,52 +71,65 @@ const Products = () => {
       }
     )();
 
-    (
-      async () => {
-        await axios.get(`http://localhost:8080/api/getAverageRating/${params.id}`)
-          .then((res) => {
-            //setAverage[]
-            console.log(res)
-          })
-          .catch((err) => {
-            console.log(err)
-          })
-      }
-    )();
+    getRate()
+    getAllCommnets()
+    
 
-    (
-      async () => {
-        await axios.get(`http://localhost:8080/api/getAllReviewsByItem/${params.id}`)
-          .then((res) => {
-            console.log(res.data.data)
-            setAllComments(res.data.data)
-          })
-          .then((err) => {
-            console.log(err.response.data)
-          })
-      }
-    )();
+  }, []);
 
-  }, [jwt, params.id]);
+  const getRate = async () => {
+    await axios.get(`http://localhost:8080/api/getAverageRating/${params.id}`)
+      .then((res) => {
+        setAverage(res.data.averageRating)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+
+  const getAllCommnets = async () => {
+    await axios.get(`http://localhost:8080/api/getAllReviewsByItem/${params.id}`)
+      .then((res) => {
+        setAllComments(res.data.data)
+      })
+      .then((err) => {
+        alert(err.response.data)
+      })
+  }
 
   const AddReview = async (e) => {
-    console.log(params.id, value, comment)
     await axios.post(`http://localhost:8080/api/createReview`, {
       prodId: Number(params.id),
       rating: Number(value),
       comment: comment
     }, { headers: { Authorization: `Bearer ${jwt}` } })
       .then((res) => {
-        console.log(res)
+        alert(res.statusText)
       })
       .catch((err) => {
-        console.log(err.response.data.message)
+        alert(err.response.data.message)
       })
+      getAllCommnets()
   }
 
-  const totalStars = 5;
-  const activeStars = 3;
+  const deleteReview = async () => {
+    await axios.delete(`http://localhost:8080/api/deleteReviewByItem/${params.id}`,
+      {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
+      .then((res) => {
+        alert(res.data.message)
+      })
+      .catch((err) => {
+        alert(err.response.data.message)
+      })
+      getAllCommnets()
+  }
+
+  const activeStars = average;
   const itemInCart = IsInCart(productCart, cartItem);
+
   return (
     <div className="product-detail-container">
       <div>
@@ -124,16 +143,19 @@ const Products = () => {
             '& > legend': { mt: 2 },
           }}
         >
+
           <Typography component="legend">Rating</Typography>
           <br />
           <Rating
             name="simple-controlled"
             value={value}
             size="large"
+            required
             onChange={(e) => {
               setValue(e.target.value);
             }}
           />
+
 
 
         </Box>
@@ -159,6 +181,7 @@ const Products = () => {
               className="add-to-cart"
               style={{ width: '30%' }}
               onClick={AddReview}
+              disabled={!value || !comment}
             >
               <GrSend style={{ fontSize: '22px' }} />
               &nbsp;&nbsp;&nbsp;
@@ -169,28 +192,49 @@ const Products = () => {
         <br /> <br />
         <div>
           {allComments.map((allComment) => {
+            let del
+            if (allComment.name == localStorage.getItem("name")) {
+              del = (
+                <>
+                  <CardActions>
+                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+
+                    <Button size="small" style={{ backgroundColor: '#dc3545', width: '30%' }} onClick={deleteReview}>
+                      <MdDeleteOutline style={{ fontSize: '20px' }} />
+                      &nbsp;
+                      Delete
+                    </Button>
+                  </CardActions>
+                </>
+              );
+            } else {
+              del = (
+                <>
+                </>
+              );
+            }
             return (
               <div>
 
-<Card sx={{ maxWidth: 345 }}>
-      <CardActionArea  >
-        <CardContent style={{ width: "100%" }}>
-        <Avatar src="/broken-image.jpg" />
-          <Typography gutterBottom variant="h6" component="div">
-            {allComment.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary" >
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions>
-    </Card>
+                <Card sx={{ maxWidth: 3450 }}>
+                  <CardActionArea >
+                    <CardContent style={{ width: "100%" }}>
+                      <Avatar src="/broken-image.jpg" />
+                      <Typography gutterBottom variant="h6" component="div" style={{ textAlign: 'left' }}>
+                        {allComment.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" style={{ textAlign: 'justify' }}>
+                        {allComment.comment}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+
+                  {del}
+
+                </Card>
 
               </div>
             )
@@ -206,7 +250,7 @@ const Products = () => {
 
           <div>
 
-            <Rating name="read-only" value={value} readOnly size="large" />
+            <Rating name="read-only" value={activeStars} readOnly size="large" />
 
           </div>
 

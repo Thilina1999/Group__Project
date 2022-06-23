@@ -10,11 +10,13 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
+import Rating from '@mui/material/Rating';
+
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "./product.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { WishListContext } from "../../context/wish-list/wishlist-context";
 import { AutheContext } from "../../context/auth-context/authContext";
 import { IsInList } from "../wish-list/helperList"
@@ -25,6 +27,9 @@ const Products = () => {
   const { jwt } = useContext(AutheContext);
  
   const [products, setProducts] = useState([]);
+  const [average, setAverage] = useState();
+
+  const params = useParams();
   useEffect(() => {
     axios
       .get("http://localhost:8080/getProducts", {
@@ -37,11 +42,27 @@ const Products = () => {
       .catch((error) => {
         console.log(error);
       });
+
+
+
+getRate()
+
+
   }, []);
 
+  const getRate = async (id) => {
+    await axios.get(`http://localhost:8080/api/getAverageRating/${id}`)
+      .then((res) => {
+        setAverage(res.data.averageRating)
+        console.log(res)
+        return res.data.averageRating
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
-  const totalStars = 5;
-  const activeStars = 3;
+  // const activeStars = average;
 
   return (
     <div className="wrapper">
@@ -64,6 +85,7 @@ const Products = () => {
          }; 
         return (
           <React.Fragment key={product.id}>
+           
             <div className = "">
               <Card className="card_product">
                 <Link
@@ -112,13 +134,7 @@ const Products = () => {
                       </Typography>
 
                       <Box>
-                        {[...new Array(totalStars)].map((arr, index) => {
-                          return index < activeStars ? (
-                            <StarIcon className="start_icon" />
-                          ) : (
-                            <StarBorderIcon className="start_icon" />
-                          );
-                        })}
+                      <Rating name="read-only" value={average} readOnly size="large" />
                       </Box>
                     </CardContent>
                   </div>
