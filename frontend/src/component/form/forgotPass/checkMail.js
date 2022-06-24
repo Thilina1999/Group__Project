@@ -1,8 +1,8 @@
-/* import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Container, FormLabel } from 'react-bootstrap';
 import axios from 'axios';
 
-export default function CheckMail() {
+export default function Forgot() {
   const [email, setEmail] = useState("");
 
   const checkMail = async (e) => {
@@ -36,7 +36,7 @@ export default function CheckMail() {
           fontSize: '20px',
           fontWeight: '500'
         }}>Forgot Password</FormLabel>
-        <Form style={{ textAlign: 'left' }} onSubmit={() => checkMail}>
+        <Form style={{ textAlign: 'left' }} onSubmit={checkMail}>
 
           No Problem! Enter your email below and then you can reset your password.<br />
           <br />
@@ -54,41 +54,3 @@ export default function CheckMail() {
     </div>
   );
 }
- */
-
-import React, {useState} from 'react';
-import axios from "axios";
-
-const Forgot = () => {
-    const [email, setEmail] = useState('');
-
-    const submit = async (e) => {
-        e.preventDefault();
-
-        await axios.post('http://localhost:8080/api/forgot', {
-            email
-        })
-        .then(() => {
-          alert("check your email")
-        })
-    }
-
-    return (
-        <main className="form-signin">
-            <form onSubmit={submit}>
-                <h1 className="h3 mb-3 fw-normal">Please set your email</h1>
-
-                <div className="form-floating">
-                    <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
-                           onChange={e => setEmail(e.target.value)}
-                    />
-                    <label htmlFor="floatingInput">Email address</label>
-                </div>
-
-                <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-            </form>
-        </main>
-    );
-};
-
-export default Forgot;

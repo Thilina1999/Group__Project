@@ -111,6 +111,8 @@ const Products = () => {
         alert(err.response.data.message)
       })
       getAllCommnets()
+      getRate()
+      window.location.reload()
   }
 
   const deleteReview = async () => {

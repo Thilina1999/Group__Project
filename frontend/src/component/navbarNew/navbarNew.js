@@ -177,6 +177,7 @@ function Navbar1() {
             localStorage.removeItem('id')
             localStorage.removeItem('role')
             setRedirect(true)
+            window.location.reload()
         }
         catch (err) {
             console.log(err)
@@ -192,7 +193,7 @@ function Navbar1() {
         menu = (
             <>
                 <MenuItem><Button3 style={{ padding: "10px 10px", width: "70px" }} >
-                    <Link to={"/sidebarnew"} style={{ textDecoration: "none", color: "black" }}>
+                    <Link to={"/signin"} style={{ textDecoration: "none", color: "black" }}>
                         Sign In
                     </Link>
                 </Button3></MenuItem>

@@ -134,7 +134,7 @@ getRate()
                       </Typography>
 
                       <Box>
-                      <Rating name="read-only" value={average} readOnly size="large" />
+                      <Rating name="read-only" value={3} readOnly size="large" />
                       </Box>
                     </CardContent>
                   </div>

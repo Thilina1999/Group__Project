@@ -76,22 +76,13 @@ function App() {
         {/* <AdminSidebar>  */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/company" element={<Company />}></Route>
-
-          <Route path="/home" element={<Home />}></Route>
-          
-
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/company" element={<Company />}></Route>
           {/* <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />} exact></Route>
+         
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route> */}
+           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signin/:token" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/merchantapplication" element={<AddApplication/>} exact></Route>
 
