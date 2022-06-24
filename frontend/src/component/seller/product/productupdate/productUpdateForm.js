@@ -7,10 +7,13 @@ import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpres
 import { app } from "../../../../firebase";
 import "../productupdate/productUpdateForm.css";
 import { AutheContext } from "../../../context/auth-context/authContext";
+import Footer1 from "../../../footerNew/footerNew";
 
+import Announcement from "../../../Announcement/announcement";
+import Navbar1 from "../../../navbarNew/navbarNew";
 
 const ProductUpdateForm = () => {
-  const { jwt, userId } = useContext(AutheContext);
+  // const { jwt, userId } = useContext(AutheContext);
   const params = useParams();
   const [producttitle, SetProductTitle] = useState("");
   const [productsubtitle, SetSubTitle] = useState("");
@@ -22,18 +25,17 @@ const ProductUpdateForm = () => {
   const [productlist, SetProductlist] = useState([]);
  const [categories, setCategories] = useState([]);
 
-
-
+ const token = localStorage.getItem("auth-token");
+const userId = localStorage.getItem("id");
 
 useEffect(() => {
-  
+ 
       axios
         .get(`http://localhost:8080/getCategory`, {
-          headers: { Authorization: `Bearer ${jwt}` },
+          headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          setCategories(response.data);
-          console.log(response.data);
+          setCategories(response.data.data);
         })
         .catch((err) => {
           console.log(err);
@@ -43,7 +45,7 @@ useEffect(() => {
   useEffect(() => {
     axios
       .get(`http://localhost:8080/getProductByid/${params.id}`, {
-        headers: { Authorization: `Bearer ${jwt}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         SetProductlist(res.data);
@@ -78,7 +80,7 @@ const UpdateProduct = () => {
         userid: Number(addproduct.userId),
       },
       {
-        headers: { Authorization: `Bearer ${jwt}` },
+        headers: { Authorization: `Bearer ${token}` },
       }
     )
     .then((response) => {
@@ -117,128 +119,145 @@ const OnAddProduct = async (e) => {
 
 
   return (
-    <div className="container7_update">
-      <div className="container">
-        <Form className="form4_update">
-          <Form.Group controlId="ControlInput1" name="id1">
-            <h2 className="h2">Update Product</h2>
-            <hr></hr>
+    <>
+      <Announcement />
+      <Navbar1 />
+      <br />
+      <br />
+      <br />
+      <div className="container7_update">
+        <div className="container">
+          <Form className="form4_update">
+            <Form.Group controlId="ControlInput1" name="id1">
+              <h2 className="h2">Update Product</h2>
+              <hr></hr>
+              <br />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput2" name="id2">
+              <Form.Label className="label">Product Title</Form.Label>
+              <Form.Control
+                className="form-control1_update"
+                type="text"
+                placeholder={productlist.producttitle}
+                onChange={(e) => {
+                  SetProductTitle(e.target.value);
+                }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput3" name="id3">
+              <Form.Label className="label">Product SubTitle</Form.Label>
+              <Form.Control
+                className="form-control1_update"
+                type="text"
+                placeholder={productlist.productsubtitle}
+                onChange={(e) => {
+                  SetSubTitle(e.target.value);
+                }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="label">Category Select</Form.Label>
+              <Form.Select
+                className="form-control1_update"
+                onChange={(e) => SetCategoryName(e.target.value)}
+              >
+                <option>Select Category</option>
+                {categories.map((category) => {
+                  return (
+                    <React.Fragment key={category.categoryname}>
+                      <option value={category.id}>
+                        {category.categoryname}
+                      </option>
+                    </React.Fragment>
+                  );
+                })}
+              </Form.Select>
+              <br />
+            </Form.Group>
+            <Form.Group controlId="formFile">
+              <Form.Label className="label">file input</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={OnAddProduct}
+                className="form-control1_update"
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput4" name="id3">
+              <Form.Label className="label">Description</Form.Label>
+              <Form.Control
+                className="text1_update"
+                as="textarea"
+                placeholder={productlist.description}
+                style={{ height: "200px" }}
+                onChange={(e) => {
+                  Setdescription(e.target.value);
+                }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput5" name="id4">
+              <Form.Label className="label">Product Price</Form.Label>
+              <Form.Control
+                className="form-control1_update"
+                type="number"
+                placeholder={productlist.productprice}
+                onChange={(e) => {
+                  Setprice(e.target.valueAsNumber);
+                }}
+              />
+              <br />
+            </Form.Group>
+            <Form.Group controlId="ControlInput6" name="id4">
+              <Form.Label className="label">Product Quantity</Form.Label>
+              <Form.Control
+                className="form-control1_update"
+                type="number"
+                placeholder={productlist.productquantity}
+                onChange={(e) => {
+                  SetQuantity(e.target.valueAsNumber);
+                }}
+              />
+              <br />
+            </Form.Group>
             <br />
             <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput2" name="id2">
-            <Form.Label className="label">Product Title</Form.Label>
-            <Form.Control
-              className="form-control1_update"
-              type="text"
-              placeholder={productlist.producttitle}
-              onChange={(e) => {
-                SetProductTitle(e.target.value);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput3" name="id3">
-            <Form.Label className="label">Product SubTitle</Form.Label>
-            <Form.Control
-              className="form-control1_update"
-              type="text"
-              placeholder={productlist.productsubtitle}
-              onChange={(e) => {
-                SetSubTitle(e.target.value);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label className="label">Category Select</Form.Label>
-            <Form.Select
-              className="form-control1_update"
-              onChange={(e) => SetCategoryName(e.target.value)}
+            <Link to="/productview">
+              <Button
+                variant="outline-dark"
+                className="button4_update btn btn-light"
+              >
+                Cancel
+              </Button>
+            </Link>
+            <Link
+              to="/productview"
+              onClick={(e) => DelayRedirect(e, "/productview")}
             >
-              <option>Select Category</option>
-              {categories.map((category) => {
-                return (
-                  <React.Fragment key={category.categoryname}>
-                    <option value={category.id}>{category.categoryname}</option>
-                  </React.Fragment>
-                );
-              })}
-            </Form.Select>
-            <br />
-          </Form.Group>
-          <Form.Group controlId="formFile">
-            <Form.Label className="label">file input</Form.Label>
-            <Form.Control
-              type="file"
-              onChange={OnAddProduct}
-              className="form-control1_update"
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput4" name="id3">
-            <Form.Label className="label">Description</Form.Label>
-            <Form.Control
-              className="text1_update"
-              as="textarea"
-              placeholder={productlist.description}
-              style={{ height: "200px" }}
-              onChange={(e) => {
-                Setdescription(e.target.value);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput5" name="id4">
-            <Form.Label className="label">Product Price</Form.Label>
-            <Form.Control
-              className="form-control1_update"
-              type="number"
-              placeholder={productlist.productprice}
-              onChange={(e) => {
-                Setprice(e.target.valueAsNumber);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput6" name="id4">
-            <Form.Label className="label">Product Quantity</Form.Label>
-            <Form.Control
-              className="form-control1_update"
-              type="number"
-              placeholder={productlist.productquantity}
-              onChange={(e) => {
-                SetQuantity(e.target.valueAsNumber);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <br />
-          <br />
-          <Link to="/productview">
-            <Button
-              variant="outline-dark"
-              className="button4_update btn btn-light"
-            >
-              Cancel
-            </Button>
-          </Link>
-          <Link
-            to="/productview"
-            onClick={(e) => DelayRedirect(e, "/productview")}
-          >
-            <Button
-              variant="outline-dark"
-              type="submit"
-              className="button5_update btn btn-light"
-              onClick={UpdateProduct}
-            >
-              Update
-            </Button>
-          </Link>
-        </Form>
+              <Button
+                variant="outline-dark"
+                type="submit"
+                className="button5_update btn btn-light"
+                onClick={UpdateProduct}
+                disabled={
+                  !producttitle ||
+                  !productsubtitle ||
+                  !categoryname ||
+                  !price ||
+                  !quantity
+                }
+              >
+                Update
+              </Button>
+            </Link>
+          </Form>
+        </div>
       </div>
-    </div>
+      <Footer1 />
+    </>
   );
 };
 

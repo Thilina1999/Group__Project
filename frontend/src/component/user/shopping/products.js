@@ -107,9 +107,7 @@ console.log(products);
                       <CardMedia
                         className="card__media"
                         component="img"
-                        height="350"
-                        // as an example I am modifying width and height
-
+                        height="300"
                         image={product.imageurl}
                         alt="Kid Cloths"
                       />

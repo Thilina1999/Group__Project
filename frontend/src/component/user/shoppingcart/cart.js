@@ -9,6 +9,7 @@ import Navbar1 from "../../navbarNew/navbarNew"
 import Footer1 from "../../footerNew/footerNew"
 
 const Cart = () => {
+  const jwt = localStorage.getItem("auth-token");
 const { cartItem, itemCount, total, inCrease, deCrease, removeProduct,clearCart } =
   useContext(CartContext);
 const funcs = { inCrease, deCrease, removeProduct }; 
@@ -26,6 +27,8 @@ const funcs = { inCrease, deCrease, removeProduct };
         {cartItem.length === 0 ? (
           <div>
             <h2 className="Cart-empty">Your Cart in empty</h2>
+            <br />
+            <br />
             <img
               src={CartImage}
               style={{

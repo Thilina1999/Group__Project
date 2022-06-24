@@ -108,7 +108,6 @@ const Products = () => {
               <Button
                 type="button"
                 className="add-to-cart"
-                onClick={() => inCrease(productCart)}
                 disabled={true}
               >
                 Already in Cart

@@ -11,10 +11,12 @@ import {AutheContext} from "../../../context/auth-context/authContext"
 import Navbar1 from "../../../navbarNew/navbarNew";
 import Announcement from "../../../Announcement/announcement"
 import Footer1 from "../../../footerNew/footerNew"
+import Alert from "@mui/material/Alert";
 
 const ViewCategory = () => {
-  const { jwt , userId }= useContext(AutheContext)
-  //  const jwt = localStorage.getItem("auth-token");
+  // const { jwt , userId }= useContext(AutheContext)
+   const jwt = localStorage.getItem("auth-token");
+   
   const [categories, setCategories] = useState([]);
     useEffect(() => {
       axios
@@ -22,7 +24,7 @@ const ViewCategory = () => {
           headers: { Authorization: `Bearer ${jwt}` },
         })
         .then((response) => {
-          setCategories(response.data);
+          setCategories(response.data.data);
           console.log(response.data);
         })
         .catch((err) => {

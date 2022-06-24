@@ -13,7 +13,6 @@ import Profile from "../assets/profile.png";
 import { WishListContext } from "../context/wish-list/wishlist-context";
 import { Form } from "react-bootstrap";
 import IconButton from "@mui/material/IconButton";
-import { SearchContext } from "../context/search-context/search-context";
 // import FilterProduct from "../search/searchIndex";
 import SearchData from "../../component/user/shopping/search";
 
@@ -176,7 +175,7 @@ function Navbar1() {
   const logOut = async () => {
     try {
       const token = localStorage.getItem("auth-token");
-      // await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+      await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
       firstName = "";
       localStorage.removeItem("auth-token");
       localStorage.removeItem("name");
@@ -186,23 +185,25 @@ function Navbar1() {
       console.log(err);
       setRedirect(false);
     }
+    window.location.reload();
+
   };
 
   firstName = localStorage.getItem("name");
-  const [name, setName] = useState("");
-  const [products1, setNameproduct] = useState([]);
-  console.log("add",name)
-  const OnClickSearch = async (e) => {
-    <SearchData name={name} />;
-    localStorage.setItem("search-name", name);
-  };
+  // const [name, setName] = useState("");
+  // const [products1, setNameproduct] = useState([]);
+  // console.log("add",name)
+  // const OnClickSearch = async (e) => {
+  //   <SearchData name={name} />;
+  //   localStorage.setItem("search-name", name);
+  // };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  function DelayRedirect(e, path) {
-    e.preventDefault();
-    setTimeout(() => navigate(path), 1500);
-  }
+  // function DelayRedirect(e, path) {
+  //   e.preventDefault();
+  //   setTimeout(() => navigate(path), 1500);
+  // }
   let menu;
 
   if (firstName === null) {
@@ -363,33 +364,13 @@ function Navbar1() {
         <Wrapper>
           <Left>
             <Language>EN</Language>
-            {/* <SearchContainer> */}
-            <Form.Group controlId="ControlInput2" name="id2">
-              {/* <Form.Label className="label"><p>Merchant Legal Name</p></Form.Label> */}
-              <Form.Control
-                className="form-controlOne_add"
-                type="text"
-                placeholder="Search your product"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-            </Form.Group>
-            <Link
-              to={`/searchBar/${name}`}
-            
-            >
-              <Button
-                style={{ padding: "10px 10px", width: "70px" }}
-                onClick={(e) => OnClickSearch()}
-              >
-                gggg
-              </Button>
-            </Link>
+            <SearchContainer>
+              <Input />
 
-            {/* <Search style={{ fontSize: "16", width: "230" }}></Search> */}
-            {/*  </Button> */}
-            {/* </SearchContainer> */}
+            
+                <Search style={{ fontSize: "16", width: "230" }}></Search>
+              
+            </SearchContainer>
           </Left>
           <Center>
             <Logo>
@@ -483,13 +464,13 @@ function Navbar1() {
               <MenuItem1>Sell</MenuItem1>
             </Link>
             <Link
-              to="/featuedinfo"
+              to="/productview"
               style={{
                 color: "#000",
                 textDecoration: "none",
               }}
             >
-              <MenuItem1>Seller Panel</MenuItem1>
+              <MenuItem1>Product Add</MenuItem1>
             </Link>
           </Left1>
         </Wrapper>

@@ -8,23 +8,25 @@ export const CartContext = createContext();
 
 
 const CartContextProvide = ({ children }) =>{
-  const { jwt, userId } = useContext(AutheContext);
-  //  const jwt = localStorage.getItem("auth-token");
+  const token = localStorage.getItem("auth-token");
+  const userId = localStorage.getItem("id");
+  // const { jwt, userId } = useContext(AutheContext);
+  
   const itemarray = [];
    
-   useEffect(() =>{
-    getData();
-   },[])
+   useEffect(() => {
+     getData();
+   }, [userId]);
    const getData=() => {
      axios
        .get(`http://localhost:8080/getCartByUserId/${userId}`, {
-         headers: { Authorization: `Bearer ${jwt}` },
+         headers: { Authorization: `Bearer ${token}` },
        })
        .then((response) => {
          response.data.map((item) => {
            itemarray.push({
              id: item.id,
-             productid:item.productid,
+             productid: item.productid,
              imageurl: item.imageurl,
              productprice: item.productprice,
              producttitle: item.producttitle,

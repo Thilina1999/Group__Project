@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CartContextProvide from './component/context/cart/cart-context';
 import  WishListContextProvider from './component/context/wish-list/wishlist-context';
 import AutheContextProvider from './component/context/auth-context/authContext';
-import SerachContextProvider from './component/context/search-context/search-context'
+
 
 
 ReactDOM.render(
@@ -17,9 +17,9 @@ ReactDOM.render(
     <AutheContextProvider>
     <CartContextProvide>
       <WishListContextProvider>
-        <SerachContextProvider>
+      
         <App />
-        </SerachContextProvider>
+        
       </WishListContextProvider>
     </CartContextProvide>
     </AutheContextProvider>
