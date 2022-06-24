@@ -14,15 +14,19 @@ import "./productView.css";
 import {AutheContext} from "../../../context/auth-context/authContext"
 import Header from "../../../sidebarNew/sidebarNew";
 import Footer1 from "../../../footerNew/footerNew";
-import Footer from "../../../footer/footer";
+
+import Announcement from "../../../Announcement/announcement";
+import Navbar1 from "../../../navbarNew/navbarNew";
 
 const Productview = () => {
-  const { jwt, userId}= useContext(AutheContext)
+  const userId = localStorage.getItem("id");
+  const token = localStorage.getItem("auth-token");
+  // const { jwt, userId}= useContext(AutheContext)
    const [products, setProducts] = useState([]);
    useEffect(() => {
      axios
        .get(`http://localhost:8080/getProductByUserId/${userId}`, {
-         headers: { Authorization: `Bearer ${jwt}` },
+         headers: { Authorization: `Bearer ${token}` },
        })
        .then((response) => {
          setProducts(response.data);
@@ -34,15 +38,19 @@ const Productview = () => {
    }, []);
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteProduct/${id}`, {
-      headers: { Authorization: `Bearer ${jwt}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
     window.location.reload(true);
   };
 
   return (
     <>
+      <Announcement />
+      <Navbar1 />
+      <br />
+      <br />
+      <br />
       <div className="head">
-        <Header />
         <div className="header_view">
           <h2 className="font_view_product">Product</h2>
           <Link to="/addProduct">
@@ -73,7 +81,7 @@ const Productview = () => {
                     />
                     <div>
                       <CardMedia
-                        className="card__media_view"
+                        className="card__media_view_pro"
                         component="img"
                         height="300"
                         image={product.imageurl}
@@ -115,8 +123,8 @@ const Productview = () => {
             );
           })}
         </div>
-       
       </div>
+      <Footer1/>
     </>
   );
 };

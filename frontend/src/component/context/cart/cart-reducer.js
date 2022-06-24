@@ -110,7 +110,7 @@ const cartReducer = (state, action) => {
       if (q.quantity >= 1) {
         q.quantity++;
       }
-      //  console.log(q);
+    
 
       return {
         ...state,

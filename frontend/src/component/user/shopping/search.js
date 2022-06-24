@@ -9,7 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
@@ -17,36 +17,47 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import { WishListContext } from "../../context/wish-list/wishlist-context";
 import { AutheContext } from "../../context/auth-context/authContext";
-import { IsInList,GetId } from "../wish-list/helperList"
+import { IsInList, GetId } from "../wish-list/helperList";
 import Navbar1 from "../../navbarNew/navbarNew";
 import Announcement from "../../Announcement/announcement";
 import Footer1 from "../../footerNew/footerNew";
 
 
-// import FilterProduct from "../search/searchIndex";
-
-const Products = () => {
-
+const SearchData = () => {
+  
   const { addProductList, listItems, removeProductList } =
     useContext(WishListContext);
   const { jwt } = useContext(AutheContext);
+  const {name}=useParams();
+  // const name = localStorage.getItem("search-name");
+  console.log("name",name)
+  
  
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
+ const [products, setNameproduct] = useState([]);
+  const getProd= () => {
     axios
-      .get("http://localhost:8080/getProducts", {
-        headers: { Authorization: `Bearer ${jwt}` }
-      })
+      .post(
+        `http://localhost:8080/searchItem`,
+        {
+          userSearchCat: name,
+        },
+        { headers: { Authorization: `Bearer ${jwt}` } },
+        { withCredentials: true }
+      )
       .then((response) => {
-        setProducts(response.data);
-        console.log(response.data);
+        setNameproduct(response.data)
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
-  }, []);
-
-console.log(products);
+  }
+ 
+  
+   
+ useEffect(() => {
+   getProd();
+ }, [])
+  
   const totalStars = 5;
   const activeStars = 3;
 
@@ -58,6 +69,7 @@ console.log(products);
       <br />
       <br />
       <br />
+
       <div className="wrapper">
         {products.map((product) => {
           const {
@@ -77,7 +89,7 @@ console.log(products);
             productid: id,
           };
           const array = GetId(productList, listItems);
-          //  console.log(id1);
+          console.log(product);
 
           return (
             <React.Fragment key={product.id}>
@@ -107,7 +119,9 @@ console.log(products);
                       <CardMedia
                         className="card__media"
                         component="img"
-                        height="300"
+                        height="350"
+                        // as an example I am modifying width and height
+
                         image={product.imageurl}
                         alt="Kid Cloths"
                       />
@@ -156,9 +170,9 @@ console.log(products);
           );
         })}
       </div>
-      <Footer1/>
+      <Footer1 />
     </>
   );
 };
 
-export default Products;
+export default SearchData;

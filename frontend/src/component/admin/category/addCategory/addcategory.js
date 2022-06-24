@@ -6,11 +6,12 @@ import "./addcategory.css";
 import { useNavigate, Link } from "react-router-dom";
 import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
 import { AutheContext } from "../../../context/auth-context/authContext";
+import Alert from '@mui/material/Alert';
 
 const AddCategory = () => {
   const { jwt, userId } = useContext(AutheContext);
   // console.log(jwt, userId);
-  //  const jwt = localStorage.getItem('auth-token')
+  const token = localStorage.getItem('auth-token')
   const [categoryname, setCatname] = useState("");
 
 const SendData = (e) => {
@@ -22,13 +23,15 @@ const SendData = (e) => {
     };
     axios
       .post(`http://localhost:8080/createCategory`, addCategerytData, {
-        headers: { Authorization: `Bearer ${jwt}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res);
+        console.log("d", res);
 
-        if (res.status === 201) {
-          alert("Category Add");
+        if (res.data.status === 200) {
+          alert(res.data.message);
+        } else if (res.data.status === 404) {
+          alert(res.data.message);
         } else {
           Promise.reject();
         }
