@@ -11,10 +11,10 @@
 
 }
 .h2-add{
-    color: rgb(145, 10, 10);
+    color: black;;
     text-align: left;
     font-size: 40px;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 .image3{
      position: absolute;
@@ -38,7 +38,7 @@
     height: 45px;
     box-sizing: border-box;
     border-radius: 50px !important;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 .button-add{
 background-color: #202221;
@@ -48,7 +48,7 @@ background-color: #202221;
     color: rgb(248, 248, 248);
     cursor: pointer;
     display: inline-block;
-    font-family: Arial, sans-serif;
+    font-family: Montserrat;
     font-size: 1em;
     height: 50px;
     padding: 0 25px;
@@ -71,7 +71,7 @@ background-color: #202221;
     color: rgb(248, 248, 248);
     cursor: pointer;
     display: inline-block;
-    font-family: Arial, sans-serif;
+    font-family: Montserrat;
     font-size: 1em;
     height: 50px;
     padding: 0 25px;
@@ -91,7 +91,7 @@ background-color: #202221;
     color: rgb(5, 5, 5) !important;
     text-transform: none;
     font-size: 25px;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 
 .input-radio {

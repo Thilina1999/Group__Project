@@ -181,13 +181,11 @@ function Navbar1() {
       localStorage.removeItem("name");
       localStorage.removeItem("id");
       localStorage.removeItem("role");
-      setRedirect(true);
-      window.location.reload();
     } catch (err) {
       console.log(err);
       setRedirect(false);
     }
-    
+    window.location.reload();
 
   };
 
