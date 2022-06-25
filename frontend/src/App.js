@@ -39,7 +39,6 @@ import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
 import AddProfileDetails from "./component/seller/merchant/addProfileDetails/addProfileDetails";
 import Profileview from "./component/seller/merchant/profileView/profileView";
-// import Profileviewnew from "./component/seller/merchant/profileViewNew/profileViewNew";
 import UpdateProfileDetails from "./component/seller/merchant/updateProfileDetails/updateProfileDetail";
 import Addprivilege from "./component/admin/privilege/addPrivilege/addPrivilege";
 import Viewprivilege from './component/admin/privilege/showPrivilege/showPrivilege';
@@ -49,7 +48,7 @@ import Cart from './component/user/shoppingcart/cart';
 import WishList from './component/user/wish-list/wishList';
 import Buyer from './component/BuyerProtection/Buyer';
 import Sidebar from './component/sidebarNew/sidebarNew';
-import FeaturedInfo from './component/seller/dashboard/featuredInfo';
+
 import SearchData from './component/user/shopping/search'
 
 function App() {
@@ -60,35 +59,36 @@ function App() {
         {/* <NavBar /> */}
         {/*<Home/> */}
         {/* <Sidebar/> */}
+          {/* <AdminNavbar/>   */}
+        
+        {/* <Announcement/> */}
+
+       {/*   <AdminSidebar> */}
         {/* <AdminNavbar/>   */}
 
-    
-       
+        <Announcement />
+
+        <NavBar1 />
+        <br />
+        <br />
+        <br />
         {/* <AdminSidebar>  */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/company" element={<Company />}></Route>
-
-          <Route path="/home" element={<Home />}></Route>
-
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/company" element={<Company />}></Route>
           {/* <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />} exact></Route>
+         
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route> */}
+           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/signin" element={<Signin />}></Route>
+          <Route path="/signin/:token" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/merchantapplication" element={<AddApplication/>} exact></Route>
-          <Route path="/featuedinfo" element={<FeaturedInfo/>} exact></Route>
+
           <Route path="/Buyer" element={<Buyer />}></Route>
-          <Route path="/signin/checkmail" element={<CheckMail />}></Route>
+          <Route path="signin/checkmail" element={<CheckMail />}></Route>
           <Route
-            path="/signin/checkmail/resetpass"
+            path="signin/resetpass/:token"
             element={<ResetPass />}
           ></Route>
           <Route path="/productDetail/:id" element={<Product />} exact></Route>
@@ -106,7 +106,6 @@ function App() {
           <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
           <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
           <Route path="/viewprofile" element={<Profileview/>} exact></Route>
-          {/* <Route path="/viewprofilenew" element={<Profileviewnew/>} exact></Route> */}
           <Route path="/addprivilege" element={<Addprivilege/>} exact></Route>
           <Route path="/showPrivilege" element={<Viewprivilege/>} exact></Route>
           <Route
@@ -130,7 +129,7 @@ function App() {
           <Route path="/shoppingCart" element={<Cart />} exact></Route>
           <Route path="/wishList" element={<WishList />}></Route>
 
-          <Route path="/dashboard" element={<Dashboard/>} exact></Route>
+          <Route path="/dashboard" element={<Dashboard />} exact></Route>
           <Route path="/profile" element={<Profile />} exact></Route>
           <Route path="/viewrole" element={<ViewRole />} exact></Route>
           <Route path="/addrole" element={<AddRole />} exact></Route>
@@ -142,7 +141,16 @@ function App() {
           <Route path="/searchBar/:name" element={<SearchData/>} exact></Route>
          
         </Routes>
-  
+       {/*  </AdminSidebar> */}
+        
+
+        
+      
+        {/* </AdminSidebar>  */}
+
+        {/* <Footer /> */}
+        <br />
+        <Footer1 />
       </BrowserRouter>
     </div>
   );

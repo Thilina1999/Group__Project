@@ -17,7 +17,7 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import { WishListContext } from "../../context/wish-list/wishlist-context";
 import { AutheContext } from "../../context/auth-context/authContext";
-import { IsInList, GetId } from "../wish-list/helperList";
+import { IsInList } from "../wish-list/helperList";
 import Navbar1 from "../../navbarNew/navbarNew";
 import Announcement from "../../Announcement/announcement";
 import Footer1 from "../../footerNew/footerNew";

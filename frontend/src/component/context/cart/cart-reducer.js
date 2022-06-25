@@ -71,10 +71,6 @@ const deleteCart = (id) => {
     });
 };
 
-const deleteByUserId=()=>{
-  
-}
-
 const cartReducer = (state, action) => {
   
   switch (action.type) {

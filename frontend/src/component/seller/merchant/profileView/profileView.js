@@ -11,9 +11,6 @@ import { AiOutlinePlusCircle, AiFillEdit } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../profileView/profileView.css";
 import { AutheContext } from "../../../context/auth-context/authContext";
-import { FormLabel } from "react-bootstrap";
-import { Box, Button } from "@material-ui/core";
-
 
 const Profileview = () => {
     const { jwt, userId } = useContext(AutheContext);
@@ -54,77 +51,55 @@ const Profileview = () => {
            
           </Link>
         </div>
-        <div className=" ">
+        <div className="wrapper_view">
           {profile.map((merchant) => {
             return (
               <React.Fragment key={merchant.id}>
-                <div className="cardHead">
-                  <Card className="card_merchant_view">   
-                      <CardMedia 
+                <div>
+                  <Card className="card_merchant_view">
+                    <CardHeader className="header"
+                      title={merchant.merchantlegalname} 
+                    />
+                    <div>
+                      <CardMedia
                         className="card__media_view"
                         component="img"
-                        height="230px"
-                         
+                        height="300"
                         image={merchant.companylogourl}
                         alt=""
-                        
                       />
-                      <CardHeader 
-                      className="header"
-
-                      titleTypographyProps={{
-                        color: "black",
-                        fontSize: 30,
-                         
-                        fontFamily:
-                        "'Roboto', sans-serif",
-                      }}
-
-                      title={merchant.merchantlegalname} 
-                      />
-                      <CardContent className="infocard">   
-                      <Typography className="input"><br/>{merchant. profile}</Typography>
+                    </div>
+                    
+                    <CardContent className="infocard">
+                      <Typography>: {merchant. profile}</Typography>
                     </CardContent>
-                      <CardContent className="">
-                      <Typography><b>{merchant.officialwebsite}</b> </Typography>
+                    <CardContent className="infocard">
+                      <Typography>Reach via:<b>{merchant.officialwebsite}</b> </Typography>
                     </CardContent >
-                    </Card>
-
-                    
-                    <Card className="content" width="100px">   
-                    
-                    
                     <CardContent className="infocard">
-                      <Typography className="input"><b>{merchant.contactpersonemailid}</b></Typography>
+                      <Typography><b> {merchant.contactpersonemailid}</b></Typography>
                     </CardContent>
                     <CardContent className="infocard">
-                      <Typography className="input"><b>{merchant.contactpersonmobilenumber}</b></Typography>
+                      <Typography><b>{merchant.contactpersonmobilenumber}</b></Typography>
                     </CardContent>
                     <CardContent className="infocard">
-                      <Typography className="input"><b>{merchant.businessaddress}</b></Typography>
-                    </CardContent>
-                    
-                    <CardContent className="infocard">
-                      <Typography className="input"><b></b>{merchant.productdescription}</Typography>
+                      <Typography><b>{merchant.businessaddress}</b></Typography>
                     </CardContent>
                     <CardContent className="infocard">
-                      <Typography className="input"><b>Average Product Value:   LKR {merchant.averageproductvalue}</b> </Typography>
+                      <Typography><b> Product Description:</b> {merchant.productdescription}</Typography>
+                    </CardContent>
+                    <CardContent className="infocard">
+                      <Typography>Average Product Value: <b>{merchant.averageproductvalue}</b> </Typography>
                     </CardContent>
 
-                    <br/>
-                    <br/>
                     <CardActions disableSpacing>
                       <Link
                         to={`/editprofile/${merchant.id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        <Button className="button"> Edit Profile 
-                        <IconButton 
-                        className="icon_button_second" 
-                        size="large" >
+                        <IconButton className="icon_button_second" size="large">
                           <AiFillEdit className="view_icon" />
                         </IconButton>
-                        </Button>
                       </Link>
                     </CardActions>
                   </Card>

@@ -1,4 +1,4 @@
- import React from 'react'
+/* import React from 'react'
 import Announcement from './component/Announcement/announcement';
 import NavBar1 from './component/navbarNew/navbarNew';
 import Footer1 from './component/footerNew/footerNew';
@@ -16,3 +16,4 @@ export default function LayoutBuyer({children}) {
         </>
     )
 }
+ */

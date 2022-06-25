@@ -13,7 +13,6 @@ const CartItem = (props) => {
     productprice,
     quantity,
     id,
-    productid,
     inCrease,
     deCrease,
     removeProduct,
@@ -24,7 +23,6 @@ const CartItem = (props) => {
     imageurl,
     productprice,
     quantity,
-    productid,
     id,
    
   };

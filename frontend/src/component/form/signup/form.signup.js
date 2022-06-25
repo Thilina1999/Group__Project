@@ -10,7 +10,6 @@ export default function Signup() {
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
   const [isError, setIsError] = useState("");
 
   const submit = async (e) => {
@@ -23,21 +22,23 @@ export default function Signup() {
     })
       .then((res) => {
         console.log(res)
-        alert("User added..");
-        setRedirect(true);
+        alert("Check your mails");
+        verify(email)
       })
       .catch((err) => {
         alert("");
-        setRedirect(false);
         console.log(err);
         
       })
     
   }
 
-  if (redirect) {
-    return <Navigate to="/signin" />;
+  const verify = async (email) => {
+    await axios.post(`http://localhost:8080/api/verify`, {
+      email
+    })
   }
+
 
   const validation = (a) => {
     const uppercaseRegExp = /(?=.*?[A-Z])/;
@@ -91,7 +92,7 @@ export default function Signup() {
 <div className="div1">
               <input className="form-styling1" type="text" name="fullname" placeholder="First Name" required onChange={(e) => {
                 setFirstName(e.target.value);
-              }} />
+              }}/>
 
               <input className="form-styling1" type="text" name="fullname" placeholder="Last Name" required onChange={(e) => {
                 setLastName(e.target.value);
@@ -100,6 +101,7 @@ export default function Signup() {
 
               <input className="form-styling2" type="email" name="email" placeholder="Email" required onChange={(e) => {
                 setEmail(e.target.value);
+                validation(e)
               }} />
 
               <input className="form-styling2" type="Password" name="password" placeholder="Password" required onChange={(e) => {

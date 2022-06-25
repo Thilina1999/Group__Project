@@ -22,8 +22,7 @@ const FilterProduct = ({
   const [keyword, setKeyword] = React.useState("");
   const [resultMessage, setResultMessage] = React.useState("");
   const [selectedCategory, setSelectedCategory] =
-
-  React.useState(defaultCategory);
+    React.useState(defaultCategory);
 
   const handleInputChange = (event) => {
     if (!keyword || !event.target.value) {
@@ -91,7 +90,7 @@ const FilterProduct = ({
           </IconButton>
         </Paper>
         {resultMessage && <p className="result-message">{resultMessage}</p>}
-        ,
+        );
         {searchResult.length && (
           <div>
             <Grid container spacing={4}>

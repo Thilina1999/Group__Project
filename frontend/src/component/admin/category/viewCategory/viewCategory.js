@@ -42,61 +42,52 @@ const ViewCategory = () => {
   }
 
   return (
-    <>
-      <Announcement />
-      <Navbar1 />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="container2-category">
-        <div className="container-category">
-          <span className="font-category">
-            Category
-            <Link to="/addcategory">
-              <IconButton className="plusicon-category">
-                <AiOutlinePlusCircle className="icon1-category" />
-              </IconButton>
-            </Link>
-          </span>
-          <br />
-          <br />
-          <table className="table-category">
-            {categories.map((category) => {
-              return (
-                <React.Fragment key={category.id}>
-                  <tbody className="tablebody-category">
-                    <tr className="tablebody-category">
-                      <td className="td1-category">{category.categoryname}</td>
-                      <td className="td2-category">
-                        <Link
-                          to={`/editCategory/${category.id}`}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <IconButton variant="outline-dark">
-                            <AiFillEdit className="icon-category" />
-                          </IconButton>
-                        </Link>
-                      </td>
-                      <td className="td2-category">
-                        <IconButton
-                          variant="outline-dark"
-                          onClick={() => OnDelete(category.id)}
-                        >
-                          <AiFillDelete className="icon-category" />
+    <div className="container2-category">
+     
+      <div className="container-category">
+        <span className="font-category">
+          Category
+          <Link to="/addcategory">
+            <IconButton className="plusicon-category">
+              <AiOutlinePlusCircle className="icon1-category" />
+            </IconButton>
+          </Link>
+        </span>
+        <br />
+        <br />
+        <table className="table-category">
+          {categories.map((category) => {
+            return (
+              <React.Fragment key={category.id}>
+                <tbody className="tablebody-category">
+                  <tr className="tablebody-category">
+                    <td className="td1-category">{category.categoryname}</td>
+                    <td className="td2-category">
+                      <Link
+                        to={`/editCategory/${category.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <IconButton variant="outline-dark">
+                          <AiFillEdit className="icon-category" />
                         </IconButton>
-                      </td>
-                    </tr>
-                  </tbody>
-                </React.Fragment>
-              );
-            })}
-          </table>
-        </div>
+                      </Link>
+                    </td>
+                    <td className="td2-category">
+                      <IconButton
+                        variant="outline-dark"
+                        onClick={() => OnDelete(category.id)}
+                      >
+                        <AiFillDelete className="icon-category" />
+                      </IconButton>
+                    </td>
+                  </tr>
+                </tbody>
+              </React.Fragment>
+            );
+          })}
+        </table>
       </div>
-  
-      <Footer1/>
-    </>
+    </div>
   );
  };
 

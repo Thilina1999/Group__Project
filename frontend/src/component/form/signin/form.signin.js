@@ -34,7 +34,7 @@ const Signin = () => {
         await axios.get(`http://localhost:8080/api/user`, { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true })
           .then((res) => {
             setFirstName(res.data.firstName);
-            localStorage.setItem('name', res.data.firstName)
+            localStorage.setItem('name', res.data.firstName+" "+ res.data.lastName)
             localStorage.setItem('role', res.data.role)
           })
           .catch((err) => {
@@ -47,17 +47,23 @@ const Signin = () => {
 
     }
     catch (err) {
-      console.log(err);
+      alert("Your email or passowrd incorrect")
       setRedirect(false)
     }
     
 
   }
 
+/*   setTimeout(doSomething, 3000);
+  function doSomething() {
+    //do whatever you want here */
+ 
   if (redirect) {
+
     
     return <Navigate to="/home" />;
   }
+  
 
   return (
     <div className="body">
