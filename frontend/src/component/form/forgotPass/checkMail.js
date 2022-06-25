@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, FormLabel } from 'react-bootstrap';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
-export default function Forgot() {
+export default function CheckMail() {
   const [email, setEmail] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const checkMail = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/api/forgot`,{
+    await axios.post(`api`,{
       email
     })
-    .then(() => {
-      alert("Check your email")
+    .then((res)=>{
     })
     .catch((err) => {
-      alert(err.response.data.message)
+      console.log(err);
     })
+    setRedirect(true);
+  }
+
+  if(redirect) {
+    return <Navigate to="/signin/checkmail/resetpass" />;
   }
 
   return (
@@ -46,9 +52,11 @@ export default function Forgot() {
               setEmail(e.target.value);
             }}/>
           </Form.Group>
+          <Link to="/signin/checkmail/resetpass">
           <Button type="submit" style={{ backgroundColor: '#75C6DC', borderRadius: '20px'}}>
             Submit
           </Button>
+          </Link>
         </Form>
       </Container>
     </div>

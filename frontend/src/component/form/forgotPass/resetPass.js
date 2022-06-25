@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, FormLabel } from 'react-bootstrap';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function ResetPass() {
   const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [redirect, setRedirect] = useState(false);
   const [isError, setIsError] = useState("");
 
-  const token = useParams();
   const resetPass = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/api/reset`, {
-      token,
-      password,
-      password_confirm: passwordConfirm,
+    await axios.post(`api`, {
+      password
     })
       .then((res) => {
         alert("Password updated..");
@@ -90,7 +86,8 @@ export default function ResetPass() {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control type="password" placeholder="Confirm password" style={{ borderRadius: '15px' }} required onChange={(e)=>{
-              setPasswordConfirm(e.target.value)
+              const a = e.target.value;
+              validation(a);
             }}/>
             <span style={{ color: "red", fontSize: "13px" }}>{isError}</span>
           </Form.Group>
