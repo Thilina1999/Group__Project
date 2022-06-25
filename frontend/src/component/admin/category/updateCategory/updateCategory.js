@@ -7,9 +7,10 @@ import  Image2  from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpr
 import "./updateCategory.css";
 import { AutheContext } from "../../../context/auth-context/authContext";
 
+
 const UpdateCategory = () => {
   const { jwt, userId } = useContext(AutheContext);
-  //  const jwt = localStorage.getItem("auth-token");
+   const token = localStorage.getItem("auth-token");
    const params = useParams();
  
   const [categoryname, setCategory] = useState("");
@@ -19,10 +20,10 @@ const UpdateCategory = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:8080/getCategoryByid/${params.id}`, {
-        headers: { Authorization: `Bearer ${jwt}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setCategories(response.data);
+        setCategories(response.data.data);
         console.log(response.data);
       })
       .catch((err) => {
@@ -34,13 +35,21 @@ const UpdateCategory = () => {
   const UpdateCategory = () => {
     console.log("gh",jwt)
     axios
-      .put(`http://localhost:8080/updateCategory/${params.id}`, {
-        categoryname,
-      },{
-        headers: { Authorization: `Bearer ${jwt}` },
-      })
+      .put(
+        `http://localhost:8080/updateCategory/${params.id}`,
+        {
+          categoryname,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
-        console.log(res);
+        if (res.data.status === 200) {
+          alert(res.data.message);
+        } else if (res.data.status === 404) {
+          alert(res.data.message);
+        }
       })
       .catch((err) => {
         console.log(err);

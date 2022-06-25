@@ -12,14 +12,21 @@ import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./productView.css";
 import {AutheContext} from "../../../context/auth-context/authContext"
+import Header from "../../../sidebarNew/sidebarNew";
+import Footer1 from "../../../footerNew/footerNew";
+
+import Announcement from "../../../Announcement/announcement";
+import Navbar1 from "../../../navbarNew/navbarNew";
 
 const Productview = () => {
-  const { jwt, userId}= useContext(AutheContext)
+  const userId = localStorage.getItem("id");
+  const token = localStorage.getItem("auth-token");
+  // const { jwt, userId}= useContext(AutheContext)
    const [products, setProducts] = useState([]);
    useEffect(() => {
      axios
        .get(`http://localhost:8080/getProductByUserId/${userId}`, {
-         headers: { Authorization: `Bearer ${jwt}` },
+         headers: { Authorization: `Bearer ${token}` },
        })
        .then((response) => {
          setProducts(response.data);
@@ -31,89 +38,94 @@ const Productview = () => {
    }, []);
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteProduct/${id}`, {
-      headers: { Authorization: `Bearer ${jwt}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
     window.location.reload(true);
   };
 
   return (
-    <div className="head">
-      <div className="header_view">
-        <h2 className="font_view">Product</h2>
-        <Link to="/addProduct">
-          <IconButton className="icon_button" size="large">
-            <AddCircleIcon className="view_icon" />
-          </IconButton>
-        </Link>
-      </div>
-      <div className="wrapper_view">
-        {products.map((product) => {
-          return (
-            <React.Fragment key={product.id}>
-              <div>
-                <Card className="card_product_view">
-                  <CardHeader
-                    titleTypographyProps={{
-                      color: "rgb(252, 0, 0)",
-                      fontSize: 27,
-                      fontFamily:
-                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                    }}
-                    subheaderTypographyProps={{
-                      color: "#000",
-                      fontSize: 15,
-                      fontFamily:
-                        "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                    }}
-                    title={product.producttitle}
-                    subheader={product.productsubtitle}
-                  />
-                  <div>
-                    <CardMedia
-                      className="card__media_view"
-                      component="img"
-                      height="300"
-                      image={product.imageurl}
-                      alt="Kid Cloths"
-                    />
-                  </div>
-
-                  <CardContent>
-                    <Typography
-                      style={{
-                        fontFamily:
-                          "source-code-pro, Menlo, Monaco, Consolas, 'Courier New'",
-                        color: "rgb(252, 0, 0)",
-                        fontSize: 20,
+    <>
+      <Announcement />
+      <Navbar1 />
+      <br />
+      <br />
+      <br />
+      <div className="head">
+        <div className="header_view">
+          <h2 className="font_view_product">Product</h2>
+          <Link to="/addProduct">
+            <IconButton className="icon_button" size="large">
+              <AddCircleIcon className="view_icon_product" />
+            </IconButton>
+          </Link>
+        </div>
+        <div className="wrapper_view_product">
+          {products.map((product) => {
+            return (
+              <React.Fragment key={product.id}>
+                <div>
+                  <Card className="card_product_view">
+                    <CardHeader
+                      titleTypographyProps={{
+                        color: "#000",
+                        fontSize: 27,
+                        fontFamily: "Montserrat;",
                       }}
-                    >
-                      Rs.{product.productprice}.00
-                    </Typography>
-                  </CardContent>
-
-                  <CardActions disableSpacing>
-                    <Link
-                      to={`/editProduct/${product.id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <IconButton className="icon_button_second" size="large">
-                        <AiFillEdit className="view_icon" />
-                      </IconButton>
-                    </Link>
-                    <IconButton className="icon_button_second" size="large">
-                      <AiFillDelete
-                        className="view_icon"
-                        onClick={() => OnDelete(product.id)}
+                      subheaderTypographyProps={{
+                        color: "#000",
+                        fontSize: 15,
+                        fontFamily: "Montserrat",
+                      }}
+                      title={product.producttitle}
+                      subheader={product.productsubtitle}
+                    />
+                    <div>
+                      <CardMedia
+                        className="card__media_view_pro"
+                        component="img"
+                        height="300"
+                        image={product.imageurl}
+                        alt="Kid Cloths"
                       />
-                    </IconButton>
-                  </CardActions>
-                </Card>
-              </div>
-            </React.Fragment>
-          );
-        })}
+                    </div>
+
+                    <CardContent>
+                      <Typography
+                        style={{
+                          fontFamily: "Montserrat;",
+                          color: "#000",
+                          fontSize: 20,
+                        }}
+                      >
+                        Rs.{product.productprice}.00
+                      </Typography>
+                    </CardContent>
+
+                    <CardActions disableSpacing>
+                      <Link
+                        to={`/editProduct/${product.id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <IconButton className="icon_button_second" size="large">
+                          <AiFillEdit className="view_icon" />
+                        </IconButton>
+                      </Link>
+                      <IconButton className="icon_button_second" size="large">
+                        <AiFillDelete
+                          className="view_icon"
+                          onClick={() => OnDelete(product.id)}
+                        />
+                      </IconButton>
+                    </CardActions>
+                  </Card>
+                </div>
+              </React.Fragment>
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <Footer1/>
+    </>
   );
 };
 

@@ -6,13 +6,13 @@ const CartHeader = ({ itemCount, total, clearCart }) => {
     <div className="">
       <div className="">
         <p>Total Items: {itemCount}</p>
-        <p>{`Total: $${total}`}</p>
+        <p>{`Total: Rs.${total}.00`}</p>
       </div>
       <div className="checkout">
         <Button className="button is-black">CHECKOUT</Button>
-        <Button className="button is-white" onClick={() => clearCart()}>
+        {/* <Button className="button is-white" onClick={() => clearCart()}>
           CLEAR
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

@@ -121,6 +121,7 @@ const Products = () => {
         headers: { Authorization: `Bearer ${jwt}` },
       })
       .then((res) => {
+
         alert(res.data.message)
       })
       .catch((err) => {
@@ -237,8 +238,10 @@ const Products = () => {
                   {del}
 
                 </Card>
+                <br/>
 
               </div>
+              
             )
           })}
         </div>

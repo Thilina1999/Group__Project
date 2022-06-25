@@ -35,7 +35,7 @@ const Profileview = () => {
       <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          {/* <Link>
+          <Link>
             {
               profile.length == 0 &&(
               <IconButton className="icon_button" size="large" >
@@ -49,7 +49,7 @@ const Profileview = () => {
             </IconButton>
             )}
            
-          </Link> */}
+          </Link>
         </div>
         <div className="wrapper_view">
           {profile.map((merchant) => {
