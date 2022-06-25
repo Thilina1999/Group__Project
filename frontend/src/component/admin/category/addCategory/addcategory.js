@@ -40,7 +40,10 @@ const SendData = (e) => {
       .catch((err) => {
         console.log(err);
       });
+
+
   };
+  
     const navigate = useNavigate();
     function DelayRedirect(e, path) {
       e.preventDefault();
