@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 // import {Alert,Button} from "react-bootstrap"
 import {AutheContext} from "../../../context/auth-context/authContext"
+import AdminSidebar from "../../adminSidebar/adminSidebar";
 
 const ViewRole = () => {
     const { jwt, userId } = useContext(AutheContext)
@@ -37,7 +38,9 @@ const ViewRole = () => {
     window.location.reload(true);
   };
 
-    return ( 
+    return (
+        <div>
+            <AdminSidebar>
         <div className="viewrole-rectangle"><br/>
             <div className="container1">
                 <h1 className="viewrole-topic"><b>Role</b></h1>
@@ -95,6 +98,8 @@ const ViewRole = () => {
                 </table> 
             </div>
       </div>
+      </AdminSidebar>
+      </div> 
   );
 };
 

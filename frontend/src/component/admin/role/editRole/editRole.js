@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
 import "./editRole.css";
 import { AutheContext } from "../../../context/auth-context/authContext";
+import AdminSidebar from "../../adminSidebar/adminSidebar";
 
 const EditRole = () => {
   const {jwt, userId }= useContext(AutheContext)
@@ -46,6 +47,8 @@ const EditRole = () => {
   }
 
   return (
+    <div>
+      <AdminSidebar>
     <div className="editrole-rectangle"><br/>
         <Form>
         <h1 className="editrole-topic"><b>Update Role</b></h1><br/>
@@ -91,6 +94,8 @@ const EditRole = () => {
           </Link> 
           </div><br/><br/>
         </Form>
+    </div>
+    </AdminSidebar>
     </div>
   );
 };

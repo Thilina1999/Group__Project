@@ -7,6 +7,7 @@ import "./editUser.css";
 import IconButton from "@mui/material/IconButton";
 import {Multiselect} from "multiselect-react-dropdown";
 import { AutheContext } from "../../../context/auth-context/authContext";
+import AdminSidebar from "../../adminSidebar/adminSidebar";
 
 const EditUser = () => {
   const { jwt , userId }= useContext(AutheContext);
@@ -71,6 +72,8 @@ const EditUser = () => {
   }
 
   return (
+    <div>
+      <AdminSidebar>
     <div className="edituser-rectangle"><br/>
         <Form>
         <h1 className="edituser-topic"><b>Update User</b></h1><br/>
@@ -145,6 +148,8 @@ const EditUser = () => {
           </div><br/><br/>
         </Form>
         
+    </div>
+    </AdminSidebar>
     </div>
   );
 };

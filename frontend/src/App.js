@@ -31,7 +31,6 @@ import EditRole from './component/admin/role/editRole/editRole';
 import ViewUser from './component/admin/user/viewUser/veiwUser';
 import EditUser from './component/admin/user/editUser/editUser'
 import AdminNavbar from './component/admin/adminNavbar/adminNavbar';
-import AdminSidebar from './component/admin/adminSidebar/adminSidebar'
 
 import Productview from './component/seller/product/productView/productView';
 import ProductUpdateForm from "./component/seller/product/productupdate/productUpdateForm";
@@ -44,7 +43,6 @@ import WishList from './component/user/wish-list/wishList';
 import Buyer from './component/BuyerProtection/Buyer';
 
 
-
 function App() {
 
   return (
@@ -54,7 +52,7 @@ function App() {
         {/*<Home/> */}
         {/* <Sidebar/> */}
         {/* <AdminNavbar/> */}
-         {/* <AdminSidebar> */}
+         
              
         
          
@@ -64,7 +62,7 @@ function App() {
 
         <NavBar1 />
         
-        <AdminSidebar> 
+        
         <Routes>
           {/* <Route path="/" element={<Home />} exact></Route> */}
           
@@ -126,11 +124,12 @@ function App() {
           <Route path="/viewuser" element={<ViewUser />} exact></Route>
           <Route path="/edituser/:id" element={<EditUser />} exact></Route>
           <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
-          <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route>
+          
+          
           
         </Routes>
       
-        </AdminSidebar> 
+       
 
         {/* <Footer /> */}
         

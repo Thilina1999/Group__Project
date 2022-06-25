@@ -44,8 +44,8 @@ const Sidebar=({children})=>{
             icon:<FaKey/>
         },
         {
-            path:"/emails",
-            name:"E-mails",
+            path:"/pdf",
+            name:"Detail Pdf",
             icon:<FaMailBulk/>
         },
         {

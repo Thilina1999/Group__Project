@@ -17,6 +17,7 @@ import {
 } from 'chart.js';
 import { Pie, Bar } from 'react-chartjs-2';
 import {AutheContext} from "../../context/auth-context/authContext";
+import AdminSidebar from "../adminSidebar/adminSidebar"
 
 ChartJS.register(
   ArcElement,
@@ -173,7 +174,8 @@ console.log(labels)
  
 
   return (
-    
+    <div>
+    <AdminSidebar>
     <div className="admin-home">
       
       <div className="admin-detailcard">
@@ -234,6 +236,8 @@ console.log(labels)
         
         </div>
       </div>
+    </div>
+    </AdminSidebar>
     </div>
   )
 };

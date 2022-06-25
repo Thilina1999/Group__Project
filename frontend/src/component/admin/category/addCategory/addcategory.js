@@ -6,6 +6,7 @@ import "./addcategory.css";
 import { useNavigate, Link } from "react-router-dom";
 import Image3 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png"
 import { AutheContext } from "../../../context/auth-context/authContext";
+import AdminSidebar from "../../adminSidebar/adminSidebar";
 
 const AddCategory = () => {
   const { jwt, userId } = useContext(AutheContext);
@@ -45,6 +46,8 @@ const SendData = (e) => {
     }
 
   return (
+    <div>
+      <AdminSidebar>
     <div className="container6">
       <img src={Image3} className="image3" alt="background" />
       <div className="container-cat">
@@ -86,6 +89,8 @@ const SendData = (e) => {
           </Link>
         </Form>
       </div>
+    </div>
+    </AdminSidebar>
     </div>
   );
 };

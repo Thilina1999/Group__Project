@@ -5,6 +5,7 @@ import {AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import {AutheContext} from "../../../context/auth-context/authContext"
+import AdminSidebar from "../../adminSidebar/adminSidebar";
 
 const ViewUser=()=>{
     const { jwt , userId }= useContext(AutheContext)
@@ -37,6 +38,8 @@ const ViewUser=()=>{
     window.location.reload(true);
   };
     return ( 
+      <div>
+        <AdminSidebar>
         <div className="viewuser-rectangle">
             <div className="container1">
                 <h1 className="viewuser-roleTopic"><b>Users</b></h1>
@@ -79,6 +82,8 @@ const ViewUser=()=>{
                 })} 
                 </table> 
             </div>
+      </div>
+      </AdminSidebar>
       </div>
   );
 }

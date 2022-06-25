@@ -5,30 +5,51 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import {app} from "../../../firebase"
 import "./profile.css";
 import {AutheContext} from "../../context/auth-context/authContext"
+import Sidebar from "../adminSidebar/adminSidebar"
 
 function Profile(){
   const { jwt , userId }= useContext(AutheContext)
   const params = useParams();
-  const name = localStorage.getItem('name')
-  const email = localStorage.getItem("email")
-  // console.log("adada",name,email)
-
-  const [telno,settelno] = useState("");
+  const adname = localStorage.getItem('name')
+  const ademail = localStorage.getItem("email")
+  
+   console.log("adada",adname,ademail)
+  const [id,setid] = useState(userId);
+  const [adminname,setadminname] = useState("");
+  const [adminemail,setadminemail] = useState("");
+  const [telephone,settelno] = useState("");
   const [gender, setgender] = useState("");
-  const [dob, setdob] = useState("");
   const [profileimgeurl,setprofileimgurl] = useState("");
-
+  const [admin, setadmin] = useState([]);
+  // id=userId;
+  console.log(id);
   useEffect(() =>{
-
-  })
+    axios.get(`http://localhost:8080/getadmin`, {
+      headers: { Authorization: `Bearer ${jwt}` },
+    })
+    .then((res) => {
+      console.log(res.data)
+      setadmin(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  },[]);
+  // console.log(adminemail)
   const UpdateProfile = () =>{
     var adddata = {
-      telno,
+      id,
+      adminname,
+      adminemail,
+      telephone,
       gender,
       profileimgeurl,
     };
-    axios.put(`http://localhost:8080/updateMerchant/${params.userid}`,{
-      telno:adddata.telno,
+    console.log(adddata.adminname)
+    axios.put(`http://localhost:8080/updatedetail/${params.id}`,{
+      adminname:adname,
+      adminemail:ademail,
+      telno:adddata.telephone,
       gender:adddata.gender,
       profileimgeurl:adddata.profileimgeurl,
     },{
@@ -43,6 +64,7 @@ function Profile(){
        console.log(err);
      });
   }
+  console.log(profileimgeurl)
   const Profileimage = async(e) => {
     let profileimg = "";
     const file = e.target.files[0];
@@ -51,7 +73,7 @@ function Profile(){
     filereference.put(file).then(() =>{
       console.log("Uploaded image",file.name);
       profileimg = filereference.getDownloadURL(filereference.ref).then((url) =>{
-        profileimgeurl(url);
+        setprofileimgurl(url);
         console.log(url);
       });
     });
@@ -63,7 +85,10 @@ function Profile(){
     setTimeout(() => navigate(path), 600);
     }
     return(
+      <div>
+        <Sidebar>
       <div className="admin-profile-form-rectangle">
+        
         <Form >
           <h1 className="admin-profile-form-topic"><b>Edit Profile</b></h1><br/>
           {/* <div className="admin-profile-form-img"></div> */}
@@ -76,19 +101,25 @@ function Profile(){
           
           <Form.Group  className="mb-4" controlId="formBasicEmail">
             <Form.Label className="admin-profile-txt-email">E-mail</Form.Label>
-            <Form.Control type="email" placeholder={email} disabled />
+            <Form.Control type="email" placeholder={ademail} disabled
+            onChange={(e) => {
+              setadminname(e.target.value);
+            }} />
           </Form.Group>
           
           <Form.Group className="mb-4">
           <Form.Label className="admin-profile-txt-email">Name</Form.Label>
-            <Form.Control type="text" placeholder={name} disabled/>
+            <Form.Control type="text" placeholder={adname} disabled
+            onChange={(e) => {
+              setadminemail(e.target.value);
+            }}/>
           </Form.Group>
 
           <Form.Group className="mb-4">
           <Form.Label className="admin-profile-txt-tel">Telephone Number</Form.Label>
             <Form.Control 
               type="text" 
-              placeholder={telno.telephone}
+              placeholder={admin.telephone}
               onChange={(e) => {
                 settelno(e.target.value);
               }}/>
@@ -103,7 +134,7 @@ function Profile(){
               <Col>
                 <Form.Group as={Col} controlId="formGridState">
                 <Form.Label className="admin-profile-txt-dob">Gender</Form.Label>
-                <Form.Control placeholder={gender.gender}
+                <Form.Control placeholder={admin.gender}
                 onChange={(e) => {
                   setgender(e.target.value);
                 }} />
@@ -113,7 +144,11 @@ function Profile(){
           </Form.Group >
 
           <Form.Group className="admin-profilr-form-btnGrp">
-          <Link to="/dashboard">
+          <Link to="/dashboard"
+          onClick={(e) => {
+            DelayRedirect(e, "/dashboard");
+          }}
+          >
             <Button 
             className="admin-profile-form-cancelBtn" 
             variant="primary" 
@@ -133,6 +168,9 @@ function Profile(){
             </Link>
           </Form.Group>  
         </Form>
+        
+      </div>
+      </Sidebar>
       </div>
     )
 }
