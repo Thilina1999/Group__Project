@@ -11,6 +11,7 @@ import Footer1 from "../../../footerNew/footerNew";
 
 import Announcement from "../../../Announcement/announcement";
 import Navbar1 from "../../../navbarNew/navbarNew";
+import Notification from "../../../notification/notification";
 
 const ProductUpdateForm = () => {
   // const { jwt, userId } = useContext(AutheContext);
@@ -24,7 +25,7 @@ const ProductUpdateForm = () => {
   const [quantity, SetQuantity] = useState("");
   const [productlist, SetProductlist] = useState([]);
  const [categories, setCategories] = useState([]);
-
+const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
  const token = localStorage.getItem("auth-token");
 const userId = localStorage.getItem("id");
 
@@ -83,12 +84,20 @@ const UpdateProduct = () => {
         headers: { Authorization: `Bearer ${token}` },
       }
     )
-    .then((response) => {
-      if (response.status === 200) {
-        alert("Product Update");
-      } else {
-        alert("Product Update Failed");
-      }
+    .then((res) => {
+     if (res.data.status === 200) {
+       setNotify({
+         Open: true,
+         message: res.data.message,
+         type: res.data.type,
+       });
+     } else if (res.data.status === 404) {
+       setNotify({
+         Open: true,
+         message: res.data.message,
+         type: res.data.type,
+       });
+     }
     })
     .catch((err) => {
       console.log(err);
@@ -114,7 +123,7 @@ const OnAddProduct = async (e) => {
   const navigate = useNavigate();
   function DelayRedirect(e, path) {
     e.preventDefault();
-    setTimeout(() => navigate(path), 600);
+    setTimeout(() => navigate(path), 2500);
   }
 
 
@@ -126,16 +135,18 @@ const OnAddProduct = async (e) => {
       <br />
       <br />
       <div className="container7_update">
-        <div className="container">
+        <div className="container-update">
           <Form className="form4_update">
             <Form.Group controlId="ControlInput1" name="id1">
-              <h2 className="h2">Update Product</h2>
+              <h2 className="h2-update">Update Product</h2>
               <hr></hr>
               <br />
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput2" name="id2">
-              <Form.Label className="label">Product Title</Form.Label>
+              <Form.Label className="label-product-update">
+                Product Title
+              </Form.Label>
               <Form.Control
                 className="form-control1_update"
                 type="text"
@@ -147,7 +158,9 @@ const OnAddProduct = async (e) => {
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput3" name="id3">
-              <Form.Label className="label">Product SubTitle</Form.Label>
+              <Form.Label className="label-product-update">
+                Product SubTitle
+              </Form.Label>
               <Form.Control
                 className="form-control1_update"
                 type="text"
@@ -159,7 +172,9 @@ const OnAddProduct = async (e) => {
               <br />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label">Category Select</Form.Label>
+              <Form.Label className="label-product-update">
+                Category Select
+              </Form.Label>
               <Form.Select
                 className="form-control1_update"
                 onChange={(e) => SetCategoryName(e.target.value)}
@@ -178,7 +193,9 @@ const OnAddProduct = async (e) => {
               <br />
             </Form.Group>
             <Form.Group controlId="formFile">
-              <Form.Label className="label">file input</Form.Label>
+              <Form.Label className="label-product-update">
+                file input
+              </Form.Label>
               <Form.Control
                 type="file"
                 onChange={OnAddProduct}
@@ -187,7 +204,9 @@ const OnAddProduct = async (e) => {
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput4" name="id3">
-              <Form.Label className="label">Description</Form.Label>
+              <Form.Label className="label-product-update">
+                Description
+              </Form.Label>
               <Form.Control
                 className="text1_update"
                 as="textarea"
@@ -200,7 +219,9 @@ const OnAddProduct = async (e) => {
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput5" name="id4">
-              <Form.Label className="label">Product Price</Form.Label>
+              <Form.Label className="label-product-update">
+                Product Price
+              </Form.Label>
               <Form.Control
                 className="form-control1_update"
                 type="number"
@@ -212,7 +233,9 @@ const OnAddProduct = async (e) => {
               <br />
             </Form.Group>
             <Form.Group controlId="ControlInput6" name="id4">
-              <Form.Label className="label">Product Quantity</Form.Label>
+              <Form.Label className="label-product-update">
+                Product Quantity
+              </Form.Label>
               <Form.Control
                 className="form-control1_update"
                 type="number"
@@ -247,7 +270,8 @@ const OnAddProduct = async (e) => {
                   !productsubtitle ||
                   !categoryname ||
                   !price ||
-                  !quantity
+                  !quantity ||
+                  !imageurl
                 }
               >
                 Update
@@ -257,6 +281,7 @@ const OnAddProduct = async (e) => {
         </div>
       </div>
       <Footer1 />
+      <Notification notify={notify} setNotify={setNotify} />
     </>
   );
 };

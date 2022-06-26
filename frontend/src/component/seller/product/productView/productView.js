@@ -12,7 +12,7 @@ import { AiOutlinePlusCircle, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./productView.css";
 import {AutheContext} from "../../../context/auth-context/authContext"
-import Header from "../../../sidebarNew/sidebarNew";
+import Notification from "../../../notification/notification";
 import Footer1 from "../../../footerNew/footerNew";
 
 import Announcement from "../../../Announcement/announcement";
@@ -22,25 +22,46 @@ const Productview = () => {
   const userId = localStorage.getItem("id");
   const token = localStorage.getItem("auth-token");
   // const { jwt, userId}= useContext(AutheContext)
+   const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
    const [products, setProducts] = useState([]);
    useEffect(() => {
-     axios
-       .get(`http://localhost:8080/getProductByUserId/${userId}`, {
-         headers: { Authorization: `Bearer ${token}` },
-       })
-       .then((response) => {
-         setProducts(response.data);
-         console.log(response.data);
-       })
-       .catch((error) => {
-         console.log(error);
-       });
-   }, []);
+     GetProductData();
+   },[]);
+   const GetProductData=()=>{
+      axios
+        .get(`http://localhost:8080/getProductByUserId/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setProducts(response.data.data);
+          console.log(response.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+   }
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteProduct/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
-    });
-    window.location.reload(true);
+    }).then((res) => {
+      if (res.data.status === 200) {
+        setNotify({
+          Open: true,
+          message: res.data.message,
+          type: res.data.type,
+        });
+      } else if (res.data.status === 404) {
+        setNotify({
+          Open: true,
+          message: res.data.message,
+          type: res.data.type,
+        });
+      }
+      GetProductData();
+    }).catch((err) => {
+      console.log(err)
+    })
+   
   };
 
   return (
@@ -55,7 +76,7 @@ const Productview = () => {
           <h2 className="font_view_product">Product</h2>
           <Link to="/addProduct">
             <IconButton className="icon_button" size="large">
-              <AddCircleIcon className="view_icon_product" />
+              <AiOutlinePlusCircle className="view_icon_product" />
             </IconButton>
           </Link>
         </div>
@@ -124,7 +145,8 @@ const Productview = () => {
           })}
         </div>
       </div>
-      <Footer1/>
+      <Footer1 />
+      <Notification notify={notify} setNotify={setNotify} />
     </>
   );
 };

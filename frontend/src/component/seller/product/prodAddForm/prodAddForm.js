@@ -10,6 +10,7 @@ import Header from "../../../sidebarNew/sidebarNew";
 import Announcement from "../../../Announcement/announcement";
 import Navbar1 from "../../../navbarNew/navbarNew";
 import Footer1 from "../../../footerNew/footerNew";
+import Notification from "../../../notification/notification";
 
 
 const ProdAddForm = () => {
@@ -25,7 +26,7 @@ const [price, Setprice] = useState("");
 const [quantity, SetQuantity] = useState("");
 
 const [categories, setCategories] = useState([]);
-
+const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
   useEffect(() => {
     axios
       .get(`http://localhost:8080/getCategory`, {
@@ -69,13 +70,20 @@ const [categories, setCategories] = useState([]);
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          alert("Product Add");
-        } else {
-          alert("Product Add Failed");
-        }
+      .then((res) => {
+          if (res.data.status === 200) {
+            setNotify({
+              Open: true,
+              message: res.data.message,
+              type: res.data.type,
+            });
+          } else if (res.data.status === 404) {
+            setNotify({
+              Open: true,
+              message: res.data.message,
+              type: res.data.type,
+            });
+          }
       })
       .catch((error) => {
         console.log(error);
@@ -100,7 +108,7 @@ const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   function DelayRedirect(e, path) {
     e.preventDefault();
-    setTimeout(() => navigate(path), 1000);
+    setTimeout(() => navigate(path), 2500);
   }
 
   return (
@@ -245,7 +253,8 @@ const [categories, setCategories] = useState([]);
                   !productsubtitle ||
                   !categoryname ||
                   !price ||
-                  !quantity
+                  !quantity||
+                  !imageurl
                 }
               >
                 create
@@ -255,6 +264,7 @@ const [categories, setCategories] = useState([]);
         </div>
       </div>
       <Footer1 />
+      <Notification notify={notify} setNotify={setNotify} />
     </>
   );
 };

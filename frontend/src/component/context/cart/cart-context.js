@@ -16,7 +16,7 @@ const CartContextProvide = ({ children }) =>{
    
    useEffect(() => {
      getData();
-   }, [userId]);
+   },[]);
    const getData=() => {
      axios
        .get(`http://localhost:8080/getCartByUserId/${userId}`, {
