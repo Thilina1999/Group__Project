@@ -1,6 +1,6 @@
 .container6{
      width: 100%;
-    height: 1100px;
+    height: 800px;
     background-color: rgba(212, 242, 255, 1);
 }
 .container-cat {
@@ -11,7 +11,7 @@
 
 }
 .h2-add{
-    color: black;;
+    color: black;
     text-align: left;
     font-size: 40px;
     font-family: Montserrat;
@@ -25,6 +25,7 @@
     padding: 100px;
     border-radius: 25px;
     display: inline-block;
+    justify-content:center;
     text-align: left;
     
     width: 1054px;
@@ -64,7 +65,7 @@ background-color: #202221;
     transform: scale(1.05);
 }
 .button1-add{
-    background-color: #202221;
+    background-color: rgb(71, 183, 200);
     border-radius: 50px;
     border-width: 0;
     box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
