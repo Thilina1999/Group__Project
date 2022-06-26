@@ -11,34 +11,55 @@ import {AutheContext} from "../../../context/auth-context/authContext"
 import Navbar1 from "../../../navbarNew/navbarNew";
 import Announcement from "../../../Announcement/announcement"
 import Footer1 from "../../../footerNew/footerNew"
-import Alert from "@mui/material/Alert";
+import Notification from "../../../notification/notification";
 
-const ViewCategory = () => {
+const ViewCategory = (props) => {
   // const { jwt , userId }= useContext(AutheContext)
+  
    const jwt = localStorage.getItem("auth-token");
-   
+  const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
   const [categories, setCategories] = useState([]);
     useEffect(() => {
-      axios
-        .get(`http://localhost:8080/getCategory`, {
-          headers: { Authorization: `Bearer ${jwt}` },
-        })
-        .then((response) => {
-          setCategories(response.data.data);
-          console.log(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      GetCatData();
     }, []);
+    const GetCatData=()=>{
+         axios
+           .get(`http://localhost:8080/getCategory`, {
+             headers: { Authorization: `Bearer ${jwt}` },
+           })
+           .then((response) => {
+             setCategories(response.data.data);
+             console.log(response.data);
+           })
+           .catch((err) => {
+             console.log(err);
+           });
+    }
  
 
  
   const OnDelete = (id) => {
     axios.delete(`http://localhost:8080/deleteCategory/${id}`, {
       headers: { Authorization: `Bearer ${jwt}` },
-    });
-    window.location.reload(true);
+    }).then((res) => {
+        GetCatData();
+        if (res.data.status === 200) {
+          setNotify({
+            Open: true,
+            message: res.data.message,
+            type: res.data.type,
+          });
+        } else if (res.data.status === 404) {
+          setNotify({
+            Open: true,
+            message: res.data.message,
+            type: res.data.type,
+          });
+        }
+    }).catch((err) => {
+      console.log(err); 
+    })
+    
   }
 
   return (
@@ -94,8 +115,9 @@ const ViewCategory = () => {
           </table>
         </div>
       </div>
-  
-      <Footer1/>
+
+      <Footer1 />
+      <Notification notify={notify} setNotify={setNotify} />
     </>
   );
  };
