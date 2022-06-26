@@ -42,21 +42,24 @@ const Products = () => {
     id,
   };
   useEffect(() => {
-    (
-      async () => {
-        await axios
-          .get(`http://localhost:8080/getProductByid/${params.id}`)
-          .then((res) => {
-            setProduct(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    )();
+
+    getProduct()
     getAllCommnets()
     
   }, []);
+
+  const getProduct = async () => {
+    await axios
+      .get(`http://localhost:8080/getProductByid/${params.id}`)
+      .then((res) => {
+        setProduct(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
   /* const getRate = async () => {
     await axios.get(`http://localhost:8080/api/getAverageRating/${params.id}`)
       .then((res) => {
@@ -105,7 +108,8 @@ const Products = () => {
       })
       getAllCommnets()
   }
-console.log(typeof(product.averagerate));
+  let x = product.averagerate
+console.log(x);
   const itemInCart = IsInCart(productCart, cartItem);
   return (
     <div className="product-detail-container">
@@ -218,9 +222,8 @@ console.log(typeof(product.averagerate));
         <div className="reviews">
           <div>
             <Rating name="read-only" value={product.averagerate} readOnly size="large" />
+            {product.averagerate}
           </div>
-          <Rating name="read-only" value={product.averagerate} readOnly size="large" />
-          <Rating name="read-only" value={product.averagerate} readOnly size="large" />
         </div>
         <h4>Details: </h4>
         <p>{product.description}</p>
