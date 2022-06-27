@@ -11,8 +11,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import Box from "@mui/material/Box";
-import StarIcon from "@mui/icons-material/Star";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
+
 import "./product.css";
 import { Link } from "react-router-dom";
 import { WishListContext } from "../../context/wish-list/wishlist-context";
@@ -22,33 +21,33 @@ import Navbar1 from "../../navbarNew/navbarNew";
 import Announcement from "../../Announcement/announcement";
 import Footer1 from "../../footerNew/footerNew";
 
+import Rating from '@mui/material/Rating';
 
-// import FilterProduct from "../search/searchIndex";
 
 const Products = () => {
-
   const { addProductList, listItems, removeProductList } =
-    useContext(WishListContext);
-  const { jwt } = useContext(AutheContext);
- 
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/getProducts", {
-        headers: { Authorization: `Bearer ${jwt}` }
-      })
-      .then((response) => {
-        setProducts(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  useContext(WishListContext);
+const { jwt } = useContext(AutheContext);
 
-console.log(products);
-  const totalStars = 5;
-  const activeStars = 3;
+const [products, setProducts] = useState([]);
+const [average, setAverage] = useState();
+
+useEffect(() => {
+  axios
+    .get("http://localhost:8080/getProducts", {
+      headers: { Authorization: `Bearer ${jwt}` }
+    })
+    .then((response) => {
+      setProducts(response.data);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+
+}, []);
+
 
   return (
     <>
@@ -77,7 +76,6 @@ console.log(products);
             productid: id,
           };
           const array = GetId(productList, listItems);
-          //  console.log(id1);
 
           return (
             <React.Fragment key={product.id}>
@@ -124,13 +122,8 @@ console.log(products);
                         </Typography>
 
                         <Box>
-                          {[...new Array(totalStars)].map((arr, index) => {
-                            return index < activeStars ? (
-                              <StarIcon className="start_icon" />
-                            ) : (
-                              <StarBorderIcon className="start_icon" />
-                            );
-                          })}
+
+                        <Rating name="read-only" value={product.averagerate} readOnly size="large" />
                         </Box>
                       </CardContent>
                     </div>
