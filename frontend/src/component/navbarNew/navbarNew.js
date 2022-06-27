@@ -185,7 +185,7 @@ function Navbar1() {
       console.log(err);
       setRedirect(false);
     }
-    window.location.reload();
+    // window.location.reload();
 
   };
 

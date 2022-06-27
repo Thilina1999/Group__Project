@@ -1,7 +1,7 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, BrowserRouter, Routes, useLocation } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React from "react";
 
 import Announcement from './component/Announcement/announcement';
 import NavBar1 from './component/navbarNew/navbarNew';
@@ -51,8 +51,10 @@ import Buyer from './component/BuyerProtection/Buyer';
 import Sidebar from './component/sidebarNew/sidebarNew';
 import FeaturedInfo from './component/seller/dashboard/featuredInfo';
 import SearchData from './component/user/shopping/search'
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+  // const location = useLocation();
 
   return (
     <div className="App">
@@ -62,87 +64,118 @@ function App() {
         {/* <Sidebar/> */}
         {/* <AdminNavbar/>   */}
 
-    
-       
         {/* <AdminSidebar>  */}
-        <Routes>
-          <Route path="/" element={<Home />} exact></Route>
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/company" element={<Company />}></Route>
+        <AnimatePresence exitBeforeEnter>
+          <Routes >
+            <Route path="/" element={<Home />} exact></Route>
+            <Route path="/signin" element={<Signin />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/company" element={<Company />}></Route>
 
-          <Route path="/home" element={<Home />}></Route>
+            <Route path="/home" element={<Home />}></Route>
 
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/company" element={<Company />}></Route>
-          {/* <Route path="/" element={<Home />} exact></Route>
+            <Route path="/signin" element={<Signin />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/company" element={<Company />}></Route>
+            {/* <Route path="/" element={<Home />} exact></Route>
           <Route path="/signin" element={<Signin />} exact></Route>
           <Route path="/signin/signup" element={<Signup />} exact></Route>
           <Route path="/sell" element={<Sell />} exact></Route> */}
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/signin" element={<Signin />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/merchantapplication" element={<AddApplication/>} exact></Route>
-          <Route path="/featuedinfo" element={<FeaturedInfo/>} exact></Route>
-          <Route path="/Buyer" element={<Buyer />}></Route>
-          <Route path="/signin/checkmail" element={<CheckMail />}></Route>
-          <Route
-            path="/signin/checkmail/resetpass"
-            element={<ResetPass />}
-          ></Route>
-          <Route path="/productDetail/:id" element={<Product />} exact></Route>
+            <Route path="/home" element={<Home />}></Route>
+            <Route path="/signin" element={<Signin />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route
+              path="/merchantapplication"
+              element={<AddApplication />}
+              exact
+            ></Route>
+            <Route path="/featuedinfo" element={<FeaturedInfo />} exact></Route>
+            <Route path="/Buyer" element={<Buyer />}></Route>
+            <Route path="/signin/checkmail" element={<CheckMail />}></Route>
+            <Route
+              path="/signin/checkmail/resetpass"
+              element={<ResetPass />}
+            ></Route>
+            <Route
+              path="/productDetail/:id"
+              element={<Product />}
+              exact
+            ></Route>
 
-          <Route path="/sell" element={<Products />} exact></Route>
+            <Route path="/sell" element={<Products />} exact></Route>
 
-          <Route path="/addcategory" element={<AddCategory />} exact></Route>
-          <Route path="/viewCategory" element={<ViewCategory />} exact></Route>
-          <Route
-            path="/editCategory/:id"
-            element={<UpdateCategory />}
-            exact
-          ></Route>
-          <Route path="/productview" element={<Productview />} exact></Route>
-          <Route path="/addprofile" element={<AddProfileDetails/>} exact></Route>
-          <Route path="/editprofile/:id" element={<UpdateProfileDetails/>} exact></Route>
-          <Route path="/viewprofile" element={<Profileview/>} exact></Route>
-          {/* <Route path="/viewprofilenew" element={<Profileviewnew/>} exact></Route> */}
-          <Route path="/addprivilege" element={<Addprivilege/>} exact></Route>
-          <Route path="/showPrivilege" element={<Viewprivilege/>} exact></Route>
-          <Route
-            path="/addprofile"
-            element={<AddProfileDetails />}
-            exact
-          ></Route>
-          <Route
-            path="/editprofile/:id"
-            element={<UpdateProfileDetails />}
-            exact
-          ></Route>
-          <Route path="/viewprofile" element={<Profileview />} exact></Route>
-          <Route
-            path="/editProduct/:id"Profileview
-            element={<ProductUpdateForm />}
-            exact
-          ></Route>
-          <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
-          
-          <Route path="/shoppingCart" element={<Cart />} exact></Route>
-          <Route path="/wishList" element={<WishList />}></Route>
+            <Route path="/addcategory" element={<AddCategory />} exact></Route>
+            <Route
+              path="/viewCategory"
+              element={<ViewCategory />}
+              exact
+            ></Route>
+            <Route
+              path="/editCategory/:id"
+              element={<UpdateCategory />}
+              exact
+            ></Route>
+            <Route path="/productview" element={<Productview />} exact></Route>
+            <Route
+              path="/addprofile"
+              element={<AddProfileDetails />}
+              exact
+            ></Route>
+            <Route
+              path="/editprofile/:id"
+              element={<UpdateProfileDetails />}
+              exact
+            ></Route>
+            <Route path="/viewprofile" element={<Profileview />} exact></Route>
+            {/* <Route path="/viewprofilenew" element={<Profileviewnew/>} exact></Route> */}
+            <Route
+              path="/addprivilege"
+              element={<Addprivilege />}
+              exact
+            ></Route>
+            <Route
+              path="/showPrivilege"
+              element={<Viewprivilege />}
+              exact
+            ></Route>
+            <Route
+              path="/addprofile"
+              element={<AddProfileDetails />}
+              exact
+            ></Route>
+            <Route
+              path="/editprofile/:id"
+              element={<UpdateProfileDetails />}
+              exact
+            ></Route>
+            <Route path="/viewprofile" element={<Profileview />} exact></Route>
+            <Route
+              path="/editProduct/:id"
+              Profileview
+              element={<ProductUpdateForm />}
+              exact
+            ></Route>
+            <Route path="/addProduct" element={<ProdAddForm />} exact></Route>
 
-          <Route path="/dashboard" element={<Dashboard/>} exact></Route>
-          <Route path="/profile" element={<Profile />} exact></Route>
-          <Route path="/viewrole" element={<ViewRole />} exact></Route>
-          <Route path="/addrole" element={<AddRole />} exact></Route>
-          <Route path="/editrole" element={<EditRole />} exact></Route>
-          <Route path="/viewuser" element={<ViewUser />} exact></Route>
-          <Route path="/edituser" element={<EditUser />} exact></Route>
-          <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
-          <Route path="/sidebarnew" element={<Sidebar />} exact></Route>
-          <Route path="/searchBar/:name" element={<SearchData/>} exact></Route>
-         
-        </Routes>
-  
+            <Route path="/shoppingCart" element={<Cart />} exact></Route>
+            <Route path="/wishList" element={<WishList />}></Route>
+
+            <Route path="/dashboard" element={<Dashboard />} exact></Route>
+            <Route path="/profile" element={<Profile />} exact></Route>
+            <Route path="/viewrole" element={<ViewRole />} exact></Route>
+            <Route path="/addrole" element={<AddRole />} exact></Route>
+            <Route path="/editrole" element={<EditRole />} exact></Route>
+            <Route path="/viewuser" element={<ViewUser />} exact></Route>
+            <Route path="/edituser" element={<EditUser />} exact></Route>
+            <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
+            <Route path="/sidebarnew" element={<Sidebar />} exact></Route>
+            <Route
+              path="/searchBar/:name"
+              element={<SearchData />}
+              exact
+            ></Route>
+          </Routes>
+        </AnimatePresence>
       </BrowserRouter>
     </div>
   );
