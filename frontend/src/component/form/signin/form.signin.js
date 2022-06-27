@@ -4,18 +4,18 @@ import Img from '../../assets/d9936da5d49e8c2564a284d13db34f70_ccexpress 1.png';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import jwtDecode from "jwt-decode"
+import Notification from "../../notification/notification"
 
 const Signin = () => {
 
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [firstName, setFirstName] = useState('');
+  const [ notify, setNotify ] = useState({Open:false, message:'', type:''})
 
   const Login = async (e) => {
     e.preventDefault();
-   
 
     try {
       const loginResponse = await axios.post(`http://localhost:8080/api/login`, {
@@ -24,6 +24,11 @@ const Signin = () => {
       }, { withCredentials: true })
 
       console.log(loginResponse)
+      setNotify({
+        Open: true,
+        message: "Success",
+        type: 'success',
+      })
 
       if (loginResponse) {
         localStorage.setItem("auth-token", loginResponse.data.data)
@@ -40,17 +45,18 @@ const Signin = () => {
           .catch((err) => {
             console.log(err)
           })
-          
       }
     setRedirect(true)
 
-
     }
     catch (err) {
-      console.log(err);
+      setNotify({
+        Open: true,
+        message: "Incorrect passowrd or email",
+        type: 'error',
+      })
       setRedirect(false)
     }
-    
 
   }
 
@@ -76,6 +82,7 @@ const Signin = () => {
               <li className="signin-active">Sign-In</li>
             </ul>
           </div>
+          <Notification notify={notify} setNotify={setNotify} />
           <div ng-app ng-init="checked = false">
             <form className="form-signin" action method="post" name="form">
               <input

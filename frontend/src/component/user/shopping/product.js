@@ -15,24 +15,37 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import { CardActionArea, CardActions } from '@mui/material';
 import { MdDeleteOutline } from "react-icons/md";
-import Alert from '@mui/material/Alert';
-import { GrSend, GrSplit } from "react-icons/gr";
+
+import Navbar1 from "../../navbarNew/navbarNew";
+import Announcement from "../../Announcement/announcement";
+import Footer1 from "../../footerNew/footerNew";
+
+import { GrSend } from "react-icons/gr";
+import Notification from "../../notification/notification"
+
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
+
+
 const Products = () => {
-  const { jwt, userId } = useContext(AutheContext);
+  const { jwt } = useContext(AutheContext);
   const { addProduct, cartItem, inCrease } = useContext(CartContext);
   const params = useParams();
-  const [average, setAverage] = useState([]);
+
   const [product, setProduct] = useState([]);
   const [value, setValue] = useState()
   const [comment, setComment] = useState("")
   const [allComments, setAllComments] = useState([])
-  const [isAlert, setIsAlert] = useState("")
+
+  const [notify, setNotify] = useState({ Open: false, message: '', type: '' })
+
   const { producttitle,
     productsubtitle,
     imageurl,
     productprice,
     quantity,
     id, } = product;
+
   const productCart = {
     producttitle,
     productsubtitle,
@@ -41,11 +54,12 @@ const Products = () => {
     quantity,
     id,
   };
+
   useEffect(() => {
 
     getProduct()
     getAllCommnets()
-    
+
   }, []);
 
   const getProduct = async () => {
@@ -59,16 +73,6 @@ const Products = () => {
       });
   }
 
-
-  /* const getRate = async () => {
-    await axios.get(`http://localhost:8080/api/getAverageRating/${params.id}`)
-      .then((res) => {
-        setAverage(res.data.averageRating)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  } */
   const getAllCommnets = async () => {
     await axios.get(`http://localhost:8080/api/getAllReviewsByItem/${params.id}`)
       .then((res) => {
@@ -78,6 +82,7 @@ const Products = () => {
         alert(err.response.data)
       })
   }
+
   const AddReview = async (e) => {
     await axios.post(`http://localhost:8080/api/createReview`, {
       prodId: Number(params.id),
@@ -85,171 +90,223 @@ const Products = () => {
       comment: comment
     }, { headers: { Authorization: `Bearer ${jwt}` } })
       .then((res) => {
-        alert(res.statusText)
+        setNotify({
+          Open: true,
+          message: res.statusText,
+          type: "success"
+        })
       })
       .catch((err) => {
-        alert(err.response.data.message)
+        setNotify({
+          Open: true,
+          message: err.response.data.message,
+          type: "error"
+        })
       })
-      getAllCommnets()
-
-      window.location.reload()
+    getAllCommnets()
+    window.location.reload()
   }
+
   const deleteReview = async () => {
     await axios.delete(`http://localhost:8080/api/deleteReviewByItem/${params.id}`,
       {
         headers: { Authorization: `Bearer ${jwt}` },
       })
       .then((res) => {
-
-        alert(res.data.message)
+        setNotify({
+          Open: true,
+          message: res.data.message,
+          type: "success"
+        })
       })
       .catch((err) => {
-        alert(err.response.data.message)
+        setNotify({
+          Open: true,
+          message: err.response.data.message,
+          type: "error"
+        })
       })
-      getAllCommnets()
+    getAllCommnets()
   }
+
   let x = product.averagerate
-console.log(x);
+  console.log(x);
   const itemInCart = IsInCart(productCart, cartItem);
+
+  const totalStars = 5;
+  const activeStars = x;
+
+
   return (
-    <div className="product-detail-container">
-      <div>
-        <div className="image-container">
-          <img src={product.imageurl} className="product-detail-image" />
-        </div>
-        <br />
-        <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-        <Box
-          sx={{
-            '& > legend': { mt: 2 },
-          }}
-        >
-          <Typography component="legend">Rating</Typography>
+    <>
+
+      <Announcement />
+      <Navbar1 />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <div className="product-detail-container">
+        <div>
+          <div className="image-container">
+            <img src={product.imageurl} className="product-detail-image" />
+          </div>
           <br />
-          <Rating
-            name="simple-controlled"
-            value={value}
-            size="large"
-            required
-            onChange={(e) => {
-              setValue(e.target.value);
+          <br /> <br /> <br /> <br /> <br /> <br />
+          <Box
+            sx={{
+              '& > legend': { mt: 2 },
             }}
-          />
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <>
-            <TextField id="standard-basic" label="Comments" variant="standard" style={{ width: '100%' }}
+          >
+            <Typography component="legend">Rating</Typography>
+            <br />
+            <Rating
+              name="simple-controlled"
+              value={value}
+              size="large"
+              required
               onChange={(e) => {
-                setComment(e.target.value);
+                setValue(e.target.value);
               }}
             />
-          </>
-          <div style={{ width: '80%', marginLeft: '50%' }}>
-            <Button
-              type="button"
-              className="add-to-cart"
-              style={{ width: '30%' }}
-              onClick={AddReview}
-              disabled={!value || !comment}
-            >
-              <GrSend style={{ fontSize: '22px' }} />
-              &nbsp;&nbsp;&nbsp;
-              Send
-            </Button>
-          </div>
-        </Box>
-        <br /> <br />
-        <div>
-          {allComments.map((allComment) => {
-            let del
-            if (allComment.userId == localStorage.getItem("id")) {
-              del = (
-                <>
-                  <CardActions>
-                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
-                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
-                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
-                    <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
-                    <Button size="small" style={{ backgroundColor: '#dc3545', width: '30%' }} onClick={deleteReview}>
-                      <MdDeleteOutline style={{ fontSize: '20px' }} />
-                      &nbsp;
-                      Delete
-                    </Button>
-                  </CardActions>
-                </>
-              );
-            } else {
-              del = (
-                <>
-                </>
-              );
-            }
-            return (
-              <div>
-                <Card sx={{ maxWidth: 3450 }}>
-                  <CardActionArea >
-                    <CardContent style={{ width: "100%" }}>
-                      <Avatar src="/broken-image.jpg" />
-                      <Typography gutterBottom variant="h6" component="div" style={{ textAlign: 'left' }}>
-                        {allComment.name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" style={{ textAlign: 'justify' }}>
-                        {allComment.comment}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  {del}
-
-                </Card>
-                <br/>
-
-              </div>
-
-            )
-          })}
-        </div>
-      </div>
-      <div className="product-detail-desc">
-        <h1>{product.producttitle}</h1>
-        <h4>{product.productsubtitle}</h4>
-        <div className="reviews">
+          </Box>
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <>
+              <TextField id="standard-basic" label="Comments" variant="standard" style={{ width: '100%' }}
+                onChange={(e) => {
+                  setComment(e.target.value);
+                }}
+              />
+            </>
+            <div style={{ width: '80%', marginLeft: '50%' }}>
+              <Button
+                type="button"
+                className="add-to-cart"
+                style={{ width: '30%' }}
+                onClick={AddReview}
+                disabled={!value || !comment}
+              >
+                <GrSend style={{ fontSize: '22px' }} />
+                &nbsp;&nbsp;&nbsp;
+                Send
+              </Button>
+            </div>
+          </Box>
+          <br /> <br />
           <div>
-            <Rating name="read-only" value={product.averagerate} readOnly size="large" />
-            {product.averagerate}
+
+            {allComments.map((allComment) => {
+
+              let del
+              if (allComment.userId == localStorage.getItem("id")) {
+
+                del = (
+                  <>
+                    <CardActions>
+                      <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                      <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                      <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                      <p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p><p> &nbsp;&nbsp;&nbsp; &nbsp; </p>
+                      <Button size="small" style={{ backgroundColor: '#dc3545', width: '30%' }} onClick={deleteReview}>
+                        <MdDeleteOutline style={{ fontSize: '20px' }} />
+                        &nbsp;
+                        Delete
+                      </Button>
+                    </CardActions>
+                  </>
+                );
+
+              } else {
+                del = (
+                  <>
+                  </>
+                );
+              }
+              return (
+                <div>
+                  <Card sx={{ maxWidth: 3450 }}>
+                    <CardActionArea >
+                      <CardContent style={{ width: "100%" }}>
+                        <Avatar src="/broken-image.jpg" />
+                        <Typography gutterBottom variant="h6" component="div" style={{ textAlign: 'left' }}>
+                          {allComment.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" style={{ textAlign: 'justify' }}>
+                          {allComment.comment}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+
+                    {del}
+
+                  </Card>
+                  <br />
+
+                </div>
+
+              )
+            })}
           </div>
         </div>
-        <h4>Details: </h4>
-        <p>{product.description}</p>
-        <p className="price">Rs.{product.productprice}.00</p>
-        <div className="buttons">
-          {!itemInCart && (
-            <Button
-              type="button"
-              className="add-to-cart"
-              onClick={() => addProduct(productCart)}
-            >
-              Add to Cart
-            </Button>
-          )}
-          {itemInCart && (
-            <Button
-              type="button"
-              className="add-to-cart"
-              onClick={() => inCrease(productCart)}
-            >
-              Already in Cart
-            </Button>
-          )}
+        <div className="product-detail-desc">
+          <h1 className="h-product">{product.producttitle}</h1>
+          <h4 style={{
+            textAlign: "left",
+          }}
+          >
+            {product.productsubtitle}
+          </h4>
+          <div className="reviews">
+            <div style={{
+              textAlign: "left",
+            }}>
+              {[...new Array(totalStars)].map((arr, index) => {
+                return index < activeStars ? (
+                  <StarIcon className="start_icon" style={{ fontSize: "30px" }} />
+                ) : (
+                  <StarBorderIcon className="start_icon" style={{ fontSize: "30px" }} />
+                );
+              })}
+
+            </div>
+          </div>
+          <Notification notify={notify} setNotify={setNotify} />
+          <h4>Details: </h4>
+          <p className="p-product">{product.description}</p>
+          <p className="price">Rs.{product.productprice}.00</p>
+          <div className="buttons">
+            {!itemInCart && (
+              <Button
+                type="button"
+                className="add-to-cart"
+                onClick={() => addProduct(productCart)}
+              >
+                Add to Cart
+              </Button>
+            )}
+            {itemInCart && (
+              <Button
+                type="button"
+                className="add-to-cart"
+                onClick={() => inCrease(productCart)}
+              >
+                Already in Cart
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      <Footer1 />
+    </>
   );
 };
 

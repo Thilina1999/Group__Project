@@ -3,6 +3,7 @@ import '../signin/form.css';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import Imge from '../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png';
+import Notification from "../../notification/notification"
 
 export default function Signup() {
 
@@ -13,6 +14,8 @@ export default function Signup() {
   const [redirect, setRedirect] = useState(false);
   const [isError, setIsError] = useState("");
 
+  const [ notify, setNotify ] = useState({Open:false, message:'', type:''})
+
   const submit = async (e) => {
     e.preventDefault();
     await axios.post(`http://localhost:8080/api/register`, {
@@ -22,15 +25,21 @@ export default function Signup() {
       password
     })
       .then((res) => {
-        console.log(res)
-        alert("User added..");
+        setNotify({
+          Open: true,
+          message: "User added...",
+          type: 'success'
+        })
         setRedirect(true);
       })
       .catch((err) => {
-        alert("");
         setRedirect(false);
         console.log(err);
-        
+        setNotify({
+          Open: true,
+          message: err,
+          type: 'error'
+        })
       })
     
   }
@@ -84,6 +93,7 @@ export default function Signup() {
               <li className="signin-active">Sign-Up</li>
             </ul>
             <br />
+            <Notification notify={notify} setNotify={setNotify} />
           </div>
           <div ng-app ng-init="checked = false">
             <form className="form-signup" action method="post" name="form">
