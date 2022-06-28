@@ -14,7 +14,7 @@ import "./productView.css";
 import {AutheContext} from "../../../context/auth-context/authContext"
 import Notification from "../../../notification/notification";
 import Footer1 from "../../../footerNew/footerNew";
-
+import MortionPage from "../../../motion/motionPage";
 import Announcement from "../../../Announcement/announcement";
 import Navbar1 from "../../../navbarNew/navbarNew";
 
@@ -22,7 +22,11 @@ const Productview = () => {
   const userId = localStorage.getItem("id");
   const token = localStorage.getItem("auth-token");
   // const { jwt, userId}= useContext(AutheContext)
-   const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
+  const [notify, setNotify] = useState({
+    Open: false,
+    message: "",
+    type: "error",
+  });
    const [products, setProducts] = useState([]);
    useEffect(() => {
      GetProductData();
@@ -34,7 +38,6 @@ const Productview = () => {
         })
         .then((response) => {
           setProducts(response.data.data);
-          console.log(response.data.data);
         })
         .catch((error) => {
           console.log(error);
@@ -66,87 +69,92 @@ const Productview = () => {
 
   return (
     <>
-      <Announcement />
-      <Navbar1 />
-      <br />
-      <br />
-      <br />
-      <div className="head">
-        <div className="header_view">
-          <h2 className="font_view_product">Product</h2>
-          <Link to="/addProduct">
-            <IconButton className="icon_button" size="large">
-              <AiOutlinePlusCircle className="view_icon_product" />
-            </IconButton>
-          </Link>
-        </div>
-        <div className="wrapper_view_product">
-          {products.map((product) => {
-            return (
-              <React.Fragment key={product.id}>
-                <div>
-                  <Card className="card_product_view">
-                    <CardHeader
-                      titleTypographyProps={{
-                        color: "#000",
-                        fontSize: 27,
-                        fontFamily: "Montserrat;",
-                      }}
-                      subheaderTypographyProps={{
-                        color: "#000",
-                        fontSize: 15,
-                        fontFamily: "Montserrat",
-                      }}
-                      title={product.producttitle}
-                      subheader={product.productsubtitle}
-                    />
-                    <div>
-                      <CardMedia
-                        className="card__media_view_pro"
-                        component="img"
-                        height="300"
-                        image={product.imageurl}
-                        alt="Kid Cloths"
-                      />
-                    </div>
-
-                    <CardContent>
-                      <Typography
-                        style={{
-                          fontFamily: "Montserrat;",
+      <MortionPage>
+        <Announcement />
+        <Navbar1 />
+        <br />
+        <br />
+        <br />
+        <div className="head">
+          <div className="header_view">
+            <h2 className="font_view_product">Product</h2>
+            <Link to="/addProduct">
+              <IconButton className="icon_button" size="large">
+                <AiOutlinePlusCircle className="view_icon_product" />
+              </IconButton>
+            </Link>
+          </div>
+          <div className="wrapper_view_product">
+            {products.map((product) => {
+              return (
+                <React.Fragment key={product.id}>
+                  <div>
+                    <Card className="card_product_view">
+                      <CardHeader
+                        titleTypographyProps={{
                           color: "#000",
-                          fontSize: 20,
+                          fontSize: 27,
+                          fontFamily: "Montserrat;",
                         }}
-                      >
-                        Rs.{product.productprice}.00
-                      </Typography>
-                    </CardContent>
-
-                    <CardActions disableSpacing>
-                      <Link
-                        to={`/editProduct/${product.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <IconButton className="icon_button_second" size="large">
-                          <AiFillEdit className="view_icon" />
-                        </IconButton>
-                      </Link>
-                      <IconButton className="icon_button_second" size="large">
-                        <AiFillDelete
-                          className="view_icon"
-                          onClick={() => OnDelete(product.id)}
+                        subheaderTypographyProps={{
+                          color: "#000",
+                          fontSize: 15,
+                          fontFamily: "Montserrat",
+                        }}
+                        title={product.producttitle}
+                        subheader={product.productsubtitle}
+                      />
+                      <div>
+                        <CardMedia
+                          className="card__media_view_pro"
+                          component="img"
+                          height="300"
+                          image={product.imageurl}
+                          alt="Kid Cloths"
                         />
-                      </IconButton>
-                    </CardActions>
-                  </Card>
-                </div>
-              </React.Fragment>
-            );
-          })}
+                      </div>
+
+                      <CardContent>
+                        <Typography
+                          style={{
+                            fontFamily: "Montserrat;",
+                            color: "#000",
+                            fontSize: 20,
+                          }}
+                        >
+                          Rs.{product.productprice}.00
+                        </Typography>
+                      </CardContent>
+
+                      <CardActions disableSpacing>
+                        <Link
+                          to={`/editProduct/${product.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <IconButton
+                            className="icon_button_second"
+                            size="large"
+                          >
+                            <AiFillEdit className="view_icon" />
+                          </IconButton>
+                        </Link>
+                        <IconButton className="icon_button_second" size="large">
+                          <AiFillDelete
+                            className="view_icon"
+                            onClick={() => OnDelete(product.id)}
+                          />
+                        </IconButton>
+                      </CardActions>
+                    </Card>
+                  </div>
+                </React.Fragment>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <Footer1 />
-      <Notification notify={notify} setNotify={setNotify} />
+        <Footer1 />
+        <Notification notify={notify} setNotify={setNotify} />
+      </MortionPage>
     </>
   );
 };

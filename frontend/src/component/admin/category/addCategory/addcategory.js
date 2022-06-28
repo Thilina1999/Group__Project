@@ -13,7 +13,7 @@ import Footer1 from "../../../footerNew/footerNew";
 
 const AddCategory = () => {
   const { jwt, userId } = useContext(AutheContext);
-  const [ notify, setNotify ] = useState({Open:false, message:'', type:''})
+  const [ notify, setNotify ] = useState({Open:false, message:'', type:"error"})
   // console.log(jwt, userId);
   const token = localStorage.getItem('auth-token')
   const [categoryname, setCatname] = useState("");
@@ -30,8 +30,6 @@ const SendData = (e) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log("d", res);
-
         if (res.data.status === 200) {
           setNotify({
             Open: true,
@@ -44,10 +42,8 @@ const SendData = (e) => {
              message: res.data.message,
              type: res.data.type,
            });
-        } else {
-          Promise.reject();
-        }
-        e.target.reset();
+        } 
+        
       })
       .catch((err) => {
         console.log(err);

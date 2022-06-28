@@ -19,7 +19,11 @@ const ViewCategory = (props) => {
   // const { jwt , userId }= useContext(AutheContext)
   
    const jwt = localStorage.getItem("auth-token");
-  const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
+  const [notify, setNotify] = useState({
+    Open: false,
+    message: "",
+    type: "error",
+  });
   const [categories, setCategories] = useState([]);
     useEffect(() => {
       GetCatData();
@@ -31,7 +35,6 @@ const ViewCategory = (props) => {
            })
            .then((response) => {
              setCategories(response.data.data);
-             console.log(response.data);
            })
            .catch((err) => {
              console.log(err);

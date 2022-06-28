@@ -39,14 +39,12 @@ const Products = () => {
       })
       .then((response) => {
         setProducts(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-console.log(products);
   const totalStars = 5;
   const activeStars = 3;
 
