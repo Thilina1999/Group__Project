@@ -16,7 +16,11 @@ const UpdateCategory = () => {
   const { jwt, userId } = useContext(AutheContext);
    const token = localStorage.getItem("auth-token");
    const params = useParams();
- const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
+ const [notify, setNotify] = useState({
+   Open: false,
+   message: "",
+   type: "error",
+ });
   const [categoryname, setCategory] = useState("");
 
   const [categories, setCategories] = useState([]);
@@ -28,7 +32,6 @@ const UpdateCategory = () => {
       })
       .then((response) => {
         setCategories(response.data.data);
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);

@@ -175,7 +175,11 @@ function Navbar1() {
   const logOut = async () => {
     try {
       const token = localStorage.getItem("auth-token");
-      await axios.post('http://localhost:8080/api/logout', { headers: { Authorization: `Bearer ${token}` } }, { withCredentials: true });
+      await axios.post(
+        "http://localhost:8080/api/logout",
+        { headers: { Authorization: `Bearer ${token}` } },
+        { withCredentials: true }
+      );
       firstName = "";
       localStorage.removeItem("auth-token");
       localStorage.removeItem("name");
@@ -185,25 +189,12 @@ function Navbar1() {
       console.log(err);
       setRedirect(false);
     }
-    window.location.reload();
+   
 
   };
 
   firstName = localStorage.getItem("name");
-  // const [name, setName] = useState("");
-  // const [products1, setNameproduct] = useState([]);
-  // console.log("add",name)
-  // const OnClickSearch = async (e) => {
-  //   <SearchData name={name} />;
-  //   localStorage.setItem("search-name", name);
-  // };
 
-  // const navigate = useNavigate();
-
-  // function DelayRedirect(e, path) {
-  //   e.preventDefault();
-  //   setTimeout(() => navigate(path), 1500);
-  // }
   let menu;
 
   if (firstName === null) {

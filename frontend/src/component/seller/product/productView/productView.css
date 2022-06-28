@@ -42,6 +42,9 @@
     
 
 }
+.view_icon_product:hover {
+    transform: translateY(-2px) scale(1.005) translateZ(0);
+}
 
 .view_icon:hover {
     transform: translateY(-2px) scale(1.005) translateZ(0);

@@ -12,12 +12,18 @@ import Navbar1 from "../../../navbarNew/navbarNew";
 import Announcement from "../../../Announcement/announcement"
 import Footer1 from "../../../footerNew/footerNew"
 import Notification from "../../../notification/notification";
+import MortionPage from "../../../motion/motionPage"
+
 
 const ViewCategory = (props) => {
   // const { jwt , userId }= useContext(AutheContext)
   
    const jwt = localStorage.getItem("auth-token");
-  const [notify, setNotify] = useState({ Open: false, message: "", type: "" });
+  const [notify, setNotify] = useState({
+    Open: false,
+    message: "",
+    type: "error",
+  });
   const [categories, setCategories] = useState([]);
     useEffect(() => {
       GetCatData();
@@ -29,7 +35,6 @@ const ViewCategory = (props) => {
            })
            .then((response) => {
              setCategories(response.data.data);
-             console.log(response.data);
            })
            .catch((err) => {
              console.log(err);
@@ -64,60 +69,64 @@ const ViewCategory = (props) => {
 
   return (
     <>
-      <Announcement />
-      <Navbar1 />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="container2-category">
-        <div className="container-category">
-          <span className="font-category">
-            Category
-            <Link to="/addcategory">
-              <IconButton className="plusicon-category">
-                <AiOutlinePlusCircle className="icon1-category" />
-              </IconButton>
-            </Link>
-          </span>
-          <br />
-          <br />
-          <table className="table-category">
-            {categories.map((category) => {
-              return (
-                <React.Fragment key={category.id}>
-                  <tbody className="tablebody-category">
-                    <tr className="tablebody-category">
-                      <td className="td1-category">{category.categoryname}</td>
-                      <td className="td2-category">
-                        <Link
-                          to={`/editCategory/${category.id}`}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <IconButton variant="outline-dark">
-                            <AiFillEdit className="icon-category" />
+      <MortionPage>
+        <Announcement />
+        <Navbar1 />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="container2-category">
+          <div className="container-category">
+            <span className="font-category">
+              Category
+              <Link to="/addcategory">
+                <IconButton className="plusicon-category">
+                  <AiOutlinePlusCircle className="icon1-category" />
+                </IconButton>
+              </Link>
+            </span>
+            <br />
+            <br />
+            <table className="table-category">
+              {categories.map((category) => {
+                return (
+                  <React.Fragment key={category.id}>
+                    <tbody className="tablebody-category">
+                      <tr className="tablebody-category">
+                        <td className="td1-category">
+                          {category.categoryname}
+                        </td>
+                        <td className="td2-category">
+                          <Link
+                            to={`/editCategory/${category.id}`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <IconButton variant="outline-dark">
+                              <AiFillEdit className="icon-category" />
+                            </IconButton>
+                          </Link>
+                        </td>
+                        <td className="td2-category">
+                          <IconButton
+                            variant="outline-dark"
+                            onClick={() => OnDelete(category.id)}
+                          >
+                            <AiFillDelete className="icon-category" />
                           </IconButton>
-                        </Link>
-                      </td>
-                      <td className="td2-category">
-                        <IconButton
-                          variant="outline-dark"
-                          onClick={() => OnDelete(category.id)}
-                        >
-                          <AiFillDelete className="icon-category" />
-                        </IconButton>
-                      </td>
-                    </tr>
-                  </tbody>
-                </React.Fragment>
-              );
-            })}
-          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </React.Fragment>
+                );
+              })}
+            </table>
+          </div>
         </div>
-      </div>
 
-      <Footer1 />
-      <Notification notify={notify} setNotify={setNotify} />
+        <Footer1 />
+        <Notification notify={notify} setNotify={setNotify} />
+      </MortionPage>
     </>
   );
  };
