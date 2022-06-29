@@ -21,6 +21,7 @@ const UpdateProfileDetails=()=> {
     let [AverageProductValue,SetAverageProductValue]=useState("");
     let [CompanyLogourl,SetCompanyLogourl]=useState("");
     let [merchantlist, SetMerchantlist] = useState([]);
+    const [isError, setIsError] = useState("");
     
   useEffect(() => {
     
@@ -52,7 +53,7 @@ const UpdateProfileDetails=()=> {
           CompanyLogourl,
           userId,
         };
-
+        console.log(addmerchant)
     axios.put(`http://localhost:8080/updateMerchant/${params.id}`,{
         merchantlegalname: addmerchant.MerchantlegalName,
         officialwebsite: addmerchant.OfficialWebsite,
@@ -61,9 +62,9 @@ const UpdateProfileDetails=()=> {
         businessaddress: addmerchant.BusinessAddress,
         profile: addmerchant.Profile,
         productdescription: addmerchant.ProductDescription,
-        averageproductvalue: addmerchant.AverageProductValue,
-        companylogourl: addmerchant.UploadCompanyLogo,
-        userid: Number(addmerchant.userId),
+        averageproductvalue:Number(addmerchant.AverageProductValue),
+        companylogourl: addmerchant.CompanyLogourl,
+        userid:Number(addmerchant.userId),
     },
     {
       headers: { Authorization: `Bearer ${jwt}` },
@@ -75,6 +76,7 @@ const UpdateProfileDetails=()=> {
           } else {
             alert("Profile Update Failed");
           }
+          console.log(response);
        }).catch((err) => {
          console.log(err);
        });
@@ -90,7 +92,7 @@ const UpdateProfileDetails=()=> {
         fileRef.put(file).then(() => {
           console.log("Uploaded file", file.name);
           profilePhoto = fileRef.getDownloadURL(fileRef.ref).then((url) => {
-            CompanyLogourl(url);
+            SetCompanyLogourl(url);
             console.log(url);
           });
         });
@@ -99,9 +101,9 @@ const UpdateProfileDetails=()=> {
     const navigate = useNavigate();
     function DelayRedirect(e, path) {
     e.preventDefault();
-    setTimeout(() => navigate(path), 600);
+    setTimeout(() => navigate(path), 1000);
   }
-  console.log(merchantlist)
+  // console.log(merchantlist)
   return (
     
     <div className="containerFour_add">
@@ -218,22 +220,30 @@ const UpdateProfileDetails=()=> {
           <br />
           <br />
           <Link
-            to="/profileView"
-            onClick={(e) => DelayRedirect(e, "/profileView")}
-          >
-            <Button
+              to="/viewprofile"
+              onClick={(e) => DelayRedirect(e, "/viewprofile")}
+            >
+          
+            <Button 
               variant="outline-dark"
               type="set"
               className="button4_add btn btn-light"
               onClick={Updateprofile}
+             // disabled={!MerchantlegalName || !OfficialWebsite || !ContactPersonEmailID || !ContactPersonMobileNumber || !BusinessAddress || !Profile || !ProductDescription || !AverageProductValue || isError}
             //   disabled={!this.addmerchant.MerchantlegalName || !this.addmerchant.OfficialWebsite || 
             //     !this.addmerchant.ContactPersonEmailID || !this.addmerchant.ContactPersonMobileNumber ||
             //   !this.addmerchant.BusinessAddress || !this.addmerchant.Profile || !this.addmerchant.ProductDescription ||
             // !this.addmerchant.AverageProductValue || !this.addmerchant.UploadCompanyLogo }
             >
+             <Link
+              to="/viewprofile"
+              onClick={(e) => DelayRedirect(e,"/viewprofile")}
+              style={{ textDecoration: "none", color: "white" }}
+            >
               Update
+              </Link>
             </Button>
-          </Link>
+            </Link>
         </Form>
       </div>
     </div>

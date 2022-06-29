@@ -1,13 +1,13 @@
 .head{
     background-color: rgba(212, 242, 255, 1);
+    
 }
 
 .wrapper_view {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
-    gap: 3rem;
     justify-content: center; 
-    padding: 50px;
+    
     
 }
 

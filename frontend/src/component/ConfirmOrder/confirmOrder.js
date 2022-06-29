@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { introItems } from './data';
+//import { introItems } from './data';
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -8,24 +8,11 @@ const Container = styled.div`
     display: flex;
 `;
 
-const Item1 = styled.div`
-    width: 40%;
-    height: 50vh;
-    margin-left: 195px;           
-`;
+ 
 
 const Item2 = styled.div`
      margin-top: 70px;
 `;
-
-const ImgContainer = styled.div`
-    height: 100vh;
-`;  
-
-const Image = styled.img`
-    height: 50%;
-    border-radius: 50px;
-`; 
 
 const SubTitle = styled.div`
     color: #75d6dc;
@@ -58,31 +45,25 @@ const Button = styled.button`
     &:hover{
         color: gray;
         transform: scale(1.1);
-`;  
+`; 
+  
 
-function Intro ({item}){
+function ConfirmOrder ({total}){
     return(
         <Container>
-            <Item1>
-                {introItems.map((item) =>(
-                <ImgContainer bg={item.bg} key={item.id}>
-                        <Image src={item.backgroundImage} />
-                </ImgContainer>
-                ))}
-           </Item1>
+            
            <Item2>
-                <SubTitle>Selling as a business?</SubTitle>
-                <Title>We make it easy</Title> <br/>
-                <Para>miniBell never stop giving the best for you as well as for your little one.<br/>
-                Sell your items fast—millions of buyers are waiting.</Para> 
+                <Title>Order Summary</Title> <br/>
+                <SubTitle>Product Name</SubTitle> <br/>
+                <Para>Total={total}</Para> 
                 <Button> 
                 <Link
-              to={"/merchantapplication"}
+              to={""}
               style={{ textDecoration: "none", color: "black" }}
               > 
-              Get Started as a <b>SELLER!</b> 
+              Place the order
               </Link>
-              </Button> 
+              </Button>
             </Item2>  
         </Container>
     
@@ -90,4 +71,4 @@ function Intro ({item}){
 };
 
 
-export default Intro;
+export default ConfirmOrder;

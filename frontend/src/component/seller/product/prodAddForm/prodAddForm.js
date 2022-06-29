@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Image4 from "../../../assets/kimono-baby-sweater-crochet-pattern_ccexpress 2.png";
 import { AutheContext } from "../../../context/auth-context/authContext";
+import Header from "../../../sidebarNew/sidebarNew";
 
 const ProdAddForm = () => {
 const { jwt, userId } = useContext(AutheContext);
@@ -98,131 +99,149 @@ const [categories, setCategories] = useState([]);
   }
 
   return (
-    <div className="container7_add">
-      <img src={Image4} className="image_add" />
+    <>
+      <Header />
+        <div className="container7_add">
+          <img src={Image4} className="image_add" />
 
-      <div className="container-add-product">
-        <Form className="form_add-product">
-          <Form.Group controlId="ControlInput1" name="id1">
-            <h2 className="h2">Add Product</h2>
-            <hr></hr>
-            <br />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput2" name="id2" className="add-pro">
-            <Form.Label className="label">Product Title</Form.Label>
-            <Form.Control
-              className="form-control_add"
-              type="text"
-              placeholder=""
-              onChange={(e) => {
-                SetProductTitle(e.target.value);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput3" name="id3" className="add-pro">
-            <Form.Label className="label">Product SubTitle</Form.Label>
-            <Form.Control
-              className="form-control_add"
-              type="text"
-              placeholder=""
-              onChange={(e) => {
-                SetSubTitle(e.target.value);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label className="label">Category Select</Form.Label>
-            <Form.Select
-              className="form-control_add"
-              onChange={(e) => SetCategoryName(e.target.value)}
-            >
-              <option>Select Category</option>
-              {categories.map((category) => {
-                return (
-                  <React.Fragment key={category.id}>
-                    <option value={category.categoryname}>
-                      {category.categoryname}
-                    </option>
-                  </React.Fragment>
-                );
-              })}
-            </Form.Select>
-            <br />
-          </Form.Group>
-          <Form.Group controlId="formFile">
-            <Form.Label className="label">file input</Form.Label>
-            <Form.Control
-              type="file"
-              onChange={OnAddProduct}
-              className="form-control_add"
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput4" name="id3">
-            <Form.Label className="label">Description</Form.Label>
-            <Form.Control
-              className="text_add"
-              as="textarea"
-              placeholder="description"
-              onChange={(e) => {
-                Setdescription(e.target.value);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput5" name="id4">
-            <Form.Label className="label">Product Price</Form.Label>
-            <Form.Control
-              className="form-control_add"
-              type="number"
-              placeholder=""
-              onChange={(e) => {
-                Setprice(e.target.valueAsNumber);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <Form.Group controlId="ControlInput6" name="id4">
-            <Form.Label className="label">Product Quantity</Form.Label>
-            <Form.Control
-              className="form-control_add"
-              type="number"
-              placeholder=""
-              onChange={(e) => {
-                SetQuantity(e.target.valueAsNumber);
-              }}
-            />
-            <br />
-          </Form.Group>
-          <br />
-          <br />
-          <Link to="/productview">
-            <Button
-              variant="outline-dark"
-              className="button_cancel_add btn btn-light"
-            >
-              Cancel
-            </Button>
-          </Link>
-          <Link
-            to="/productview"
-            onClick={(e) => DelayRedirect(e, "/productview")}
-          >
-            <Button
-              variant="outline-dark"
-              type="submit"
-              className="button_create_add btn btn-light"
-              onClick={Addproduct}
-            >
-              create
-            </Button>
-          </Link>
-        </Form>
-      </div>
-    </div>
+          <div className="container-add-product">
+            <Form className="form_add-product">
+              <Form.Group controlId="ControlInput1" name="id1">
+                <h2 className="h2-add-product">Add Product</h2>
+                <hr></hr>
+                <br />
+                <br />
+              </Form.Group>
+              <Form.Group
+                controlId="ControlInput2"
+                name="id2"
+                className="add-pro"
+              >
+                <Form.Label className="label-product">Product Title</Form.Label>
+                <Form.Control
+                  className="form-control_add"
+                  type="text"
+                  placeholder=""
+                  onChange={(e) => {
+                    SetProductTitle(e.target.value);
+                  }}
+                />
+                <br />
+              </Form.Group>
+              <Form.Group
+                controlId="ControlInput3"
+                name="id3"
+                className="add-pro"
+              >
+                <Form.Label className="label-product">
+                  Product SubTitle
+                </Form.Label>
+                <Form.Control
+                  className="form-control_add"
+                  type="text"
+                  placeholder=""
+                  onChange={(e) => {
+                    SetSubTitle(e.target.value);
+                  }}
+                />
+                <br />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label className="label-product">
+                  Category Select
+                </Form.Label>
+                <Form.Select
+                  className="form-control_add"
+                  onChange={(e) => SetCategoryName(e.target.value)}
+                >
+                  <option>Select Category</option>
+                  {categories.map((category) => {
+                    return (
+                      <React.Fragment key={category.id}>
+                        <option value={category.categoryname}>
+                          {category.categoryname}
+                        </option>
+                      </React.Fragment>
+                    );
+                  })}
+                </Form.Select>
+                <br />
+              </Form.Group>
+              <Form.Group controlId="formFile">
+                <Form.Label className="label-product">file input</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={OnAddProduct}
+                  className="form-control_add"
+                />
+                <br />
+              </Form.Group>
+              <Form.Group controlId="ControlInput4" name="id3">
+                <Form.Label className="label-product">Description</Form.Label>
+                <Form.Control
+                  className="text_add"
+                  as="textarea"
+                  placeholder="description"
+                  onChange={(e) => {
+                    Setdescription(e.target.value);
+                  }}
+                />
+                <br />
+              </Form.Group>
+              <Form.Group controlId="ControlInput5" name="id4">
+                <Form.Label className="label-product">Product Price</Form.Label>
+                <Form.Control
+                  className="form-control_add"
+                  type="number"
+                  placeholder=""
+                  onChange={(e) => {
+                    Setprice(e.target.valueAsNumber);
+                  }}
+                />
+                <br />
+              </Form.Group>
+              <Form.Group controlId="ControlInput6" name="id4">
+                <Form.Label className="label-product">
+                  Product Quantity
+                </Form.Label>
+                <Form.Control
+                  className="form-control_add"
+                  type="number"
+                  placeholder=""
+                  onChange={(e) => {
+                    SetQuantity(e.target.valueAsNumber);
+                  }}
+                />
+                <br />
+              </Form.Group>
+              <br />
+              <br />
+              <Link to="/productview">
+                <Button
+                  variant="outline-dark"
+                  className="button_cancel_add btn btn-light"
+                >
+                  Cancel
+                </Button>
+              </Link>
+              <Link
+                to="/productview"
+                onClick={(e) => DelayRedirect(e, "/productview")}
+              >
+                <Button
+                  variant="outline-dark"
+                  type="submit"
+                  className="button_create_add-pro btn btn-light"
+                  onClick={Addproduct}
+                >
+                  create
+                </Button>
+              </Link>
+            </Form>
+          </div>
+        </div>
+     
+    </>
   );
 };
 

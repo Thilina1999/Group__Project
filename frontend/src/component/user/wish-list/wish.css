@@ -47,7 +47,7 @@
 
   }
    .h4-list {
-       font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
        color: rgb(252, 0, 0);
    }
         .p-list {
@@ -56,7 +56,7 @@
             ;
             font-size: 1rem;
             font-weight: normal;
-            font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+            font-family: Montserrat;
         }
 
 .icon-button-list {
@@ -75,8 +75,10 @@
 
 }
 .WishList-header {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
+    color: black;
     font-weight: bold;
+    font-size: 30px;
     display: flex;
     justify-content: center;
 }

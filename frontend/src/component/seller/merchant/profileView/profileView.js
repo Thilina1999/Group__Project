@@ -16,13 +16,13 @@ import { Box, Button } from "@material-ui/core";
 
 
 const Profileview = () => {
-    const { jwt, userId } = useContext(AutheContext);
+    const { jwt, userId } = useContext(AutheContext)
     const [profile, SetProfile] = useState([]);
     useEffect(() => {
       axios
         .get(`http://localhost:8080/getMerchantByid/${userId}`,
         {
-          headers: { Authorization: `Bearer ${jwt}` },
+          headers: { Authorization: `Bearer ${jwt}`},
         }
         )
         .then((response) => {
@@ -38,7 +38,7 @@ const Profileview = () => {
       <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          
+           
             {
               profile.length == 0 &&(
              
@@ -47,7 +47,7 @@ const Profileview = () => {
                         style={{ textDecoration: "none" }}
                       >
                          <IconButton className="icon_button" size="large" >
-              <AiOutlinePlusCircle className="view_icon"  />
+              <AiOutlinePlusCircle className="view_icon"/>
               </IconButton>
                       </Link>
             
@@ -58,21 +58,21 @@ const Profileview = () => {
               {/* <AiFillEdit className="view_icon" /> */}
             </IconButton>
             )}
-  
-          
+           
+           
         </div>
         <div className=" ">
-          {profile.map((merchant) => {
+          
             return (
-              <React.Fragment key={merchant.id}>
-                <div className="cardHead">
+              <React.Fragment key={profile.id}>
+                <div className="cardHead123">
                   <Card className="card_merchant_view">   
                       <CardMedia 
                         className="card__media_view"
                         component="img"
                         height="230px"
                          
-                        image={merchant.companylogourl}
+                        image={profile.companylogourl}
                         alt=""
                         
                       />
@@ -83,53 +83,85 @@ const Profileview = () => {
                         color: "black",
                         fontSize: 30,
                          
-                        fontFamily:
-                        "'Roboto', sans-serif",
+                        fontFamily:"'Montserrat'",
                       }}
 
-                      title={merchant.merchantlegalname} 
+                      title={profile.merchantlegalname} 
                       />
-                      <CardContent className="infocard">   
-                      <Typography className="input"><br/>{merchant. profile}</Typography>
+                      <CardContent className="infocard123"
+                      titleTypographyProps={{
+                        color: "black",
+                        fontSize: 30,
+                         
+                        fontFamily:"'Montserrat'",
+                      }} >   
+                      <Typography className="input"><br/>{profile.profile}</Typography>
                     </CardContent>
-                      <CardContent className="">
-                      <Typography><b>{merchant.officialwebsite}</b> </Typography>
+                      <CardContent 
+                      titleTypographyProps={{
+                        color: "black",
+                        fontSize: 30,
+                         
+                        fontFamily:"'Montserrat'",
+                      }}>
+                      <Typography><b>{profile.officialwebsite}</b> </Typography>
                     </CardContent >
                     </Card>
 
                     
-                    <Card className="content" width="100px">   
+                    <Card className="content123" width="100px"
+                    titleTypographyProps={{
+                      color: "black",
+                      fontSize: 30,
+                       
+                      fontFamily:"'Montserrat'",
+                    }}>   
                     
                     
                     <CardContent className="infocard">
-                      <Typography className="input"><b>{merchant.contactpersonemailid}</b></Typography>
+                      <Typography className="input"
+                      ><b>{profile.contactpersonemailid}</b></Typography>
                     </CardContent>
                     <CardContent className="infocard">
-                      <Typography className="input"><b>{merchant.contactpersonmobilenumber}</b></Typography>
+                      <Typography className="input"><b>{profile.contactpersonmobilenumber}</b></Typography>
                     </CardContent>
                     <CardContent className="infocard">
-                      <Typography className="input"><b>{merchant.businessaddress}</b></Typography>
+                      <Typography className="input"><b>{profile.businessaddress}</b></Typography>
                     </CardContent>
                     
                     <CardContent className="infocard">
-                      <Typography className="input"><b></b>{merchant.productdescription}</Typography>
+                      <Typography className="input"><b></b>{profile.productdescription}</Typography>
                     </CardContent>
                     <CardContent className="infocard">
-                      <Typography className="input"><b>Average Product Value:   LKR {merchant.averageproductvalue}</b> </Typography>
+                      <Typography className="input"><b>Average Product Value:</b>   LKR {profile.averageproductvalue} </Typography>
                     </CardContent>
 
                     <br/>
                     <br/>
                     <CardActions disableSpacing>
                       <Link
-                        to={`/editprofile/${merchant.id}`}
+                        to={`/editprofile/${profile.id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        <Button className="button"> Edit Profile 
+                        <Button className="button123"> Edit Profile 
                         <IconButton 
                         className="icon_button_second" 
                         size="large" >
                           <AiFillEdit className="view_icon" />
+                        </IconButton>
+                        </Button>
+                      </Link>
+                      <Link
+                        to="/home"
+                        style={{ textDecoration: "none" }}
+                      >
+                        
+                        <Button className="button123"> 
+                        Home 
+                        <IconButton 
+                        className="icon_button_second" 
+                        size="large" >
+                          
                         </IconButton>
                         </Button>
                       </Link>
@@ -138,7 +170,7 @@ const Profileview = () => {
                 </div>
               </React.Fragment>
             );
-          })}
+         
         </div>
       </div>
     );

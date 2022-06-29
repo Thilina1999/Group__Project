@@ -19,7 +19,8 @@ const AddProfileDetails=()=> {
   let [AverageProductValue,SetAverageProductValue]=useState("");
   let [CompanyLogourl,SetCompanyLogourl]=useState("");
   const [isError, setIsError] = useState("");
-    
+
+
   const Addprofile = (e) => {
       e.preventDefault();
       var addmerchant = {
@@ -68,6 +69,7 @@ const AddProfileDetails=()=> {
           console.log(error);
         });
 
+        const [message, setMessage ] = useState("");
   }
 
     const OnAddlogo = async (e) => {
@@ -88,6 +90,7 @@ const AddProfileDetails=()=> {
       });
       
     };
+
         const navigate = useNavigate();
         function DelayRedirect(e, path) {
           e.preventDefault();
@@ -97,13 +100,15 @@ const AddProfileDetails=()=> {
         const validation = (a) => {
           const emailVAlidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-          if(!(emailVAlidation.test(ContactPersonEmailID))){
-            setIsError("Email validation failed")
+          if((emailVAlidation.test(ContactPersonEmailID))){
+            isError("Email is valid");
           } 
-          else {
-            setIsError("");
+          else if (emailVAlidation.test(ContactPersonEmailID) && ContactPersonEmailID / "") {
+            isError("Email is not valid");
+          }else{
+            isError("");
           }
-        }
+        };
 
     return (
       <div className="containerFour_add">
@@ -221,8 +226,8 @@ const AddProfileDetails=()=> {
             <br />
             <br />
             <Link
-              to="/profileView"
-              onClick={(e) => DelayRedirect(e, "/profileView")}
+              to="/viewprofile"
+              onClick={(e) => DelayRedirect(e, "/viewprofile")}
             >
               <Button
                 variant="outline-dark"
@@ -231,7 +236,13 @@ const AddProfileDetails=()=> {
                 onClick={Addprofile}
                 disabled={!MerchantlegalName || !OfficialWebsite || !ContactPersonEmailID || !ContactPersonMobileNumber || !BusinessAddress || !Profile || !ProductDescription || !AverageProductValue || isError}
               >
-                Set
+                <Link
+              to="/viewprofile"
+              onClick={(e) => DelayRedirect(e,"/viewprofile")}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Set
+              </Link>
               </Button>
             </Link>
           </Form>

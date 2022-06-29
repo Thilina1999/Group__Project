@@ -49,7 +49,9 @@ import Cart from './component/user/shoppingcart/cart';
 import WishList from './component/user/wish-list/wishList';
 import Buyer from './component/BuyerProtection/Buyer';
 import Sidebar from './component/sidebarNew/sidebarNew';
-
+import FeaturedInfo from './component/seller/dashboard/featuredInfo';
+import SearchData from './component/user/shopping/search'
+import OrderSummery from './component/ConfirmOrder/orderSummary';
 
 function App() {
 
@@ -61,12 +63,8 @@ function App() {
         {/* <Sidebar/> */}
         {/* <AdminNavbar/>   */}
 
-        <Announcement />
-
-        <NavBar1 />
-        <br />
-        <br />
-        <br />
+    
+       
         {/* <AdminSidebar>  */}
         <Routes>
           <Route path="/" element={<Home />} exact></Route>
@@ -87,7 +85,7 @@ function App() {
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/merchantapplication" element={<AddApplication/>} exact></Route>
-
+          <Route path="/featuedinfo" element={<FeaturedInfo/>} exact></Route>
           <Route path="/Buyer" element={<Buyer />}></Route>
           <Route path="/signin/checkmail" element={<CheckMail />}></Route>
           <Route
@@ -133,7 +131,7 @@ function App() {
           <Route path="/shoppingCart" element={<Cart />} exact></Route>
           <Route path="/wishList" element={<WishList />}></Route>
 
-          <Route path="/dashboard" element={<Dashboard />} exact></Route>
+          <Route path="/dashboard" element={<Dashboard/>} exact></Route>
           <Route path="/profile" element={<Profile />} exact></Route>
           <Route path="/viewrole" element={<ViewRole />} exact></Route>
           <Route path="/addrole" element={<AddRole />} exact></Route>
@@ -142,14 +140,10 @@ function App() {
           <Route path="/edituser" element={<EditUser />} exact></Route>
           <Route path="/adminnavbar" element={<AdminNavbar />} exact></Route>
           <Route path="/sidebarnew" element={<Sidebar />} exact></Route>
-          {/* <Route path="/adminsidebar" element={<AdminSidebar/>} exact></Route> */}
+          <Route path="/searchBar/:name" element={<SearchData/>} exact></Route>
+          <Route path="/orderSummey" element={<OrderSummery/>} exact></Route>
         </Routes>
-      
-        {/* </AdminSidebar>  */}
-
-        {/* <Footer /> */}
-        <br />
-        <Footer1 />
+  
       </BrowserRouter>
     </div>
   );

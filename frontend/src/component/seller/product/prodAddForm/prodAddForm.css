@@ -1,12 +1,18 @@
-h2{
+.h2-add-product{
     text-align: left;
+    color: rgb(71, 183, 200);
+    font-size: 30px;
 }
+
+.label-product{
+    color: black;
+    font-weight: bold;
+}
+
 .container-add-product {
     padding: center;
     padding-top: 70px;
     position: relative;
-
-
 }
 .container7_add{
      width: 100%;
@@ -24,7 +30,7 @@ h2{
     border-radius: 25px;
     display: inline-block;
     text-align: left;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
     width: 1054px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.507), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     height: 150%;
@@ -36,7 +42,7 @@ h2{
     height: 35px!important;
     box-sizing: border-box;
     border-radius: 15px !important;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 
 .text_add{
@@ -55,7 +61,7 @@ h2{
         color: rgb(248, 248, 248);
         cursor: pointer;
         display: inline-block;
-        font-family: Arial, sans-serif;
+        font-family: Montserrat;
         font-size: 1em;
         height: 50px;
         padding: 0 25px;
@@ -74,11 +80,11 @@ h2{
     background-color: #202221;
         border-radius: 50px;
         border-width: 0;
-        box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+        box-shadow: rgba(64, 173, 181, 0.04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
         color: rgb(248, 248, 248);
         cursor: pointer;
         display: inline-block;
-        font-family: Arial, sans-serif;
+        font-family: Montserrat;
         font-size: 1em;
         height: 50px;
         padding: 0 25px;
@@ -88,6 +94,43 @@ h2{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         margin-left: 120px;
 }
+.button_create_add {
+    background-color: #202221;
+    border-radius: 50px;
+    border-width: 0;
+    box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+    color: rgb(248, 248, 248);
+    cursor: pointer;
+    display: inline-block;
+    font-family: Montserrat;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 25px;
+    transition: all 200ms;
+    width: 250px;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 120px;
+}
+.button_create_add-pro {
+    background-color: rgb(71, 183, 200);
+    border-radius: 50px;
+    border-width: 0;
+    box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+    color: rgb(248, 248, 248);
+    cursor: pointer;
+    display: inline-block;
+    font-family: Montserrat;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 25px;
+    transition: all 200ms;
+    width: 250px;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.219), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 120px;
+}
+
 .button_create_add:hover {
     background-color: #414241;
     transform: scale(1.05);
