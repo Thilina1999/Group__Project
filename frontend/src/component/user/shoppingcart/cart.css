@@ -1,5 +1,5 @@
    .h4-cart {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
     color: rgb(252, 0, 0);
    }
 
@@ -8,7 +8,7 @@
     margin: top 2px !important;;
     font-size: 1rem;  
     font-weight: normal;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
    }
    .p-cart-q{
     color: rgb(252, 0, 0);
@@ -87,7 +87,7 @@
      }
 
 .Cart-header{
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
     font-weight: bold;
     display: flex;
      justify-content: center;
@@ -96,7 +96,7 @@
     display: flex;
     justify-content: center;
     font-size: larger;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
         font-weight: bold;
        
    

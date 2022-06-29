@@ -1,6 +1,6 @@
 .container6{
      width: 100%;
-    height: 1100px;
+    height: 800px;
     background-color: rgba(212, 242, 255, 1);
 }
 .container-cat {
@@ -11,10 +11,10 @@
 
 }
 .h2-add{
-    color: rgb(145, 10, 10);
+    color: black;
     text-align: left;
     font-size: 40px;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 .image3{
      position: absolute;
@@ -25,6 +25,7 @@
     padding: 100px;
     border-radius: 25px;
     display: inline-block;
+    justify-content:center;
     text-align: left;
     
     width: 1054px;
@@ -38,7 +39,7 @@
     height: 45px;
     box-sizing: border-box;
     border-radius: 50px !important;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 .button-add{
 background-color: #202221;
@@ -48,7 +49,7 @@ background-color: #202221;
     color: rgb(248, 248, 248);
     cursor: pointer;
     display: inline-block;
-    font-family: Arial, sans-serif;
+    font-family: Montserrat;
     font-size: 1em;
     height: 50px;
     padding: 0 25px;
@@ -64,14 +65,14 @@ background-color: #202221;
     transform: scale(1.05);
 }
 .button1-add{
-    background-color: #202221;
+    background-color: rgb(71, 183, 200);
     border-radius: 50px;
     border-width: 0;
     box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
     color: rgb(248, 248, 248);
     cursor: pointer;
     display: inline-block;
-    font-family: Arial, sans-serif;
+    font-family: Montserrat;
     font-size: 1em;
     height: 50px;
     padding: 0 25px;
@@ -91,7 +92,7 @@ background-color: #202221;
     color: rgb(5, 5, 5) !important;
     text-transform: none;
     font-size: 25px;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    font-family: Montserrat;
 }
 
 .input-radio {

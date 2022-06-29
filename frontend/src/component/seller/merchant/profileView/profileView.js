@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -10,12 +10,21 @@ import Typography from "@mui/material/Typography";
 import { AiOutlinePlusCircle, AiFillEdit } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../profileView/profileView.css";
+import { AutheContext } from "../../../context/auth-context/authContext";
+import { FormLabel } from "react-bootstrap";
+import { Box, Button } from "@material-ui/core";
+
 
 const Profileview = () => {
+    const { jwt, userId } = useContext(AutheContext);
     const [profile, SetProfile] = useState([]);
     useEffect(() => {
       axios
-        .get("http://localhost:8080/getMerchant")
+        .get(`http://localhost:8080/getMerchantByid/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${jwt}` },
+        }
+        )
         .then((response) => {
           SetProfile(response.data);
           console.log(response.data);
@@ -24,64 +33,98 @@ const Profileview = () => {
           console.log(error);
         });
     }, []);
-  
+  console.log("profile:",profile.length)
     return (
-      <div className="head">
+      <div className="head1">
         <div className="header_view">
           <h2 className="font_view">Profile</h2>
-          <Link to="/addprofile">
-            <IconButton className="icon_button" size="large" >
+          <Link>
+            {
+              profile.length == 0 &&(
+              <IconButton className="icon_button" size="large" >
               <AiOutlinePlusCircle className="view_icon" />
             </IconButton>
+            )}
+             {
+              profile.length != 0 &&(
+              <IconButton className="icon_button" size="large" >
+              <AiFillEdit className="view_icon" />
+            </IconButton>
+            )}
+           
           </Link>
         </div>
-        <div className="wrapper_view">
+        <div className=" ">
           {profile.map((merchant) => {
             return (
               <React.Fragment key={merchant.id}>
-                <div>
-                  <Card className="card_merchant_view">
-                    <CardHeader
-                      title={merchant.merchantlegalname} 
-                      subheader={merchant.officialwebsite}
-                    />
-                    <div>
-                      <CardMedia
+                <div className="cardHead">
+                  <Card className="card_merchant_view">   
+                      <CardMedia 
                         className="card__media_view"
                         component="img"
-                        height="300"
+                        height="230px"
+                         
                         image={merchant.companylogourl}
-                        alt="Kid Cloths"
+                        alt=""
+                        
                       />
-                    </div>
-  
-                    <CardContent>
-                      <Typography>Reach via: {merchant.contactpersonemailid}</Typography>
+                      <CardHeader 
+                      className="header"
+
+                      titleTypographyProps={{
+                        color: "black",
+                        fontSize: 30,
+                         
+                        fontFamily:
+                        "'Roboto', sans-serif",
+                      }}
+
+                      title={merchant.merchantlegalname} 
+                      />
+                      <CardContent className="infocard">   
+                      <Typography className="input"><br/>{merchant. profile}</Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>Contact Us: {merchant.contactpersonmobilenumber}</Typography>
+                      <CardContent className="">
+                      <Typography><b>{merchant.officialwebsite}</b> </Typography>
+                    </CardContent >
+                    </Card>
+
+                    
+                    <Card className="content" width="100px">   
+                    
+                    
+                    <CardContent className="infocard">
+                      <Typography className="input"><b>{merchant.contactpersonemailid}</b></Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>{merchant.businessaddress}</Typography>
+                    <CardContent className="infocard">
+                      <Typography className="input"><b>{merchant.contactpersonmobilenumber}</b></Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>: {merchant. profile}</Typography>
+                    <CardContent className="infocard">
+                      <Typography className="input"><b>{merchant.businessaddress}</b></Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>: {merchant.productdescription}</Typography>
+                    
+                    <CardContent className="infocard">
+                      <Typography className="input"><b></b>{merchant.productdescription}</Typography>
                     </CardContent>
-                    <CardContent>
-                      <Typography>Average Product Value: {merchant.averageproductvalue}</Typography>
+                    <CardContent className="infocard">
+                      <Typography className="input"><b>Average Product Value:   LKR {merchant.averageproductvalue}</b> </Typography>
                     </CardContent>
 
+                    <br/>
+                    <br/>
                     <CardActions disableSpacing>
                       <Link
                         to={`/editprofile/${merchant.id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        <IconButton className="icon_button_second" size="large">
+                        <Button className="button"> Edit Profile 
+                        <IconButton 
+                        className="icon_button_second" 
+                        size="large" >
                           <AiFillEdit className="view_icon" />
                         </IconButton>
+                        </Button>
                       </Link>
                     </CardActions>
                   </Card>

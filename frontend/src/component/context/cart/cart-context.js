@@ -1,39 +1,46 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer, useEffect, useContext } from "react";
 import cartReducer, { sumItem } from "./cart-reducer";
 import axios from "axios";
-
+import { AutheContext } from "../auth-context/authContext";
 export const CartContext = createContext();
 
 
 
 
 const CartContextProvide = ({ children }) =>{
+  const token = localStorage.getItem("auth-token");
+  const userId = localStorage.getItem("id");
+  // const { jwt, userId } = useContext(AutheContext);
+  
   const itemarray = [];
    
-   useEffect(() =>{
-    getData();
-   },[])
+   useEffect(() => {
+     getData();
+   },[]);
    const getData=() => {
      axios
-       .get("http://localhost:8080/getCart")
+       .get(`http://localhost:8080/getCartByUserId/${userId}`, {
+         headers: { Authorization: `Bearer ${token}` },
+       })
        .then((response) => {
-        response.data.map((item) => {
-          itemarray.push({
-            id: item.id,
-            imageurl: item.imageurl,
-            productprice: item.productprice,
-            producttitle: item.producttitle,
-            productsubtitle: item.productsubtitle,
-            quantity: item.quantity,
-          });
-        });
-        dispatch({
-          type: "INITIALIZE",
-          payload: {
-            cartItem: itemarray,
-            ...sumItem(itemarray),
-          },
-        });
+         response.data.map((item) => {
+           itemarray.push({
+             id: item.id,
+             productid: item.productid,
+             imageurl: item.imageurl,
+             productprice: item.productprice,
+             producttitle: item.producttitle,
+             productsubtitle: item.productsubtitle,
+             quantity: item.quantity,
+           });
+         });
+         dispatch({
+           type: "INITIALIZE",
+           payload: {
+             cartItem: itemarray,
+             ...sumItem(itemarray),
+           },
+         });
        })
        .catch((error) => {
          console.log(error);

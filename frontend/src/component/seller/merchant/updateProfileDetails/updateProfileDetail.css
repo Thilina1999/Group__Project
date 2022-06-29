@@ -1,6 +1,7 @@
 .head{
     background-color: rgba(212, 242, 255, 1);
 }
+
 .wrapper_view {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
@@ -56,10 +57,14 @@
     color: rgb(230, 0, 0);
     margin-top: 25px;
     font-size: 50px;
-    
-    
+     
 }
 
+p{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
 
 
 

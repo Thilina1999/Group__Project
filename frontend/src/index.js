@@ -17,7 +17,9 @@ ReactDOM.render(
     <AutheContextProvider>
     <CartContextProvide>
       <WishListContextProvider>
+      
         <App />
+        
       </WishListContextProvider>
     </CartContextProvide>
     </AutheContextProvider>
