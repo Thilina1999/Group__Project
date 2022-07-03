@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import { Link, Navigate } from 'react-router-dom';
 import { introItems } from './data';
 
 const Container = styled.div`
@@ -72,7 +73,7 @@ function Intro ({item}){
                 <Title>We make it easy</Title> <br/>
                 <Para>miniBell never stop giving the best for you as well as for your little one.<br/>
                 Sell your items fast—millions of buyers are waiting.</Para> 
-                <Button> Get Started as a <b>SELLER!</b> </Button> 
+                <Button> <Link to ='/company'>Get Started as a <b>SELLER!</b></Link> </Button> 
             </Item2>  
         </Container>
     

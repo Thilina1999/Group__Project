@@ -5,23 +5,24 @@ import './company.css';
 import Img1 from '../assets/miniBelllogo.png';
 import Img2 from '../assets/71WIPjpp3aL 1.png';
 
-export default function Signup() {
+export default function Company() {
 
   const [companyname, setCompanyName] = useState("");
   const [companyid, setCompanyID] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailaddress, setEmail] = useState("");
+  const [createpassword, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [isError, setIsError] = useState("");
+  const token = localStorage.getItem("auth-token");
 
   const submit = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/signup`, {
+    await axios.post(`http://localhost:8080/createCompany`, {
       companyname,
       companyid,
-      email,
-      password
-    })
+      emailaddress,
+      createpassword,
+    }, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         alert("User added..");
       })
@@ -32,7 +33,7 @@ export default function Signup() {
   }
 
   if (redirect) {
-    return <Navigate to="/signin" />;
+    return <Navigate to="/home" />;
   }
 
   const validation = (a) => {
@@ -40,26 +41,31 @@ export default function Signup() {
     const lowercaseRegExp = /(?=.*?[a-z])/;
     const digitsRegExp = /(?=.*?[0-9])/;
     const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
+    const emailVAlidation = /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (password !== a) {
+    if (createpassword !== a) {
       setIsError("Password and confirm password don't match");
     }
-    else if (password.length < 8 || password.length > 15) {
-      console.log(password.length);
+    else if (createpassword.length < 8 || createpassword.length > 15) {
+      console.log(createpassword.length);
       setIsError("Password length should be 8 between 15 characters")
     }
-    else if (!(uppercaseRegExp.test(password))) {
+    else if (!(uppercaseRegExp.test(createpassword))) {
       setIsError("Password should have uppercase letter")
     }
-    else if (!(lowercaseRegExp.test(password))) {
+    else if (!(lowercaseRegExp.test(createpassword))) {
       setIsError("Password should have a lowercase letter")
     }
-    else if (!(digitsRegExp.test(password))) {
+    else if (!(digitsRegExp.test(createpassword))) {
       setIsError("Password should have a number");
     }
-    else if (!(specialCharRegExp.test(password))) {
+    else if (!(specialCharRegExp.test(createpassword))) {
       setIsError("Password should have a special character");
     }
+    else if(!(emailVAlidation.test(emailaddress))){
+      setIsError("Email validation failed")
+    }
+    
     else {
       setIsError("");
     }
@@ -109,7 +115,7 @@ export default function Signup() {
               <br />
               <div className="btn-animate1">
               <button className="btn-signup" type="button" onClick={submit}
-                disabled={!companyname || !companyid || !email || !password || isError}
+                disabled={!companyname || !companyid || !emailaddress || !createpassword || isError}
               >Create</button>
               </div>
 
