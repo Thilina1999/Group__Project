@@ -34,11 +34,13 @@ const SubTitle = styled.div`
 const Title = styled.div`
     font-weight: bold;
     font-size: 30px;
+    font-family: 'montserrat';
 `;
 
 const Para = styled.div`
     color: gray;
     font-size: 15px;
+    font-family: 'montserrat';
 `;
 
 const Button = styled.button`
@@ -59,6 +61,8 @@ const Button = styled.button`
 `;  
 
 function Intro ({item}){
+    const userId = localStorage.getItem("id")
+    const role = localStorage.getItem("role")
     return(
         <Container>
             <Item1>
@@ -73,7 +77,21 @@ function Intro ({item}){
                 <Title>We make it easy</Title> <br/>
                 <Para>miniBell never stop giving the best for you as well as for your little one.<br/>
                 Sell your items fast—millions of buyers are waiting.</Para> 
-                <Button> <Link to ='/company'>Get Started as a <b>SELLER!</b></Link> </Button> 
+                {
+                    userId != null ?(
+                        (role === "seller" || role === "admin") ?(
+                            <p></p>
+                        ):(
+                            <Button> <Link to ='/company'>Get Started as a <b>SELLER!</b></Link> </Button>
+                        ) 
+                    ):(
+                        <Button> <Link to ='/company'>Get Started as a <b>SELLER!</b></Link> </Button>
+                         
+                        
+                        
+                    )
+                }
+                 
             </Item2>  
         </Container>
     

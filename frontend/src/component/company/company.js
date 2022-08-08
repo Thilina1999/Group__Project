@@ -15,9 +15,9 @@ export default function Company() {
   const [isError, setIsError] = useState("");
   const token = localStorage.getItem("auth-token");
 
-  const submit = async (e) => {
-    e.preventDefault();
-    await axios.post(`http://localhost:8080/createCompany`, {
+  const submit =  () => {
+    
+     axios.post(`http://localhost:8080/api/company`, {
       companyname,
       companyid,
       emailaddress,
@@ -25,6 +25,7 @@ export default function Company() {
     }, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         alert("User added..");
+        email()
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +34,15 @@ export default function Company() {
   }
 
   if (redirect) {
-    return <Navigate to="/home" />;
+    return <Navigate to="/signin" />;
+  }
+
+  const email = () => {
+    console.log("Hello")
+    axios.post(`http://localhost:8080/api/sendEmail`, {
+      companyname,
+      emailaddress
+    })
   }
 
   const validation = (a) => {
@@ -114,18 +123,14 @@ export default function Company() {
               <span style={{ color: "red", fontSize: "13px" }}>{isError}</span>
               <br />
               <div className="btn-animate1">
-              <button className="btn-signup" type="button" onClick={submit}
+              <button className="btn-signup" type="button" onClick={()=>submit()}
                 disabled={!companyname || !companyid || !emailaddress || !createpassword || isError}
               >Create</button>
               </div>
-
             </form>
           </div>
         </div>
       </div>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><hr></hr>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <h7>© Photo, Inc. 2019. We love our users!</h7>
     </div>
   );
 }

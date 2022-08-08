@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CartHeader = ({ itemCount, total, clearCart }) => {
   return (
@@ -9,10 +10,11 @@ const CartHeader = ({ itemCount, total, clearCart }) => {
         <p>{`Total: $${total}`}</p>
       </div>
       <div className="checkout">
+        <Link to="/address" >
+        
         <Button className="button is-black">CHECKOUT</Button>
-        <Button className="button is-white" onClick={() => clearCart()}>
-          CLEAR
-        </Button>
+        </Link>
+        
       </div>
     </div>
   );

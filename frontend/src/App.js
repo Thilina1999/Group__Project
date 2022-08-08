@@ -10,6 +10,7 @@ import Home from './component/home';
 import Signup from './component/form/signup/form.signup';
 import AddApplication from './component/seller/merchantApplication/merchantApplication';
 import Footer from './component/footer/footer';
+import ShippingAddress from '../src/shipping/address';
 
 
 import Company from './component/company/company';
@@ -109,6 +110,7 @@ function App() {
           {/* <Route path="/viewprofilenew" element={<Profileviewnew/>} exact></Route> */}
           <Route path="/addprivilege" element={<Addprivilege/>} exact></Route>
           <Route path="/showPrivilege" element={<Viewprivilege/>} exact></Route>
+          <Route path="/address" element={<ShippingAddress />} exact></Route>
           <Route
             path="/addprofile"
             element={<AddProfileDetails />}
